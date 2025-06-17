@@ -80,6 +80,8 @@ href="https://github.com/statikfintechllc/AscendNet/blob/master/">
 
 ## 🏗️ Architecture
 
+*Preview*
+
 ```mermaid
 graph TD
   FE[Frontend,Web/Electron]
