@@ -1,0 +1,247 @@
+<link rel="stylesheet" type="text/css" href="docs/custom.css">
+<div align="center">
+  <a
+href="https://github.com/statikfintechllc/AscendAI/blob/master/About Us/LICENSE.md">
+    <img src="https://img.shields.io/badge/FAIR%20USE-black?style=for-the-badge&logo=dragon&logoColor=gold" alt="Fair Use License"/>
+  </a>
+  <a href="https://github.com/statikfintechllc/AscendAI/blob/master/About Us/LICENSE.md">
+    <img src="https://img.shields.io/badge/GREMLINGPT%20v1.0.3-darkred?style=for-the-badge&logo=dragon&logoColor=gold" alt="GremlinGPT License"/>
+  </a>
+</div>
+<div align="center">
+  <a
+href="https://github.com/statikfintechllc/AscendAI/blob/master/About Us/WHY_GREMLINGPT.md">
+    <img src="https://img.shields.io/badge/Why-black?style=for-the-badge&logo=dragon&logoColor=gold" alt="Why"/>
+  </a>
+  <a href="https://github.com/statikfintechllc/AscendAI/blob/master/About Us/WHY_GREMLINGPT.md">
+    <img src="https://img.shields.io/badge/GremlinGPT-darkred?style=for-the-badge&logo=dragon&logoColor=gold" alt="GremlinGPT"/>
+  </a>
+</div>
+
+  <div align="center">
+  <a href="https://ko-fi.com/statikfintech_llc">
+    <img src="https://img.shields.io/badge/Support-black?style=for-the-badge&logo=dragon&logoColor=gold" alt="Support"/>
+  </a>
+  <a href="https://patreon.com/StatikFinTech_LLC?utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_creator&utm_content=copyLink">
+    <img src="https://img.shields.io/badge/SFTi-darkred?style=for-the-badge&logo=dragon&logoColor=gold" alt="SFTi"/>
+  </a>
+
+# AscendNet: Decentralized Prompt & Compute Exchange
+
+  <a href="https://github.com/statikfintechllc/AscendAI/blob/master/GremlinGPT">
+    <img src="https://img.shields.io/badge/v.0.0.1-AlphaWave-darkred?labelColor=black" alt="Build Status"/>
+  </a>
+  <a href="https://github.com/statikfintechllc/AscendAI/blob/master/About Us/FOUNDER_LOG.md">
+    <img src="https://img.shields.io/badge/Founder's%20Log-Manifesto-darkred?labelColor=black" alt="Founder's Log"/>
+  </a>
+  <br/>
+  <a href="https://github.com/statikfintechllc">
+    <img src="https://img.shields.io/badge/contributors-1-darkred?labelColor=black" alt="Contributors"/>
+  </a>
+  <a href="https://github.com/statikfintechllc/AscendAI/blob/master/About Us/FOUNDER_STATEMENT.md">
+    <img src="https://img.shields.io/badge/Founder's%20Log-Statement-darkred?labelColor=black" alt="Founder's Log"/>
+  </a>  
+</div>
+<div align="center">
+  <a
+href="https://github.com/statikfintechllc/AscendNet/blob/master/">
+    <img src="https://img.shields.io/badge/The%20AscendNet-black?style=for-the-badge&logo=dragon&logoColor=gold" alt="Why"/>
+  </a>
+  <a href="https://github.com/statikfintechllc/AscendNet/blob/master/">
+    <img src="https://img.shields.io/badge/AlphaWave-darkred?style=for-the-badge&logo=dragon&logoColor=gold" alt="GremlinGPT"/>
+  </a>
+</div>
+
+---
+
+> **The world’s first open P2P exchange for AI prompts, chains, and compute power.**
+>  
+> - **No SaaS. No cloud lock-in. No censorship. No middlemen.**
+> - Trade, share, or sell prompts and run compute jobs—on a global mesh, not someone else’s server farm.
+> - Powered by FastAPI, libp2p, IPFS, smart contracts, and a little chaos.
+> - 3% off the top, straight to the dev.  
+>  
+> _“AWS for people who hate AWS.”_
+
+
+---
+
+## 🚀 Features
+
+- **P2P Prompt Marketplace:** Upload, sell, share, and rate prompts, chains, or models. Ownership, licensing, and payments are all on-chain.
+- **Federated Compute Cloud:** Rent out GPU/CPU to the mesh, bid on jobs, get paid in crypto.
+- **No Open Ports, No Central Servers:** NAT-traversing, DHT-powered, encrypted. Auto-discovers peers and syncs instantly.
+- **Crypto Escrow & Fee:** All trades go through on-chain escrow. Fee is hardcoded—try to take it away, I dare you.
+- **IPFS-Backed Storage:** All files are pinned, deduplicated, auditable.
+- **Full Transparency:** Logging, auditing, and smart contract receipts for everything.
+- **One-line Install:** All scripts, all deps, all platforms.
+
+---
+
+## 🏗️ Architecture
+
+```mermaid
+graph TD
+  FE[Frontend,Web/Electron]
+  API[FastAPI Backend]
+  P2P1[P2P Node 1]
+  P2P2[P2P Node 2]
+  P2P3[P2P Node 3]
+  Compute[Compute Scheduler & Worker]
+  Payments[Crypto/Escrow]
+  Storage[IPFS Storage]
+  Auth[Wallets/JWT]
+  Utils[Logger/Config]
+  SC[Smart Contracts]
+  IPFSNode[IPFS Node]
+
+  FE --> API
+  API --> P2P1
+  API --> Compute
+  API --> Payments
+  API --> Storage
+  API --> Auth
+  API --> Utils
+  Payments --> SC
+  Storage --> IPFSNode
+
+  %% P2P Mesh connections
+  P2P1 --> P2P2
+  P2P1 --> P2P3
+  P2P2 --> P2P1
+  P2P2 --> P2P3
+  P2P3 --> P2P1
+  P2P3 --> P2P2
+```
+
+---
+
+## 📦 Directory Structure
+
+```text
+/AscendNet/
+│
+├── backend/
+│   ├── api/         # FastAPI: endpoints, validation, error handlers
+│   ├── p2p/         # libp2p/NATS: peer mesh, pubsub, DHT, gossip
+│   ├── compute/     # Scheduler, worker, resource monitor, sandbox
+│   ├── payments/    # ETH/SOL, smart contract escrow, fee split
+│   ├── storage/     # IPFS pinning, file I/O, cache
+│   ├── auth/        # Wallets, sessions, permissions, JWT
+│   └── utils/       # Logging, config, email, validation, timers
+│
+├── smart-contracts/
+│   ├── PromptMarketplace.sol  # Prompt NFT marketplace, fees
+│   ├── ComputeRental.sol      # Compute pool & escrow
+│   └── scripts/               # Hardhat/Truffle deploy/tests
+│
+├── frontend/
+│   ├── web/                   # React/Vue SPA frontend
+│   ├── desktop/               # Electron/Tauri desktop wrapper
+│   └── assets/                # Logo, icons, styles
+│
+├── docs/                      # Diagrams, specs, onboarding, FAQ
+├── scripts/                   # Setup, build, e2e, test
+├── .env.example               # Environment template
+└── LICENSE
+```
+
+---
+
+## ⚡️ Quickstart
+
+```bash
+# 1. Clone the repo
+git clone https://github.com/youruser/AscendNet.git
+cd AscendNet
+
+# 2. Setup Python backend
+cd backend
+python3 -m venv venv && source venv/bin/activate
+pip install -r requirements.txt  # or use poetry
+
+# 3. Install frontend (web)
+cd ../frontend/web
+yarn install   # or npm install
+yarn build     # or npm run build
+
+# 4. Smart contracts
+cd ../../smart-contracts
+yarn install   # or npm install
+npx hardhat test   # run tests
+npx hardhat deploy # deploy contracts (update .env with addresses)
+
+# 5. Launch everything (dev mode)
+cd ..
+./scripts/run_dev.sh
+
+# 6. Open http://localhost:8080 (or whatever UI port)
+```
+
+---
+
+## 🌐 How it Works
+	1.	Node boots: Auto-discovers peers, joins mesh.
+	2.	Prompt uploaded: Goes to IPFS, gossiped to all nodes.
+	3.	Job request: Sent over P2P, best nodes bid, scheduler picks winner.
+	4.	Payment: Escrowed on-chain, released on completion (3% skimmed).
+	5.	All events logged, all jobs sandboxed, all users own their keys.
+	6.	No SaaS, no server, no central repo required.
+
+⸻
+
+## 🧑‍💻 API & Smart Contract
+	•	API: All endpoints documented in docs/API_SPEC.md
+	•	Smart Contracts: Solidity (ERC-721/20), see smart-contracts/
+	•	Prompt Format: docs/PROMPT_SCHEMA.md
+
+⸻
+
+## 🤝 Contributing
+	•	Fork, branch, PR.
+	•	Bugfix, docs, memes welcome.
+	•	Found a vuln or want to build a plugin? Open an issue or hit up ascend.gremlin@gmail.com
+	•	All contributors get 3% less shade from the dev.
+
+⸻
+
+## 🪙 Fee Model & Funding
+	•	Every trade/job routes 3% to the platform wallet (see contracts).
+	•	Want to fund hardware or private builds?
+	•	ETH: 0xC2db50A0fc6c95f36Af7171D8C41F6998184103F
+	•	Patreon
+	•	Ko-Fi
+
+⸻
+
+## 📖 Docs
+	•	ARCHITECTURE.md — System diagrams, flows
+	•	API_SPEC.md — All endpoints, messages
+	•	PROMPT_SCHEMA.md — Prompt licensing, NFT format
+	•	ROADMAP.md — Next features, milestones
+	•	ONBOARDING.md — For devs, node operators
+
+⸻
+
+## 👻 FAQ
+	•	“Why is my node not connecting?”
+	•	“How do I get paid?”
+	•	“What if I want 0% fees?”
+See docs/FAQ.md
+
+---
+
+## 🏴‍☠️ License
+
+Open source, but you owe the dev 3% of everything (or just let the smart contract do it for you).
+
+---
+
+## ⭐️ Who made this?
+
+Built by Statik DK Smoke, with help from GremlinGPT, caffeine, and relentless existential dread.
+
+---
+
+*“If you want SaaS, go pay OpenAI. If you want freedom, run a node.”
+— AscendNet Manifesto*
