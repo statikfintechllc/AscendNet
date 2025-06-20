@@ -62,6 +62,18 @@ href="https://github.com/statikfintechllc/AscendNet/blob/master/">
 >  
 > _“AWS for people who hate AWS.”_
 
+### 🚨 Current Status (as of June 2025)
+
+> This project is **under active, chaotic development**. Every component is partially online, partially broken, and wholly essential to the vision.
+
+- 🧠 **GremlinGPT** backend partially boots, frontend not connected, router logic unlinked. Needs dual-routing via GodCore.
+- 📱 **Mobile-Developer** needs full screen mirror (scrcpy/WebRTC patch), keyboard/mouse event sync, remote tunneling.
+- 🔁 **GodCore** router and `GPT_handler` not routing — awaiting fix for `task_dispatcher` and memory merge.
+- 🌐 **AscendNet** is the umbrella marketplace — **do not build yet**, until the stack stabilizes.
+
+🧩 Every repo is live, raw, and recursive. This is **pre-GitHub Copilot.** This is what they said couldn’t be done.  
+
+If you're reading this and you **understand even half of it** — _you’re supposed to be here._  
 
 ---
 
