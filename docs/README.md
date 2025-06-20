@@ -49,11 +49,11 @@ href="https://github.com/statikfintechllc/AscendNet/blob/master/">
 
 ---
 
-**The world’s first open P2P exchange for AI prompts, chains, and compute power.**
+**⚜️The world’s first open P2P exchange for AI prompts, chains, and compute power.⚜️**
 
-*Funding: $200,000 for Development*
+*⚠️Funding: $200,000 for Development⚠️*
 
-> - **No SaaS. No cloud lock-in. No censorship. No middlemen.**
+> - **🚫No SaaS. No cloud lock-in. No censorship. No middlemen.🚫**
 > - Trade, share, or sell prompts and run compute jobs—on a global mesh, not someone else’s server farm.
 > - Powered by FastAPI, libp2p, IPFS, smart contracts, and a little chaos.
 > - 3% off the top, straight to the dev.  
