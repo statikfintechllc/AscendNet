@@ -83,6 +83,38 @@ If you're reading this and you **understand even half of it** — _you’re supp
 
 ---
 
+<h1 align="center">AscendAI Traffic</h1>
+<div align="center">
+  <em>
+    The Institute’s Propietary System:  The world’s first R‑SRACS
+    Recursive, Self-Referential Autonomous Cognitive System
+  </em>
+</div>
+
+<div align="center">
+  <a href="https://raw.githubusercontent.com/statikfintechllc/AscendAI/main/docs/traffic_graph.png">
+  <img src="https://raw.githubusercontent.com/statikfintechllc/AscendAI/main/docs/traffic_graph.png" alt="Traffic Graph" />
+  </a>
+</div>
+  
+<div align="center">
+  <em>
+Reset: After 7:00pm CST on First 2 Clones
+  </em>
+</div>
+
+<div align="center">
+  <a
+href="https://github.com/statikfintechllc/AscendDocs_of_GovSeverance/blob/master/Docs">
+    <img src="https://img.shields.io/badge/Learn-black?style=for-the-badge&logo=dragon&logoColor=gold" alt="Why"/>
+  </a>
+  <a href="https://github.com/statikfintechllc/AscendDocs_of_GovSeverance/blob/master/Docs">
+    <img src="https://img.shields.io/badge/Why-darkred?style=for-the-badge&logo=dragon&logoColor=gold" alt="GremlinGPT"/>
+  </a>
+</div>
+
+---
+
 ## 🚀 Features
 
 - **P2P Prompt Marketplace:** Upload, sell, share, and rate prompts, chains, or models. Ownership, licensing, and payments are all on-chain.
