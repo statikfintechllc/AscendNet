@@ -1,33 +1,33 @@
 <link rel="stylesheet" type="text/css" href="docs/custom.css">
 <div align="center">
   <a
-href="https://github.com/statikfintechllc/AscendNet/blob/master/About Us/LICENSE.md">
+href="https://github.com/statikfintechllc/AscendNet/blob/master/LICENSE.md">
     <img src="https://img.shields.io/badge/FAIR%20USE-black?style=for-the-badge&logo=dragon&logoColor=gold" alt="Fair Use License"/>
   </a>
-  <a href="https://github.com/statikfintechllc/AscendAI/blob/master/About Us/LICENSE.md">
+  <a href="https://github.com/statikfintechllc/AscendNet/blob/master/LICENSE.md">
     <img src="https://img.shields.io/badge/AscendNet%20AlphaWave-darkred?style=for-the-badge&logo=dragon&logoColor=gold" alt="GremlinGPT License"/>
   </a>
 </div>
 <div align="center">
-  <a href="https://github.com/statikfintechllc/AscendAI/blob/master/About Us/WHY_GREMLINGPT.md">
+  <a href="https://github.com/statikfintechllc/AscendAI/blob/master/About Us/FOUNDER_LOG.md">
     <img src="https://img.shields.io/badge/Why-black?style=for-the-badge&logo=dragon&logoColor=gold" alt="Why"/>
   </a>
-  <a href="https://github.com/statikfintechllc/AscendAI/blob/master/About Us/WHY_GREMLINGPT.md">
+  <a href="https://github.com/statikfintechllc/AscendAI/blob/master/About Us/FOUNDER_LOG.md.md">
     <img src="https://img.shields.io/badge/SFTi-darkred?style=for-the-badge&logo=dragon&logoColor=gold" alt="GremlinGPT"/>
   </a>
   <a href="https://ko-fi.com/statikfintech_llc">
     <img src="https://img.shields.io/badge/Support-black?style=for-the-badge&logo=dragon&logoColor=gold" alt="Support"/>
   </a>
-  <a href="https://patreon.com/StatikFinTech_LLC?utm_medium=unknown&utm_source=join_link&utm_campaign=creatorshare_creator&utm_content=copyLink">
+  <a href="https://patreon.com/StatikFinTech_LLC">
     <img src="https://img.shields.io/badge/SFTi-darkred?style=for-the-badge&logo=dragon&logoColor=gold" alt="SFTi"/>
   </a>
 
 # AscendNet: Decentralized Prompt & Compute Exchange
 
-  <a href="https://github.com/statikfintechllc/AscendAI/blob/master/GremlinGPT">
+  <a href="https://github.com/statikfintechllc/AscendNet/blob/master/docs">
     <img src="https://img.shields.io/badge/v.0.0.1-AlphaWave-darkred?labelColor=black" alt="Build Status"/>
   </a>
-  <a href="https://github.com/statikfintechllc/AscendAI/blob/master/About Us/FOUNDER_LOG.md">
+  <a href="https://github.com/statikfintechllc/AscendNet/blob/master/About Us/FOUNDER_LOG.md">
     <img src="https://img.shields.io/badge/Founder's%20Log-Manifesto-darkred?labelColor=black" alt="Founder's Log"/>
   </a>
   <br/>
@@ -45,36 +45,6 @@ href="https://github.com/statikfintechllc/AscendNet/blob/master/">
   </a>
   <a href="https://github.com/statikfintechllc/AscendNet/blob/master/">
     <img src="https://img.shields.io/badge/AlphaWave-darkred?style=for-the-badge&logo=dragon&logoColor=gold" alt="GremlinGPT"/>
-  </a>
-</div>
-
-<h1 align="center">AscendAI Traffic</h1>
-<div align="center">
-  <em>
-    The Institute’s Propietary System:  The world’s first R‑SRACS
-    Recursive, Self-Referential Autonomous Cognitive System
-  </em>
-</div>
-
-<div align="center">
-  <a href="https://raw.githubusercontent.com/statikfintechllc/AscendAI/main/docs/traffic_graph.png">
-  <img src="https://raw.githubusercontent.com/statikfintechllc/AscendAI/main/docs/traffic_graph.png" alt="Traffic Graph" />
-  </a>
-</div>
-  
-<div align="center">
-  <em>
-Reset: After 7:00pm CST on First 2 Clones
-  </em>
-</div>
-
-<div align="center">
-  <a
-href="https://github.com/statikfintechllc/AscendDocs_of_GovSeverance/blob/master/Docs">
-    <img src="https://img.shields.io/badge/Learn-black?style=for-the-badge&logo=dragon&logoColor=gold" alt="Why"/>
-  </a>
-  <a href="https://github.com/statikfintechllc/AscendDocs_of_GovSeverance/blob/master/Docs">
-    <img src="https://img.shields.io/badge/Why-darkred?style=for-the-badge&logo=dragon&logoColor=gold" alt="GremlinGPT"/>
   </a>
 </div>
 
