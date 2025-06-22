@@ -51,9 +51,15 @@ href="https://github.com/statikfintechllc/AscendNet/blob/master/">
 
 **⚜️The world’s first open P2P exchange for AI prompts, chains, and compute power.⚜️**
 
-*⚠️Funding: $200,000 for Development⚠️*
+> 🔱 **Ascend Institute Ecosystem Snapshot**  
+> • GremlinGPT – 91.1 MB | 373 files  
+> • GodCore – 78.6 MB | 2,073 files  
+> • Mobile-Developer – 54.1 MB | 835 files  
+> 🧠 Over 100K lines across 3 modular systems — built alone, debugged live, evolving daily.
 
-**See the [docs/](/docs) for in-depth Outline and Architecture Plans.**
+*⚠️Funding: $500,000 for Build-Out and Development⚠️*
+
+**See the [Documentation](/docs) for in-depth Outline and Architecture Plans.**
 
 > - **🚫No SaaS. No cloud lock-in. No censorship. No middlemen.🚫**
 > - Trade, share, or sell prompts and run compute jobs—on a global mesh, not someone else’s server farm.
@@ -132,6 +138,8 @@ graph TD
 ## 📦 Directory Structure
 
 *Preview*
+
+**This ~~IS NOT~~ Production. Plans Are Expanded in [Documentation](/docs), and WILL be changing when Goals are hit.**
 
 ```text
 /AscendNet/
