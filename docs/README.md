@@ -48,6 +48,36 @@ href="https://github.com/statikfintechllc/AscendNet/blob/master/">
   </a>
 </div>
 
+<h1 align="center">AscendAI Traffic</h1>
+<div align="center">
+  <em>
+    The Institute’s Propietary System:  The world’s first R‑SRACS
+    Recursive, Self-Referential Autonomous Cognitive System
+  </em>
+</div>
+
+<div align="center">
+  <a href="https://raw.githubusercontent.com/statikfintechllc/AscendAI/main/docs/traffic_graph.png">
+  <img src="https://raw.githubusercontent.com/statikfintechllc/AscendAI/main/docs/traffic_graph.png" alt="Traffic Graph" />
+  </a>
+</div>
+  
+<div align="center">
+  <em>
+Reset: After 7:00pm CST on First 2 Clones
+  </em>
+</div>
+
+<div align="center">
+  <a
+href="https://github.com/statikfintechllc/AscendDocs_of_GovSeverance/blob/master/Docs">
+    <img src="https://img.shields.io/badge/Learn-black?style=for-the-badge&logo=dragon&logoColor=gold" alt="Why"/>
+  </a>
+  <a href="https://github.com/statikfintechllc/AscendDocs_of_GovSeverance/blob/master/Docs">
+    <img src="https://img.shields.io/badge/Why-darkred?style=for-the-badge&logo=dragon&logoColor=gold" alt="GremlinGPT"/>
+  </a>
+</div>
+
 ---
 
 **⚜️The world’s first open P2P exchange for AI prompts, chains, and compute power.⚜️**
