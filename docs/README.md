@@ -82,11 +82,11 @@ href="https://github.com/statikfintechllc/AscendNet/blob/master/">
 
 If you're reading this and you **understand even half of it** — _you’re supposed to be here._  
 
----
-
 *Documentation is updated frequently. If you see an issue, submit a PR or open an issue!*
 
 </div>
+
+---
 
 <h1 align="center">AscendAI Traffic</h1>
 <div align="center">
