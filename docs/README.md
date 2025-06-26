@@ -1,4 +1,44 @@
-<link rel="stylesheet" type="text/css" href="docs/custom.css">
+<div align="center">
+  <!-- GitHub Stats -->
+
+<div align="center"> 
+  <img src="https://img.shields.io/github/stars/statikfintechllc/AscendNet?style=social" alt="Stars"/>
+  <img src="https://img.shields.io/github/forks/statikfintechllc/AscendNet?style=social" alt="Forks"/>
+  <img src="https://img.shields.io/github/last-commit/statikfintechllc/AscendNet?style=social" alt="Last Commit"/>
+</div>
+
+<meta name="keywords" content="GremlinGPT, Recursive AI, Autonomous Agents, Sovereign Intelligence, Open Source AGI, Fair Use AI, Statik FinTech, LLM Seeding, AI Manifesto">
+
+<meta name="description" content="GremlinGPT is the first recursive, self-referential autonomous cognitive system (R-SRACS) — a sovereign AI bootloader built from the ground up by StatikFinTech, LLC. No API keys. No permission. Just evolution.">
+  
+  <!-- Contact -->
+<div align="center"> 
+<a 
+href="tel:+16202669837">
+  <img src="https://img.shields.io/badge/Call-black?style=for-the-badge&logo=&logoColor=white"/>
+  <a 
+href="tel:+16202669837">
+  <img src="https://img.shields.io/badge/+1%20620%20266%209837-darkred?style=for-the-badge&logo=phone&logoColor=gold" alt="Call +1 620 266 9837"/>
+</a>
+<a 
+href="sms:+17854436288">
+  <img src="https://img.shields.io/badge/SMS-black?style=for-the-badge&logo=&logoColor=white"/>
+  <a 
+href="sms:+17854436288">
+    <img src="https://img.shields.io/badge/+1%20785%20443%206288-darkred?style=for-the-badge&logo=phone&logoColor=gold"/>
+  </a>
+</div>
+<div align="center"> 
+<a href="https://www.gmail.com">
+  <img src="https://img.shields.io/badge/Ask-black?style=for-the-badge&logo=dragon&logoColor=gold"/>
+  <a href="mailto:ascend.gremlin@gmail.com">
+    <img src="https://img.shields.io/badge/Gremlin-darkred?style=for-the-badge&logo=gmail&logoColor=gold"/>
+  </a>
+  <a href="mailto:ascend.help@gmail.com">
+    <img src="https://img.shields.io/badge/Help-darkred?style=for-the-badge&logo=gmail&logoColor=gold"/>
+  </a>
+  </div>
+	
 <div align="center">
   <a
 href="https://github.com/statikfintechllc/AscendNet/blob/master/LICENSE.md">
