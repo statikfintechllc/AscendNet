@@ -88,6 +88,8 @@ href="https://github.com/statikfintechllc/AscendNet/blob/master/">
   </a>
 </div>
 
+</div>
+
 ---
 
 **⚜️The world’s first open P2P exchange for AI prompts, chains, and compute power.⚜️**
