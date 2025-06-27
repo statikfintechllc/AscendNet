@@ -178,7 +178,8 @@ href="https://github.com/statikfintechllc/AscendDocs_of_GovSeverance/blob/master
 
 ## 🏗️ Architecture
 
-*Preview*
+<details>
+<summary>🌀 Press to see how it will Work 🌀</summary>
 
 ```mermaid
 graph TD
@@ -214,11 +215,14 @@ graph TD
   P2P3 --> P2P2
 ```
 
+</details>
+
 ---
 
 ## 📦 Directory Structure
 
-*Preview*
+<details>
+<summary>🌀 Press to see How It Looks 🌀</summary>
 
 **This ~~IS NOT~~ Production. Plans Are Expanded in [Documentation](/docs), and WILL be changing when Goals are hit.**
 
@@ -249,6 +253,8 @@ graph TD
 ├── .env.example               # Environment template
 └── LICENSE
 ```
+
+</details>
 
 ---
 
