@@ -100,7 +100,7 @@ href="https://github.com/statikfintechllc/AscendNet/blob/master/">
 
 *⚠️Funding: $500,000 for Build-Out and Development⚠️*
 
-**See the [Documentation](/docs) for in-depth Outline and Architecture Plans.**
+**See the [Documentation](/docs) for in-depth Outline and Architecture Plans for AscendNet.**
 
 > - **🚫No SaaS. No cloud lock-in. No censorship. No middlemen.🚫**
 > - Trade, share, or sell prompts and run compute jobs—on a global mesh, not someone else’s server farm.
