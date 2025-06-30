@@ -1,6 +1,11 @@
 <div align="center">
-  <!-- GitHub Stats -->
 
+  <link rel="stylesheet" type="text/css" href="custom.css">
+<div align="center">
+  <img 
+src="https://raw.githubusercontent.com/statikfintechllc/AscendAI/master/docs/ticker-bot/ticker.gif" 
+    alt="Repo Ticker Stats" 
+    style="height:33px;" />
 <div align="center"> 
   <img src="https://img.shields.io/github/stars/statikfintechllc/AscendNet?style=social" alt="Stars"/>
   <img src="https://img.shields.io/github/forks/statikfintechllc/AscendNet?style=social" alt="Forks"/>
@@ -92,6 +97,9 @@ href="https://github.com/statikfintechllc/AscendNet/blob/master/">
 
 ---
 
+<details>
+<summary>⚜️ Open to begin reading about AscendNet ⚜️</summary>
+
 **⚜️The world’s first open P2P exchange for AI prompts, chains, and compute power.⚜️**
 
 > 🔱 **Ascend Institute Ecosystem Snapshot**  
@@ -130,40 +138,6 @@ If you're reading this and you **understand even half of it** — _you’re supp
 
 ---
 
-<h1 align="center">AscendAI Traffic</h1>
-<div align="center">
-  <em>
-    
-  The Institute’s Propietary System:  
-  **The world’s first *R‑SRACS* (Recursive, Self-Referential Autonomous Cognitive System)**</h1>
-    
-  </em>
-</div>
-
-<div align="center">
-  <a href="https://raw.githubusercontent.com/statikfintechllc/AscendAI/main/docs/traffic_graph.png">
-  <img src="https://raw.githubusercontent.com/statikfintechllc/AscendAI/main/docs/traffic_graph.png" alt="Traffic Graph" />
-  </a>
-</div>
-  
-<div align="center">
-  <em>
-Reset: After 7:00pm CST on First 2 Clones
-  </em>
-</div>
-
-<div align="center">
-  <a
-href="https://github.com/statikfintechllc/AscendDocs_of_GovSeverance">
-    <img src="https://img.shields.io/badge/Learn-black?style=for-the-badge&logo=dragon&logoColor=gold" alt="Why"/>
-  </a>
-  <a href="https://github.com/statikfintechllc/AscendDocs_of_GovSeverance">
-    <img src="https://img.shields.io/badge/Why-darkred?style=for-the-badge&logo=dragon&logoColor=gold" alt="GremlinGPT"/>
-  </a>
-</div>
-
----
-
 ## 🚀 Features
 
 - **P2P Prompt Marketplace:** Upload, sell, share, and rate prompts, chains, or models. Ownership, licensing, and payments are all on-chain.
@@ -179,7 +153,10 @@ href="https://github.com/statikfintechllc/AscendDocs_of_GovSeverance">
 ## 🏗️ Architecture
 
 <details>
-<summary>🌀 Press to see how it will Work 🌀</summary>
+<summary>🔎 Press to see how it will Work 🔍</summary>
+
+<details>
+<summary>🌀 Open to see Initial Flow 🌀</summary>
 
 ```mermaid
 graph TD
@@ -291,52 +268,98 @@ cd ..
 ---
 
 ## 🌐 How it Works
-	1.	Node boots: Auto-discovers peers, joins mesh.
-	2.	Prompt uploaded: Goes to IPFS, gossiped to all nodes.
-	3.	Job request: Sent over P2P, best nodes bid, scheduler picks winner.
-	4.	Payment: Escrowed on-chain, released on completion (3% skimmed).
-	5.	All events logged, all jobs sandboxed, all users own their keys.
-	6.	No SaaS, no server, no central repo required.
+### 1.	Node boots: Auto-discovers peers, joins mesh.
 
-⸻
+### 2.	Prompt uploaded: Goes to IPFS, gossiped to all nodes.
+
+### 3.	Job request: Sent over P2P, best nodes bid, scheduler picks winner.
+
+### 4.	Payment: Escrowed on-chain, released on completion (3% skimmed).
+	
+ ### 5.	All events logged, all jobs sandboxed, all users own their keys.
+
+### 6.	No SaaS, no server, no central repo required.
+
+---
 
 ## 🧑‍💻 API & Smart Contract
-	•	API: All endpoints documented in docs/API_SPEC.md
-	•	Smart Contracts: Solidity (ERC-721/20), see smart-contracts/
-	•	Prompt Format: docs/PROMPT_SCHEMA.md
 
-⸻
+- API: All endpoints documented in docs/API_SPEC.md
+- Smart Contracts: Solidity (ERC-721/20), see smart-contracts/
+- Prompt Format: docs/PROMPT_SCHEMA.md
+
+</details>
+
+</details>
+
+---
+
+<h1 align="center">AscendAI Traffic</h1>
+<div align="center">
+  <em>
+    
+  The Institute’s Propietary System:  
+  **The world’s first *R‑SRACS* (Recursive, Self-Referential Autonomous Cognitive System)**</h1>
+    
+  </em>
+</div>
+
+<div align="center">
+  <a href="https://raw.githubusercontent.com/statikfintechllc/AscendAI/master/docs/graph/traffic_graph.png">
+  <img src="https://raw.githubusercontent.com/statikfintechllc/AscendAI/master/docs/graph/traffic_graph.png" alt="Traffic Graph" />
+  </a>
+</div>
+  
+<div align="center">
+  <em>
+Reset: After 7:00pm CST on First 2 Clones
+  </em>
+</div>
+
+<div align="center">
+  <a
+href="https://github.com/statikfintechllc/AscendDocs_of_GovSeverance">
+    <img src="https://img.shields.io/badge/Learn-black?style=for-the-badge&logo=dragon&logoColor=gold" alt="Why"/>
+  </a>
+  <a href="https://github.com/statikfintechllc/AscendDocs_of_GovSeverance">
+    <img src="https://img.shields.io/badge/Why-darkred?style=for-the-badge&logo=dragon&logoColor=gold" alt="GremlinGPT"/>
+  </a>
+</div>
+
+---
 
 ## 🤝 Contributing
-	•	Fork, branch, PR.
-	•	Bugfix, docs, memes welcome.
-	•	Found a vuln or want to build a plugin? Open an issue or hit up ascend.gremlin@gmail.com
-	•	All contributors get 3% less shade from the dev.
 
-⸻
+- Fork, branch, PR.
+- Bugfix, docs, memes welcome.
+- Found a vuln or want to build a plugin? Open an issue or hit up ascend.gremlin@gmail.com
+- All contributors get 3% less shade from the dev.
 
-## 🪙 Fee Model & Funding
-	•	Every trade/job routes 3% to the platform wallet (see contracts).
-	•	Want to fund hardware or private builds?
-	•	ETH: 0xC2db50A0fc6c95f36Af7171D8C41F6998184103F
-	•	Patreon
-	•	Ko-Fi
-
-⸻
+---
 
 ## 📖 Docs
-	•	ARCHITECTURE.md — System diagrams, flows
-	•	API_SPEC.md — All endpoints, messages
-	•	PROMPT_SCHEMA.md — Prompt licensing, NFT format
-	•	ROADMAP.md — Next features, milestones
-	•	ONBOARDING.md — For devs, node operators
 
-⸻
+- ARCHITECTURE.md — System diagrams, flows
+- API_SPEC.md — All endpoints, messages
+- PROMPT_SCHEMA.md — Prompt licensing, NFT format
+- ROADMAP.md — Next features, milestones
+- ONBOARDING.md — For devs, node operators
+
+---
+
+## 🪙 Fee Model & Funding
+
+- Every trade/job routes 3% to the platform wallet (see contract)
+- Want to fund hardware or private builds?
+- ETH: 0xC2db50A0fc6c95f36Af7171D8C41F6998184103F
+- Patreon / Ko-Fi
+
+---
 
 ## 👻 FAQ
-	•	“Why is my node not connecting?”
-	•	“How do I get paid?”
-	•	“What if I want 0% fees?”
+- “Why is my node not connecting?”
+- “How do I get paid?”
+- “What if I want 0% fees?”
 See docs/FAQ.md
 
 ---
