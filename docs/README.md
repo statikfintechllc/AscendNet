@@ -1,11 +1,9 @@
+<link rel="stylesheet" type="text/css" href="custom.css">
 <div align="center">
-
-  <link rel="stylesheet" type="text/css" href="custom.css">
-<div align="center">
-  <img 
-src="https://raw.githubusercontent.com/statikfintechllc/AscendAI/master/docs/ticker-bot/ticker.gif" 
-    alt="Repo Ticker Stats" 
-    style="height:33px;" />
+  <img  
+	  src="https://raw.githubusercontent.com/statikfintechllc/WorkFlowRepo/master/docs/ticker-bot/ticker.gif" 
+  alt="Repo Ticker Stats" 
+  style="height:33px;" />
 <div align="center"> 
   <img src="https://img.shields.io/github/stars/statikfintechllc/AscendNet?style=social" alt="Stars"/>
   <img src="https://img.shields.io/github/forks/statikfintechllc/AscendNet?style=social" alt="Forks"/>
@@ -301,12 +299,10 @@ cd ..
   The Institute’s Propietary System:  
   **The world’s first *R‑SRACS* (Recursive, Self-Referential Autonomous Cognitive System)**</h1>
     
-  </em>
-</div>
-
+  <em>
 <div align="center">
-  <a href="https://raw.githubusercontent.com/statikfintechllc/AscendAI/master/docs/graph/traffic_graph.png">
-  <img src="https://raw.githubusercontent.com/statikfintechllc/AscendAI/master/docs/graph/traffic_graph.png" alt="Traffic Graph" />
+  <a href="https://raw.githubusercontent.com/statikfintechllc/AscendAI/master/About US/">
+  <img src="https://raw.githubusercontent.com/statikfintechllc/WorkFlowRepo/master/docs/graph/traffic_graph.png" alt="Traffic Graph" />
   </a>
 </div>
   
