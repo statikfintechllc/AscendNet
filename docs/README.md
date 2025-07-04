@@ -1,9 +1,10 @@
 <link rel="stylesheet" type="text/css" href="custom.css">
 <div align="center">
   <img  
-	  src="https://raw.githubusercontent.com/statikfintechllc/WorkFlowRepo/master/docs/ticker-bot/ticker.gif" 
+	  src="https://raw.githubusercontent.com/KDK-Grim/WorkFlowRepo-Mirror/master/docs/ticker-bot/ticker.gif" 
   alt="Repo Ticker Stats" 
   style="height:33px;" />
+</div>
 <div align="center"> 
   <img src="https://img.shields.io/github/stars/statikfintechllc/AscendNet?style=social" alt="Stars"/>
   <img src="https://img.shields.io/github/forks/statikfintechllc/AscendNet?style=social" alt="Forks"/>
