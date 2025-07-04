@@ -303,7 +303,7 @@ cd ..
   <em>
 <div align="center">
   <a href="https://raw.githubusercontent.com/statikfintechllc/AscendAI/master/About US/">
-  <img src="https://raw.githubusercontent.com/statikfintechllc/WorkFlowRepo/master/docs/graph/traffic_graph.png" alt="Traffic Graph" />
+  <img src="https://raw.githubusercontent.com/KDK-Grim/WorkFlowRepo-Mirror/master/docs/graph/traffic_graph.png" alt="Traffic Graph" />
   </a>
 </div>
   
@@ -321,6 +321,7 @@ href="https://github.com/statikfintechllc/AscendDocs_of_GovSeverance">
   <a href="https://github.com/statikfintechllc/AscendDocs_of_GovSeverance">
     <img src="https://img.shields.io/badge/Why-darkred?style=for-the-badge&logo=dragon&logoColor=gold" alt="GremlinGPT"/>
   </a>
+</div>
 </div>
 
 ---
