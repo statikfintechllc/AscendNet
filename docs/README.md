@@ -374,5 +374,11 @@ Built by Statik DK Smoke, with help from GremlinGPT, caffeine, and relentless ex
 
 ---
 
+<div align="center"> 
+
+[![Sponsor 💪 statikfintechllc](https://img.shields.io/badge/Sponsor%20%F0%9F%92%AA%20statikfintechllc-darkred?logo=github&style=for-the-badge)](https://github.com/sponsors/statikfintechllc)
+
+</div>
+
 *“If you want SaaS, go pay OpenAI. If you want freedom, run a node.”
 — AscendNet Manifesto*
