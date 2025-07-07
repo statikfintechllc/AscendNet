@@ -60,10 +60,10 @@ href="https://github.com/statikfintechllc/AscendNet/blob/master/LICENSE.md">
     <img src="https://img.shields.io/badge/SFTi-darkred?style=for-the-badge&logo=dragon&logoColor=gold" alt="GremlinGPT"/>
   </a>
   <a href="https://ko-fi.com/statikfintech_llc">
-    <img src="https://img.shields.io/badge/Support-black?style=for-the-badge&logo=dragon&logoColor=gold" alt="Support"/>
+    <img src="https://img.shields.io/badge/Ko%20Fi-black?style=for-the-badge&logo=dragon&logoColor=gold" alt="Support"/>
   </a>
   <a href="https://patreon.com/StatikFinTech_LLC">
-    <img src="https://img.shields.io/badge/SFTi-darkred?style=for-the-badge&logo=dragon&logoColor=gold" alt="SFTi"/>
+    <img src="https://img.shields.io/badge/Patreon-darkred?style=for-the-badge&logo=dragon&logoColor=gold" alt="SFTi"/>
   </a>
 
 # AscendNet: Decentralized Prompt & Compute Exchange
@@ -376,7 +376,7 @@ Built by Statik DK Smoke, with help from GremlinGPT, caffeine, and relentless ex
 
 <div align="center"> 
 
-[![Sponsor 💪 statikfintechllc](https://img.shields.io/badge/Sponsor%20%F0%9F%92%AA%20statikfintechllc-darkred?logo=github&style=for-the-badge)](https://github.com/sponsors/statikfintechllc)
+[![Sponsor SFTi](https://img.shields.io/badge/Sponsor%20%F0%9F%92%AA%20SFTi-darkred?logo=github&style=for-the-badge)](https://github.com/sponsors/statikfintechllc)
 
 </div>
 
