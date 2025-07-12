@@ -1,0 +1,93 @@
+# --- Ignore everything by default ---
+*
+
+# --- Unignore key project files ---
+!.gitignore
+!README.md
+!LICENSE
+!FOUNDER_LOG.md
+
+# --- Unignore folders and all nested content ---
+!bootstrap/
+!bootstrap/**
+
+!AscendAI/
+!AscendAI/**
+!GremlinGPT/
+!GremlinGPT/**
+!OpenDevin/
+!OpenDevin/**
+!.github/
+!.github/**
+
+# --- Allow specific models ---
+!GremlinGPT/models/
+!GremlinGPT/models/Mistral-7b/
+!GremlinGPT/models/Mistral-7b/mistral_7b.temp
+!GremlinGPT/models/Mistral-7b/model_registry.py
+
+# --- AscendAI specific files ---
+!AscendAI/Ascend_Core/Models/model_registry.py
+!AscendAI/Ascend_Core/Modules/ask_monday.py
+!AscendAI/Ascend_Core/Modules/ask_monday_handler.py
+
+# --- Scripts ---
+!install_devin.sh
+
+# --- Devin-specific ignores ---
+OpenDevin/node_modules/
+OpenDevin/frontend/node_modules/
+OpenDevin/__pycache__/
+OpenDevin/.env
+OpenDevin/workspace/
+OpenDevin/.venv/
+OpenDevin/.DS_Store
+OpenDevin/*.log
+OpenDevin/.pytest_cache/
+
+# --- Python garbage ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+*.pyo
+
+# --- System junk ---
+.DS_Store
+Thumbs.db
+*.log
+*.swp
+*.tmp
+
+# --- VS Code ---
+.vscode/
+
+# --- Conda environment ---
+env/
+.conda/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+*.ipynb
+
+# --- Node/npm ---
+node_modules/
+dist/
+.cache/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- Memory overrides ---
+!OpenDevin/memory/task_*.md
+!OpenDevin/memory/instruction_*.md
+
+# --- LLaMA weights list ---
+!/bootstrap/llama_weights_and_models.txt
+=======
+!/AscendAI/Ascend_Core/Modules/ask_monday.py
+
+!/AscendAI/Ascend_Core/Modules/ask_monday_handler.py
+
+!/GremlinGPT/models/Mistral-7b/mistral_7b.temp
+
