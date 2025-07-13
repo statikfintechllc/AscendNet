@@ -233,5 +233,5 @@ Current system status: **🟢 FULLY OPERATIONAL & UNIFIED**
 ---
 
 <div align="center">
-<sub>Built with ❤️ by <a href="https://github.com/statikfintechllc">StatikFinTech LLC</a></sub>
+<sub>Built by <a href="https://github.com/statikfintechllc">StatikFinTech LLC</a></sub>
 </div>
