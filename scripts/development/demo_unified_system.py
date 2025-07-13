@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 
 # Add the project root to the Python path
-project_root = Path(__file__).parent
+project_root = Path(__file__).parent.parent.parent  # Go up from scripts/development/ to root
 sys.path.insert(0, str(project_root))
 
 from backend.ai_core.unified_core import AscendNetAICore
@@ -90,31 +90,46 @@ async def demo_system_integration():
     # Show unified path structure
     import sys
     import os
-    sys.path.append(os.path.join(os.path.dirname(__file__), 'scripts', 'deployment'))
-    from scripts.deployment.ascendnet_orchestrator import AscendNetOrchestrator
+    # Add project root to path (go up two levels from scripts/development/)
+    project_root = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+    sys.path.append(project_root)
+    from ascendnet_orchestrator import AscendNetOrchestrator
+    from backend.utils.config import load_config
     
     orchestrator = AscendNetOrchestrator()
     
     print("🗺️  Unified Path Structure:")
     key_paths = [
-        "backend", "api", "p2p", "utils", 
-        "storage", "config", "logs"
+        ("backend", Path(project_root) / "backend"),
+        ("frontend", Path(project_root) / "frontend"), 
+        ("config", Path(project_root) / "config"),
+        ("storage", Path(project_root) / "storage"),
+        ("logs", Path(project_root) / "logs"),
+        ("scripts", Path(project_root) / "scripts")
     ]
     
-    for path_name in key_paths:
-        path = orchestrator.get_path(path_name)
+    for path_name, path in key_paths:
         exists = "✅" if path.exists() else "❌"
         print(f"   {exists} {path_name:<10} → {path}")
     
     # Show configuration
-    config = orchestrator.load_config()
+    config = load_config()
     print(f"\n⚙️  System Configuration:")
-    print(f"   🏷️  Name: {config['system']['name']}")
-    print(f"   📦 Version: {config['system']['version']}")
-    print(f"   🌍 Environment: {config['system']['environment']}")
+    print(f"   🏷️  Host: {config['host']}:{config['port']}")
+    print(f"   � Debug: {config['debug']}")
+    print(f"   🌍 Environment: {'Development' if config['debug'] else 'Production'}")
     
-    enabled_components = [k for k, v in config['components'].items() if v]
-    print(f"   🔧 Enabled Components: {', '.join(enabled_components)}")
+    # Show component status
+    status = orchestrator.status()
+    print(f"\n🔧 Component Status:")
+    for comp_name, comp_info in status['components'].items():
+        status_icon = "🟢" if comp_info['enabled'] else "🔴"
+        print(f"   {status_icon} {comp_info['name']:<20} → Port {comp_info['port']} ({comp_info['status']})")
+    
+    enabled_components = [name for name, comp in status['components'].items() if comp['enabled']]
+    print(f"\n   � Total Components: {len(status['components'])}")
+    print(f"   ✅ Enabled: {len(enabled_components)}")
+    print(f"   🚀 System Running: {status['system']['running']}")
 
 async def main():
     """Main demo function"""

@@ -328,7 +328,7 @@ docker volume create --driver local \
 ```bash
 # Clone and setup
 git clone https://github.com/statikfintechllc/AscendNet.git
-cd AscendNet/statik-server/Statik-Server
+cd AscendNet/statik-server
 
 # Install dependencies
 yarn install

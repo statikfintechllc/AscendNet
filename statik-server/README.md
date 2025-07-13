@@ -69,7 +69,7 @@ Statik-Server Architecture
 
 ```bash
 cd $HOME/AscendNet
-./statik-server/build.sh
+./build.sh
 ```
 
 ### 2. Configure GitHub Token
@@ -86,10 +86,10 @@ echo "ghp_your_github_token_here" > /root/.statik/keys/github-token
 
 ```bash
 # One-command build and run
-./statik-server/quick-build.sh
+./quick-build.sh
 
 # Or manual Docker approach
-docker build -t statikfintech/statik-server ./statik-server/
+docker build -t statikfintech/statik-server ./
 docker run -d \
   --name statik-server \
   -p 8080:8080 \

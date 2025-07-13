@@ -6,7 +6,7 @@ echo "🔥 Quick Building Statik-Server..."
 # Check if we're in the right directory
 if [ ! -f "package.json" ]; then
     echo "❌ Error: Must be run from statik-server directory"
-    echo "💡 Run: cd $HOME/AscendNet/statik-server/statik-server && ./quick-build.sh"
+    echo "💡 Run: cd $HOME/AscendNet/statik-server && ./quick-build.sh"
     exit 1
 fi
 

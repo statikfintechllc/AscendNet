@@ -34,13 +34,13 @@ statik-server/                  # Statik-Server root
 
 ### Option 1: Quick Build & Run
 ```bash
-cd $HOME/AscendNet/statik-server/statik-server
+cd $HOME/AscendNet/statik-server
 ./quick-build.sh
 ```
 
 ### Option 2: Manual Build
 ```bash
-cd $HOME/AscendNet/statik-server/statik-server
+cd $HOME/AscendNet/statik-server
 
 # Build Docker image
 docker build -t statikfintech/statik-server .
