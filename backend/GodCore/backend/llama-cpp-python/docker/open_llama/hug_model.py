@@ -90,12 +90,8 @@ def main():
     parser.add_argument(
         "-a", "--author", type=str, default="TheBloke", help="HuggingFace author filter"
     )
-    parser.add_argument(
-        "-t", "--tag", type=str, default="llama", help="HuggingFace tag filter"
-    )
-    parser.add_argument(
-        "-s", "--search", type=str, default="", help="HuggingFace search filter"
-    )
+    parser.add_argument("-t", "--tag", type=str, default="llama", help="HuggingFace tag filter")
+    parser.add_argument("-s", "--search", type=str, default="", help="HuggingFace search filter")
     parser.add_argument(
         "-f",
         "--filename",

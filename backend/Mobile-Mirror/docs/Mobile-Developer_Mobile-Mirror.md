@@ -24,7 +24,7 @@ Mobile-Developer: Mobile-Mirror/
 ├── scripts/
 │   │
 │   ├── remove_mobile.sh
-│   ├── start_code.sh   # 🔁 Starts both code-server + Mobile-Mirror
+│   ├── start_statik.sh   # 🔁 Starts both statik-server + Mobile-Mirror
 │   ├── start_mirror.sh
 │   ├── stop_code.sh
 │   └── mobile_cli.sh

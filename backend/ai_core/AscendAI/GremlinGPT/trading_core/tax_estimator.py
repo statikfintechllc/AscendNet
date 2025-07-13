@@ -77,10 +77,7 @@ def estimate_batch(positions, tax_rate=None, log=True, persist=False):
     :param positions: list of position dicts
     :return: list of estimate results
     """
-    return [
-        estimate_tax(pos, tax_rate=tax_rate, log=log, persist=persist)
-        for pos in positions
-    ]
+    return [estimate_tax(pos, tax_rate=tax_rate, log=log, persist=persist) for pos in positions]
 
 
 def _persist_tax_estimate(result):

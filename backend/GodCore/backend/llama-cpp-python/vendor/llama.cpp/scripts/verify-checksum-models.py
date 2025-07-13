@@ -78,13 +78,9 @@ for line in hash_list:
 
 
 # Print column headers for results table
-print(
-    "filename".ljust(40) + "valid checksum".center(20) + "file missing".center(20)
-)  # noqa: NP100
+print("filename".ljust(40) + "valid checksum".center(20) + "file missing".center(20))  # noqa: NP100
 print("-" * 80)  # noqa: NP100
 
 # Output the results as a table
 for r in results:
-    print(
-        f"{r['filename']:40} {r['valid checksum']:^20} {r['file missing']:^20}"
-    )  # noqa: NP100
+    print(f"{r['filename']:40} {r['valid checksum']:^20} {r['file missing']:^20}")  # noqa: NP100

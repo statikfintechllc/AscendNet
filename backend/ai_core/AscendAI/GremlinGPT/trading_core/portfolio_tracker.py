@@ -167,9 +167,7 @@ def get_portfolio_summary(current_prices: dict):
         "unrealized_gain": round(total_value - total_cost, 2),
     }
 
-    logger.info(
-        f"[PORTFOLIO] Summary generated. Total value: ${summary['total']['value']:.2f}"
-    )
+    logger.info(f"[PORTFOLIO] Summary generated. Total value: ${summary['total']['value']:.2f}")
     return summary
 
 
@@ -203,11 +201,15 @@ def audit_portfolio():
 
 
 # === Advanced Trade Types ===
-def place_order(symbol, action, shares, price, order_type="market", limit_price=None, stop_price=None):
+def place_order(
+    symbol, action, shares, price, order_type="market", limit_price=None, stop_price=None
+):
     if order_type == "market":
         update_position(symbol, price, shares, action)
     elif order_type == "limit":
-        if (action == "buy" and price <= limit_price) or (action == "sell" and price >= limit_price):
+        if (action == "buy" and price <= limit_price) or (
+            action == "sell" and price >= limit_price
+        ):
             update_position(symbol, price, shares, action)
         else:
             logger.info(f"[PORTFOLIO] Limit order not filled: {symbol} {action} @ {limit_price}")
@@ -218,16 +220,39 @@ def place_order(symbol, action, shares, price, order_type="market", limit_price=
             logger.info(f"[PORTFOLIO] Stop order not triggered: {symbol} {action} @ {stop_price}")
     else:
         logger.warning(f"[PORTFOLIO] Unknown order type: {order_type}")
-    tag_event("trade", {"symbol": symbol, "action": action, "shares": shares, "price": price, "order_type": order_type})
-    enqueue_task({"type": "trade_event", "symbol": symbol, "action": action, "shares": shares, "price": price, "order_type": order_type})
+    tag_event(
+        "trade",
+        {
+            "symbol": symbol,
+            "action": action,
+            "shares": shares,
+            "price": price,
+            "order_type": order_type,
+        },
+    )
+    enqueue_task(
+        {
+            "type": "trade_event",
+            "symbol": symbol,
+            "action": action,
+            "shares": shares,
+            "price": price,
+            "order_type": order_type,
+        }
+    )
 
 
 # === Portfolio Analytics ===
 def calculate_risk_metrics(current_prices: dict):
     portfolio = load_portfolio()
-    total_value = sum(current_prices.get(sym, d["price"]) * d["shares"] for sym, d in portfolio.items())
-    exposures = {sym: (current_prices.get(sym, d["price"]) * d["shares"]) / total_value if total_value else 0 for sym, d in portfolio.items()}
-    diversification = 1 - sum(v ** 2 for v in exposures.values())  # Herfindahl index
+    total_value = sum(
+        current_prices.get(sym, d["price"]) * d["shares"] for sym, d in portfolio.items()
+    )
+    exposures = {
+        sym: (current_prices.get(sym, d["price"]) * d["shares"]) / total_value if total_value else 0
+        for sym, d in portfolio.items()
+    }
+    diversification = 1 - sum(v**2 for v in exposures.values())  # Herfindahl index
     returns = []
     for sym, d in portfolio.items():
         entry = d["price"]
@@ -235,7 +260,9 @@ def calculate_risk_metrics(current_prices: dict):
         if entry > 0:
             returns.append((curr - entry) / entry)
     mean_return = sum(returns) / len(returns) if returns else 0
-    stddev = math.sqrt(sum((r - mean_return) ** 2 for r in returns) / len(returns)) if returns else 0
+    stddev = (
+        math.sqrt(sum((r - mean_return) ** 2 for r in returns) / len(returns)) if returns else 0
+    )
     sharpe = mean_return / stddev if stddev else 0
     metrics = {
         "exposures": exposures,
@@ -251,8 +278,11 @@ def calculate_risk_metrics(current_prices: dict):
 # === CLI/API Interface ===
 def cli_interface():
     import argparse
+
     parser = argparse.ArgumentParser(description="GremlinGPT Portfolio Tracker CLI")
-    parser.add_argument("action", choices=["buy", "sell", "audit", "backup", "restore", "summary", "risk"])
+    parser.add_argument(
+        "action", choices=["buy", "sell", "audit", "backup", "restore", "summary", "risk"]
+    )
     parser.add_argument("--symbol", type=str)
     parser.add_argument("--shares", type=int, default=0)
     parser.add_argument("--price", type=float, default=0.0)

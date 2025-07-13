@@ -18,11 +18,11 @@
 #     raise RuntimeError("Failed to create context")
 
 
-from fastapi import FastAPI
+from fastapi import FastAPI  # type: ignore
 
 app = FastAPI()
 
-import openai.types.chat as types
+import openai.types.chat as types  # type: ignore
 
 
 @app.post("/v1/chat/completions")

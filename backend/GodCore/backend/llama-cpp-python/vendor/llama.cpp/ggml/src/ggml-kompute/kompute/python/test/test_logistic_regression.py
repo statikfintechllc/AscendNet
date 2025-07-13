@@ -90,11 +90,7 @@ def test_logistic_regression():
     sq.record(kp.OpAlgoDispatch(mgr.algorithm(params, compute_shader.to_spirv())))
 
     # Record operation to sync memory from GPU to local memory
-    sq.record(
-        kp.OpTensorSyncLocal(
-            [tensor_w_out_i, tensor_w_out_j, tensor_b_out, tensor_l_out]
-        )
-    )
+    sq.record(kp.OpTensorSyncLocal([tensor_w_out_i, tensor_w_out_j, tensor_b_out, tensor_l_out]))
 
     ITERATIONS = 100
     learning_rate = 0.1

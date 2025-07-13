@@ -121,9 +121,7 @@ def save_wav(filename, audio_data, sample_rate):
 
 
 def process_text(text: str):
-    text = re.sub(
-        r"\d+(\.\d+)?", lambda x: x.group(), text.lower()
-    )  # TODO this needs to be fixed
+    text = re.sub(r"\d+(\.\d+)?", lambda x: x.group(), text.lower())  # TODO this needs to be fixed
     text = re.sub(r"[-_/,\.\\]", " ", text)
     text = re.sub(r"[^a-z\s]", "", text)
     text = re.sub(r"\s+", " ", text).strip()
@@ -134,9 +132,7 @@ def process_text(text: str):
 # python tts-outetts.py http://server-llm:port http://server-dec:port "text"
 
 if len(sys.argv) <= 3:
-    print(
-        'usage: python tts-outetts.py http://server-llm:port http://server-dec:port "text"'
-    )
+    print('usage: python tts-outetts.py http://server-llm:port http://server-dec:port "text"')
     exit(1)
 
 host_llm = sys.argv[1]

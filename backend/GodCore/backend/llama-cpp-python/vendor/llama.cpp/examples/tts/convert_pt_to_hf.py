@@ -108,10 +108,7 @@ def flatten_state_dict(state_dict, parent_key="", sep="."):
             or new_key.endswith("norm1.weight")
             or new_key.endswith("norm2.weight")
             or new_key.endswith(".bias")
-        ) and (
-            new_key.startswith("backbone.posnet")
-            or new_key.startswith("backbone.embed.bias")
-        ):
+        ) and (new_key.startswith("backbone.posnet") or new_key.startswith("backbone.embed.bias")):
             value = value.unsqueeze(1)
 
         if new_key.endswith("dwconv.bias"):

@@ -153,17 +153,13 @@ class GGMLModel:
         version = struct.unpack("<I", data[offset + 4 : offset + 8])[0]
         if magic == b"fmgg":
             if version != 1:
-                raise ValueError(
-                    f"Cannot handle unexpected GGMF file version {version}"
-                )
+                raise ValueError(f"Cannot handle unexpected GGMF file version {version}")
             self.file_format = GGMLFormat.GGMF
             self.format_version = version
             return 8
         if magic == b"tjgg":
             if version < 1 or version > 3:
-                raise ValueError(
-                    f"Cannot handle unexpected GGJT file version {version}"
-                )
+                raise ValueError(f"Cannot handle unexpected GGJT file version {version}")
             self.file_format = GGMLFormat.GGJT
             self.format_version = version
             return 8
@@ -242,9 +238,7 @@ class GGMLToGGUF:
                 for x in range(1, 256):
                     if float(hp.n_head) / float(x) == gqa:
                         n_kv_head = x
-                assert (
-                    n_kv_head is not None
-                ), "Couldn't determine n_kv_head from GQA param"
+                assert n_kv_head is not None, "Couldn't determine n_kv_head from GQA param"
                 logger.info(f"- Guessed n_kv_head = {n_kv_head} based on GQA {cfg.gqa}")
         self.n_kv_head = n_kv_head
         self.name_map = gguf.get_tensor_name_map(
@@ -334,9 +328,7 @@ class GGMLToGGUF:
                 gguf_writer.add_token_types(toktypes)
             return
         logger.info(f"* Adding {hp.n_vocab} vocab item(s)")
-        assert (
-            len(self.model.vocab.items) >= 3
-        ), "Cannot handle unexpectedly short model vocab"
+        assert len(self.model.vocab.items) >= 3, "Cannot handle unexpectedly short model vocab"
         for tokid, (vbytes, vscore) in enumerate(self.model.vocab.items):
             tt = 1  # Normal
             # Special handling for UNK, BOS, EOS tokens.
@@ -399,9 +391,7 @@ def handle_metadata(cfg, hp):
     # model data isn't used so this should be safe (at least for now).
     fakemodel = {
         "tok_embeddings.weight": convert.LazyTensor.__new__(convert.LazyTensor),
-        "layers.0.feed_forward.w1.weight": convert.LazyTensor.__new__(
-            convert.LazyTensor
-        ),
+        "layers.0.feed_forward.w1.weight": convert.LazyTensor.__new__(convert.LazyTensor),
     }
     fakemodel["tok_embeddings.weight"].shape = [hp.n_vocab]
     fakemodel["layers.0.feed_forward.w1.weight"].shape = [hp.n_ff]
@@ -411,9 +401,7 @@ def handle_metadata(cfg, hp):
         params = convert.Params.loadOriginalParamsJson(fakemodel, orig_config_path)
     else:
         raise ValueError("Unable to load metadata")
-    vocab_path = Path(
-        cfg.vocab_dir if cfg.vocab_dir is not None else cfg.model_metadata_dir
-    )
+    vocab_path = Path(cfg.vocab_dir if cfg.vocab_dir is not None else cfg.model_metadata_dir)
     vocab_factory = convert.VocabFactory(vocab_path)
     vocab, special_vocab = vocab_factory.load_vocab(
         cfg.vocabtype.split(","), cfg.model_metadata_dir
@@ -424,12 +412,8 @@ def handle_metadata(cfg, hp):
 
 def handle_args():
     parser = argparse.ArgumentParser(description="Convert GGML models to GGUF")
-    parser.add_argument(
-        "--input", "-i", type=Path, required=True, help="Input GGMLv3 filename"
-    )
-    parser.add_argument(
-        "--output", "-o", type=Path, required=True, help="Output GGUF filename"
-    )
+    parser.add_argument("--input", "-i", type=Path, required=True, help="Input GGMLv3 filename")
+    parser.add_argument("--output", "-o", type=Path, required=True, help="Output GGUF filename")
     parser.add_argument("--name", help="Set model name")
     parser.add_argument("--desc", help="Set model description")
     parser.add_argument(
@@ -466,9 +450,7 @@ def handle_args():
         default="spm,hfft",
         help="vocab format - only meaningful with --model-metadata-dir and/or --vocab-dir (default: spm,hfft)",
     )
-    parser.add_argument(
-        "--verbose", action="store_true", help="increase output verbosity"
-    )
+    parser.add_argument("--verbose", action="store_true", help="increase output verbosity")
     return parser.parse_args()
 
 

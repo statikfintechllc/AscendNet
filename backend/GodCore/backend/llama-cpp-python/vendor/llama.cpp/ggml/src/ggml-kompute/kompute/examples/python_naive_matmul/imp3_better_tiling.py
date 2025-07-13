@@ -5,9 +5,7 @@ import numpy as np
 
 
 class MatMulOp:
-    def __init__(
-        self, manager: kp.Manager, tile_size: int = -1, thread_work_ratio: int = 16
-    ):
+    def __init__(self, manager: kp.Manager, tile_size: int = -1, thread_work_ratio: int = 16):
         self.mgr = manager
 
         props = self.mgr.get_device_properties()
@@ -107,17 +105,11 @@ void main()
     ):
         params = [tensor_in_1, tensor_in_2, tensor_out]
 
-        if (
-            self.algo is None
-            or self.tensor_shape != tensor_shape
-            or self.params != params
-        ):
+        if self.algo is None or self.tensor_shape != tensor_shape or self.params != params:
             self.tensor_shape = tensor_shape
             self.params = params
             tile_size = min(self.tensor_shape[0], self.tile_size)
-            thread_work_ratio = min(
-                self.tensor_shape[1] // self.tile_size, self.thread_work_ratio
-            )
+            thread_work_ratio = min(self.tensor_shape[1] // self.tile_size, self.thread_work_ratio)
             local_size_y = tile_size // thread_work_ratio
             self.compiled_shader = kp.Shader.compile_source(
                 self.shader.format(

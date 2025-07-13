@@ -5,6 +5,7 @@ import os
 from pathlib import Path
 from logger import log_event
 
+
 def list_files(path="."):
     try:
         abs_path = Path(path).expanduser().resolve()
@@ -13,18 +14,21 @@ def list_files(path="."):
 
         items = []
         for item in abs_path.iterdir():
-            items.append({
-                "name": item.name,
-                "path": str(item),
-                "type": "dir" if item.is_dir() else "file",
-                "size": item.stat().st_size if item.is_file() else None
-            })
+            items.append(
+                {
+                    "name": item.name,
+                    "path": str(item),
+                    "type": "dir" if item.is_dir() else "file",
+                    "size": item.stat().st_size if item.is_file() else None,
+                }
+            )
 
         log_event(f"Listed directory: {abs_path}")
         return {"path": str(abs_path), "items": items}
     except Exception as e:
         log_event(f"[ERR] list_files: {e}")
         return {"error": str(e)}
+
 
 def read_file(path):
     try:
@@ -36,6 +40,7 @@ def read_file(path):
     except Exception as e:
         log_event(f"[ERR] read_file: {e}")
         return {"error": str(e)}
+
 
 def write_file(path, content):
     try:

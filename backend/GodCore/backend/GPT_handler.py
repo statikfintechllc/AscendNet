@@ -20,10 +20,10 @@ from PIL import ImageGrab
 from datetime import datetime, timedelta
 import json
 import argparse
-from fastapi import FastAPI, Request
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import StreamingResponse
-import uvicorn
+from fastapi import FastAPI, Request  # type: ignore
+from fastapi.middleware.cors import CORSMiddleware  # type: ignore
+from fastapi.responses import StreamingResponse  # type: ignore
+import uvicorn  # type: ignore
 import sys
 
 SESSION_WINDOWS = {}
@@ -31,9 +31,7 @@ SESSION_WINDOWS = {}
 
 # --------- LOGGING ----------
 def log(msg, *a):
-    print(
-        f"[{datetime.now().isoformat(timespec='seconds')}] {msg}", *a, file=sys.stderr
-    )
+    print(f"[{datetime.now().isoformat(timespec='seconds')}] {msg}", *a, file=sys.stderr)
 
 
 # --------- WINDOW MANAGEMENT ----------
@@ -41,9 +39,7 @@ def list_chatgpt_windows():
     try:
         out = subprocess.check_output(["wmctrl", "-lx"]).decode()
         windows = {
-            line.split()[0]: line
-            for line in out.strip().splitlines()
-            if "chatgpt" in line.lower()
+            line.split()[0]: line for line in out.strip().splitlines() if "chatgpt" in line.lower()
         }
         log(f"Detected ChatGPT windows: {windows}")
         return windows
@@ -248,9 +244,7 @@ async def chat_completions(request: Request):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--port", type=int, default=8080, help="Port to run server on")
-    parser.add_argument(
-        "--host", type=str, default="0.0.0.0", help="Host to run server on"
-    )
+    parser.add_argument("--host", type=str, default="0.0.0.0", help="Host to run server on")
     args = parser.parse_args()
 
     log(f"🚀 ChatGPT handler API ready on http://{args.host}:{args.port}")

@@ -68,9 +68,7 @@ def load_shared_library(lib_base_name: str, base_path: pathlib.Path):
             except Exception as e:
                 raise RuntimeError(f"Failed to load shared library '{lib_path}': {e}")
 
-    raise FileNotFoundError(
-        f"Shared library with base name '{lib_base_name}' not found"
-    )
+    raise FileNotFoundError(f"Shared library with base name '{lib_base_name}' not found")
 
 
 # ctypes sane type hint helpers
@@ -93,9 +91,7 @@ if TYPE_CHECKING:
     class CtypesRef(Generic[CtypesCData]):
         pass
 
-    CtypesPointerOrRef: TypeAlias = Union[
-        CtypesPointer[CtypesCData], CtypesRef[CtypesCData]
-    ]
+    CtypesPointerOrRef: TypeAlias = Union[CtypesPointer[CtypesCData], CtypesRef[CtypesCData]]
 
     CtypesFuncPointer: TypeAlias = ctypes._FuncPointer  # type: ignore
 
@@ -105,9 +101,7 @@ F = TypeVar("F", bound=Callable[..., Any])
 def ctypes_function_for_shared_library(lib: ctypes.CDLL):
     """Decorator for defining ctypes functions with type hints"""
 
-    def ctypes_function(
-        name: str, argtypes: List[Any], restype: Any, enabled: bool = True
-    ):
+    def ctypes_function(name: str, argtypes: List[Any], restype: Any, enabled: bool = True):
         def decorator(f: F) -> F:
             if enabled:
                 func = getattr(lib, name)

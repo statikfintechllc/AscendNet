@@ -83,17 +83,13 @@ def gguf_hash(
             sha1_layer = hashlib.sha1()
             sha1_layer.update(tensor.data.data)
             print(
-                "sha1      {0}  {1}:{2}".format(
-                    sha1_layer.hexdigest(), filename, tensor.name
-                )
+                "sha1      {0}  {1}:{2}".format(sha1_layer.hexdigest(), filename, tensor.name)
             )  # noqa: NP100
 
             sha256_layer = hashlib.sha256()
             sha256_layer.update(tensor.data.data)
             print(
-                "sha256    {0}  {1}:{2}".format(
-                    sha256_layer.hexdigest(), filename, tensor.name
-                )
+                "sha256    {0}  {1}:{2}".format(sha256_layer.hexdigest(), filename, tensor.name)
             )  # noqa: NP100
 
         sha1.update(tensor.data.data)
@@ -107,21 +103,15 @@ def gguf_hash(
     print("sha1      {0}  {1}".format(sha1.hexdigest(), filename))  # noqa: NP100
     print("sha256    {0}  {1}".format(sha256.hexdigest(), filename))  # noqa: NP100
     print(
-        "uuid      {0}  {1}".format(
-            uuid.UUID(bytes=uuidv5_sha1.digest()[:16], version=5), filename
-        )
+        "uuid      {0}  {1}".format(uuid.UUID(bytes=uuidv5_sha1.digest()[:16], version=5), filename)
     )  # noqa: NP100
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Dump GGUF file metadata")
     parser.add_argument("model", type=str, help="GGUF format model filename")
-    parser.add_argument(
-        "--no-layer", action="store_true", help="exclude per layer hash"
-    )
-    parser.add_argument(
-        "--verbose", action="store_true", help="increase output verbosity"
-    )
+    parser.add_argument("--no-layer", action="store_true", help="exclude per layer hash")
+    parser.add_argument("--verbose", action="store_true", help="increase output verbosity")
     parser.add_argument("--progressbar", action="store_true", help="enable progressbar")
     args = parser.parse_args(None if len(sys.argv) > 1 else ["--help"])
     logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO)

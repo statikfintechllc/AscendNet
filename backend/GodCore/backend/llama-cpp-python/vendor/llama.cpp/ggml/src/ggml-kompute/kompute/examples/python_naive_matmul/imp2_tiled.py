@@ -68,9 +68,7 @@ void main()
     }}
     out_tensor[tensor_size * globalCol + globalRow] = acc;
 }}"""
-        self.compiled_shader = kp.Shader.compile_source(
-            self.shader.format(tile_size=tile_size)
-        )
+        self.compiled_shader = kp.Shader.compile_source(self.shader.format(tile_size=tile_size))
         self.tensor_shape: tuple[int, int] = (0, 0)
         self.params: list[kp.Tensor] = []
         self.algo = None
@@ -84,17 +82,11 @@ void main()
     ):
         params = [tensor_in_1, tensor_in_2, tensor_out]
 
-        if (
-            self.algo is None
-            or self.tensor_shape != tensor_shape
-            or self.params != params
-        ):
+        if self.algo is None or self.tensor_shape != tensor_shape or self.params != params:
             self.tensor_shape = tensor_shape
             self.params = params
             tile_size = min(tensor_shape[0], tensor_shape[1], self.tile_size)
-            self.compiled_shader = kp.Shader.compile_source(
-                self.shader.format(tile_size=tile_size)
-            )
+            self.compiled_shader = kp.Shader.compile_source(self.shader.format(tile_size=tile_size))
             workgroup = [tensor_shape[0] // tile_size, tensor_shape[1] // tile_size, 1]
             self.algo = self.mgr.algorithm(
                 params,  # params

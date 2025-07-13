@@ -57,9 +57,7 @@ class LazyTorchTensor(gguf.LazyBase):
         )
 
     @classmethod
-    def meta_with_dtype_and_shape(
-        cls, dtype: torch.dtype, shape: tuple[int, ...]
-    ) -> Tensor:
+    def meta_with_dtype_and_shape(cls, dtype: torch.dtype, shape: tuple[int, ...]) -> Tensor:
         return torch.empty(size=shape, dtype=dtype, device="meta")
 
     @classmethod
@@ -131,24 +129,14 @@ class Gemma3VisionTower:
         self.gguf_writer.add_bool("clip.has_text_encoder", False)
         self.gguf_writer.add_bool("clip.has_vision_encoder", True)
         self.gguf_writer.add_bool("clip.has_llava_projector", False)  # legacy
-        self.gguf_writer.add_uint32(
-            "clip.vision.image_size", vision_config["image_size"]
-        )
-        self.gguf_writer.add_uint32(
-            "clip.vision.patch_size", vision_config["patch_size"]
-        )
-        self.gguf_writer.add_uint32(
-            "clip.vision.embedding_length", vision_config["hidden_size"]
-        )
+        self.gguf_writer.add_uint32("clip.vision.image_size", vision_config["image_size"])
+        self.gguf_writer.add_uint32("clip.vision.patch_size", vision_config["patch_size"])
+        self.gguf_writer.add_uint32("clip.vision.embedding_length", vision_config["hidden_size"])
         self.gguf_writer.add_uint32(
             "clip.vision.feed_forward_length", vision_config["intermediate_size"]
         )
-        self.gguf_writer.add_uint32(
-            "clip.vision.projection_dim", text_config["hidden_size"]
-        )
-        self.gguf_writer.add_uint32(
-            "clip.vision.block_count", vision_config["num_hidden_layers"]
-        )
+        self.gguf_writer.add_uint32("clip.vision.projection_dim", text_config["hidden_size"])
+        self.gguf_writer.add_uint32("clip.vision.block_count", vision_config["num_hidden_layers"])
         self.gguf_writer.add_uint32(
             "clip.vision.attention.head_count", vision_config["num_attention_heads"]
         )
@@ -169,9 +157,7 @@ class Gemma3VisionTower:
             self.add_tensor(name, data_torch)
 
     def get_tensors(self, dir_model: Path) -> Iterator[tuple[str, Tensor]]:
-        part_names = Gemma3VisionTower.get_model_part_names(
-            dir_model, "model", ".safetensors"
-        )
+        part_names = Gemma3VisionTower.get_model_part_names(dir_model, "model", ".safetensors")
         tensor_names_from_parts: set[str] = set()
         for part_name in part_names:
             logger.info(f"gguf: loading model part '{part_name}'")

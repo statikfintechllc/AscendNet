@@ -13,12 +13,13 @@
 import os
 import time
 import uuid
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+import argparse
+from fastapi import FastAPI  # type: ignore
+from fastapi.middleware.cors import CORSMiddleware  # type: ignore
+from pydantic import BaseModel  # type: ignore
 from typing import List, Literal, Optional
-from llama_cpp import Llama
-import uvicorn
+from llama_cpp import Llama  # type: ignore
+import uvicorn  # type: ignore
 
 # --- CUDA/Persistent GPU OFFLOAD (set before import) ---
 os.environ["LLAMA_CPP_FORCE_CUDA"] = "1"
@@ -36,7 +37,7 @@ app.add_middleware(
 )
 
 # --- Model Config ---
-MODEL_PATH = "/home/statiksmoke8/AscendNet/godcore/models/Mistral-13B-Instruct/mistral-13b-instruct-v0.1.Q5_K_M.gguf"
+MODEL_PATH = f"{os.environ.get('HOME', '/home/user')}/AscendNet/godcore/models/Mistral-13B-Instruct/mistral-13b-instruct-v0.1.Q5_K_M.gguf"
 TENSOR_SPLIT = "20,20"
 llm = Llama(
     model_path=MODEL_PATH,
@@ -70,20 +71,13 @@ class ChatRequest(BaseModel):
 
 @app.get("/")
 def root():
-    return {
-        "message": "Mistral LLaMA API is live. Use POST /v1/chat/completions to interact."
-    }
+    return {"message": "Mistral LLaMA API is live. Use POST /v1/chat/completions to interact."}
 
 
 @app.post("/v1/chat/completions")
 def chat_completion(request: ChatRequest):
     prompt = (
-        "".join(
-            [
-                f"{msg.role.capitalize()}: {msg.content.strip()}\n"
-                for msg in request.messages
-            ]
-        )
+        "".join([f"{msg.role.capitalize()}: {msg.content.strip()}\n" for msg in request.messages])
         + "Assistant:"
     )
     try:
@@ -115,8 +109,7 @@ def chat_completion(request: ChatRequest):
         "usage": {
             "prompt_tokens": output.get("prompt_tokens", 0),
             "completion_tokens": output.get("completion_tokens", 0),
-            "total_tokens": output.get("prompt_tokens", 0)
-            + output.get("completion_tokens", 0),
+            "total_tokens": output.get("prompt_tokens", 0) + output.get("completion_tokens", 0),
         },
     }
 
@@ -124,9 +117,7 @@ def chat_completion(request: ChatRequest):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--port", type=int, default=8000, help="Port to run server on")
-    parser.add_argument(
-        "--host", type=str, default="0.0.0.0", help="Host to run server on"
-    )
+    parser.add_argument("--host", type=str, default="0.0.0.0", help="Host to run server on")
     args = parser.parse_args()
 
     print(f"🚀 Devin-compatible API ready on http://{args.host}:{args.port}")

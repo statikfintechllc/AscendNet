@@ -15,6 +15,7 @@ from memory.vector_store.embedder import get_all_embeddings
 from backend.globals import MEM
 from memory.log_history import log_event
 import logging
+
 logger = logging.getLogger("GremlinGPT.TaskQueue")
 from datetime import datetime, UTC
 
@@ -44,9 +45,7 @@ def graph():
             },
         }
 
-        log_event(
-            "memory_api", "graph_fetch", {"count": len(records)}, status="success"
-        )
+        log_event("memory_api", "graph_fetch", {"count": len(records)}, status="success")
         logger.info(f"[MEMORY_API] Served {len(records)} vector nodes.")
 
         return jsonify(response)

@@ -5,9 +5,7 @@ import numpy as np
 
 
 class MatMulOp:
-    def __init__(
-        self, manager: kp.Manager, local_size_x: int = -1, local_size_y: int = -1
-    ):
+    def __init__(self, manager: kp.Manager, local_size_x: int = -1, local_size_y: int = -1):
         self.mgr = manager
 
         props = self.mgr.get_device_properties()
@@ -72,9 +70,7 @@ void main()
     out_tensor[(globalCol * tensor_size) + globalRow] = acc;
 }}"""
         self.compiled_shader = kp.Shader.compile_source(
-            self.shader.format(
-                local_size_x=self.local_size_x, local_size_y=self.local_size_y
-            )
+            self.shader.format(local_size_x=self.local_size_x, local_size_y=self.local_size_y)
         )
         self.tensor_shape: tuple[int, int] = (0, 0)
         self.params: list[kp.Tensor] = []
@@ -89,11 +85,7 @@ void main()
     ):
         params = [tensor_in_1, tensor_in_2, tensor_out]
 
-        if (
-            self.algo is None
-            or self.tensor_shape != tensor_shape
-            or self.params != params
-        ):
+        if self.algo is None or self.tensor_shape != tensor_shape or self.params != params:
             self.tensor_shape = tensor_shape
             self.params = params
             local_size_x = min(self.local_size_x, tensor_shape[0])

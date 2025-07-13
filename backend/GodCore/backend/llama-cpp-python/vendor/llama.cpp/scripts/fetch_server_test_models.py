@@ -58,11 +58,7 @@ def collect_hf_model_test_parameters(
                         continue
 
                     hf_repo_idx = param_names.index("hf_repo")
-                    hf_file_idx = (
-                        param_names.index("hf_file")
-                        if "hf_file" in param_names
-                        else None
-                    )
+                    hf_file_idx = param_names.index("hf_file") if "hf_file" in param_names else None
 
                     for t in raw_param_values.elts:
                         if not isinstance(t, ast.Tuple):
@@ -104,11 +100,7 @@ if __name__ == "__main__":
         "LLAMA_CLI_BIN_PATH",
         os.path.join(
             os.path.dirname(__file__),
-            (
-                "../build/bin/Release/llama-cli.exe"
-                if os.name == "nt"
-                else "../build/bin/llama-cli"
-            ),
+            ("../build/bin/Release/llama-cli.exe" if os.name == "nt" else "../build/bin/llama-cli"),
         ),
     )
 
@@ -120,9 +112,7 @@ if __name__ == "__main__":
                 f"Skipping model at {m.hf_repo} / {m.hf_file} because it is a split file"
             )
             continue
-        logging.info(
-            f"Using llama-cli to ensure model {m.hf_repo}/{m.hf_file} was fetched"
-        )
+        logging.info(f"Using llama-cli to ensure model {m.hf_repo}/{m.hf_file} was fetched")
         cmd = [
             cli_path,
             "-hfr",
@@ -136,10 +126,7 @@ if __name__ == "__main__":
             "--log-disable",
             "-no-cnv",
         ]
-        if (
-            m.hf_file != "tinyllamas/stories260K.gguf"
-            and "Mistral-Nemo" not in m.hf_repo
-        ):
+        if m.hf_file != "tinyllamas/stories260K.gguf" and "Mistral-Nemo" not in m.hf_repo:
             cmd.append("-fa")
         try:
             subprocess.check_call(cmd)

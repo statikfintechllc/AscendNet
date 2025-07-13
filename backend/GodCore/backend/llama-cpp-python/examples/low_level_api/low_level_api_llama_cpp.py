@@ -113,9 +113,7 @@ while remaining_tokens > 0:
         for id in embd:
             size = 32
             buffer = (ctypes.c_char * size)()
-            n = llama_cpp.llama_token_to_piece(
-                model, llama_cpp.llama_token(id), buffer, size
-            )
+            n = llama_cpp.llama_token_to_piece(model, llama_cpp.llama_token(id), buffer, size)
             assert n <= size
             print(
                 buffer[:n].decode("utf-8"),

@@ -1,14 +1,12 @@
 import llama_cpp
 import llama_cpp.llama_tokenizer
 
-import gradio as gr
+import gradio as gr  # type: ignore
 
 llama = llama_cpp.Llama.from_pretrained(
     repo_id="Qwen/Qwen1.5-0.5B-Chat-GGUF",
     filename="*q8_0.gguf",
-    tokenizer=llama_cpp.llama_tokenizer.LlamaHFTokenizer.from_pretrained(
-        "Qwen/Qwen1.5-0.5B"
-    ),
+    tokenizer=llama_cpp.llama_tokenizer.LlamaHFTokenizer.from_pretrained("Qwen/Qwen1.5-0.5B"),
     verbose=False,
 )
 
@@ -24,9 +22,7 @@ def predict(message, history):
 
     messages.append({"role": "user", "content": message})
 
-    response = llama.create_chat_completion_openai_v1(
-        model=model, messages=messages, stream=True
-    )
+    response = llama.create_chat_completion_openai_v1(model=model, messages=messages, stream=True)
 
     text = ""
     for chunk in response:

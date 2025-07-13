@@ -13,9 +13,7 @@ logger = logging.getLogger(__name__)
 
 class LazyMeta(ABCMeta):
 
-    def __new__(
-        cls, name: str, bases: tuple[type, ...], namespace: dict[str, Any], **kwargs
-    ):
+    def __new__(cls, name: str, bases: tuple[type, ...], namespace: dict[str, Any], **kwargs):
         def __getattr__(self, name: str) -> Any:
             meta_attr = getattr(self._meta, name)
             if callable(meta_attr):
@@ -163,9 +161,7 @@ class LazyBase(ABC, metaclass=LazyMeta):
         *,
         use_self: LazyBase | None = None,
         meta_noop: (
-            bool
-            | DTypeLike
-            | tuple[DTypeLike, Callable[[tuple[int, ...]], tuple[int, ...]]]
+            bool | DTypeLike | tuple[DTypeLike, Callable[[tuple[int, ...]], tuple[int, ...]]]
         ) = False,
     ) -> Callable[[Any], Any]:
         def wrapped_fn(*args, **kwargs):
@@ -198,9 +194,7 @@ class LazyBase(ABC, metaclass=LazyMeta):
                         res = cls.meta_with_dtype_and_shape(meta_noop, res.shape)
 
             if isinstance(res, cls._tensor_type):
-                return cls(
-                    meta=cls.eager_to_meta(res), args=args, kwargs=kwargs, func=fn
-                )
+                return cls(meta=cls.eager_to_meta(res), args=args, kwargs=kwargs, func=fn)
             else:
                 del res  # not needed
                 # non-tensor return likely relies on the contents of the args

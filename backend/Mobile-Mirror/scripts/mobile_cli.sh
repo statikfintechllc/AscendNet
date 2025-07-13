@@ -15,9 +15,9 @@ SUB_TITLE="SFTi"
 APPDIR="$HOME/.local/share/applications"
 ICNDIR="$HOME/.local/share/icons"
 MIRROR="$APPDIR/start_mirror.sh"
-START_SCRIPT="$APPDIR/start_code.sh"
+START_SCRIPT="$APPDIR/start_statik.sh"
 STOP_SCRIPT="$APPDIR/stop_code.sh"
-LOG_FILE="$HOME/code-server.log"
+LOG_FILE="$HOME/statik-server.log"
 REMOVE_SCRIPT="$APPDIR/remove_mobile.sh"
     
 # Detect preferred shell (get user's shell from /etc/passwd or $SHELL)

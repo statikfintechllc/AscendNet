@@ -40,15 +40,9 @@ class MiniMultiHeadAttention:
             np.random.seed(seed)
 
         # Initialize projection weights (Kaiming-like, small variance)
-        self.W_q = np.random.randn(num_heads, embed_dim, self.head_dim) * (
-            2.0 / np.sqrt(embed_dim)
-        )
-        self.W_k = np.random.randn(num_heads, embed_dim, self.head_dim) * (
-            2.0 / np.sqrt(embed_dim)
-        )
-        self.W_v = np.random.randn(num_heads, embed_dim, self.head_dim) * (
-            2.0 / np.sqrt(embed_dim)
-        )
+        self.W_q = np.random.randn(num_heads, embed_dim, self.head_dim) * (2.0 / np.sqrt(embed_dim))
+        self.W_k = np.random.randn(num_heads, embed_dim, self.head_dim) * (2.0 / np.sqrt(embed_dim))
+        self.W_v = np.random.randn(num_heads, embed_dim, self.head_dim) * (2.0 / np.sqrt(embed_dim))
         self.W_out = np.random.randn(num_heads * self.head_dim, embed_dim) * (
             2.0 / np.sqrt(embed_dim)
         )
@@ -100,7 +94,12 @@ class MiniMultiHeadAttention:
             Q = X @ self.W_q[h]
             K = X @ self.W_k[h]
             V = X @ self.W_v[h]
-            if self.use_bias and self.b_q is not None and self.b_k is not None and self.b_v is not None:
+            if (
+                self.use_bias
+                and self.b_q is not None
+                and self.b_k is not None
+                and self.b_v is not None
+            ):
                 Q = Q + self.b_q[h]
                 K = K + self.b_k[h]
                 V = V + self.b_v[h]
@@ -225,7 +224,9 @@ if __name__ == "__main__":
     np.random.seed(42)
     dummy_input = np.random.rand(8, 64)  # 8 tokens, 64-dimensional embeddings
 
-    attention = MiniMultiHeadAttention(embed_dim=64, num_heads=4, scale=True, seed=42, dropout=0.1, use_bias=True)
+    attention = MiniMultiHeadAttention(
+        embed_dim=64, num_heads=4, scale=True, seed=42, dropout=0.1, use_bias=True
+    )
 
     # Example: causal mask (lower triangle: allow attending to current and previous tokens)
     causal_mask = np.tril(np.ones((8, 8))).astype(bool)

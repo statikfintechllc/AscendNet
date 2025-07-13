@@ -47,6 +47,4 @@ tok.save_pretrained(f"{args.model}/model")
 
 print("Done!")
 print(f"Now you can convert {args.model} to a regular LLaMA GGUF file.")
-print(
-    f"Also, use {args.model}/minicpmv.projector to prepare a minicpmv-encoder.gguf file."
-)
+print(f"Also, use {args.model}/minicpmv.projector to prepare a minicpmv-encoder.gguf file.")

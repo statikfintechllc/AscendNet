@@ -12,23 +12,23 @@ STATIK_ROOT="$HOME/AscendNet/statik-server"
 VSCODE_VERSION="1.102.0"
 HEADSCALE_VERSION="v0.22.3"
 
-# Step 1: Fork and setup code-server base
-echo "📦 Step 1: Setting up code-server fork..."
-if [ ! -d "code-server" ]; then
-    git clone https://github.com/coder/code-server.git
-    cd code-server
+# Step 1: Fork and setup Statik-Server base
+echo "📦 Step 1: Setting up Statik-Server fork..."
+if [ ! -d "Statik-Server" ]; then
+    git clone https://github.com/coder/statik-server.git Statik-Server
+    cd Statik-Server
     
     # Rename to statik-server
-    sed -i 's/"name": "code-server"/"name": "statik-server"/g' package.json
+    sed -i 's/"name": "statik-server"/"name": "statik-server"/g' package.json
     sed -i 's/Code Server/Statik Server/g' package.json
-    sed -i 's/code-server/statik-server/g' README.md
+    sed -i 's/statik-server/statik-server/g' README.md
     
     cd ..
 fi
 
 # Step 2: Download and patch VS Code to 1.102.0+
 echo "🔧 Step 2: Patching VS Code to ${VSCODE_VERSION}..."
-cd code-server
+cd Statik-Server
 
 # Force VS Code version update
 cat > lib/vscode.patch << 'EOF'
@@ -342,8 +342,8 @@ export GITHUB_TOKEN=$(cat /root/.statik/keys/github-token 2>/dev/null || echo ""
 export COPILOT_ENABLED=true
 export STATIK_MEMORY_PATH="$HOME/AscendNet/storage/memory"
 
-# Launch code-server with all integrations
-exec ./lib/code-server \
+# Launch Statik-Server with all integrations
+exec ./lib/statik-server \
   --auth none \
   --port 8080 \
   --host 0.0.0.0 \
@@ -440,14 +440,24 @@ echo "      ├── quick-build.sh        # One-command build & run"
 echo "      ├── internal/mesh/        # Embedded headscale VPN"
 echo "      └── src/node/statik/      # Copilot auth + memory router"
 echo ""
-echo "🚀 Next Steps:"
-echo "1. Place your GitHub token in: /root/.statik/keys/github-token"
-echo "2. Run: ./quick-build.sh"
-echo "3. Access: http://localhost:8080"
+echo "� Documentation:"
+echo "  ├── README.md                 # Main project overview"
+echo "  ├── INSTALLATION_GUIDE.md     # Complete setup instructions"
+echo "  ├── TROUBLESHOOTING.md        # Common issues and solutions"
+echo "  └── docs/API.md               # Complete API reference"
+echo ""
+echo "�🚀 Next Steps:"
+echo "1. Read the installation guide: cat ../INSTALLATION_GUIDE.md"
+echo "2. Place your GitHub token in: ~/.statik/keys/github-token"
+echo "3. Run: ./quick-build.sh"
+echo "4. Access: http://localhost:8080"
+echo "5. Dashboard: http://localhost:8080/statik-dashboard"
 echo ""
 echo "🤖 Features:"
 echo "  ✅ VS Code 1.102.0+ with real Copilot Chat"
 echo "  ✅ Persistent GitHub auth (no UI login loop)"
 echo "  ✅ Embedded mesh VPN with infinite keys"
 echo "  ✅ Memory integration from GremlinGPT/GodCore/Mobile-Mirror"
-echo "  ✅ Offline-first dev server"
+echo "  ✅ Unified 8-tab dashboard for complete system control"
+echo "  ✅ Real-time AI module monitoring and interaction"
+echo "  ✅ Offline-first sovereign development environment"

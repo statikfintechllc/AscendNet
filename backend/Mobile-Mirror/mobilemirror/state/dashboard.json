@@ -1,0 +1,27 @@
+{
+  "dashboard_state": {
+    "active_tabs": 3,
+    "connected_devices": [
+      {
+        "device_id": "mobile_001",
+        "device_type": "Android",
+        "connection_status": "connected",
+        "last_ping": "2025-07-12T00:00:00Z"
+      }
+    ],
+    "active_sessions": 1
+  },
+  "tunnel_status": "connected",
+  "pwa_ready": true,
+  "touchcore_active": true,
+  "remote_debugging": {
+    "enabled": true,
+    "devices_debuggable": 1,
+    "active_debug_sessions": 0
+  },
+  "deployment_status": {
+    "last_build": "2025-07-12T00:00:00Z",
+    "build_status": "success",
+    "deployed_version": "1.0.0"
+  }
+}

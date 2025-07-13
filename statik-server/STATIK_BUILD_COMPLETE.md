@@ -7,7 +7,7 @@ Your **Statik-Server** sovereign AI development environment is fully built and r
 ## 🎯 What You Have
 
 ### Core Components ✅
-- **VS Code Server Fork** - Code-server base with Statik branding
+- **VS Code Server Fork** - Statik-server base with Statik branding
 - **Headscale Mesh VPN** - Embedded v0.26.1 with infinite preauth keys  
 - **Copilot Auth Manager** - Persistent GitHub token injection
 - **Memory Router** - Live access to GremlinGPT/GodCore/Mobile-Mirror
@@ -15,7 +15,7 @@ Your **Statik-Server** sovereign AI development environment is fully built and r
 
 ### File Structure ✅
 ```
-code-server/                    # Statik-Server root
+statik-server/                  # Statik-Server root
 ├── package.json               # Renamed to "statik-server"
 ├── startup.sh                 # Unified boot script
 ├── Dockerfile                 # Self-contained image
@@ -34,13 +34,13 @@ code-server/                    # Statik-Server root
 
 ### Option 1: Quick Build & Run
 ```bash
-cd /home/statiksmoke8/AscendNet/statik-server/code-server
+cd $HOME/AscendNet/statik-server/statik-server
 ./quick-build.sh
 ```
 
 ### Option 2: Manual Build
 ```bash
-cd /home/statiksmoke8/AscendNet/statik-server/code-server
+cd $HOME/AscendNet/statik-server/statik-server
 
 # Build Docker image
 docker build -t statikfintech/statik-server .
@@ -51,7 +51,7 @@ docker run -d \
   -p 8080:8080 \
   -p 8081:8081 \
   -p 50443:50443 \
-  -v /home/statiksmoke8/AscendNet:/mnt/ascendnet \
+  -v $HOME/AscendNet:/mnt/ascendnet \
   -v statik-data:/root/.statik \
   statikfintech/statik-server
 ```
@@ -69,7 +69,7 @@ docker run -d \
   -p 8080:8080 \
   -p 8081:8081 \
   -p 50443:50443 \
-  -v /home/statiksmoke8/AscendNet:/mnt/ascendnet \
+  -v $HOME/AscendNet:/mnt/ascendnet \
   -v /tmp/statik-keys:/root/.statik/keys \
   statikfintech/statik-server
 
@@ -199,7 +199,7 @@ docker exec statik-server /app/internal/mesh/headscale preauthkeys create --name
 docker exec statik-server ls -la /mnt/ascendnet
 
 # Verify memory path
-docker exec statik-server ls -la /home/statiksmoke8/AscendNet/storage/memory
+docker exec statik-server ls -la $HOME/AscendNet/storage/memory
 
 # Test API directly
 docker exec statik-server curl localhost:8080/api/statik/memory

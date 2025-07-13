@@ -32,9 +32,7 @@ class TensorNameMap:
             "model.word_embeddings",  # bailingmoe
         ),
         # Token type embeddings
-        MODEL_TENSOR.TOKEN_TYPES: (
-            "embeddings.token_type_embeddings",  # bert nomic-bert
-        ),
+        MODEL_TENSOR.TOKEN_TYPES: ("embeddings.token_type_embeddings",),  # bert nomic-bert
         # Normalization of token embeddings
         MODEL_TENSOR.TOKEN_EMBD_NORM: (
             "word_embeddings_layernorm",  # bloom
@@ -241,9 +239,7 @@ class TensorNameMap:
             "transformer.layers.{bid}.ffn_norm",  # openelm
         ),
         # Post feed-forward norm
-        MODEL_TENSOR.FFN_PRE_NORM: (
-            "model.layers.{bid}.pre_feedforward_layernorm",  # gemma2
-        ),
+        MODEL_TENSOR.FFN_PRE_NORM: ("model.layers.{bid}.pre_feedforward_layernorm",),  # gemma2
         # Post feed-forward norm
         MODEL_TENSOR.FFN_POST_NORM: (
             "model.layers.{bid}.post_feedforward_layernorm",  # gemma2 olmo2
@@ -256,9 +252,7 @@ class TensorNameMap:
             "transformer.blocks.{bid}.ffn.router.layer",  # dbrx
             "model.layers.{bid}.block_sparse_moe.router.layer",  # granitemoe
         ),
-        MODEL_TENSOR.FFN_GATE_INP_SHEXP: (
-            "model.layers.{bid}.mlp.shared_expert_gate",  # qwen2moe
-        ),
+        MODEL_TENSOR.FFN_GATE_INP_SHEXP: ("model.layers.{bid}.mlp.shared_expert_gate",),  # qwen2moe
         MODEL_TENSOR.FFN_EXP_PROBS_B: (
             "model.layers.{bid}.mlp.gate.e_score_correction",  # deepseek-v3
         ),
@@ -467,9 +461,7 @@ class TensorNameMap:
             "rwkv.blocks.{bid}.attention.time_maa_w",  # rwkv6
             "model.layers.{bid}.self_attn.time_maa_w",  # rwkv6qwen2
         ),
-        MODEL_TENSOR.TIME_MIX_FIRST: (
-            "rwkv.blocks.{bid}.attention.time_faaaa",  # rwkv6
-        ),
+        MODEL_TENSOR.TIME_MIX_FIRST: ("rwkv.blocks.{bid}.attention.time_faaaa",),  # rwkv6
         MODEL_TENSOR.TIME_MIX_DECAY: (
             "rwkv.blocks.{bid}.attention.time_decay",  # rwkv6
             "model.layers.{bid}.self_attn.time_decay",  # rwkv6qwen2
@@ -518,9 +510,7 @@ class TensorNameMap:
             "rwkv.blocks.{bid}.feed_forward.time_maa_k",  # rwkv6
             "model.layers.{bid}.feed_forward.x_k",  # rwkv7
         ),
-        MODEL_TENSOR.CHANNEL_MIX_LERP_R: (
-            "rwkv.blocks.{bid}.feed_forward.time_maa_r",  # rwkv6
-        ),
+        MODEL_TENSOR.CHANNEL_MIX_LERP_R: ("rwkv.blocks.{bid}.feed_forward.time_maa_r",),  # rwkv6
         MODEL_TENSOR.CHANNEL_MIX_KEY: (
             "rwkv.blocks.{bid}.feed_forward.key",  # rwkv6
             "model.layers.{bid}.feed_forward.key",  # rwkv7
@@ -537,80 +527,50 @@ class TensorNameMap:
         MODEL_TENSOR.ATTN_KV_A_MQA: (
             "model.layers.{bid}.self_attn.kv_a_proj_with_mqa",  # deepseek2
         ),
-        MODEL_TENSOR.ATTN_KV_B: (
-            "model.layers.{bid}.self_attn.kv_b_proj",  # deepseek2
-        ),
-        MODEL_TENSOR.ATTN_Q_A_NORM: (
-            "model.layers.{bid}.self_attn.q_a_layernorm",  # deepseek2
-        ),
-        MODEL_TENSOR.ATTN_KV_A_NORM: (
-            "model.layers.{bid}.self_attn.kv_a_layernorm",  # deepseek2
-        ),
-        MODEL_TENSOR.ATTN_SUB_NORM: (
-            "model.layers.{bid}.self_attn.inner_attn_ln",  # bitnet
-        ),
+        MODEL_TENSOR.ATTN_KV_B: ("model.layers.{bid}.self_attn.kv_b_proj",),  # deepseek2
+        MODEL_TENSOR.ATTN_Q_A_NORM: ("model.layers.{bid}.self_attn.q_a_layernorm",),  # deepseek2
+        MODEL_TENSOR.ATTN_KV_A_NORM: ("model.layers.{bid}.self_attn.kv_a_layernorm",),  # deepseek2
+        MODEL_TENSOR.ATTN_SUB_NORM: ("model.layers.{bid}.self_attn.inner_attn_ln",),  # bitnet
         MODEL_TENSOR.FFN_SUB_NORM: ("model.layers.{bid}.mlp.ffn_layernorm",),  # bitnet
         MODEL_TENSOR.DEC_ATTN_NORM: ("decoder.block.{bid}.layer.0.layer_norm",),  # t5
         MODEL_TENSOR.DEC_ATTN_Q: ("decoder.block.{bid}.layer.0.SelfAttention.q",),  # t5
         MODEL_TENSOR.DEC_ATTN_K: ("decoder.block.{bid}.layer.0.SelfAttention.k",),  # t5
         MODEL_TENSOR.DEC_ATTN_V: ("decoder.block.{bid}.layer.0.SelfAttention.v",),  # t5
-        MODEL_TENSOR.DEC_ATTN_OUT: (
-            "decoder.block.{bid}.layer.0.SelfAttention.o",  # t5
-        ),
+        MODEL_TENSOR.DEC_ATTN_OUT: ("decoder.block.{bid}.layer.0.SelfAttention.o",),  # t5
         MODEL_TENSOR.DEC_ATTN_REL_B: (
             "decoder.block.{bid}.layer.0.SelfAttention.relative_attention_bias",  # t5
         ),
-        MODEL_TENSOR.DEC_CROSS_ATTN_NORM: (
-            "decoder.block.{bid}.layer.1.layer_norm",  # t5
-        ),
-        MODEL_TENSOR.DEC_CROSS_ATTN_Q: (
-            "decoder.block.{bid}.layer.1.EncDecAttention.q",  # t5
-        ),
-        MODEL_TENSOR.DEC_CROSS_ATTN_K: (
-            "decoder.block.{bid}.layer.1.EncDecAttention.k",  # t5
-        ),
-        MODEL_TENSOR.DEC_CROSS_ATTN_V: (
-            "decoder.block.{bid}.layer.1.EncDecAttention.v",  # t5
-        ),
-        MODEL_TENSOR.DEC_CROSS_ATTN_OUT: (
-            "decoder.block.{bid}.layer.1.EncDecAttention.o",  # t5
-        ),
+        MODEL_TENSOR.DEC_CROSS_ATTN_NORM: ("decoder.block.{bid}.layer.1.layer_norm",),  # t5
+        MODEL_TENSOR.DEC_CROSS_ATTN_Q: ("decoder.block.{bid}.layer.1.EncDecAttention.q",),  # t5
+        MODEL_TENSOR.DEC_CROSS_ATTN_K: ("decoder.block.{bid}.layer.1.EncDecAttention.k",),  # t5
+        MODEL_TENSOR.DEC_CROSS_ATTN_V: ("decoder.block.{bid}.layer.1.EncDecAttention.v",),  # t5
+        MODEL_TENSOR.DEC_CROSS_ATTN_OUT: ("decoder.block.{bid}.layer.1.EncDecAttention.o",),  # t5
         MODEL_TENSOR.DEC_CROSS_ATTN_REL_B: (
             "decoder.block.{bid}.layer.1.EncDecAttention.relative_attention_bias",  # t5
         ),
         MODEL_TENSOR.DEC_FFN_NORM: ("decoder.block.{bid}.layer.2.layer_norm",),  # t5
-        MODEL_TENSOR.DEC_FFN_GATE: (
-            "decoder.block.{bid}.layer.2.DenseReluDense.wi_0",  # flan-t5
-        ),
+        MODEL_TENSOR.DEC_FFN_GATE: ("decoder.block.{bid}.layer.2.DenseReluDense.wi_0",),  # flan-t5
         MODEL_TENSOR.DEC_FFN_UP: (
             "decoder.block.{bid}.layer.2.DenseReluDense.wi",  # t5
             "decoder.block.{bid}.layer.2.DenseReluDense.wi_1",  # flan-t5
         ),
-        MODEL_TENSOR.DEC_FFN_DOWN: (
-            "decoder.block.{bid}.layer.2.DenseReluDense.wo",  # t5
-        ),
+        MODEL_TENSOR.DEC_FFN_DOWN: ("decoder.block.{bid}.layer.2.DenseReluDense.wo",),  # t5
         MODEL_TENSOR.DEC_OUTPUT_NORM: ("decoder.final_layer_norm",),  # t5
         MODEL_TENSOR.ENC_ATTN_NORM: ("encoder.block.{bid}.layer.0.layer_norm",),  # t5
         MODEL_TENSOR.ENC_ATTN_Q: ("encoder.block.{bid}.layer.0.SelfAttention.q",),  # t5
         MODEL_TENSOR.ENC_ATTN_K: ("encoder.block.{bid}.layer.0.SelfAttention.k",),  # t5
         MODEL_TENSOR.ENC_ATTN_V: ("encoder.block.{bid}.layer.0.SelfAttention.v",),  # t5
-        MODEL_TENSOR.ENC_ATTN_OUT: (
-            "encoder.block.{bid}.layer.0.SelfAttention.o",  # t5
-        ),
+        MODEL_TENSOR.ENC_ATTN_OUT: ("encoder.block.{bid}.layer.0.SelfAttention.o",),  # t5
         MODEL_TENSOR.ENC_ATTN_REL_B: (
             "encoder.block.{bid}.layer.0.SelfAttention.relative_attention_bias",  # t5
         ),
         MODEL_TENSOR.ENC_FFN_NORM: ("encoder.block.{bid}.layer.1.layer_norm",),  # t5
-        MODEL_TENSOR.ENC_FFN_GATE: (
-            "encoder.block.{bid}.layer.1.DenseReluDense.wi_0",  # flan-t5
-        ),
+        MODEL_TENSOR.ENC_FFN_GATE: ("encoder.block.{bid}.layer.1.DenseReluDense.wi_0",),  # flan-t5
         MODEL_TENSOR.ENC_FFN_UP: (
             "encoder.block.{bid}.layer.1.DenseReluDense.wi",  # t5
             "encoder.block.{bid}.layer.1.DenseReluDense.wi_1",  # flan-t5
         ),
-        MODEL_TENSOR.ENC_FFN_DOWN: (
-            "encoder.block.{bid}.layer.1.DenseReluDense.wo",  # t5
-        ),
+        MODEL_TENSOR.ENC_FFN_DOWN: ("encoder.block.{bid}.layer.1.DenseReluDense.wo",),  # t5
         ############################################################################
         # TODO: these do not belong to block_mappings_cfg - move them to mappings_cfg
         MODEL_TENSOR.ENC_OUTPUT_NORM: ("encoder.final_layer_norm",),  # t5
@@ -634,9 +594,7 @@ class TensorNameMap:
         MODEL_TENSOR.POSNET_ATTN_Q: ("backbone.posnet.{bid}.q",),  # wavtokenizer
         MODEL_TENSOR.POSNET_ATTN_K: ("backbone.posnet.{bid}.k",),  # wavtokenizer
         MODEL_TENSOR.POSNET_ATTN_V: ("backbone.posnet.{bid}.v",),  # wavtokenizer
-        MODEL_TENSOR.POSNET_ATTN_OUT: (
-            "backbone.posnet.{bid}.proj_out",  # wavtokenizer
-        ),
+        MODEL_TENSOR.POSNET_ATTN_OUT: ("backbone.posnet.{bid}.proj_out",),  # wavtokenizer
     }
 
     # architecture-specific block mappings
@@ -690,9 +648,7 @@ class TensorNameMap:
             return None
         return result[1]
 
-    def get_type(
-        self, key: str, try_suffixes: Sequence[str] = ()
-    ) -> MODEL_TENSOR | None:
+    def get_type(self, key: str, try_suffixes: Sequence[str] = ()) -> MODEL_TENSOR | None:
         result = self.get_type_and_name(key, try_suffixes=try_suffixes)
         if result is None:
             return None

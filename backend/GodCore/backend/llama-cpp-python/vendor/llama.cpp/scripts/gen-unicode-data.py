@@ -124,9 +124,7 @@ for cpt, cpt_lower, cpt_upper, categ, bidir in unicode_data_iter():
 # whitespaces, see "<White_Space>" https://www.unicode.org/Public/UCD/latest/ucd/PropList.txt
 table_whitespace.extend(range(0x0009, 0x000D + 1))
 table_whitespace.extend(range(0x2000, 0x200A + 1))
-table_whitespace.extend(
-    [0x0020, 0x0085, 0x00A0, 0x1680, 0x2028, 0x2029, 0x202F, 0x205F, 0x3000]
-)
+table_whitespace.extend([0x0020, 0x0085, 0x00A0, 0x1680, 0x2028, 0x2029, 0x202F, 0x205F, 0x3000])
 
 
 # sort by codepoint

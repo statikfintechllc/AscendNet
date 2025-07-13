@@ -57,11 +57,7 @@ def nlp_internal_check():
             health_query = "How are you feeling? How is your system health?"
             health_tokens = tokenizer.tokenize(health_query)
             health_response = model.forward(health_tokens)
-            sys_msg = (
-                health_response
-                if isinstance(health_response, str)
-                else str(health_response)
-            )
+            sys_msg = health_response if isinstance(health_response, str) else str(health_response)
         except Exception as health_ex:
             sys_msg = f"[NLP_CHECK] Could not get model health: {health_ex}"
 

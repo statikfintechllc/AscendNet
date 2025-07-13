@@ -10,7 +10,7 @@
 # GremlinGPT v1.0.3 :: FSM Core & Module Integrity Directive
 
 import time
-import schedule # type: ignore
+import schedule  # type: ignore
 import json
 import os
 from pathlib import Path
@@ -32,17 +32,18 @@ from agent_core.agent_profiles import resolve_agent_role
 from self_training.generate_dataset import generate_datasets
 from core.kernel import apply_patch  # 🧠 Kernel hook for patchable execution
 from utils.nltk_setup import setup_nltk_data
+
 # import nltk  # Removed unused import
 import os
 
 NLTK_DATA_DIR = setup_nltk_data()
 
-#NLTK_DATA_DIR = os.path.abspath(
+# NLTK_DATA_DIR = os.path.abspath(
 #    os.path.join(os.path.dirname(__file__), "../data/nltk_data")
-#)
-#os.makedirs(NLTK_DATA_DIR, exist_ok=True)
-#nltk.data.path.clear()
-#nltk.data.path.append(NLTK_DATA_DIR)
+# )
+# os.makedirs(NLTK_DATA_DIR, exist_ok=True)
+# nltk.data.path.clear()
+# nltk.data.path.append(NLTK_DATA_DIR)
 
 FSM_STATE = "IDLE"
 console = Console()
@@ -131,9 +132,7 @@ def fsm_loop():
             except Exception as e:
                 log_error(task, e)
                 task_queue.retry(task)
-                log_event(
-                    "fsm", "task_error", {"task": task, "error": str(e)}, status="fail"
-                )
+                log_event("fsm", "task_error", {"task": task, "error": str(e)}, status="fail")
                 tid = task.get("id")
                 retries = task_queue.task_meta.get(tid, {}).get("retries", 0)
                 if retries >= 2:
@@ -168,9 +167,7 @@ def fsm_loop():
                 console.log("[FSM] Training dataset updated.")
                 archive_path = archive_json_log(DATASET_PATH, prefix="dataset_dump")
                 if archive_path:
-                    auto_commit(
-                        archive_path, message="[autocommit] Dataset updated by FSM loop"
-                    )
+                    auto_commit(archive_path, message="[autocommit] Dataset updated by FSM loop")
 
                 if CFG.get("git", {}).get("auto_push", False):
                     auto_push()

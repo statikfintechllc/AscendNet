@@ -8,9 +8,7 @@ ap.add_argument("-m", "--model", help="Path to GLM model")
 args = ap.parse_args()
 
 # find the model part that includes the the multimodal projector weights
-model = AutoModel.from_pretrained(
-    args.model, trust_remote_code=True, local_files_only=True
-)
+model = AutoModel.from_pretrained(args.model, trust_remote_code=True, local_files_only=True)
 checkpoint = model.state_dict()
 
 # get a list of mm tensor names
@@ -20,13 +18,10 @@ mm_tensors = [k for k, v in checkpoint.items() if k.startswith("vision.adapter."
 projector = {name: checkpoint[name].float() for name in mm_tensors}
 torch.save(projector, f"{args.model}/glm.projector")
 
-clip_tensors = [
-    k for k, v in checkpoint.items() if k.startswith("vision.vit.model.vision_model.")
-]
+clip_tensors = [k for k, v in checkpoint.items() if k.startswith("vision.vit.model.vision_model.")]
 if len(clip_tensors) > 0:
     clip = {
-        name.replace("vision.vit.model.", ""): checkpoint[name].float()
-        for name in clip_tensors
+        name.replace("vision.vit.model.", ""): checkpoint[name].float() for name in clip_tensors
     }
     torch.save(clip, f"{args.model}/glm.clip")
 

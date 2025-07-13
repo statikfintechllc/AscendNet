@@ -54,9 +54,7 @@ class Keys:
         SOURCE_URL = "general.source.url"  # Model Website/Paper
         SOURCE_DOI = "general.source.doi"
         SOURCE_UUID = "general.source.uuid"
-        SOURCE_REPO_URL = (
-            "general.source.repo_url"  # Model Source Repository (git/svn/etc...)
-        )
+        SOURCE_REPO_URL = "general.source.repo_url"  # Model Source Repository (git/svn/etc...)
 
         # Base Model Source. There can be more than one source if it's a merged
         # model like with 'Mistral-7B-Merge-14-v0.1'. This will assist in
@@ -70,7 +68,9 @@ class Keys:
         BASE_MODEL_URL = "general.base_model.{id}.url"  # Model Website/Paper
         BASE_MODEL_DOI = "general.base_model.{id}.doi"
         BASE_MODEL_UUID = "general.base_model.{id}.uuid"
-        BASE_MODEL_REPO_URL = "general.base_model.{id}.repo_url"  # Model Source Repository (git/svn/etc...)
+        BASE_MODEL_REPO_URL = (
+            "general.base_model.{id}.repo_url"  # Model Source Repository (git/svn/etc...)
+        )
 
         # Dataset Source
         DATASET_COUNT = "general.dataset.count"
@@ -182,9 +182,7 @@ class Keys:
         PRE = "tokenizer.ggml.pre"
         LIST = "tokenizer.ggml.tokens"
         TOKEN_TYPE = "tokenizer.ggml.token_type"
-        TOKEN_TYPE_COUNT = (
-            "tokenizer.ggml.token_type_count"  # for BERT-style token types
-        )
+        TOKEN_TYPE_COUNT = "tokenizer.ggml.token_type_count"  # for BERT-style token types
         SCORES = "tokenizer.ggml.scores"
         MERGES = "tokenizer.ggml.merges"
         BOS_ID = "tokenizer.ggml.bos_token_id"

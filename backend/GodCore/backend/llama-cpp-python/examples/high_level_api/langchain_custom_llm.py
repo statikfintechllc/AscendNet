@@ -36,9 +36,7 @@ args = parser.parse_args()
 llm = LlamaLLM(model_path=args.model)
 
 # Basic Q&A
-answer = llm(
-    "Question: What is the capital of France? Answer: ", stop=["Question:", "\n"]
-)
+answer = llm("Question: What is the capital of France? Answer: ", stop=["Question:", "\n"])
 print(f"Answer: {answer.strip()}")
 
 # Using in a chain

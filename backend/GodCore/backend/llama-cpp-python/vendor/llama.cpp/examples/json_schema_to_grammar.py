@@ -103,9 +103,7 @@ def _generate_min_max_int(
                             digit_range(chr(ord(from_str[i]) + 1), to_str[i])
                             to_reached = True
                         else:
-                            digit_range(
-                                chr(ord(from_str[i]) + 1), chr(ord(to_str[i]) - 1)
-                            )
+                            digit_range(chr(ord(from_str[i]) + 1), chr(ord(to_str[i]) - 1))
                         out.append(" ")
                         more_digits(sub_len, sub_len)
                 if not to_reached:
@@ -124,9 +122,7 @@ def _generate_min_max_int(
     if has_min and has_max:
         if min_value < 0 and max_value < 0:
             out.append('"-" (')
-            _generate_min_max_int(
-                -max_value, -min_value, out, decimals_left, top_level=True
-            )
+            _generate_min_max_int(-max_value, -min_value, out, decimals_left, top_level=True)
             out.append(")")
             return
 
@@ -185,9 +181,7 @@ def _generate_min_max_int(
                 out.append(" | ")
             digit_range(c, c)
             out.append(" (")
-            _generate_min_max_int(
-                int(min_s[1:]), None, out, less_decimals, top_level=False
-            )
+            _generate_min_max_int(int(min_s[1:]), None, out, less_decimals, top_level=False)
             out.append(")")
             if c < "9":
                 out.append(" | ")
@@ -238,16 +232,12 @@ PRIMITIVE_RULES = {
         '"{" space ( string ":" space value ("," space string ":" space value)* )? "}" space',
         ["string", "value"],
     ),
-    "array": BuiltinRule(
-        '"[" space ( value ("," space value)* )? "]" space', ["value"]
-    ),
+    "array": BuiltinRule('"[" space ( value ("," space value)* )? "]" space', ["value"]),
     "uuid": BuiltinRule(
         r'"\"" [0-9a-fA-F]{8} "-" [0-9a-fA-F]{4} "-" [0-9a-fA-F]{4} "-" [0-9a-fA-F]{4} "-" [0-9a-fA-F]{12} "\"" space',
         [],
     ),
-    "char": BuiltinRule(
-        r'[^"\\\x7F\x00-\x1F] | [\\] (["\\bfnrt] | "u" [0-9a-fA-F]{4})', []
-    ),
+    "char": BuiltinRule(r'[^"\\\x7F\x00-\x1F] | [\\] (["\\bfnrt] | "u" [0-9a-fA-F]{4})', []),
     "string": BuiltinRule(r'"\"" char* "\"" space', ["char"]),
     "null": BuiltinRule('"null" space', []),
 }
@@ -271,9 +261,7 @@ STRING_FORMAT_RULES = {
 DOTALL = "[\\U00000000-\\U0010FFFF]"
 DOT = "[^\\x0A\\x0D]"
 
-RESERVED_NAMES = set(
-    ["root", "dot", *PRIMITIVE_RULES.keys(), *STRING_FORMAT_RULES.keys()]
-)
+RESERVED_NAMES = set(["root", "dot", *PRIMITIVE_RULES.keys(), *STRING_FORMAT_RULES.keys()])
 
 INVALID_RULE_CHARS_RE = re.compile(r"[^a-zA-Z0-9-]+")
 GRAMMAR_LITERAL_ESCAPE_RE = re.compile(r'[\r\n"]')
@@ -380,10 +368,7 @@ class SchemaConverter:
             key = esc_name
         else:
             i = 0
-            while (
-                f"{esc_name}{i}" in self._rules
-                and self._rules[f"{esc_name}{i}"] != rule
-            ):
+            while f"{esc_name}{i}" in self._rules and self._rules[f"{esc_name}{i}"] != rule:
                 i += 1
             key = f"{esc_name}{i}"
         self._rules[key] = rule
@@ -413,9 +398,7 @@ class SchemaConverter:
 
                         target = self._refs.get(base_url)
                         if target is None:
-                            target = self.resolve_refs(
-                                requests.get(ref).json(), base_url
-                            )
+                            target = self.resolve_refs(requests.get(ref).json(), base_url)
                             self._refs[base_url] = target
 
                         if len(frag_split) == 1 or frag_split[-1] == "":
@@ -574,9 +557,7 @@ class SchemaConverter:
                             min_times = int(nums[0]) if nums[0] else 0
                             max_times = int(nums[1]) if nums[1] else None
                     except ValueError:
-                        raise ValueError(
-                            f"Invalid quantifier {curly_brackets} in /{pattern}/"
-                        )
+                        raise ValueError(f"Invalid quantifier {curly_brackets} in /{pattern}/")
 
                     (sub, sub_is_literal) = seq[-1]
 
@@ -661,9 +642,7 @@ class SchemaConverter:
         elif isinstance(schema_type, list):
             return self._add_rule(
                 rule_name,
-                self._generate_union_rule(
-                    name, [{**schema, "type": t} for t in schema_type]
-                ),
+                self._generate_union_rule(name, [{**schema, "type": t} for t in schema_type]),
             )
 
         elif "const" in schema:
@@ -681,10 +660,7 @@ class SchemaConverter:
 
         elif schema_type in (None, "object") and (
             "properties" in schema
-            or (
-                "additionalProperties" in schema
-                and schema["additionalProperties"] is not True
-            )
+            or ("additionalProperties" in schema and schema["additionalProperties"] is not True)
         ):
             required = set(schema.get("required", []))
             properties = list(schema.get("properties", {}).items())
@@ -724,9 +700,7 @@ class SchemaConverter:
                 ),
             )
 
-        elif schema_type in (None, "array") and (
-            "items" in schema or "prefixItems" in schema
-        ):
+        elif schema_type in (None, "array") and ("items" in schema or "prefixItems" in schema):
             items = schema.get("items") or schema["prefixItems"]
             if isinstance(items, list):
                 return self._add_rule(
@@ -754,36 +728,27 @@ class SchemaConverter:
         elif schema_type in (None, "string") and "pattern" in schema:
             return self._visit_pattern(schema["pattern"], rule_name)
 
-        elif schema_type in (None, "string") and re.match(
-            r"^uuid[1-5]?$", schema_format or ""
-        ):
+        elif schema_type in (None, "string") and re.match(r"^uuid[1-5]?$", schema_format or ""):
             return self._add_primitive(
                 "root" if rule_name == "root" else schema_format,
                 PRIMITIVE_RULES["uuid"],
             )
 
-        elif (
-            schema_type in (None, "string")
-            and f"{schema_format}-string" in STRING_FORMAT_RULES
-        ):
+        elif schema_type in (None, "string") and f"{schema_format}-string" in STRING_FORMAT_RULES:
             prim_name = f"{schema_format}-string"
             return self._add_rule(
                 rule_name,
                 self._add_primitive(prim_name, STRING_FORMAT_RULES[prim_name]),
             )
 
-        elif schema_type == "string" and (
-            "minLength" in schema or "maxLength" in schema
-        ):
+        elif schema_type == "string" and ("minLength" in schema or "maxLength" in schema):
             char_rule = self._add_primitive("char", PRIMITIVE_RULES["char"])
             min_len = schema.get("minLength", 0)
             max_len = schema.get("maxLength")
 
             return self._add_rule(
                 rule_name,
-                r'"\"" '
-                + _build_repetition(char_rule, min_len, max_len)
-                + r' "\"" space',
+                r'"\"" ' + _build_repetition(char_rule, min_len, max_len) + r' "\"" space',
             )
 
         elif schema_type in (None, "integer") and (
@@ -850,9 +815,7 @@ class SchemaConverter:
 
         prop_kv_rule_names = {}
         for prop_name, prop_schema in properties:
-            prop_rule_name = self.visit(
-                prop_schema, f'{name}{"-" if name else ""}{prop_name}'
-            )
+            prop_rule_name = self.visit(prop_schema, f'{name}{"-" if name else ""}{prop_name}')
             prop_kv_rule_names[prop_name] = self._add_rule(
                 f'{name}{"-" if name else ""}{prop_name}-kv',
                 rf'{self._format_literal(json.dumps(prop_name))} space ":" space {prop_rule_name}',
@@ -915,8 +878,7 @@ class SchemaConverter:
 
     def format_grammar(self):
         return "\n".join(
-            f"{name} ::= {rule}"
-            for name, rule in sorted(self._rules.items(), key=lambda kv: kv[0])
+            f"{name} ::= {rule}" for name, rule in sorted(self._rules.items(), key=lambda kv: kv[0])
         )
 
 

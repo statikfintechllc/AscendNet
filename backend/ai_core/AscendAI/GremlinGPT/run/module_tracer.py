@@ -62,19 +62,12 @@ def trace_calls():
                     imports = [
                         line.strip()
                         for line in lines
-                        if line.strip().startswith("import")
-                        or line.strip().startswith("from")
+                        if line.strip().startswith("import") or line.strip().startswith("from")
                     ]
-                    importable = (
-                        "[bold green]Yes[/]"
-                        if is_importable(path)
-                        else "[bold red]No[/]"
-                    )
+                    importable = "[bold green]Yes[/]" if is_importable(path) else "[bold red]No[/]"
                     table.add_row(module_name, "\n".join(imports), importable)
                 except Exception as e:
-                    table.add_row(
-                        module_name, "[error] Could not read", "[bold red]No[/]"
-                    )
+                    table.add_row(module_name, "[error] Could not read", "[bold red]No[/]")
                     print(f"[yellow][WARN][/yellow] Skipped {module_name}: {e}")
 
     print(table)

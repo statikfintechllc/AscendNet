@@ -53,9 +53,7 @@ async def run_scraper():
             try:
                 task = fetch_task("scrape")
             except Exception as task_fetch_err:
-                logger.error(
-                    f"[{MODULE.upper()}] Error fetching task: {task_fetch_err}"
-                )
+                logger.error(f"[{MODULE.upper()}] Error fetching task: {task_fetch_err}")
                 log_event(
                     MODULE,
                     "task_fetch_error",

@@ -16,10 +16,7 @@ import logging
 import numpy as np
 
 # Necessary to load the local gguf package
-if (
-    "NO_LOCAL_GGUF" not in os.environ
-    and (Path(__file__).parent.parent.parent / "gguf-py").exists()
-):
+if "NO_LOCAL_GGUF" not in os.environ and (Path(__file__).parent.parent.parent / "gguf-py").exists():
     sys.path.insert(0, str(Path(__file__).parent.parent))
 
 import gguf
@@ -89,9 +86,7 @@ class GGMLQuants:
             "iq4_nl",
             "iq4_xs",
         ):
-            dequant_func: ctypes._NamedFuncPointer = getattr(
-                self.libggml, "dequantize_row_" + t
-            )
+            dequant_func: ctypes._NamedFuncPointer = getattr(self.libggml, "dequantize_row_" + t)
             dequant_func.restype = None
             dequant_func.argtypes = (
                 ctypes.c_void_p,
@@ -157,9 +152,9 @@ class GGMLQuants:
         )
         if self.libggml.ggml_quantize_requires_imatrix(qtype.value):
             # TODO: is a column-wise sum of squares appropriate?
-            qw = np.sum(
-                (data * data).reshape((-1, data.shape[-1])), axis=0
-            ).ctypes.data_as(c_float_p)
+            qw = np.sum((data * data).reshape((-1, data.shape[-1])), axis=0).ctypes.data_as(
+                c_float_p
+            )
         else:
             qw = ctypes.cast(0, c_float_p)
         result_size = self.libggml.ggml_quantize_chunk(
@@ -175,9 +170,7 @@ class GGMLQuants:
         return result
 
 
-def compare_tensors(
-    t1: np.ndarray, t2: np.ndarray, qtype: GGMLQuantizationType
-) -> bool:
+def compare_tensors(t1: np.ndarray, t2: np.ndarray, qtype: GGMLQuantizationType) -> bool:
     same = np.array_equal(t1, t2)
     if same:
         return True
@@ -195,9 +188,7 @@ def compare_tensors(
         if num_bad_blocks == 0 and t1.shape == t2.shape:
             logger.debug("Bits are equal, but arrays don't match, likely contains NANs")
             return True
-        logger.debug(
-            f"{num_bad_blocks} bad blocks ({100 * num_bad_blocks / x.shape[0]:.6f}%)"
-        )
+        logger.debug(f"{num_bad_blocks} bad blocks ({100 * num_bad_blocks / x.shape[0]:.6f}%)")
         bad_block_id = np.argmax(diff_bits, axis=0)
         logger.debug(f"Worst block id: {bad_block_id}")
         logger.debug(
@@ -205,9 +196,7 @@ def compare_tensors(
         )
 
         sum_diff_bits = np.sum(diff_bits)
-        logger.debug(
-            f"{sum_diff_bits} bits differ ({100 * sum_diff_bits / (x.size * 8):.6f}%)"
-        )
+        logger.debug(f"{sum_diff_bits} bits differ ({100 * sum_diff_bits / (x.size * 8):.6f}%)")
         return False
 
 
@@ -227,18 +216,14 @@ def do_test(libggml_path: Path, quick: bool = False):
         has_quantize = False
 
         try:
-            gguf.dequantize(
-                np.zeros((gguf.GGML_QUANT_SIZES[qtype][1]), dtype=np.uint8), qtype
-            )
+            gguf.dequantize(np.zeros((gguf.GGML_QUANT_SIZES[qtype][1]), dtype=np.uint8), qtype)
             has_dequantize = True
         except (NotImplementedError, AssertionError) as e:
             if isinstance(e, AssertionError):
                 logger.error(f"Error with {qtype.name}: {e}")
                 raise e
         try:
-            gguf.quantize(
-                np.zeros((gguf.GGML_QUANT_SIZES[qtype][0]), dtype=np.float32), qtype
-            )
+            gguf.quantize(np.zeros((gguf.GGML_QUANT_SIZES[qtype][0]), dtype=np.float32), qtype)
             has_quantize = True
         except (NotImplementedError, AssertionError) as e:
             if isinstance(e, AssertionError):
@@ -289,9 +274,7 @@ def do_test(libggml_path: Path, quick: bool = False):
                 else:
                     logger.info(f"Dequantization from {qtype.name} matches exactly ✅")
 
-            rq_shape = gguf.quants.quant_shape_to_byte_shape(
-                (8, 1024, 1024 // 2), qtype
-            )
+            rq_shape = gguf.quants.quant_shape_to_byte_shape((8, 1024, 1024 // 2), qtype)
             rq = np.random.random(rq_shape).astype(np.float16).view(np.uint8)
 
             logger.debug(f"Dequantizing random f16 data as {qtype.name} with Python")
@@ -318,11 +301,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--libggml",
         type=Path,
-        default=Path(__file__).parent.parent.parent
-        / "build"
-        / "ggml"
-        / "src"
-        / "libggml.so",
+        default=Path(__file__).parent.parent.parent / "build" / "ggml" / "src" / "libggml.so",
         help="The path to libggml.so",
     )
     parser.add_argument(

@@ -4,10 +4,11 @@
 import asyncio
 import os
 import pty
-from fastapi import WebSocket, WebSocketDisconnect
-from logger import log_event
+from fastapi import WebSocket, WebSocketDisconnect  # type: ignore
+from logger import log_event  # type: ignore
 
 SHELL = os.environ.get("SHELL", "/bin/bash")
+
 
 async def handle_terminal(websocket: WebSocket):
     try:
@@ -18,6 +19,7 @@ async def handle_terminal(websocket: WebSocket):
         if pid == 0:
             os.execvp(SHELL, [SHELL])  # Child process: shell
         else:
+
             async def read_from_shell():
                 try:
                     while True:

@@ -9,7 +9,7 @@
 
 ## 🔥 Mission
 
-**Statik-Server** is a self-contained fork of code-server with:
+**Statik-Server** is a self-contained fork of statik-server with:
 - **VS Code v1.102.0+** with upstream Copilot Chat support
 - **Embedded headscale mesh** with non-expiring keys + self-tunnel
 - **GitHub Copilot agent mode** with persistent session (no UI login)
@@ -68,7 +68,7 @@ Statik-Server Architecture
 ### 1. Clone and Build
 
 ```bash
-cd /home/statiksmoke8/AscendNet
+cd $HOME/AscendNet
 ./statik-server/build.sh
 ```
 
@@ -95,7 +95,7 @@ docker run -d \
   -p 8080:8080 \
   -p 8081:8081 \
   -p 50443:50443 \
-  -v /home/statiksmoke8/AscendNet:/mnt/ascendnet \
+  -v $HOME/AscendNet:/mnt/ascendnet \
   -v statik-data:/root/.statik \
   statikfintech/statik-server
 ```
@@ -267,7 +267,7 @@ services:
       - "8081:8081" 
       - "50443:50443"
     volumes:
-      - /home/statiksmoke8/AscendNet:/mnt/ascendnet
+      - $HOME/AscendNet:/mnt/ascendnet
       - statik-data:/root/.statik
     environment:
       - GITHUB_TOKEN=${GITHUB_TOKEN}
@@ -332,7 +332,7 @@ yarn build
 Statik-Server is released under the **Fair Use License** with the following clarifications:
 
 - ✅ **Personal/Self-Hosted Use** - Freely use for your own development
-- ✅ **Code-Server Base** - Built on MIT-licensed code-server
+- ✅ **Statik-Server Base** - Built on MIT-licensed statik-server
 - ✅ **Headscale Integration** - Uses BSD-licensed headscale
 - ⚠️ **VS Code Components** - Respects Microsoft's VS Code license terms
 - ⚠️ **GitHub Copilot** - Requires valid GitHub Copilot subscription

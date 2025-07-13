@@ -25,9 +25,7 @@ import os
 import sys
 
 LOG_DIR = CFG["paths"].get("data_dir", "data/") + "logs/"
-OUTPUT_PATH = (
-    CFG["paths"].get("data_dir", "data/") + "nlp_training_sets/mutated_dataset.json"
-)
+OUTPUT_PATH = CFG["paths"].get("data_dir", "data/") + "nlp_training_sets/mutated_dataset.json"
 WATERMARK = "source:GremlinGPT"
 TAG = "trainer_module"
 
@@ -45,16 +43,12 @@ def trigger_retrain():
     try:
         # Extract logs and mutate into new dataset
         if not os.path.exists(LOG_DIR) or not os.listdir(LOG_DIR):
-            logger.warning(
-                f"[TRAINER] No logs found in {LOG_DIR}. Idling, awaiting logs..."
-            )
+            logger.warning(f"[TRAINER] No logs found in {LOG_DIR}. Idling, awaiting logs...")
             return
 
         raw = extract_training_data(LOG_DIR)
         if not raw:
-            logger.info(
-                f"[TRAINER] No extractable training data found. Idling, awaiting data..."
-            )
+            logger.info(f"[TRAINER] No extractable training data found. Idling, awaiting data...")
             return
 
         mutated = mutate_dataset(raw)
@@ -68,7 +62,9 @@ def trigger_retrain():
         dummy_input = np.random.rand(8, 64)
         out, weights = attention.forward(dummy_input)
 
-        embed_text_summary = f"Trainer activated attention w/ {attention.num_heads} heads | out shape: {out.shape}"
+        embed_text_summary = (
+            f"Trainer activated attention w/ {attention.num_heads} heads | out shape: {out.shape}"
+        )
         vector = embed_text(embed_text_summary)
 
         package_embedding(
@@ -104,9 +100,7 @@ def watch_logs():
             while True:
                 time.sleep(1)
         except Exception as e:
-            logger.error(
-                f"[TRAINER] Log watcher encountered error: {e}. Retrying in 5 seconds..."
-            )
+            logger.error(f"[TRAINER] Log watcher encountered error: {e}. Retrying in 5 seconds...")
             time.sleep(5)  # Wait before retrying watcher setup
         finally:
             try:

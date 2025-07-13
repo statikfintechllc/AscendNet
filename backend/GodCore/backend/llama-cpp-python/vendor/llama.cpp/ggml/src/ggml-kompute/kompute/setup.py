@@ -30,9 +30,7 @@ class CMakeBuild(build_ext):
                 + ", ".join(e.name for e in self.extensions)
             )
 
-        cmake_version = LooseVersion(
-            re.search(r"version\s*([\d.]+)", out.decode()).group(1)
-        )
+        cmake_version = LooseVersion(re.search(r"version\s*([\d.]+)", out.decode()).group(1))
         if cmake_version < "3.15":
             raise RuntimeError("CMake >= 3.15 is required")
 
@@ -50,8 +48,7 @@ class CMakeBuild(build_ext):
             "-DKOMPUTE_OPT_BUILD_PYTHON=ON",
             "-DKOMPUTE_OPT_LOG_LEVEL=Off",
             "-DKOMPUTE_OPT_USE_SPDLOG=Off",
-            "-DKOMPUTE_OPT_DISABLE_VULKAN_VERSION_CHECK=ON"
-            "-DPYTHON_EXECUTABLE=" + sys.executable,
+            "-DKOMPUTE_OPT_DISABLE_VULKAN_VERSION_CHECK=ON" "-DPYTHON_EXECUTABLE=" + sys.executable,
             "-DPYTHON_INCLUDE_DIR=" + sysconfig.get_path("include"),
             "-DPYTHON_LIBRARY=" + sysconfig.get_path("stdlib"),
         ]
@@ -61,9 +58,7 @@ class CMakeBuild(build_ext):
 
         env = os.environ.copy()
         oldCxxFlags = env.get("CXXFLAGS", "")
-        env["CXXFLAGS"] = (
-            f'{oldCxxFlags} -DVERSION_INFO=\\"{self.distribution.get_version()}\\"'
-        )
+        env["CXXFLAGS"] = f'{oldCxxFlags} -DVERSION_INFO=\\"{self.distribution.get_version()}\\"'
 
         if platform.system() == "Windows":
             cmake_args += [f"-DCMAKE_LIBRARY_OUTPUT_DIRECTORY_{cfg.upper()}={extdir}"]
@@ -81,12 +76,8 @@ class CMakeBuild(build_ext):
         if not os.path.exists(self.build_temp):
             os.makedirs(self.build_temp)
 
-        subprocess.check_call(
-            ["cmake", ext.sourcedir] + cmake_args, cwd=self.build_temp, env=env
-        )
-        subprocess.check_call(
-            ["cmake", "--build", "."] + build_args, cwd=self.build_temp
-        )
+        subprocess.check_call(["cmake", ext.sourcedir] + cmake_args, cwd=self.build_temp, env=env)
+        subprocess.check_call(["cmake", "--build", "."] + build_args, cwd=self.build_temp)
 
 
 setup(

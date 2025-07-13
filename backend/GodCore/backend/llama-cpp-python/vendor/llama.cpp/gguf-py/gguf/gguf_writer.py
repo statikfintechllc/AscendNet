@@ -138,9 +138,7 @@ class GGUFWriter:
                 elif name.endswith(".lora_b"):
                     if last_lora_a is None or last_lora_a[0] != name[:-1] + "a":
                         # Bail when the LoRA pair can't be found trivially
-                        logger.warning(
-                            "can't measure LoRA size correctly, tensor order is unusual"
-                        )
+                        logger.warning("can't measure LoRA size correctly, tensor order is unusual")
                         return 0, 0, 0, 0
                     else:
                         shape = (*shape[:-1], last_lora_a[1].shape[-1])
@@ -170,9 +168,7 @@ class GGUFWriter:
         if len(self.tensors) == 1:
             return [path]
         return [
-            path.with_name(
-                SHARD_NAME_FORMAT.format(path.stem, i + 1, len(self.tensors))
-            )
+            path.with_name(SHARD_NAME_FORMAT.format(path.stem, i + 1, len(self.tensors)))
             for i in range(len(self.tensors))
         ]
 
@@ -186,9 +182,7 @@ class GGUFWriter:
             return
 
         if self.state is not WriterState.NO_FILE:
-            raise ValueError(
-                f"Expected output file to be not yet opened, got {self.state}"
-            )
+            raise ValueError(f"Expected output file to be not yet opened, got {self.state}")
 
         if path is not None:
             self.path = path
@@ -226,17 +220,13 @@ class GGUFWriter:
         self.kv_data.extend({} for _ in range(len(self.kv_data), total_splits))
         for i, kv_data in enumerate(self.kv_data):
             kv_data[Keys.Split.LLM_KV_SPLIT_NO] = GGUFValue(i, GGUFValueType.UINT16)
-            kv_data[Keys.Split.LLM_KV_SPLIT_COUNT] = GGUFValue(
-                total_splits, GGUFValueType.UINT16
-            )
+            kv_data[Keys.Split.LLM_KV_SPLIT_COUNT] = GGUFValue(total_splits, GGUFValueType.UINT16)
             kv_data[Keys.Split.LLM_KV_SPLIT_TENSORS_COUNT] = GGUFValue(
                 total_tensors, GGUFValueType.INT32
             )
 
     def write_header_to_file(self, path: Path | None = None) -> None:
-        if len(self.tensors) == 1 and (
-            self.split_max_tensors != 0 or self.split_max_size != 0
-        ):
+        if len(self.tensors) == 1 and (self.split_max_tensors != 0 or self.split_max_size != 0):
             logger.warning("Model fails split requirements, not splitting")
 
         self.open_output_file(path)
@@ -260,9 +250,7 @@ class GGUFWriter:
 
     def write_kv_data_to_file(self) -> None:
         if self.state is not WriterState.HEADER:
-            raise ValueError(
-                f"Expected output file to contain the header, got {self.state}"
-            )
+            raise ValueError(f"Expected output file to contain the header, got {self.state}")
         assert self.fout is not None
 
         for fout, kv_data in zip(self.fout, self.kv_data):
@@ -279,9 +267,7 @@ class GGUFWriter:
 
     def write_ti_data_to_file(self) -> None:
         if self.state is not WriterState.KV_DATA:
-            raise ValueError(
-                f"Expected output file to contain KV data, got {self.state}"
-            )
+            raise ValueError(f"Expected output file to contain KV data, got {self.state}")
         assert self.fout is not None
 
         for fout, tensors in zip(self.fout, self.tensors):
@@ -364,9 +350,7 @@ class GGUFWriter:
         raw_dtype: GGMLQuantizationType | None = None,
     ) -> None:
         if self.state is not WriterState.NO_FILE:
-            raise ValueError(
-                f"Expected output file to be not yet opened, got {self.state}"
-            )
+            raise ValueError(f"Expected output file to be not yet opened, got {self.state}")
 
         if any(name in tensors for tensors in self.tensors):
             raise ValueError(f"Duplicated tensor name {name!r}")
@@ -398,8 +382,7 @@ class GGUFWriter:
         # make sure there is at least one tensor before splitting
         if len(self.tensors[-1]) > 0:
             if (  # split when over tensor limit
-                self.split_max_tensors != 0
-                and len(self.tensors[-1]) >= self.split_max_tensors
+                self.split_max_tensors != 0 and len(self.tensors[-1]) >= self.split_max_tensors
             ) or (  # split when over size limit
                 self.split_max_size != 0
                 and sum(ti.nbytes for ti in self.tensors[-1].values()) + tensor_nbytes
@@ -407,9 +390,7 @@ class GGUFWriter:
             ):
                 self.tensors.append({})
 
-        self.tensors[-1][name] = TensorInfo(
-            shape=tensor_shape, dtype=dtype, nbytes=tensor_nbytes
-        )
+        self.tensors[-1][name] = TensorInfo(shape=tensor_shape, dtype=dtype, nbytes=tensor_nbytes)
 
     def add_tensor(
         self,
@@ -426,9 +407,7 @@ class GGUFWriter:
             self.temp_file = fp
 
         shape: Sequence[int] = raw_shape if raw_shape is not None else tensor.shape
-        self.add_tensor_info(
-            name, shape, tensor.dtype, tensor.nbytes, raw_dtype=raw_dtype
-        )
+        self.add_tensor_info(name, shape, tensor.dtype, tensor.nbytes, raw_dtype=raw_dtype)
 
         if self.temp_file is None:
             self.tensors[-1][name].tensor = tensor
@@ -438,18 +417,12 @@ class GGUFWriter:
         self.write_padding(self.temp_file, tensor.nbytes)
 
     def write_padding(self, fp: IO[bytes], n: int, align: int | None = None) -> None:
-        pad = (
-            GGUFWriter.ggml_pad(n, align if align is not None else self.data_alignment)
-            - n
-        )
+        pad = GGUFWriter.ggml_pad(n, align if align is not None else self.data_alignment) - n
         if pad != 0:
             fp.write(bytes([0] * pad))
 
     def write_tensor_data(self, tensor: np.ndarray[Any, Any]) -> None:
-        if (
-            self.state is not WriterState.TI_DATA
-            and self.state is not WriterState.WEIGHTS
-        ):
+        if self.state is not WriterState.TI_DATA and self.state is not WriterState.WEIGHTS:
             raise ValueError(
                 f"Expected output file to contain tensor info or weights, got {self.state}"
             )
@@ -468,9 +441,7 @@ class GGUFWriter:
 
         # pop the first tensor info
         # TODO: cleaner way to get the first key
-        first_tensor_name = [
-            name for name, _ in zip(self.tensors[file_id].keys(), range(1))
-        ][0]
+        first_tensor_name = [name for name, _ in zip(self.tensors[file_id].keys(), range(1))][0]
         ti = self.tensors[file_id].pop(first_tensor_name)
         assert ti.nbytes == tensor.nbytes
 
@@ -504,9 +475,7 @@ class GGUFWriter:
                         unit="byte",
                         unit_scale=True,
                     )
-                bar = tqdm(
-                    desc="Writing", total=total_bytes, unit="byte", unit_scale=True
-                )
+                bar = tqdm(desc="Writing", total=total_bytes, unit="byte", unit_scale=True)
 
             for i, (fout, tensors) in enumerate(zip(self.fout, self.tensors)):
                 if shard_bar is not None:
@@ -516,9 +485,7 @@ class GGUFWriter:
 
                 # relying on the fact that Python dicts preserve insertion order (since 3.7)
                 for ti in tensors.values():
-                    assert (
-                        ti.tensor is not None
-                    )  # can only iterate once over the tensors
+                    assert ti.tensor is not None  # can only iterate once over the tensors
                     assert ti.tensor.nbytes == ti.nbytes
                     ti.tensor.tofile(fout)
                     if shard_bar is not None:
@@ -530,9 +497,7 @@ class GGUFWriter:
         else:
             self.temp_file.seek(0)
 
-            shutil.copyfileobj(
-                self.temp_file, self.fout[0 if not self.small_first_shard else 1]
-            )
+            shutil.copyfileobj(self.temp_file, self.fout[0 if not self.small_first_shard else 1])
             self.flush()
             self.temp_file.close()
 
@@ -638,14 +603,10 @@ class GGUFWriter:
         self.add_string(Keys.General.BASE_MODEL_VERSION.format(id=source_id), version)
 
     def add_base_model_organization(self, source_id: int, organization: str) -> None:
-        self.add_string(
-            Keys.General.BASE_MODEL_ORGANIZATION.format(id=source_id), organization
-        )
+        self.add_string(Keys.General.BASE_MODEL_ORGANIZATION.format(id=source_id), organization)
 
     def add_base_model_description(self, source_id: int, description: str) -> None:
-        self.add_string(
-            Keys.General.BASE_MODEL_DESCRIPTION.format(id=source_id), description
-        )
+        self.add_string(Keys.General.BASE_MODEL_DESCRIPTION.format(id=source_id), description)
 
     def add_base_model_url(self, source_id: int, url: str) -> None:
         self.add_string(Keys.General.BASE_MODEL_URL.format(id=source_id), url)
@@ -672,14 +633,10 @@ class GGUFWriter:
         self.add_string(Keys.General.DATASET_VERSION.format(id=source_id), version)
 
     def add_dataset_organization(self, source_id: int, organization: str) -> None:
-        self.add_string(
-            Keys.General.DATASET_ORGANIZATION.format(id=source_id), organization
-        )
+        self.add_string(Keys.General.DATASET_ORGANIZATION.format(id=source_id), organization)
 
     def add_dataset_description(self, source_id: int, description: str) -> None:
-        self.add_string(
-            Keys.General.DATASET_DESCRIPTION.format(id=source_id), description
-        )
+        self.add_string(Keys.General.DATASET_DESCRIPTION.format(id=source_id), description)
 
     def add_dataset_url(self, source_id: int, url: str) -> None:
         self.add_string(Keys.General.DATASET_URL.format(id=source_id), url)
@@ -730,9 +687,7 @@ class GGUFWriter:
         self.add_uint32(Keys.LLM.BLOCK_COUNT.format(arch=self.arch), length)
 
     def add_leading_dense_block_count(self, length: int) -> None:
-        self.add_uint32(
-            Keys.LLM.LEADING_DENSE_BLOCK_COUNT.format(arch=self.arch), length
-        )
+        self.add_uint32(Keys.LLM.LEADING_DENSE_BLOCK_COUNT.format(arch=self.arch), length)
 
     def add_feed_forward_length(self, length: int | Sequence[int]) -> None:
         if isinstance(length, int):
@@ -741,14 +696,10 @@ class GGUFWriter:
             self.add_array(Keys.LLM.FEED_FORWARD_LENGTH.format(arch=self.arch), length)
 
     def add_expert_feed_forward_length(self, length: int) -> None:
-        self.add_uint32(
-            Keys.LLM.EXPERT_FEED_FORWARD_LENGTH.format(arch=self.arch), length
-        )
+        self.add_uint32(Keys.LLM.EXPERT_FEED_FORWARD_LENGTH.format(arch=self.arch), length)
 
     def add_expert_shared_feed_forward_length(self, length: int) -> None:
-        self.add_uint32(
-            Keys.LLM.EXPERT_SHARED_FEED_FORWARD_LENGTH.format(arch=self.arch), length
-        )
+        self.add_uint32(Keys.LLM.EXPERT_SHARED_FEED_FORWARD_LENGTH.format(arch=self.arch), length)
 
     def add_parallel_residual(self, use: bool) -> None:
         self.add_bool(Keys.LLM.USE_PARALLEL_RESIDUAL.format(arch=self.arch), use)
@@ -859,9 +810,7 @@ class GGUFWriter:
         self.add_uint32(Keys.Attention.ICLR_LORA_RANK.format(arch=self.arch), length)
 
     def add_value_residual_mix_lora_rank(self, length: int) -> None:
-        self.add_uint32(
-            Keys.Attention.VALUE_RESIDUAL_MIX_LORA_RANK.format(arch=self.arch), length
-        )
+        self.add_uint32(Keys.Attention.VALUE_RESIDUAL_MIX_LORA_RANK.format(arch=self.arch), length)
 
     def add_gate_lora_rank(self, length: int) -> None:
         self.add_uint32(Keys.Attention.GATE_LORA_RANK.format(arch=self.arch), length)
@@ -926,9 +875,7 @@ class GGUFWriter:
     def add_tokenizer_pre(self, pre: str) -> None:
         self.add_string(Keys.Tokenizer.PRE, pre)
 
-    def add_token_list(
-        self, tokens: Sequence[str] | Sequence[bytes] | Sequence[bytearray]
-    ) -> None:
+    def add_token_list(self, tokens: Sequence[str] | Sequence[bytes] | Sequence[bytearray]) -> None:
         self.add_array(Keys.Tokenizer.LIST, tokens)
 
     def add_token_merges(
@@ -988,18 +935,14 @@ class GGUFWriter:
                 template = choice.get("template")
 
                 # Allowing non-alphanumerical characters in template name is probably not a good idea, so filter it
-                name = "".join(
-                    (c if c in ascii_letters + digits else "_" for c in name)
-                )
+                name = "".join((c if c in ascii_letters + digits else "_" for c in name))
 
                 if name and template is not None:
                     if name == "default":
                         template_default = template
                     else:
                         template_names.add(name)
-                        self.add_string(
-                            Keys.Tokenizer.CHAT_TEMPLATE_N.format(name=name), template
-                        )
+                        self.add_string(Keys.Tokenizer.CHAT_TEMPLATE_N.format(name=name), template)
 
             if template_names:
                 self.add_array(Keys.Tokenizer.CHAT_TEMPLATES, list(template_names))
@@ -1031,9 +974,7 @@ class GGUFWriter:
 
         pack_fmt = self._simple_value_packing.get(vtype)
         if pack_fmt is not None:
-            kv_data += self._pack(
-                pack_fmt, val, skip_pack_prefix=vtype == GGUFValueType.BOOL
-            )
+            kv_data += self._pack(pack_fmt, val, skip_pack_prefix=vtype == GGUFValueType.BOOL)
         elif vtype == GGUFValueType.STRING:
             encoded_val = val.encode("utf-8") if isinstance(val, str) else val
             kv_data += self._pack("Q", len(encoded_val))
@@ -1051,9 +992,7 @@ class GGUFWriter:
             else:
                 ltype = GGUFValueType.get_type(val[0])
                 if not all(GGUFValueType.get_type(i) is ltype for i in val[1:]):
-                    raise ValueError(
-                        "All items in a GGUF array should be of the same type"
-                    )
+                    raise ValueError("All items in a GGUF array should be of the same type")
             kv_data += self._pack("I", ltype)
             kv_data += self._pack("Q", len(val))
             for item in val:

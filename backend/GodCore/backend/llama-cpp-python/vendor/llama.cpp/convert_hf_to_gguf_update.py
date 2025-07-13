@@ -385,9 +385,7 @@ for model in models:
     # create the tokenizer
     try:
         if name == "t5":
-            tokenizer = AutoTokenizer.from_pretrained(
-                f"models/tokenizers/{name}", use_fast=False
-            )
+            tokenizer = AutoTokenizer.from_pretrained(f"models/tokenizers/{name}", use_fast=False)
         else:
             tokenizer = AutoTokenizer.from_pretrained(f"models/tokenizers/{name}")
     except OSError as e:
@@ -413,9 +411,7 @@ for model in models:
         pre_tokenizer = cfg["pre_tokenizer"]
         logger.info("pre_tokenizer: " + json.dumps(pre_tokenizer, indent=4))
         if "ignore_merges" in cfg["model"]:
-            logger.info(
-                "ignore_merges: " + json.dumps(cfg["model"]["ignore_merges"], indent=4)
-            )
+            logger.info("ignore_merges: " + json.dumps(cfg["model"]["ignore_merges"], indent=4))
 
     logger.info("")
 
@@ -554,9 +550,7 @@ for model in models:
     # create the tokenizer
     try:
         if name == "t5":
-            tokenizer = AutoTokenizer.from_pretrained(
-                f"models/tokenizers/{name}", use_fast=False
-            )
+            tokenizer = AutoTokenizer.from_pretrained(f"models/tokenizers/{name}", use_fast=False)
         else:
             tokenizer = AutoTokenizer.from_pretrained(f"models/tokenizers/{name}")
     except OSError as e:

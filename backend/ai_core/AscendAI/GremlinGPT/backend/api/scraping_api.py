@@ -22,6 +22,7 @@ import traceback
 
 import asyncio
 
+
 async def scrape_url(url, method="auto", extra=None):
     """
     Main entry point for dashboard/API. Dispatches to best scraper.
@@ -70,10 +71,14 @@ async def scrape_url(url, method="auto", extra=None):
                 if isinstance(result, dict) and result.get("content"):
                     return {"scrape_result": result}
                 else:
-                    logger.error(f"[SCRAPER_API] route_scraping_async returned no content: {result}")
+                    logger.error(
+                        f"[SCRAPER_API] route_scraping_async returned no content: {result}"
+                    )
                     return {"error": "All scraping methods failed."}
             except Exception as e:
-                logger.error(f"[SCRAPER_API] route_scraping_async failed: {e}\n{traceback.format_exc()}")
+                logger.error(
+                    f"[SCRAPER_API] route_scraping_async failed: {e}\n{traceback.format_exc()}"
+                )
                 return {"error": "All scraping methods failed.", "trace": traceback.format_exc()}
         else:
             return {"error": f"Unknown scrape method: {method}"}

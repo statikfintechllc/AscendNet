@@ -1,6 +1,6 @@
-import gradio as gr
+import gradio as gr  # type: ignore
 
-from openai import OpenAI
+from openai import OpenAI  # type: ignore
 
 client = OpenAI(base_url="http://localhost:8000/v1", api_key="llama.cpp")
 
@@ -16,9 +16,7 @@ def predict(message, history):
 
     messages.append({"role": "user", "content": message})
 
-    response = client.chat.completions.create(
-        model=model, messages=messages, stream=True
-    )
+    response = client.chat.completions.create(model=model, messages=messages, stream=True)
 
     text = ""
     for chunk in response:

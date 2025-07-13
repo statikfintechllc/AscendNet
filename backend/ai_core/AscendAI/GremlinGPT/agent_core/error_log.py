@@ -24,9 +24,12 @@ ERROR_LOG_FILE = Path(log_dir) / "task_errors.jsonl"
 # Configure logger for error logging
 error_logger = logging.getLogger("error_logger")
 error_logger.setLevel(logging.ERROR)
+
+
 class JsonlFormatter(logging.Formatter):
     def format(self, record):
         return record.getMessage()
+
 
 if not error_logger.handlers:
     # Ensure log directory exists
@@ -35,6 +38,7 @@ if not error_logger.handlers:
     fh = logging.FileHandler(ERROR_LOG_FILE, encoding="utf-8")
     fh.setFormatter(JsonlFormatter())
     error_logger.addHandler(fh)
+
 
 def log_error(task: dict, error: Union[Exception, str], source: str = "unknown"):
     """
@@ -79,15 +83,17 @@ def log_error(task: dict, error: Union[Exception, str], source: str = "unknown")
         # Fallback: use logger's handler directly if available
         for handler in error_logger.handlers:
             try:
-                handler.emit(logging.LogRecord(
-                    name="error_logger",
-                    level=logging.ERROR,
-                    pathname=__file__,
-                    lineno=0,
-                    msg=json.dumps(record),
-                    args=(),
-                    exc_info=None
-                ))
+                handler.emit(
+                    logging.LogRecord(
+                        name="error_logger",
+                        level=logging.ERROR,
+                        pathname=__file__,
+                        lineno=0,
+                        msg=json.dumps(record),
+                        args=(),
+                        exc_info=None,
+                    )
+                )
                 break
             except Exception:
                 continue

@@ -165,9 +165,7 @@ def analyze_mutation_diff():
                 score = semantic_similarity(previous, current)
                 lineage_id = str(uuid.uuid4())
 
-                logger.info(
-                    f"[WATCHER] Semantic similarity for {path}: {round(score, 4)}"
-                )
+                logger.info(f"[WATCHER] Semantic similarity for {path}: {round(score, 4)}")
 
                 vector = embed_text(diff)
                 package_embedding(

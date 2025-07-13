@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# stop_remote_dev.sh - Kill code-server and stop Tailscale
+# stop_remote_dev.sh - Kill statik-server and stop Tailscale
 
 set -eu
 
-echo "[*] Killing all code-server processes owned by user $USER..."
-pkill -9 -u "$USER" -f "code-server" || echo "[!] No code-server process found."
+echo "[*] Killing all statik-server processes owned by user $USER..."
+pkill -9 -u "$USER" -f "statik-server" || echo "[!] No statik-server process found."
 
 echo "[*] Stopping Tailscale daemon..."
 sudo systemctl stop tailscaled || true

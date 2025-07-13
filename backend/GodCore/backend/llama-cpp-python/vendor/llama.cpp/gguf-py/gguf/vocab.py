@@ -75,9 +75,7 @@ class SpecialVocab:
                 "Adding merges requested but no merges found, output may be non-functional."
             )
         for typ, tokid in self.special_token_ids.items():
-            id_handler: Callable[[int], None] | None = getattr(
-                gw, f"add_{typ}_token_id", None
-            )
+            id_handler: Callable[[int], None] | None = getattr(gw, f"add_{typ}_token_id", None)
             if id_handler is None:
                 logger.warning(
                     f"No handler for special token type {typ} with id {tokid} - skipping"
@@ -87,13 +85,9 @@ class SpecialVocab:
                 logger.info(f"Setting special token type {typ} to {tokid}")
             id_handler(tokid)
         for typ, value in self.add_special_token.items():
-            add_handler: Callable[[bool], None] | None = getattr(
-                gw, f"add_add_{typ}_token", None
-            )
+            add_handler: Callable[[bool], None] | None = getattr(gw, f"add_add_{typ}_token", None)
             if add_handler is None:
-                logger.warning(
-                    f"No handler for add_{typ}_token with value {value} - skipping"
-                )
+                logger.warning(f"No handler for add_{typ}_token with value {value} - skipping")
                 continue
             if not quiet:
                 logger.info(f"Setting add_{typ}_token to {value}")
@@ -176,10 +170,7 @@ class SpecialVocab:
                             " ".join(
                                 [
                                     # ensure the spaces are properly encoded
-                                    "".join(
-                                        chr(ord(c) + 256) if c == " " else c
-                                        for c in part
-                                    )
+                                    "".join(chr(ord(c) + 256) if c == " " else c for c in part)
                                     for part in pair
                                 ]
                             )
@@ -223,11 +214,7 @@ class SpecialVocab:
                 continue
             # We only need the first match here.
             maybe_token_id = next(
-                (
-                    atok.get("id")
-                    for atok in added_tokens
-                    if atok.get("content") == tc_content
-                ),
+                (atok.get("id") for atok in added_tokens if atok.get("content") == tc_content),
                 None,
             )
             self._set_special_token(typ, maybe_token_id)
@@ -370,9 +357,7 @@ class SentencePieceVocab(Vocab):
         self.sentencepiece_tokenizer.LoadFromFile(str(fname_tokenizer))
         vocab_size = self.sentencepiece_tokenizer.vocab_size()
 
-        new_tokens = {
-            id: piece for piece, id in added_tokens.items() if id >= vocab_size
-        }
+        new_tokens = {id: piece for piece, id in added_tokens.items() if id >= vocab_size}
         expected_new_ids = list(range(vocab_size, vocab_size + len(new_tokens)))
         actual_new_ids = sorted(new_tokens.keys())
 
@@ -475,9 +460,7 @@ class LlamaHfVocab(Vocab):
         self.added_tokens_ids = set()
 
         # Process added tokens
-        for tok, tokidx in sorted(
-            self.tokenizer.get_added_vocab().items(), key=lambda x: x[1]
-        ):
+        for tok, tokidx in sorted(self.tokenizer.get_added_vocab().items(), key=lambda x: x[1]):
             # Only consider added tokens that are not in the base vocabulary
             if tokidx >= self.tokenizer.vocab_size:
                 self.added_tokens_list.append(tok)
@@ -486,8 +469,7 @@ class LlamaHfVocab(Vocab):
 
         # Store special tokens and their IDs
         self.specials = {
-            tok: self.tokenizer.get_vocab()[tok]
-            for tok in self.tokenizer.all_special_tokens
+            tok: self.tokenizer.get_vocab()[tok] for tok in self.tokenizer.all_special_tokens
         }
         self.special_ids = set(self.tokenizer.all_special_ids)
 
@@ -498,9 +480,7 @@ class LlamaHfVocab(Vocab):
         self.fname_tokenizer = fname_tokenizer
 
     def hf_tokens(self) -> Iterable[tuple[bytes, float, gguf.TokenType]]:
-        reverse_vocab = {
-            id: encoded_tok for encoded_tok, id in self.tokenizer.get_vocab().items()
-        }
+        reverse_vocab = {id: encoded_tok for encoded_tok, id in self.tokenizer.get_vocab().items()}
 
         for token_id in range(self.vocab_size_base):
             # Skip processing added tokens here
@@ -525,9 +505,7 @@ class LlamaHfVocab(Vocab):
             return gguf.TokenType.BYTE
 
         # Determine token type based on whether it's a special token
-        return (
-            gguf.TokenType.CONTROL if token_id in special_ids else gguf.TokenType.NORMAL
-        )
+        return gguf.TokenType.CONTROL if token_id in special_ids else gguf.TokenType.NORMAL
 
     def get_token_score(self, token_id: int) -> float:
         # Placeholder for actual logic to determine the token's score
@@ -537,9 +515,7 @@ class LlamaHfVocab(Vocab):
     def added_tokens(self) -> Iterable[tuple[bytes, float, gguf.TokenType]]:
         for text in self.added_tokens_list:
             if text in self.specials:
-                toktype = self.get_token_type(
-                    self.specials[text], b"", self.special_ids
-                )
+                toktype = self.get_token_type(self.specials[text], b"", self.special_ids)
                 score = self.get_token_score(self.specials[text])
             else:
                 toktype = gguf.TokenType.USER_DEFINED

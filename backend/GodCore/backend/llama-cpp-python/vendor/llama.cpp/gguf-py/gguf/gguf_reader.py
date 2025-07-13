@@ -133,9 +133,7 @@ class GGUFReader:
         GGUFValueType.BOOL: np.bool_,
     }
 
-    def __init__(
-        self, path: os.PathLike[str] | str, mode: Literal["r", "r+", "c"] = "r"
-    ):
+    def __init__(self, path: os.PathLike[str] | str, mode: Literal["r", "r+", "c"] = "r"):
         self.data = np.memmap(path, mode=mode)
         offs = 0
 
@@ -150,14 +148,10 @@ class GGUFReader:
             # If we get 0 here that means it's (probably) a GGUF file created for
             # the opposite byte order of the machine this script is running on.
             self.byte_order = "S"
-            temp_version = temp_version.view(
-                temp_version.dtype.newbyteorder(self.byte_order)
-            )
+            temp_version = temp_version.view(temp_version.dtype.newbyteorder(self.byte_order))
         version = temp_version[0]
         if version not in READER_SUPPORTED_VERSIONS:
-            raise ValueError(
-                f"Sorry, file appears to be version {version} which we cannot handle"
-            )
+            raise ValueError(f"Sorry, file appears to be version {version} which we cannot handle")
         if sys.byteorder == "little":
             # Host is little endian
             host_endian = GGUFEndian.LITTLE
@@ -170,9 +164,7 @@ class GGUFReader:
         self.fields: OrderedDict[str, ReaderField] = OrderedDict()
         self.tensors: list[ReaderTensor] = []
         offs += self._push_field(
-            ReaderField(
-                offs, "GGUF.version", [temp_version], [0], [GGUFValueType.UINT32]
-            )
+            ReaderField(offs, "GGUF.version", [temp_version], [0], [GGUFValueType.UINT32])
         )
 
         # Check tensor count and kv count
@@ -187,9 +179,7 @@ class GGUFReader:
             )
         )
         offs += self._push_field(
-            ReaderField(
-                offs, "GGUF.kv_count", [temp_counts[1:]], [0], [GGUFValueType.UINT64]
-            )
+            ReaderField(offs, "GGUF.kv_count", [temp_counts[1:]], [0], [GGUFValueType.UINT64])
         )
         tensor_count, kv_count = temp_counts
         offs = self._build_fields(offs, kv_count)
@@ -229,9 +219,7 @@ class GGUFReader:
         end_offs = offset + itemsize * count
         arr = self.data[offset:end_offs].view(dtype=dtype)[:count]
         return arr.view(
-            arr.dtype.newbyteorder(
-                self.byte_order if override_order is None else override_order
-            )
+            arr.dtype.newbyteorder(self.byte_order if override_order is None else override_order)
         )
 
     def _push_field(self, field: ReaderField, skip_sum: bool = False) -> int:
@@ -245,9 +233,7 @@ class GGUFReader:
             self.fields[field.name] = field
         return 0 if skip_sum else sum(int(part.nbytes) for part in field.parts)
 
-    def _get_str(
-        self, offset: int
-    ) -> tuple[npt.NDArray[np.uint64], npt.NDArray[np.uint8]]:
+    def _get_str(self, offset: int) -> tuple[npt.NDArray[np.uint64], npt.NDArray[np.uint8]]:
         slen = self._get(offset, np.uint64)
         return slen, self._get(offset + 8, np.uint8, slen[0])
 
@@ -349,9 +335,7 @@ class GGUFReader:
             offs += field_size
         return offs
 
-    def _build_tensor_info(
-        self, offs: int, count: int
-    ) -> tuple[int, list[ReaderField]]:
+    def _build_tensor_info(self, offs: int, count: int) -> tuple[int, list[ReaderField]]:
         tensor_fields = []
         for _ in range(count):
             field = self._get_tensor_info_field(offs)

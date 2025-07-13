@@ -61,9 +61,7 @@ for i in range(7):
         numpy.zeros((tensor_out_h * tensor_out_w * tensor_out_cg * sh_common.VSZ))
     )
     weight = kpm.tensor(
-        sh_common.load_weights_padded(
-            "kipper", (i * 2) + 0, tensor_out_c, tensor_in_c, 3
-        )
+        sh_common.load_weights_padded("kipper", (i * 2) + 0, tensor_out_c, tensor_in_c, 3)
     )
     bias = kpm.tensor(sh_common.load_biases_padded("kipper", (i * 2) + 1, tensor_out_c))
     # Compute.
@@ -129,9 +127,7 @@ fin_seq.eval_async(kp.OpTensorSyncLocal([tensor_in]))
 fin_seq.eval_await()
 
 # Output
-out_na = tensor_in.data().reshape(
-    (tensor_in_h, tensor_in_w, tensor_in_cg * sh_common.VSZ)
-)
+out_na = tensor_in.data().reshape((tensor_in_h, tensor_in_w, tensor_in_cg * sh_common.VSZ))
 # Crop off 'alpha'
 out_na = out_na[:, :, 0:3]
 sh_common.image_save(sys.argv[2], out_na)

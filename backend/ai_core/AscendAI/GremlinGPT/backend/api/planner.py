@@ -14,11 +14,12 @@ from agent_core.task_queue import reprioritize
 from agent_core import task_queue
 from memory.log_history import log_event
 import logging
+
 logger = logging.getLogger("GremlinGPT.TaskQueue")
 import networkx as nx
 from datetime import datetime
 from scraper import source_router, web_knowledge_scraper
-import flask
+import flask  # type: ignore
 
 planner_bp = flask.Blueprint("planner", __name__)
 
@@ -122,12 +123,11 @@ def get_signals():
     """
     try:
         # 1. Aggregate live data from all available scrapers
-        tws = source_router.safe_scrape_tws() if hasattr(source_router, 'safe_scrape_tws') else []
-        stt = source_router.safe_scrape_stt() if hasattr(source_router, 'safe_scrape_stt') else []
-        web_results = web_knowledge_scraper.run_search_and_scrape([
-            "https://finance.yahoo.com/",
-            "https://www.investing.com/news/stock-market-news"
-        ])
+        tws = source_router.safe_scrape_tws() if hasattr(source_router, "safe_scrape_tws") else []
+        stt = source_router.safe_scrape_stt() if hasattr(source_router, "safe_scrape_stt") else []
+        web_results = web_knowledge_scraper.run_search_and_scrape(
+            ["https://finance.yahoo.com/", "https://www.investing.com/news/stock-market-news"]
+        )
         # 2. Compose a unified signal set
         signals = []
         for src, data in zip(["tws", "stt", "web"], [tws, stt, web_results]):
@@ -136,25 +136,25 @@ def get_signals():
             for item in data:
                 if not (isinstance(item, dict) and hasattr(item, "get")):
                     continue
-                signals.append({
-                    "source": src,
-                    "symbol": item.get("symbol", "N/A"),
-                    "price": item.get("price"),
-                    "volume": item.get("volume"),
-                    "ema": item.get("ema"),
-                    "vwap": item.get("vwap"),
-                    "timestamp": item.get("timestamp"),
-                    "raw": item
-                })
+                signals.append(
+                    {
+                        "source": src,
+                        "symbol": item.get("symbol", "N/A"),
+                        "price": item.get("price"),
+                        "volume": item.get("volume"),
+                        "ema": item.get("ema"),
+                        "vwap": item.get("vwap"),
+                        "timestamp": item.get("timestamp"),
+                        "raw": item,
+                    }
+                )
         # 3. Optionally, score signals (stub: all 0.9)
         for sig in signals:
             sig["confidence"] = 0.9
             sig["reward"] = 0.9
-        return flask.jsonify({
-            "signals": signals,
-            "timestamp": datetime.utcnow().isoformat(),
-            "count": len(signals)
-        })
+        return flask.jsonify(
+            {"signals": signals, "timestamp": datetime.utcnow().isoformat(), "count": len(signals)}
+        )
     except Exception as e:
         logger.error(f"[PLANNER_API] get_signals failed: {e}")
         return flask.jsonify({"error": str(e)}), 500

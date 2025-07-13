@@ -7,6 +7,7 @@ from pathlib import Path
 APPDIR = Path.home() / ".local/share/applications"
 LOGFILE = APPDIR / "system/services/touchcore_backend.log"
 
+
 def log_event(msg: str, inline: bool = False):
     """
     Appends a timestamped log entry.
@@ -25,6 +26,7 @@ def log_event(msg: str, inline: bool = False):
                 return "".join(f.readlines()[-50:])
         except:
             return "[Log unavailable]"
+
 
 def now():
     return datetime.now().strftime("%Y-%m-%d %H:%M:%S")

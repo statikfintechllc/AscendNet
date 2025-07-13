@@ -52,9 +52,7 @@ def copy_with_new_metadata(
 ) -> None:
     for field in reader.fields.values():
         # Suppress virtual fields and fields written by GGUFWriter
-        if field.name == gguf.Keys.General.ARCHITECTURE or field.name.startswith(
-            "GGUF."
-        ):
+        if field.name == gguf.Keys.General.ARCHITECTURE or field.name.startswith("GGUF."):
             logger.debug(f"Suppressing {field.name}")
             continue
 
@@ -130,9 +128,7 @@ def main() -> None:
         if n.endswith("_token_id")
     )
 
-    parser = argparse.ArgumentParser(
-        description="Make a copy of a GGUF file with new metadata"
-    )
+    parser = argparse.ArgumentParser(description="Make a copy of a GGUF file with new metadata")
     parser.add_argument("input", type=Path, help="GGUF format model input filename")
     parser.add_argument("output", type=Path, help="GGUF format model output filename")
     parser.add_argument(
@@ -185,12 +181,8 @@ def main() -> None:
         nargs=2,
         metavar=(" | ".join(token_names.keys()), "0"),
     )
-    parser.add_argument(
-        "--force", action="store_true", help="Bypass warnings without confirmation"
-    )
-    parser.add_argument(
-        "--verbose", action="store_true", help="Increase output verbosity"
-    )
+    parser.add_argument("--force", action="store_true", help="Bypass warnings without confirmation")
+    parser.add_argument("--verbose", action="store_true", help="Increase output verbosity")
     args = parser.parse_args(None if len(sys.argv) > 2 else ["--help"])
 
     logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO)
@@ -235,14 +227,10 @@ def main() -> None:
     if remove_metadata:
         logger.warning("*** Warning *** Warning *** Warning **")
         logger.warning("* Most metadata is required for a fully functional GGUF file,")
-        logger.warning(
-            "* removing crucial metadata may result in a corrupt output file!"
-        )
+        logger.warning("* removing crucial metadata may result in a corrupt output file!")
 
         if not args.force:
-            logger.warning(
-                "* Enter exactly YES if you are positive you want to proceed:"
-            )
+            logger.warning("* Enter exactly YES if you are positive you want to proceed:")
             response = input("YES, I am sure> ")
             if response != "YES":
                 logger.info("You didn't enter YES. Okay then, see ya!")
@@ -287,9 +275,7 @@ def main() -> None:
 
     if os.path.isfile(args.output) and not args.force:
         logger.warning("*** Warning *** Warning *** Warning **")
-        logger.warning(
-            f'* The "{args.output}" GGUF file already exists, it will be overwritten!'
-        )
+        logger.warning(f'* The "{args.output}" GGUF file already exists, it will be overwritten!')
         logger.warning("* Enter exactly YES if you are positive you want to proceed:")
         response = input("YES, I am sure> ")
         if response != "YES":

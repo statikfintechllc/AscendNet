@@ -32,18 +32,14 @@ def read_gguf_file(gguf_file_path):
     # List all tensors
     print("Tensors:")  # noqa: NP100
     tensor_info_format = "{:<30} | Shape: {:<15} | Size: {:<12} | Quantization: {}"
-    print(
-        tensor_info_format.format("Tensor Name", "Shape", "Size", "Quantization")
-    )  # noqa: NP100
+    print(tensor_info_format.format("Tensor Name", "Shape", "Size", "Quantization"))  # noqa: NP100
     print("-" * 80)  # noqa: NP100
     for tensor in reader.tensors:
         shape_str = "x".join(map(str, tensor.shape))
         size_str = str(tensor.n_elements)
         quantization_str = tensor.tensor_type.name
         print(
-            tensor_info_format.format(
-                tensor.name, shape_str, size_str, quantization_str
-            )
+            tensor_info_format.format(tensor.name, shape_str, size_str, quantization_str)
         )  # noqa: NP100
 
 

@@ -46,6 +46,7 @@ def load_history(n=50):
     """
     try:
         from collections import deque
+
         with open(HISTORY_FILE, "r", encoding="utf-8") as f:
             lines = deque(f, maxlen=n)
         return [json.loads(line) for line in lines]

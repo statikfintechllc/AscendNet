@@ -48,7 +48,7 @@ href="https://github.com/statikfintechllc/AscendAI/blob/master/About Us/FOUNDER_
 Mobile-Dashboard Mobile Developer enables secure.
 It is on-demand remote coding from any mobile device.
 Directly on your home/server machine. 
-With one-click tunnel creation, instant QR mobile onboarding, and seamless HTTPS VSCode (code-server) delivery.
+With one-click tunnel creation, instant QR mobile onboarding, and seamless HTTPS VSCode (statik-server) delivery.
 You can develop and deploy as if you’re sitting at your desk—no matter where you are.
 
 > *Built to let you actually code on the move. No cloud. No lock-in. No bullshit.*

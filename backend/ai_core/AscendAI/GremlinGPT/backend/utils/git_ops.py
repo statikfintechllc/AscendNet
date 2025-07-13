@@ -26,6 +26,7 @@ from backend.globals import logger
 
 DEFAULT_ARCHIVE_DIR = "docs/"
 
+
 # Archive JSON log files with timestamp
 # This function is used to archive JSONL or log files with a timestamp in the docs/ directory.
 # It returns the new archive path or an empty string if the operation fails.
@@ -69,6 +70,7 @@ def archive_json_log(source_path: str, prefix: str = "log") -> str:
     except Exception as e:
         logger.error(f"[git_ops] Archive failed: {e}")
         return ""
+
 
 # Auto-commit changes, staging the specified file and committing with a default message.
 # This function is designed to be used by other modules without manual intervention.

@@ -68,9 +68,7 @@ class LoraTorchTensor:
         indices: (
             SupportsIndex
             | slice
-            | tuple[
-                SupportsIndex | slice | Tensor, ...
-            ]  # TODO: add ellipsis in the type signature
+            | tuple[SupportsIndex | slice | Tensor, ...]  # TODO: add ellipsis in the type signature
         ),
     ) -> LoraTorchTensor:
         shape = self.shape
@@ -154,9 +152,7 @@ class LoraTorchTensor:
             n_elems = prod(orig_shape)
             n_new_elems = prod(dim if dim != -1 else 1 for dim in new_shape)
             assert n_elems % n_new_elems == 0
-            new_shape = (
-                *(dim if dim != -1 else n_elems // n_new_elems for dim in new_shape),
-            )
+            new_shape = (*(dim if dim != -1 else n_elems // n_new_elems for dim in new_shape),)
 
         if new_shape[-1] != orig_shape[-1]:
             raise NotImplementedError  # can't reshape the row size trivially
@@ -182,9 +178,7 @@ class LoraTorchTensor:
             assert all(dim == 1 for dim in self._lora_A.shape[:-2])
             return LoraTorchTensor(self._lora_A, self._lora_B.permute(*dims))
         if len(shape) == 2 and dims[-1] == -2 and dims[-2] == -1:
-            return LoraTorchTensor(
-                self._lora_B.permute(*dims), self._lora_A.permute(*dims)
-            )
+            return LoraTorchTensor(self._lora_B.permute(*dims), self._lora_A.permute(*dims))
         else:
             # TODO: compose the above two
             raise NotImplementedError
@@ -199,9 +193,7 @@ class LoraTorchTensor:
         return self.transpose(axis0, axis1)
 
     def to(self, *args, **kwargs):
-        return LoraTorchTensor(
-            self._lora_A.to(*args, **kwargs), self._lora_B.to(*args, **kwargs)
-        )
+        return LoraTorchTensor(self._lora_A.to(*args, **kwargs), self._lora_B.to(*args, **kwargs))
 
     @classmethod
     def __torch_function__(cls, func: Callable, types, args=(), kwargs=None):
@@ -364,14 +356,10 @@ if __name__ == "__main__":
                 hparams = load_hparams_from_hf(model_id)
             except OSError as e:
                 logger.error(f"Failed to load base model config: {e}")
-                logger.error(
-                    "Please try downloading the base model and add its path to --base"
-                )
+                logger.error("Please try downloading the base model and add its path to --base")
                 sys.exit(1)
         else:
-            logger.error(
-                "'base_model_name_or_path' is not found in adapter_config.json"
-            )
+            logger.error("'base_model_name_or_path' is not found in adapter_config.json")
             logger.error(
                 "Base model config is required. Please download the base model and add its path to --base"
             )
@@ -392,9 +380,7 @@ if __name__ == "__main__":
 
             lora_alpha: float
 
-            def __init__(
-                self, *args, dir_lora_model: Path, lora_alpha: float, **kwargs
-            ):
+            def __init__(self, *args, dir_lora_model: Path, lora_alpha: float, **kwargs):
 
                 super().__init__(*args, **kwargs)
 
@@ -409,9 +395,7 @@ if __name__ == "__main__":
                 self.gguf_writer.add_string(gguf.Keys.Adapter.TYPE, "lora")
 
             def set_gguf_parameters(self):
-                self.gguf_writer.add_float32(
-                    gguf.Keys.Adapter.LORA_ALPHA, self.lora_alpha
-                )
+                self.gguf_writer.add_float32(gguf.Keys.Adapter.LORA_ALPHA, self.lora_alpha)
 
             def generate_extra_tensors(self) -> Iterable[tuple[str, Tensor]]:
                 # Never add extra tensors (e.g. rope_freqs) for LoRA adapters
@@ -434,9 +418,7 @@ if __name__ == "__main__":
                         if "_layernorm" in name or ".norm" in name:
                             yield (base_name, tensor)
                             continue
-                        logger.error(
-                            f"Unexpected name '{name}': Not a lora_A or lora_B tensor"
-                        )
+                        logger.error(f"Unexpected name '{name}': Not a lora_A or lora_B tensor")
                         if ".embed_tokens.weight" in name or ".lm_head.weight" in name:
                             logger.error(
                                 "Embeddings is present in the adapter. This can be due to new tokens added during fine tuning"
@@ -474,9 +456,7 @@ if __name__ == "__main__":
                 # therefore, we ignore them for now
                 # see: https://github.com/ggml-org/llama.cpp/issues/9065
                 if name == "lm_head.weight" and len(dest) == 0:
-                    raise ValueError(
-                        "lm_head is present in adapter, but is ignored in base model"
-                    )
+                    raise ValueError("lm_head is present in adapter, but is ignored in base model")
                 for dest_name, dest_data in dest:
                     # mergekit-extract-lora add these layernorm to the adapter
                     if "_norm" in dest_name:

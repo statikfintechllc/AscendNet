@@ -98,9 +98,7 @@ def main():
             break
         except Exception as e:
             logger.exception(f"[CLI] Error during input handling: {e}")
-            print(
-                "An error occurred while handling your input. Please check the logs for details."
-            )
+            print("An error occurred while handling your input. Please check the logs for details.")
 
 
 if __name__ == "__main__":

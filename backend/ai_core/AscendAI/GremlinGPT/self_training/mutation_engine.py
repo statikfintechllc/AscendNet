@@ -105,9 +105,7 @@ def mutate_dataset(dataset):
 
         # Route problematic mutations to planner
         if score < 0.5 or not safe:
-            logger.warning(
-                f"[MUTATOR] Routed task for planner: score={score}, safe={safe}"
-            )
+            logger.warning(f"[MUTATOR] Routed task for planner: score={score}, safe={safe}")
             enqueue_next()
 
         # Store mutation result

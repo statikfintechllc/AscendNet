@@ -24,9 +24,7 @@ from pathlib import Path
 from agent_core.task_queue import enqueue_task
 from self_training.feedback_loop import inject_feedback
 from nlp_engine.tokenizer import tokenize
-from memory.vector_store.embedder import (
-    embed_text, package_embedding, inject_watermark
-)
+from memory.vector_store.embedder import embed_text, package_embedding, inject_watermark
 from memory.log_history import log_event
 
 WATERMARK = "source:GremlinGPT"
@@ -42,7 +40,9 @@ def hash_entry(entry):
     return hashlib.sha256(json.dumps(entry, sort_keys=True).encode()).hexdigest()
 
 
-def generate_datasets(root_dir=ROOT_DIR, output_file=OUTPUT_FILE, min_len=15, max_len=1000, dedup=True):
+def generate_datasets(
+    root_dir=ROOT_DIR, output_file=OUTPUT_FILE, min_len=15, max_len=1000, dedup=True
+):
     """
     Main entry point for dataset generation. Scans logs, extracts, tags, tokenizes, embeds, deduplicates, and stores entries.
     Args:
@@ -91,7 +91,9 @@ def generate_datasets(root_dir=ROOT_DIR, output_file=OUTPUT_FILE, min_len=15, ma
                             if dedup:
                                 hashes.add(h)
         except Exception as e:
-            log_event("dataset", "extract_error", {"file": str(path), "error": str(e)}, status="fail")
+            log_event(
+                "dataset", "extract_error", {"file": str(path), "error": str(e)}, status="fail"
+            )
 
     # Optionally deduplicate with previous dataset
     if dedup and os.path.exists(output_file):
@@ -105,14 +107,18 @@ def generate_datasets(root_dir=ROOT_DIR, output_file=OUTPUT_FILE, min_len=15, ma
                     except Exception:
                         continue
         except Exception as e:
-            log_event("dataset", "dedup_error", {"file": output_file, "error": str(e)}, status="fail")
+            log_event(
+                "dataset", "dedup_error", {"file": output_file, "error": str(e)}, status="fail"
+            )
 
     if entries:
         os.makedirs(os.path.dirname(output_file), exist_ok=True)
         with open(output_file, "w") as f:
             for e in entries:
                 f.write(json.dumps(e) + "\n")
-        log_event("dataset", "generated", {"count": len(entries), "output": output_file}, status="success")
+        log_event(
+            "dataset", "generated", {"count": len(entries), "output": output_file}, status="success"
+        )
         print(f"[DATASET] Extracted {len(entries)} entries → {output_file}")
         # Embed and store in vector memory
         for entry in entries:
@@ -120,7 +126,7 @@ def generate_datasets(root_dir=ROOT_DIR, output_file=OUTPUT_FILE, min_len=15, ma
             package_embedding(
                 text=entry["input"],
                 vector=vector,
-                meta={**entry["meta"], "dataset_hash": hash_entry(entry)}
+                meta={**entry["meta"], "dataset_hash": hash_entry(entry)},
             )
         # Queue self-training with lineage context
         enqueue_task(

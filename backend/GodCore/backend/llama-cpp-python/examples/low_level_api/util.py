@@ -66,11 +66,7 @@ class Circle:
                 stop = self.size + stop
 
             indices = range(start, stop, step)
-            return [
-                self.list[(self.offset + i) % self.maxsize]
-                for i in indices
-                if i < self.size
-            ]
+            return [self.list[(self.offset + i) % self.maxsize] for i in indices if i < self.size]
         else:
             raise TypeError("Invalid argument type")
 

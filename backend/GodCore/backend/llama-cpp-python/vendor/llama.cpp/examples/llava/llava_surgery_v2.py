@@ -16,9 +16,7 @@ def is_safetensor_file(file_path):
 def load_model(file_path):
     if is_safetensor_file(file_path):
         tensors = {}
-        with cast(
-            ContextManager[Any], safe_open(file_path, framework="pt", device="cpu")
-        ) as f:
+        with cast(ContextManager[Any], safe_open(file_path, framework="pt", device="cpu")) as f:
             for key in f.keys():
                 tensors[key] = f.get_tensor(key).clone()
                 # output shape
@@ -48,9 +46,7 @@ def is_vision_tower(weight_name):
 
 
 def is_newline(weight_name):
-    return weight_name.startswith("model.image_newline") or weight_name.startswith(
-        "image_newline"
-    )
+    return weight_name.startswith("model.image_newline") or weight_name.startswith("image_newline")
 
 
 def is_mm_projector(weight_name):
@@ -90,9 +86,7 @@ def clean_vision_tower_from_checkpoint(checkpoint_path):
             existing_clip = {}
         # Update existing_clip with new tensors, avoid duplicates
         for name in clip_tensors:
-            simple_name = (
-                name[name.index("vision_model.") :] if "vision_model." in name else name
-            )
+            simple_name = name[name.index("vision_model.") :] if "vision_model." in name else name
             print(f"Adding {simple_name} to llava.clip")
             if simple_name not in existing_clip:
                 existing_clip[simple_name] = checkpoint[name]
@@ -136,18 +130,13 @@ args = ap.parse_args()
 
 if args.clean_vision_tower:
     # Generalized to handle both PyTorch and SafeTensors models
-    model_files = sorted(
-        glob.glob(f"{args.model}/*"), key=os.path.getmtime, reverse=True
-    )
+    model_files = sorted(glob.glob(f"{args.model}/*"), key=os.path.getmtime, reverse=True)
     # checkpoint_paths = [path for path in model_files if (path.endswith('.bin') and path.startswith('pytorch')) or (path.endswith('.safetensors') and path.startswith('model'))]
     checkpoint_paths = [
         path
         for path in model_files
         if (path.endswith(".bin") and "pytorch" in path.split("/")[-1].split("\\")[-1])
-        or (
-            path.endswith(".safetensors")
-            and "model" in path.split("/")[-1].split("\\")[-1]
-        )
+        or (path.endswith(".safetensors") and "model" in path.split("/")[-1].split("\\")[-1])
     ]
     for projector_checkpoint_path in checkpoint_paths:
         print(f"Cleaning {projector_checkpoint_path}")
@@ -165,9 +154,7 @@ checkpoint_paths = [
     path
     for path in model_files
     if (path.endswith(".bin") and "pytorch" in path.split("/")[-1].split("\\")[-1])
-    or (
-        path.endswith(".safetensors") and "model" in path.split("/")[-1].split("\\")[-1]
-    )
+    or (path.endswith(".safetensors") and "model" in path.split("/")[-1].split("\\")[-1])
 ]
 # last_checkpoint_path = checkpoint_paths[0]
 # first_checkpoint_path = checkpoint_paths[-1]

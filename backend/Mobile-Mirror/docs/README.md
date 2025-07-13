@@ -143,7 +143,7 @@ href="https://github.com/statikfintechllc/AscendDocs_of_GovSeverance">
 
 Powered by:
 - [Tailscale](https://tailscale.com/) – WireGuard mesh VPN
-- [code-server](https://github.com/coder/code-server) – VSCode in your browser
+- [statik-server](https://github.com/coder/statik-server) – VSCode in your browser
 
 Plus:
 - 🛠️ Robust bash automation
@@ -171,7 +171,7 @@ Plus:
 - Linux (Ubuntu 20.04+, Debian, Arch, Pop!\_OS tested)
 - [Tailscale account (free)](https://tailscale.com/)
 - `conda`, `kitty`, `git`, `curl`, `qrencode`, `whiptail` — auto-installed if missing
-- `code-server` — auto-installed if missing
+- `statik-server` — auto-installed if missing
 
 ---
 
@@ -199,11 +199,11 @@ Then:
 
 - Scan the QR code from your terminal  
 - Open the HTTPS link on your mobile browser (accept the self-signed cert)  
-- Log in using the code-server password from:
+- Log in using the statik-server password from:
 
 ```bash
 # Current password is: SFTi
-~/.config/code-server/config.yaml
+~/.config/statik-server/config.yaml
 ```
 
 To stop:
@@ -254,7 +254,7 @@ After install, you can:
 
 - End-to-end encrypted by WireGuard/Tailscale  
 - No cloud relay; only your devices can connect  
-- `code-server` runs on HTTPS with a local self-signed cert  
+- `statik-server` runs on HTTPS with a local self-signed cert  
 - Absolutely **no** public-facing ports
 
 ---

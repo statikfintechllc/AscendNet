@@ -36,6 +36,7 @@ nltk.download("averaged_perceptron_tagger", quiet=True)
 # POS Tagging
 # ─────────────────────────────────────────────────────────────
 
+
 def get_pos_tags(text):
     """
     Performs part-of-speech tagging on input text.

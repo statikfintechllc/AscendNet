@@ -333,11 +333,7 @@ n_keep = {self.params.n_keep}
 
     # generate tokens
     def generate(self):
-        while (
-            self.remaining_tokens > 0
-            or self.params.interactive
-            or self.params.n_predict == -1
-        ):
+        while self.remaining_tokens > 0 or self.params.interactive or self.params.n_predict == -1:
             # predict
             if len(self.embd) > 0:
                 # infinite text generation via context swapping
@@ -359,9 +355,7 @@ n_keep = {self.params.n_keep}
                 if self.n_session_consumed < len(self.session_tokens):
                     for i in range(len(self.embd)):
                         if self.embd[i] != self.session_tokens[self.n_session_consumed]:
-                            self.session_tokens = self.session_tokens[
-                                : self.n_session_consumed
-                            ]
+                            self.session_tokens = self.session_tokens[: self.n_session_consumed]
                             break
 
                         self.n_past += 1
@@ -411,9 +405,7 @@ n_keep = {self.params.n_keep}
                     else self.params.top_k
                 )
                 repeat_last_n = (
-                    self.n_ctx
-                    if self.params.repeat_last_n < 0
-                    else self.params.repeat_last_n
+                    self.n_ctx if self.params.repeat_last_n < 0 else self.params.repeat_last_n
                 )
 
                 # optionally save the session on first sample (for faster prompt loading next time)
@@ -422,9 +414,7 @@ n_keep = {self.params.n_keep}
                     llama_cpp.llama_save_session_file(
                         self.ctx,
                         self.params.path_session.encode("utf8"),
-                        (llama_cpp.llama_token * len(self.session_tokens))(
-                            *self.session_tokens
-                        ),
+                        (llama_cpp.llama_token * len(self.session_tokens))(*self.session_tokens),
                         len(self.session_tokens),
                     )
 
@@ -588,10 +578,7 @@ n_keep = {self.params.n_keep}
             if self.params.interactive and len(self.embd_inp) <= self.input_consumed:
                 # if antiprompt is present, stop
                 if self.use_antiprompt():
-                    if True in [
-                        i == self.last_n_tokens[-len(i) :]
-                        for i in self.first_antiprompt
-                    ]:
+                    if True in [i == self.last_n_tokens[-len(i) :] for i in self.first_antiprompt]:
                         break
 
                 # if we are using instruction mode, and we have processed the initial prompt
@@ -599,9 +586,7 @@ n_keep = {self.params.n_keep}
                     break
 
             # end of text token
-            if len(self.embd) > 0 and self.embd[-1] == llama_cpp.llama_token_eos(
-                self.ctx
-            ):
+            if len(self.embd) > 0 and self.embd[-1] == llama_cpp.llama_token_eos(self.ctx):
                 if not self.params.instruct:
                     for i in self.llama_token_eot:
                         yield i
@@ -648,10 +633,7 @@ n_keep = {self.params.n_keep}
 
     # write input
     def input(self, prompt: str):
-        if (
-            self.params.instruct
-            and self.last_n_tokens[-len(self.inp_prefix) :] != self.inp_prefix
-        ):
+        if self.params.instruct and self.last_n_tokens[-len(self.inp_prefix) :] != self.inp_prefix:
             self.embd_inp += self.inp_prefix
         self.embd_inp += self._tokenize(prompt)
         if self.params.instruct:

@@ -56,3 +56,4 @@ temp/
 # Soul persistence (runtime generated)
 storage/memory/soul.json
 
+venv/

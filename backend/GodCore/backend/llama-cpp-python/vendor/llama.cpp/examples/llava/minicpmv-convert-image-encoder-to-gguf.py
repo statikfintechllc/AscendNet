@@ -439,9 +439,7 @@ def add_key_str(raw_key: str, arch: str) -> str:
     return raw_key.format(arch=arch)
 
 
-def should_skip_tensor(
-    name: str, has_text: bool, has_vision: bool, has_minicpmv: bool
-) -> bool:
+def should_skip_tensor(name: str, has_text: bool, has_vision: bool, has_minicpmv: bool) -> bool:
     if name in (
         "logit_scale",
         "text_model.embeddings.position_ids",
@@ -520,9 +518,7 @@ ap.add_argument(
     help="Path to model directory cloned from HF Hub",
     required=True,
 )
-ap.add_argument(
-    "--use-f32", action="store_true", default=False, help="Use f32 instead of f16"
-)
+ap.add_argument("--use-f32", action="store_true", default=False, help="Use f32 instead of f16")
 ap.add_argument(
     "--text-only",
     action="store_true",
@@ -593,9 +589,7 @@ args = ap.parse_args()
 
 
 if args.text_only and args.vision_only:
-    print(
-        "--text-only and --image-only arguments cannot be specified at the same time."
-    )
+    print("--text-only and --image-only arguments cannot be specified at the same time.")
     exit(1)
 
 if args.use_f32:
@@ -741,9 +735,7 @@ if has_vision_encoder:
             else args.image_std
         )
     else:
-        image_mean = (
-            args.image_mean if args.image_mean is not None else default_image_mean
-        )
+        image_mean = args.image_mean if args.image_mean is not None else default_image_mean
         image_std = args.image_std if args.image_std is not None else default_image_std
     fout.add_array("clip.vision.image_mean", image_mean)
     fout.add_array("clip.vision.image_std", image_std)
@@ -884,9 +876,7 @@ for k, v in state_dict.items():
         new_state_dict[nk] = nv
 state_dict = new_state_dict
 for name, data in state_dict.items():
-    if should_skip_tensor(
-        name, has_text_encoder, has_vision_encoder, has_minicpmv_projector
-    ):
+    if should_skip_tensor(name, has_text_encoder, has_vision_encoder, has_minicpmv_projector):
         # we don't need this
         print(f"skipping parameter: {name}")
         continue

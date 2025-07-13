@@ -14,6 +14,7 @@
 import os
 import nltk
 
+
 def setup_nltk_data():
     """
     Ensures that the required NLTK data (such as 'punkt') is available by checking
@@ -22,9 +23,7 @@ def setup_nltk_data():
     Returns:
         str: The absolute path to the base NLTK data directory used.
     """
-    base_dir = os.path.abspath(
-        os.path.join(os.path.dirname(__file__), "..", "data", "nltk_data")
-    )
+    base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "data", "nltk_data"))
     fallback_dirs = ["/usr/local/share/nltk_data", base_dir]
 
     for path in fallback_dirs:

@@ -17,9 +17,7 @@ async def main():
     model_url = "http://127.0.0.1:6900"
     responses: list[requests.Response] = await asyncio.gather(
         *[
-            requests_post_async(
-                url=f"{model_url}/embedding", json={"content": str(0) * 1024}
-            )
+            requests_post_async(url=f"{model_url}/embedding", json={"content": str(0) * 1024})
             for i in range(n)
         ]
     )

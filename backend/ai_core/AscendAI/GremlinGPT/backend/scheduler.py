@@ -19,15 +19,19 @@ import threading
 _LOOP = None
 _LOOP_LOCK = threading.Lock()
 
+
 def get_loop():
     global _LOOP
     with _LOOP_LOCK:
         return _LOOP
 
+
 def set_loop(loop_obj):
     global _LOOP
     with _LOOP_LOCK:
         _LOOP = loop_obj
+
+
 from self_training.trainer import trigger_retrain
 from agents.planner_agent import enqueue_next
 from self_mutation_watcher.watcher import scan_and_diff
@@ -45,6 +49,7 @@ def start_scheduler():
     logger.info("[SCHEDULER] Initializing GremlinGPT scheduler...")
 
     import signal
+
     running = True
 
     def shutdown_handler(signum, frame):
@@ -74,6 +79,7 @@ def start_scheduler():
             break
         except Exception as e:
             import traceback
+
             logger.error(f"[SCHEDULER] Scheduler encountered error: {e}\n{traceback.format_exc()}")
             time.sleep(3)
     logger.info("[SCHEDULER] Scheduler stopped.")

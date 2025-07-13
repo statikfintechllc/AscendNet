@@ -21,9 +21,7 @@ def bar_chart(numbers, labels, pos):
 
 def calculatecorrect():
     directory = os.fsencode("./examples/jeopardy/results/")
-    csv_reader = csv.reader(
-        open("./examples/jeopardy/qasheet.csv", "rt"), delimiter=","
-    )
+    csv_reader = csv.reader(open("./examples/jeopardy/qasheet.csv", "rt"), delimiter=",")
     for row in csv_reader:
         global rows
         rows.append(row)

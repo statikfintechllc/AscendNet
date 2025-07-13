@@ -77,23 +77,15 @@ class Metadata:
             Keys.General.ORGANIZATION, metadata.organization
         )
 
-        metadata.finetune = metadata_override.get(
-            Keys.General.FINETUNE, metadata.finetune
-        )
-        metadata.basename = metadata_override.get(
-            Keys.General.BASENAME, metadata.basename
-        )
+        metadata.finetune = metadata_override.get(Keys.General.FINETUNE, metadata.finetune)
+        metadata.basename = metadata_override.get(Keys.General.BASENAME, metadata.basename)
 
-        metadata.description = metadata_override.get(
-            Keys.General.DESCRIPTION, metadata.description
-        )
+        metadata.description = metadata_override.get(Keys.General.DESCRIPTION, metadata.description)
         metadata.quantized_by = metadata_override.get(
             Keys.General.QUANTIZED_BY, metadata.quantized_by
         )
 
-        metadata.size_label = metadata_override.get(
-            Keys.General.SIZE_LABEL, metadata.size_label
-        )
+        metadata.size_label = metadata_override.get(Keys.General.SIZE_LABEL, metadata.size_label)
         metadata.license_name = metadata_override.get(
             Keys.General.LICENSE_NAME, metadata.license_name
         )
@@ -104,35 +96,23 @@ class Metadata:
         metadata.url = metadata_override.get(Keys.General.URL, metadata.url)
         metadata.doi = metadata_override.get(Keys.General.DOI, metadata.doi)
         metadata.uuid = metadata_override.get(Keys.General.UUID, metadata.uuid)
-        metadata.repo_url = metadata_override.get(
-            Keys.General.REPO_URL, metadata.repo_url
-        )
+        metadata.repo_url = metadata_override.get(Keys.General.REPO_URL, metadata.repo_url)
 
-        metadata.source_url = metadata_override.get(
-            Keys.General.SOURCE_URL, metadata.source_url
-        )
-        metadata.source_doi = metadata_override.get(
-            Keys.General.SOURCE_DOI, metadata.source_doi
-        )
-        metadata.source_uuid = metadata_override.get(
-            Keys.General.SOURCE_UUID, metadata.source_uuid
-        )
+        metadata.source_url = metadata_override.get(Keys.General.SOURCE_URL, metadata.source_url)
+        metadata.source_doi = metadata_override.get(Keys.General.SOURCE_DOI, metadata.source_doi)
+        metadata.source_uuid = metadata_override.get(Keys.General.SOURCE_UUID, metadata.source_uuid)
         metadata.source_repo_url = metadata_override.get(
             Keys.General.SOURCE_REPO_URL, metadata.source_repo_url
         )
 
         # Base Models is received here as an array of models
-        metadata.base_models = metadata_override.get(
-            "general.base_models", metadata.base_models
-        )
+        metadata.base_models = metadata_override.get("general.base_models", metadata.base_models)
 
         # Datasets is received here as an array of datasets
         metadata.datasets = metadata_override.get("general.datasets", metadata.datasets)
 
         metadata.tags = metadata_override.get(Keys.General.TAGS, metadata.tags)
-        metadata.languages = metadata_override.get(
-            Keys.General.LANGUAGES, metadata.languages
-        )
+        metadata.languages = metadata_override.get(Keys.General.LANGUAGES, metadata.languages)
 
         # Direct Metadata Override (via direct cli argument)
         if model_name is not None:
@@ -214,11 +194,7 @@ class Metadata:
         # Convert capitalization into title form unless acronym or version number
         return " ".join(
             [
-                (
-                    w.title()
-                    if w.islower() and not re.match(r"^(v\d+(?:\.\d+)*|\d.*)$", w)
-                    else w
-                )
+                (w.title() if w.islower() and not re.match(r"^(v\d+(?:\.\d+)*|\d.*)$", w) else w)
                 for w in string.strip().replace("-", " ").split()
             ]
         )
@@ -248,11 +224,7 @@ class Metadata:
             org_component, model_full_name_component = None, model_id
 
         # Check if we erroneously matched against './' or '../' etc...
-        if (
-            org_component is not None
-            and len(org_component) > 0
-            and org_component[0] == "."
-        ):
+        if org_component is not None and len(org_component) > 0 and org_component[0] == ".":
             org_component = None
 
         name_parts: list[str] = model_full_name_component.split("-")
@@ -262,9 +234,9 @@ class Metadata:
             if len(name_parts[i]) == 0:
                 del name_parts[i]
 
-        name_types: list[
-            set[Literal["basename", "size_label", "finetune", "version", "type"]]
-        ] = [set() for _ in name_parts]
+        name_types: list[set[Literal["basename", "size_label", "finetune", "version", "type"]]] = [
+            set() for _ in name_parts
+        ]
 
         # Annotate the name
         for i, part in enumerate(name_parts):
@@ -291,16 +263,12 @@ class Metadata:
                         part = part[:-1] + part[-1].upper()
                 if total_params != 0:
                     try:
-                        label_params = float(part[:-1]) * pow(
-                            1000, " KMBT".find(part[-1])
-                        )
+                        label_params = float(part[:-1]) * pow(1000, " KMBT".find(part[-1]))
                         # Only use it as a size label if it's close or bigger than the model size
                         # Note that LoRA adapters don't necessarily include all layers,
                         # so this is why bigger label sizes are accepted.
                         # Do not use the size label when it's smaller than 1/8 of the model size
-                        if (
-                            total_params < 0 and label_params < abs(total_params) // 8
-                        ) or (
+                        if (total_params < 0 and label_params < abs(total_params) // 8) or (
                             # Check both directions when the current model isn't a LoRA adapter
                             total_params > 0
                             and abs(label_params - total_params) > 7 * total_params // 8
@@ -316,9 +284,7 @@ class Metadata:
                     name_types[i].add("size_label")
                 name_parts[i] = part
             # Some easy to recognize finetune names
-            elif i > 0 and re.fullmatch(
-                r"chat|instruct|vision|lora", part, re.IGNORECASE
-            ):
+            elif i > 0 and re.fullmatch(r"chat|instruct|vision|lora", part, re.IGNORECASE):
                 if total_params < 0 and part.lower() == "lora":
                     # ignore redundant "lora" in the finetune part when the output is a lora adapter
                     name_types[i].add("type")
@@ -328,10 +294,7 @@ class Metadata:
         # Ignore word-based size labels when there is at least a number-based one present
         # TODO: should word-based size labels always be removed instead?
         if any(
-            c.isdecimal()
-            for n, t in zip(name_parts, name_types)
-            if "size_label" in t
-            for c in n
+            c.isdecimal() for n, t in zip(name_parts, name_types) if "size_label" in t for c in n
         ):
             for n, t in zip(name_parts, name_types):
                 if "size_label" in t:
@@ -356,30 +319,20 @@ class Metadata:
             else:
                 break
 
-        basename = (
-            "-".join(n for n, t in zip(name_parts, name_types) if "basename" in t)
-            or None
-        )
+        basename = "-".join(n for n, t in zip(name_parts, name_types) if "basename" in t) or None
         # Deduplicate size labels using order-preserving 'dict' ('set' seems to sort the keys)
         size_label = (
             "-".join(
-                dict.fromkeys(
-                    s for s, t in zip(name_parts, name_types) if "size_label" in t
-                ).keys()
+                dict.fromkeys(s for s, t in zip(name_parts, name_types) if "size_label" in t).keys()
             )
             or None
         )
-        finetune = (
-            "-".join(f for f, t in zip(name_parts, name_types) if "finetune" in t)
-            or None
-        )
+        finetune = "-".join(f for f, t in zip(name_parts, name_types) if "finetune" in t) or None
         # TODO: should the basename version always be excluded?
         # NOTE: multiple finetune versions are joined together
         version = (
             "-".join(
-                v
-                for v, t, in zip(name_parts, name_types)
-                if "version" in t and "basename" not in t
+                v for v, t, in zip(name_parts, name_types) if "version" in t and "basename" not in t
             )
             or None
         )
@@ -412,10 +365,7 @@ class Metadata:
         if model_card is not None:
 
             def use_model_card_metadata(metadata_key: str, model_card_key: str):
-                if (
-                    model_card_key in model_card
-                    and getattr(metadata, metadata_key, None) is None
-                ):
+                if model_card_key in model_card and getattr(metadata, metadata_key, None) is None:
                     setattr(metadata, metadata_key, model_card.get(model_card_key))
 
             def use_array_model_card_metadata(metadata_key: str, model_card_key: str):
@@ -487,9 +437,7 @@ class Metadata:
                 metadata_base_models = []
                 base_model_value = model_card.get(
                     "base_model",
-                    model_card.get(
-                        "base_models", model_card.get("base_model_sources", None)
-                    ),
+                    model_card.get("base_models", model_card.get("base_model_sources", None)),
                 )
 
                 if base_model_value is not None:
@@ -536,8 +484,8 @@ class Metadata:
                                             model_full_name_component
                                         )
                                     if org_component is not None:
-                                        base_model["organization"] = (
-                                            Metadata.id_to_title(org_component)
+                                        base_model["organization"] = Metadata.id_to_title(
+                                            org_component
                                         )
                                     if version is not None:
                                         base_model["version"] = version
@@ -555,19 +503,12 @@ class Metadata:
 
                             # Populate model dictionary with extracted components
                             if model_full_name_component is not None:
-                                base_model["name"] = Metadata.id_to_title(
-                                    model_full_name_component
-                                )
+                                base_model["name"] = Metadata.id_to_title(model_full_name_component)
                             if org_component is not None:
-                                base_model["organization"] = Metadata.id_to_title(
-                                    org_component
-                                )
+                                base_model["organization"] = Metadata.id_to_title(org_component)
                             if version is not None:
                                 base_model["version"] = version
-                            if (
-                                org_component is not None
-                                and model_full_name_component is not None
-                            ):
+                            if org_component is not None and model_full_name_component is not None:
                                 base_model["repo_url"] = (
                                     f"https://huggingface.co/{org_component}/{model_full_name_component}"
                                 )
@@ -576,9 +517,7 @@ class Metadata:
                         base_model = model_id
 
                     else:
-                        logger.error(
-                            f"base model entry '{str(model_id)}' not in a known format"
-                        )
+                        logger.error(f"base model entry '{str(model_id)}' not in a known format")
 
                     metadata.base_models.append(base_model)
 
@@ -650,25 +589,16 @@ class Metadata:
                                 finetune,
                                 version,
                                 size_label,
-                            ) = Metadata.get_model_id_components(
-                                dataset_id, total_params
-                            )
+                            ) = Metadata.get_model_id_components(dataset_id, total_params)
 
                             # Populate dataset dictionary with extracted components
                             if dataset_name_component is not None:
-                                dataset["name"] = Metadata.id_to_title(
-                                    dataset_name_component
-                                )
+                                dataset["name"] = Metadata.id_to_title(dataset_name_component)
                             if org_component is not None:
-                                dataset["organization"] = Metadata.id_to_title(
-                                    org_component
-                                )
+                                dataset["organization"] = Metadata.id_to_title(org_component)
                             if version is not None:
                                 dataset["version"] = version
-                            if (
-                                org_component is not None
-                                and dataset_name_component is not None
-                            ):
+                            if org_component is not None and dataset_name_component is not None:
                                 dataset["repo_url"] = (
                                     f"https://huggingface.co/{org_component}/{dataset_name_component}"
                                 )
@@ -677,9 +607,7 @@ class Metadata:
                         dataset = dataset_id
 
                     else:
-                        logger.error(
-                            f"dataset entry '{str(dataset_id)}' not in a known format"
-                        )
+                        logger.error(f"dataset entry '{str(dataset_id)}' not in a known format")
 
                     metadata.datasets.append(dataset)
 
@@ -813,13 +741,9 @@ class Metadata:
                 if "version" in base_model_entry:
                     gguf_writer.add_base_model_version(key, base_model_entry["version"])
                 if "organization" in base_model_entry:
-                    gguf_writer.add_base_model_organization(
-                        key, base_model_entry["organization"]
-                    )
+                    gguf_writer.add_base_model_organization(key, base_model_entry["organization"])
                 if "description" in base_model_entry:
-                    gguf_writer.add_base_model_description(
-                        key, base_model_entry["description"]
-                    )
+                    gguf_writer.add_base_model_description(key, base_model_entry["description"])
                 if "url" in base_model_entry:
                     gguf_writer.add_base_model_url(key, base_model_entry["url"])
                 if "doi" in base_model_entry:
@@ -827,9 +751,7 @@ class Metadata:
                 if "uuid" in base_model_entry:
                     gguf_writer.add_base_model_uuid(key, base_model_entry["uuid"])
                 if "repo_url" in base_model_entry:
-                    gguf_writer.add_base_model_repo_url(
-                        key, base_model_entry["repo_url"]
-                    )
+                    gguf_writer.add_base_model_repo_url(key, base_model_entry["repo_url"])
 
         if self.datasets is not None:
             gguf_writer.add_dataset_count(len(self.datasets))
@@ -841,13 +763,9 @@ class Metadata:
                 if "version" in dataset_entry:
                     gguf_writer.add_dataset_version(key, dataset_entry["version"])
                 if "organization" in dataset_entry:
-                    gguf_writer.add_dataset_organization(
-                        key, dataset_entry["organization"]
-                    )
+                    gguf_writer.add_dataset_organization(key, dataset_entry["organization"])
                 if "description" in dataset_entry:
-                    gguf_writer.add_dataset_description(
-                        key, dataset_entry["description"]
-                    )
+                    gguf_writer.add_dataset_description(key, dataset_entry["description"])
                 if "url" in dataset_entry:
                     gguf_writer.add_dataset_url(key, dataset_entry["url"])
                 if "doi" in dataset_entry:

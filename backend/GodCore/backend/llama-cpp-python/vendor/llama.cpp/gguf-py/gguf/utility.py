@@ -16,9 +16,7 @@ def fill_templated_filename(filename: str, output_type: str | None) -> str:
     )
 
 
-def model_weight_count_rounded_notation(
-    model_params_count: int, min_digits: int = 2
-) -> str:
+def model_weight_count_rounded_notation(model_params_count: int, min_digits: int = 2) -> str:
     if model_params_count > 1e12:
         # Trillions Of Parameters
         scaled_model_params = model_params_count * 1e-12
@@ -41,9 +39,7 @@ def model_weight_count_rounded_notation(
     return f"{scaled_model_params:.{fix}f}{scale_suffix}"
 
 
-def size_label(
-    total_params: int, shared_params: int, expert_params: int, expert_count: int
-) -> str:
+def size_label(total_params: int, shared_params: int, expert_params: int, expert_count: int) -> str:
 
     if expert_count > 0:
         pretty_size = model_weight_count_rounded_notation(
@@ -51,9 +47,7 @@ def size_label(
         )
         size_class = f"{expert_count}x{pretty_size}"
     else:
-        size_class = model_weight_count_rounded_notation(
-            abs(total_params), min_digits=2
-        )
+        size_class = model_weight_count_rounded_notation(abs(total_params), min_digits=2)
 
     return size_class
 
@@ -79,21 +73,13 @@ def naming_convention(
     parameters = f"-{size_label}" if size_label is not None else ""
 
     finetune = (
-        f"-{finetune_string.strip().replace(' ', '-')}"
-        if finetune_string is not None
-        else ""
+        f"-{finetune_string.strip().replace(' ', '-')}" if finetune_string is not None else ""
     )
 
-    version = (
-        f"-{version_string.strip().replace(' ', '-')}"
-        if version_string is not None
-        else ""
-    )
+    version = f"-{version_string.strip().replace(' ', '-')}" if version_string is not None else ""
 
     encoding = (
-        f"-{output_type.strip().replace(' ', '-').upper()}"
-        if output_type is not None
-        else ""
+        f"-{output_type.strip().replace(' ', '-').upper()}" if output_type is not None else ""
     )
 
     kind = f"-{model_type.strip().replace(' ', '-')}" if model_type is not None else ""

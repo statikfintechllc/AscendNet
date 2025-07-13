@@ -45,8 +45,7 @@ def inject_feedback():
         "time": datetime.utcnow().isoformat(),
         "note": "Auto-diff-based training cycle",
         "watermark": "source:GremlinGPT",
-        "context": "Feedback loop triggered by mutation event"
-        
+        "context": "Feedback loop triggered by mutation event",
     }
 
     try:
@@ -100,6 +99,7 @@ def clear_trigger():
         TRIGGER_FILE.unlink()
         logger.info("[FEEDBACK] Retrain trigger cleared.")
 
+
 def tag_event(tag, meta=None):
     """Tag an event for feedback, traceability, and cross-module signaling."""
     event = {
@@ -118,6 +118,7 @@ def tag_event(tag, meta=None):
         logger.info(f"[FEEDBACK] Event tagged: {tag} | {meta}")
     except Exception as e:
         logger.error(f"[FEEDBACK] Failed to tag event: {e}")
+
 
 __all__ = [
     "inject_feedback",

@@ -29,9 +29,7 @@ def convert_byteorder(reader: gguf.GGUFReader, args: argparse.Namespace) -> None
     else:
         host_endian = file_endian
     order = host_endian if args.order == "native" else args.order.upper()
-    logger.info(
-        f"* Host is {host_endian} endian, GGUF file seems to be {file_endian} endian"
-    )
+    logger.info(f"* Host is {host_endian} endian, GGUF file seems to be {file_endian} endian")
     if file_endian == order:
         logger.info(f"* File is already {order} endian. Nothing to do.")
         sys.exit(0)
@@ -51,9 +49,7 @@ def convert_byteorder(reader: gguf.GGUFReader, args: argparse.Namespace) -> None
     if args.dry_run:
         return
     logger.warning("*** Warning *** Warning *** Warning **")
-    logger.warning(
-        "* This conversion process may damage the file. Ensure you have a backup."
-    )
+    logger.warning("* This conversion process may damage the file. Ensure you have a backup.")
     if order != host_endian:
         logger.warning(
             "* Requested endian differs from host, you will not be able to load the model on this machine."
@@ -77,9 +73,7 @@ def convert_byteorder(reader: gguf.GGUFReader, args: argparse.Namespace) -> None
             part.byteswap(inplace=True)
     logger.info(f"* Converting tensors ({len(reader.tensors)})")
 
-    for idx, tensor in enumerate(
-        pbar := tqdm(reader.tensors, desc="Converting tensor")
-    ):
+    for idx, tensor in enumerate(pbar := tqdm(reader.tensors, desc="Converting tensor")):
         log_message = (
             f"Converting tensor {repr(tensor.name)}, "
             f"type={tensor.tensor_type.name}, "
@@ -100,9 +94,7 @@ def convert_byteorder(reader: gguf.GGUFReader, args: argparse.Namespace) -> None
 
             n_blocks = len(tensor.data) // block_size
             for block_num in (
-                inner_pbar := tqdm(
-                    range(n_blocks), desc="Byte-swapping Blocks", leave=False
-                )
+                inner_pbar := tqdm(range(n_blocks), desc="Byte-swapping Blocks", leave=False)
             ):
                 block_offs = block_num * block_size
 
@@ -131,9 +123,7 @@ def convert_byteorder(reader: gguf.GGUFReader, args: argparse.Namespace) -> None
             block_size = 144
             n_blocks = len(tensor.data) // block_size
             for block_num in (
-                inner_pbar := tqdm(
-                    range(n_blocks), desc="Byte-swapping Blocks", leave=False
-                )
+                inner_pbar := tqdm(range(n_blocks), desc="Byte-swapping Blocks", leave=False)
             ):
                 block_offs = block_num * block_size
 
@@ -141,9 +131,7 @@ def convert_byteorder(reader: gguf.GGUFReader, args: argparse.Namespace) -> None
                 delta = tensor.data[block_offs : block_offs + 2].view(dtype=np.uint16)
                 delta.byteswap(inplace=True)
 
-                delta = tensor.data[block_offs + 2 : block_offs + 4].view(
-                    dtype=np.uint16
-                )
+                delta = tensor.data[block_offs + 2 : block_offs + 4].view(dtype=np.uint16)
                 delta.byteswap(inplace=True)
 
                 # Byte-Swap
@@ -167,16 +155,12 @@ def convert_byteorder(reader: gguf.GGUFReader, args: argparse.Namespace) -> None
             block_size = 210
             n_blocks = len(tensor.data) // block_size
             for block_num in (
-                inner_pbar := tqdm(
-                    range(n_blocks), desc="Byte-swapping Blocks", leave=False
-                )
+                inner_pbar := tqdm(range(n_blocks), desc="Byte-swapping Blocks", leave=False)
             ):
                 block_offs = block_num * block_size
 
                 # Byte-Swap f16 sized field
-                delta = tensor.data[block_offs + 208 : block_offs + 210].view(
-                    dtype=np.uint16
-                )
+                delta = tensor.data[block_offs + 208 : block_offs + 210].view(dtype=np.uint16)
                 delta.byteswap(inplace=True)
 
                 # Byte-Swap
@@ -212,9 +196,7 @@ def main() -> None:
         action="store_true",
         help="Don't actually change anything",
     )
-    parser.add_argument(
-        "--verbose", action="store_true", help="increase output verbosity"
-    )
+    parser.add_argument("--verbose", action="store_true", help="increase output verbosity")
 
     args = parser.parse_args(None if len(sys.argv) > 1 else ["--help"])
 

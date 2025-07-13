@@ -56,7 +56,9 @@ def diff_texts(old: str, new: str, debug: bool = False) -> Dict:
             vec_new = encode(new)
             if vec_old.shape != vec_new.shape:
                 if debug:
-                    logger.warning(f"[{ENGINE_NAME}] Embedding shapes differ: {vec_old.shape} vs {vec_new.shape}")
+                    logger.warning(
+                        f"[{ENGINE_NAME}] Embedding shapes differ: {vec_old.shape} vs {vec_new.shape}"
+                    )
             delta = float(np.linalg.norm(vec_old - vec_new))
         except Exception as e:
             delta = 0.0

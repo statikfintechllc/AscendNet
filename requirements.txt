@@ -15,7 +15,7 @@ asyncio-mqtt>=0.16.0
 # nats-py>=2.6.0    # Uncomment if using NATS
 
 # Storage and Compression
-ipfshttpclient>=0.8.0
+ipfshttpclient>=0.8.0a2
 zstandard>=0.22.0
 aiofiles>=23.2.0
 

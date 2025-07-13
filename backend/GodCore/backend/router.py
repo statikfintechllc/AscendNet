@@ -12,11 +12,11 @@
 
 import os
 import sys
-from fastapi import FastAPI, HTTPException, Request
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import StreamingResponse, JSONResponse
-import httpx
-import uvicorn
+from fastapi import FastAPI, HTTPException, Request  # type: ignore
+from fastapi.middleware.cors import CORSMiddleware  # type: ignore
+from fastapi.responses import StreamingResponse, JSONResponse  # type: ignore
+import httpx  # type: ignore
+import uvicorn  # type: ignore
 import argparse
 
 # Where to find each backend server
@@ -36,27 +36,23 @@ app.add_middleware(
 
 @app.get("/")
 def root():
-    return {
-        "message": "GodCore Router is live. POST to /v1/chat/completions/[mistral|monday]"
-    }
+    return {"message": "GodCore Router is live. POST to /v1/chat/completions/[mistral|monday]"}
 
 
 @app.post("/v1/chat/completions/mistral")
 async def proxy_mistral(request: Request):
     try:
         async with httpx.AsyncClient(timeout=None) as client:
-            backend_resp = await client.stream(
+            async with client.stream(
                 "POST",
                 MISTRAL_URL,
                 content=await request.body(),
                 headers=dict(request.headers),
-            )
-            return StreamingResponse(
-                backend_resp.aiter_raw(),
-                media_type=backend_resp.headers.get(
-                    "content-type", "text/event-stream"
-                ),
-            )
+            ) as backend_resp:
+                return StreamingResponse(
+                    backend_resp.aiter_raw(),
+                    media_type=backend_resp.headers.get("content-type", "text/event-stream"),
+                )
     except Exception as e:
 
         async def errstream():
@@ -70,18 +66,16 @@ async def proxy_monday(request: Request):
     try:
         async with httpx.AsyncClient(timeout=None) as client:
             # Monday handler streams responses, so we need to proxy the stream
-            backend_resp = await client.stream(
+            async with client.stream(
                 "POST",
                 MONDAY_URL,
                 content=await request.body(),
                 headers=dict(request.headers),
-            )
-            return StreamingResponse(
-                backend_resp.aiter_raw(),
-                media_type=backend_resp.headers.get(
-                    "content-type", "text/event-stream"
-                ),
-            )
+            ) as backend_resp:
+                return StreamingResponse(
+                    backend_resp.aiter_raw(),
+                    media_type=backend_resp.headers.get("content-type", "text/event-stream"),
+                )
     except Exception as e:
         # On error, return as an SSE message
         async def errstream():
@@ -111,9 +105,7 @@ async def proxy_both(request: Request):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--port", type=int, default=8088, help="Port to run router on")
-    parser.add_argument(
-        "--host", type=str, default="0.0.0.0", help="Host to run router on"
-    )
+    parser.add_argument("--host", type=str, default="0.0.0.0", help="Host to run router on")
     args = parser.parse_args()
     print(f"🚦 GodCore Router ready on http://{args.host}:{args.port}")
     uvicorn.run("router:app", host=args.host, port=args.port)

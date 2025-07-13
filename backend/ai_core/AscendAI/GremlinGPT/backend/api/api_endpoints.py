@@ -10,7 +10,7 @@
 # GremlinGPT v1.0.3 :: backend/api/api_endpoints.py :: Module Integrity Directive
 # This script is a component of the GremlinGPT system, under Alpha expansion.
 
-import flask
+import flask  # type: ignore
 from agent_core.fsm import (
     fsm_loop,
     get_fsm_status,
@@ -18,6 +18,7 @@ from agent_core.fsm import (
     reset_fsm,
     inject_task as fsm_inject_task,
 )
+
 # Importing necessary modules for the API
 from agent_core.task_queue import TaskQueue
 from backend.api.chat_handler import chat
@@ -120,6 +121,7 @@ def api_agent_planner():
 def api_planner_mutate():
     return mutation_notify()
 
+
 @api_blueprint.route("/api/agent/planner/priority", methods=["POST"])
 def api_planner_priority():
     return set_task_priority()
@@ -145,6 +147,7 @@ def api_save_state():
 from nlp_engine.summarizer import summarize_text  # type: ignore
 import requests
 from bs4 import BeautifulSoup  # type: ignore
+
 
 @api_blueprint.route("/api/state/load", methods=["GET"])
 def api_load_state():
@@ -182,6 +185,7 @@ def api_dashboard_reward_feed():
 
 # --- Tools / Utilities ---
 
+
 # Example: Math Tool
 @api_blueprint.route("/api/tools/math/eval", methods=["POST"])
 def api_tools_math_eval():
@@ -196,6 +200,7 @@ def api_tools_math_eval():
     except Exception as e:
         return flask.jsonify({"error": str(e)}), 400
 
+
 # Example: Text Summarization Tool
 @api_blueprint.route("/api/tools/text/summarize", methods=["POST"])
 def api_tools_text_summarize():
@@ -205,6 +210,7 @@ def api_tools_text_summarize():
         return flask.jsonify({"error": "Missing 'text'"}), 400
     summary = summarize_text(text)
     return flask.jsonify({"summary": summary})
+
 
 # Example: URL Title Fetcher Tool
 @api_blueprint.route("/api/tools/url/title", methods=["POST"])
@@ -220,5 +226,6 @@ def api_tools_url_title():
         return flask.jsonify({"title": title})
     except Exception as e:
         return flask.jsonify({"error": str(e)}), 400
+
 
 # --- Extend with more agent/tools as needed below ---

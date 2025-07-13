@@ -30,9 +30,7 @@ def boot_loop():
             logger.info(f"[LOOP] Tick #{cycle_count} @ {loop_time}")
 
             if check_trigger():
-                logger.info(
-                    "[LOOP] Retrain trigger detected → scheduling learning phase."
-                )
+                logger.info("[LOOP] Retrain trigger detected → scheduling learning phase.")
                 log_event("loop", "trigger", {"origin": "feedback"}, status="queued")
                 clear_trigger()
 

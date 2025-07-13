@@ -5,9 +5,7 @@ from transformers import AutoTokenizer
 
 parser = argparse.ArgumentParser()
 parser.add_argument("dir_tokenizer", help="directory containing 'tokenizer.model' file")
-parser.add_argument(
-    "--fname-tok", help="path to a text file to tokenize", required=True
-)
+parser.add_argument("--fname-tok", help="path to a text file to tokenize", required=True)
 args = parser.parse_args()
 
 dir_tokenizer = args.dir_tokenizer

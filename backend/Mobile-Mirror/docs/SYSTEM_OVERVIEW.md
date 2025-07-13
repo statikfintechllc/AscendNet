@@ -1,4 +1,4 @@
-# System Overview: Mobile Developer
+# Syst**Mobile Developer** enables secure, on-demand remote coding from any mobile device, directly on your home/server machine. With one-click tunnel creation, instant QR mobile onboarding, and seamless HTTPS VSCode (statik-server) delivery, you can develop and deploy as if you're sitting at your desk—no matter where you are.m Overview: Mobile Developer
 
 ---
 
@@ -19,7 +19,7 @@ Developers increasingly need secure, real-time access to their coding environmen
 Mobile Developer automates the setup and lifecycle of a private mobile dev tunnel:
 
 - **Tailscale** creates a secure, peer-to-peer VPN tunnel between your phone and home/server.
-- **code-server** serves the full VSCode IDE (with HTTPS) to your device.
+- **statik-server** serves the full VSCode IDE (with HTTPS) to your device.
 - **CLI UI** provides easy controls and QR onboarding.
 - **Self-signed certs** ensure end-to-end encryption even on untrusted networks.
 
@@ -33,11 +33,11 @@ Mobile Developer automates the setup and lifecycle of a private mobile dev tunne
 - Ensures traffic between your phone and server never leaves encrypted channels.
 - Mobile onboarding is trivial via the Tailscale app and QR code login.
 
-#### **B. code-server**
+#### **B. statik-server**
 
 - Spins up a VSCode IDE on your server, accessible over HTTPS (`0.0.0.0:8888` by default).
 - Uses self-signed certificates (generated if missing) to force encrypted access.
-- Runs under your user, logs to `~/code-server.log`, never exposes to public internet.
+- Runs under your user, logs to `~/statik-server.log`, never exposes to public internet.
 
 #### **C. QR Onboarding**
 
@@ -58,11 +58,11 @@ Mobile Developer automates the setup and lifecycle of a private mobile dev tunne
 2. **Bring up Tailscale:** Auth via browser if not yet connected.
 3. **Fetch VPN IP:** Pick primary Tailscale IPv4.
 4. **Generate HTTPS certs** if missing.
-5. **Launch code-server** (HTTPS, specified port).
+5. **Launch statik-server** (HTTPS, specified port).
 6. **Show QR code** for direct mobile access.
 
 ### Shutdown (`stop_all.sh`)
-1. Kill all code-server processes on the target port.
+1. Kill all statik-server processes on the target port.
 2. Stop Tailscale and kill residual tunnels/processes.
 3. Clean up stale tunnel interfaces (`tailscale0`).
 
@@ -98,7 +98,7 @@ Mobile Developer automates the setup and lifecycle of a private mobile dev tunne
 
 ## 8. Extensibility
 
-- Swap code-server for other local web services (Jupyter, RStudio, etc) via script mods.
+- Swap statik-server for other local web services (Jupyter, RStudio, etc) via script mods.
 - Add 2FA, automatic cert trust for advanced users.
 - Integrate with other VPN providers as needed (see `apt.txt` for expansion).
 - Extend mobile_dev_cli.sh with more controls (restart, status, logs).
@@ -109,14 +109,14 @@ Mobile Developer automates the setup and lifecycle of a private mobile dev tunne
 
 - Ubuntu/Debian system
 - Tailscale (VPN)
-- code-server (VSCode in browser)
+- statik-server (VSCode in browser)
 - openssl, qrencode, whiptail (for full experience)
 
 ---
 
 ## 10. Troubleshooting
 
-- **If code-server is inaccessible:** Confirm both the server and phone are connected to the same Tailscale tailnet and that code-server is running.
+- **If statik-server is inaccessible:** Confirm both the server and phone are connected to the same Tailscale tailnet and that statik-server is running.
 - **Certificate warnings:** Expected, accept the warning or trust the cert manually for a smoother experience.
 - **QR code won’t scan:** The IP in the code must match your Tailscale address; run `tailscale ip -4` to verify.
 

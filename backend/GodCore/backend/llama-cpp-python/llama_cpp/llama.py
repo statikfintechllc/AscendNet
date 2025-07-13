@@ -78,9 +78,7 @@ class Llama:
         n_ubatch: int = 512,
         n_threads: Optional[int] = None,
         n_threads_batch: Optional[int] = None,
-        rope_scaling_type: Optional[
-            int
-        ] = llama_cpp.LLAMA_ROPE_SCALING_TYPE_UNSPECIFIED,
+        rope_scaling_type: Optional[int] = llama_cpp.LLAMA_ROPE_SCALING_TYPE_UNSPECIFIED,
         pooling_type: int = llama_cpp.LLAMA_POOLING_TYPE_UNSPECIFIED,
         rope_freq_base: float = 0.0,
         rope_freq_scale: float = 0.0,
@@ -253,35 +251,25 @@ class Llama:
         if kv_overrides is not None:
             # _kv_overrides_array is a ctypes.Array of llama_model_kv_override Structs
             kvo_array_len = len(kv_overrides) + 1  # for sentinel element
-            self._kv_overrides_array = (
-                llama_cpp.llama_model_kv_override * kvo_array_len
-            )()
+            self._kv_overrides_array = (llama_cpp.llama_model_kv_override * kvo_array_len)()
 
             for i, (k, v) in enumerate(kv_overrides.items()):
                 self._kv_overrides_array[i].key = k.encode("utf-8")
                 if isinstance(v, bool):
-                    self._kv_overrides_array[i].tag = (
-                        llama_cpp.LLAMA_KV_OVERRIDE_TYPE_BOOL
-                    )
+                    self._kv_overrides_array[i].tag = llama_cpp.LLAMA_KV_OVERRIDE_TYPE_BOOL
                     self._kv_overrides_array[i].value.val_bool = v
                 elif isinstance(v, int):
-                    self._kv_overrides_array[i].tag = (
-                        llama_cpp.LLAMA_KV_OVERRIDE_TYPE_INT
-                    )
+                    self._kv_overrides_array[i].tag = llama_cpp.LLAMA_KV_OVERRIDE_TYPE_INT
                     self._kv_overrides_array[i].value.val_i64 = v
                 elif isinstance(v, float):
-                    self._kv_overrides_array[i].tag = (
-                        llama_cpp.LLAMA_KV_OVERRIDE_TYPE_FLOAT
-                    )
+                    self._kv_overrides_array[i].tag = llama_cpp.LLAMA_KV_OVERRIDE_TYPE_FLOAT
                     self._kv_overrides_array[i].value.val_f64 = v
                 elif isinstance(v, str):  # type: ignore
                     v_bytes = v.encode("utf-8")
                     if len(v_bytes) > 128:  # TODO: Make this a constant
                         raise ValueError(f"Value for {k} is too long: {v}")
                     v_bytes = v_bytes.ljust(128, b"\0")
-                    self._kv_overrides_array[i].tag = (
-                        llama_cpp.LLAMA_KV_OVERRIDE_TYPE_STR
-                    )
+                    self._kv_overrides_array[i].tag = llama_cpp.LLAMA_KV_OVERRIDE_TYPE_STR
                     # copy min(v_bytes, 128) to str_value
                     address = typing.cast(
                         int,
@@ -297,9 +285,7 @@ class Llama:
                 else:
                     raise ValueError(f"Unknown value type for {k}: {v}")
 
-            self._kv_overrides_array[-1].key = (
-                b"\0"  # ensure sentinel element is zeroed
-            )
+            self._kv_overrides_array[-1].key = b"\0"  # ensure sentinel element is zeroed
             self.model_params.kv_overrides = self._kv_overrides_array
 
         self.n_batch = min(n_ctx, n_batch)  # ???
@@ -322,24 +308,12 @@ class Llama:
             else llama_cpp.LLAMA_ROPE_SCALING_TYPE_UNSPECIFIED
         )
         self.context_params.pooling_type = pooling_type
-        self.context_params.rope_freq_base = (
-            rope_freq_base if rope_freq_base != 0.0 else 0
-        )
-        self.context_params.rope_freq_scale = (
-            rope_freq_scale if rope_freq_scale != 0.0 else 0
-        )
-        self.context_params.yarn_ext_factor = (
-            yarn_ext_factor if yarn_ext_factor != 0.0 else 0
-        )
-        self.context_params.yarn_attn_factor = (
-            yarn_attn_factor if yarn_attn_factor != 0.0 else 0
-        )
-        self.context_params.yarn_beta_fast = (
-            yarn_beta_fast if yarn_beta_fast != 0.0 else 0
-        )
-        self.context_params.yarn_beta_slow = (
-            yarn_beta_slow if yarn_beta_slow != 0.0 else 0
-        )
+        self.context_params.rope_freq_base = rope_freq_base if rope_freq_base != 0.0 else 0
+        self.context_params.rope_freq_scale = rope_freq_scale if rope_freq_scale != 0.0 else 0
+        self.context_params.yarn_ext_factor = yarn_ext_factor if yarn_ext_factor != 0.0 else 0
+        self.context_params.yarn_attn_factor = yarn_attn_factor if yarn_attn_factor != 0.0 else 0
+        self.context_params.yarn_beta_fast = yarn_beta_fast if yarn_beta_fast != 0.0 else 0
+        self.context_params.yarn_beta_slow = yarn_beta_slow if yarn_beta_slow != 0.0 else 0
         self.context_params.yarn_orig_ctx = yarn_orig_ctx if yarn_orig_ctx != 0 else 0
         self.context_params.logits_all = (
             logits_all if draft_model is None else True
@@ -429,21 +403,15 @@ class Llama:
 
             self._stack.callback(free_lora_adapter)
 
-            if llama_cpp.llama_set_adapter_lora(
-                self._ctx.ctx, self._lora_adapter, self.lora_scale
-            ):
-                raise RuntimeError(
-                    f"Failed to set LoRA adapter from lora path: {self.lora_path}"
-                )
+            if llama_cpp.llama_set_adapter_lora(self._ctx.ctx, self._lora_adapter, self.lora_scale):
+                raise RuntimeError(f"Failed to set LoRA adapter from lora path: {self.lora_path}")
 
         if self.verbose:
             print(llama_cpp.llama_print_system_info().decode("utf-8"), file=sys.stderr)
 
         self.chat_format = chat_format
         self.chat_handler = chat_handler
-        self._chat_handlers: Dict[str, llama_chat_format.LlamaChatCompletionHandler] = (
-            {}
-        )
+        self._chat_handlers: Dict[str, llama_chat_format.LlamaChatCompletionHandler] = {}
 
         self.draft_model = draft_model
 
@@ -461,9 +429,7 @@ class Llama:
             (n_ctx if logits_all == True else n_batch, self._n_vocab), dtype=np.single
         )
 
-        self._mirostat_mu = ctypes.c_float(
-            2.0 * 5.0
-        )  # TODO: Move this to sampling context
+        self._mirostat_mu = ctypes.c_float(2.0 * 5.0)  # TODO: Move this to sampling context
 
         try:
             self.metadata = self._model.metadata()
@@ -478,12 +444,8 @@ class Llama:
         eos_token_id = self.token_eos()
         bos_token_id = self.token_bos()
 
-        eos_token = (
-            self._model.token_get_text(eos_token_id) if eos_token_id != -1 else ""
-        )
-        bos_token = (
-            self._model.token_get_text(bos_token_id) if bos_token_id != -1 else ""
-        )
+        eos_token = self._model.token_get_text(eos_token_id) if eos_token_id != -1 else ""
+        bos_token = self._model.token_get_text(bos_token_id) if bos_token_id != -1 else ""
 
         # Unfortunately the llama.cpp API does not return metadata arrays, so we can't get template names from tokenizer.chat_templates
         template_choices = dict(
@@ -493,9 +455,7 @@ class Llama:
         )
 
         if "tokenizer.chat_template" in self.metadata:
-            template_choices["chat_template.default"] = self.metadata[
-                "tokenizer.chat_template"
-            ]
+            template_choices["chat_template.default"] = self.metadata["tokenizer.chat_template"]
 
         if self.verbose and template_choices:
             print(
@@ -516,9 +476,7 @@ class Llama:
             and self.chat_handler is None
             and "chat_template.default" in template_choices
         ):
-            chat_format = llama_chat_format.guess_chat_format_from_gguf_metadata(
-                self.metadata
-            )
+            chat_format = llama_chat_format.guess_chat_format_from_gguf_metadata(self.metadata)
 
             if chat_format is not None:
                 self.chat_format = chat_format
@@ -538,9 +496,7 @@ class Llama:
         if self.chat_format is None and self.chat_handler is None:
             self.chat_format = "llama-2"
             if self.verbose:
-                print(
-                    f"Using fallback chat format: {self.chat_format}", file=sys.stderr
-                )
+                print(f"Using fallback chat format: {self.chat_format}", file=sys.stderr)
 
         self._sampler = None
 
@@ -571,9 +527,7 @@ class Llama:
             maxlen=self._n_ctx if self.context_params.logits_all else 1,
         )
 
-    def tokenize(
-        self, text: bytes, add_bos: bool = True, special: bool = False
-    ) -> List[int]:
+    def tokenize(self, text: bytes, add_bos: bool = True, special: bool = False) -> List[int]:
         """Tokenize a string.
 
         Args:
@@ -605,9 +559,7 @@ class Llama:
         Returns:
             The detokenized string.
         """
-        return self.tokenizer_.detokenize(
-            tokens, prev_tokens=prev_tokens, special=special
-        )
+        return self.tokenizer_.detokenize(tokens, prev_tokens=prev_tokens, special=special)
 
     def set_cache(self, cache: Optional[BaseLlamaCache]):
         """Set the cache.
@@ -650,9 +602,7 @@ class Llama:
             if self.context_params.logits_all:
                 rows = n_tokens
                 cols = self._n_vocab
-                logits = np.ctypeslib.as_array(
-                    self._ctx.get_logits(), shape=(rows * cols,)
-                )
+                logits = np.ctypeslib.as_array(self._ctx.get_logits(), shape=(rows * cols,))
                 self.scores[n_past : n_past + n_tokens, :].reshape(-1)[::] = logits
             else:
                 # rows = 1
@@ -699,9 +649,7 @@ class Llama:
                         [("id", np.intc), ("logit", np.single), ("p", np.single)],
                         align=True,
                     ),
-                    buf=(llama_cpp.llama_token_data * size).from_address(
-                        data_soa_address
-                    ),
+                    buf=(llama_cpp.llama_token_data * size).from_address(data_soa_address),
                 )
                 for logit_processor in logits_processor:
                     recarray.logit[:] = logit_processor(self._input_ids, recarray.logit)
@@ -949,14 +897,8 @@ class Llama:
 
             if self.draft_model is not None:
                 self.input_ids[self.n_tokens : self.n_tokens + len(tokens)] = tokens
-                draft_tokens = self.draft_model(
-                    self.input_ids[: self.n_tokens + len(tokens)]
-                )
-                tokens.extend(
-                    draft_tokens.astype(int)[
-                        : self._n_ctx - self.n_tokens - len(tokens)
-                    ]
-                )
+                draft_tokens = self.draft_model(self.input_ids[: self.n_tokens + len(tokens)])
+                tokens.extend(draft_tokens.astype(int)[: self._n_ctx - self.n_tokens - len(tokens)])
 
     def create_embedding(
         self, input: Union[str, List[str]], model: Optional[str] = None
@@ -1050,13 +992,10 @@ class Llama:
                 for i, size in enumerate(seq_sizes):
                     ptr = llama_cpp.llama_get_embeddings(self._ctx.ctx)
                     embedding: List[List[float]] = [
-                        ptr[pos + j * n_embd : pos + (j + 1) * n_embd]
-                        for j in range(size)
+                        ptr[pos + j * n_embd : pos + (j + 1) * n_embd] for j in range(size)
                     ]
                     if normalize:
-                        embedding = [
-                            internals.normalize_embedding(e) for e in embedding
-                        ]
+                        embedding = [internals.normalize_embedding(e) for e in embedding]
                     data.append(embedding)
                     pos += size
             else:
@@ -1084,9 +1023,7 @@ class Llama:
 
             # check for overrun
             if n_tokens > n_batch:
-                raise ValueError(
-                    f"Requested tokens ({n_tokens}) exceed batch size of {n_batch}"
-                )
+                raise ValueError(f"Requested tokens ({n_tokens}) exceed batch size of {n_batch}")
 
             # time to eval batch
             if t_batch + n_tokens > n_batch:
@@ -1146,9 +1083,7 @@ class Llama:
         logits_processor: Optional[LogitsProcessorList] = None,
         grammar: Optional[LlamaGrammar] = None,
         logit_bias: Optional[Dict[int, float]] = None,
-    ) -> Union[
-        Iterator[CreateCompletionResponse], Iterator[CreateCompletionStreamResponse]
-    ]:
+    ) -> Union[Iterator[CreateCompletionResponse], Iterator[CreateCompletionStreamResponse]]:
         assert suffix is None or suffix.__class__ is str
 
         completion_id: str = f"cmpl-{str(uuid.uuid4())}"
@@ -1163,9 +1098,7 @@ class Llama:
             self.metadata.get("tokenizer.ggml.add_space_prefix", "true") == "true"
         )
         bos_tokens: List[int] = [cls_token_id if cls_token_id != -1 else bos_token_id]
-        eos_tokens: List[int] = [
-            sep_token_id if sep_token_id != -1 else self.token_eos()
-        ]
+        eos_tokens: List[int] = [sep_token_id if sep_token_id != -1 else self.token_eos()]
 
         if (
             (isinstance(prompt, list) and suffix is None)
@@ -1232,9 +1165,7 @@ class Llama:
         )
         text: bytes = b""
         returned_tokens: int = 0
-        stop = (
-            stop if isinstance(stop, list) else [stop] if isinstance(stop, str) else []
-        )
+        stop = stop if isinstance(stop, list) else [stop] if isinstance(stop, str) else []
         model_name: str = model if model is not None else self.model_path
 
         if prompt_tokens[:2] == [self.token_bos()] * 2:
@@ -1290,9 +1221,7 @@ class Llama:
             stop_sequences = []
 
         if logprobs is not None and self.context_params.logits_all is False:
-            raise ValueError(
-                "logprobs is not supported for models created with logits_all=False"
-            )
+            raise ValueError("logprobs is not supported for models created with logits_all=False")
 
         if self.cache:
             try:
@@ -1395,25 +1324,20 @@ class Llama:
                         token_end_position += len(
                             self.detokenize(
                                 [token],
-                                prev_tokens=prompt_tokens
-                                + completion_tokens[:returned_tokens],
+                                prev_tokens=prompt_tokens + completion_tokens[:returned_tokens],
                             )
                         )
                         # Check if stop sequence is in the token
-                        if token_end_position > (
-                            remaining_length - first_stop_position
-                        ):
+                        if token_end_position > (remaining_length - first_stop_position):
                             break
                         token_str = self.detokenize(
                             [token],
-                            prev_tokens=prompt_tokens
-                            + completion_tokens[:returned_tokens],
+                            prev_tokens=prompt_tokens + completion_tokens[:returned_tokens],
                         ).decode("utf-8", errors="ignore")
                         text_offset = len(prompt) + len(
                             self.detokenize(
                                 completion_tokens[:returned_tokens],
-                                prev_tokens=prompt_tokens
-                                + completion_tokens[:returned_tokens],
+                                prev_tokens=prompt_tokens + completion_tokens[:returned_tokens],
                             ).decode("utf-8", errors="ignore")
                         )
                         token_offset = len(prompt_tokens) + returned_tokens
@@ -1426,9 +1350,7 @@ class Llama:
                             )
                         )
                         top_logprob = {
-                            self.detokenize([i]).decode(
-                                "utf-8", errors="ignore"
-                            ): logprob
+                            self.detokenize([i]).decode("utf-8", errors="ignore"): logprob
                             for logprob, i in sorted_logprobs[:logprobs]
                         }
                         top_logprob.update({token_str: current_logprobs[int(token)]})
@@ -1436,8 +1358,7 @@ class Llama:
                             "tokens": [
                                 self.detokenize(
                                     [token],
-                                    prev_tokens=prompt_tokens
-                                    + completion_tokens[:returned_tokens],
+                                    prev_tokens=prompt_tokens + completion_tokens[:returned_tokens],
                                 ).decode("utf-8", errors="ignore")
                             ],
                             "text_offset": [text_offset],
@@ -1470,8 +1391,7 @@ class Llama:
                             try:
                                 bs = self.detokenize(
                                     remaining_tokens[:i],
-                                    prev_tokens=prompt_tokens
-                                    + completion_tokens[:returned_tokens],
+                                    prev_tokens=prompt_tokens + completion_tokens[:returned_tokens],
                                 )
                                 ts = bs.decode("utf-8")
                                 decode_success = True
@@ -1484,9 +1404,7 @@ class Llama:
                             # all remaining tokens cannot be decoded to a UTF-8 character
                             break
                         token_end_position += len(bs)
-                        if token_end_position > (
-                            remaining_length - first_stop_position
-                        ):
+                        if token_end_position > (remaining_length - first_stop_position):
                             break
                         remaining_tokens = remaining_tokens[i:]
                         returned_tokens += i
@@ -1545,14 +1463,11 @@ class Llama:
                 if logprobs is not None:
                     if token == bos_token_id:
                         continue
-                    token_str = self.detokenize([token]).decode(
-                        "utf-8", errors="ignore"
-                    )
+                    token_str = self.detokenize([token]).decode("utf-8", errors="ignore")
                     text_offset = len(prompt) + len(
                         self.detokenize(
                             completion_tokens[:returned_tokens],
-                            prev_tokens=prompt_tokens
-                            + completion_tokens[:returned_tokens],
+                            prev_tokens=prompt_tokens + completion_tokens[:returned_tokens],
                         )
                     )
                     token_offset = len(prompt_tokens) + returned_tokens - 1
@@ -1570,9 +1485,7 @@ class Llama:
                     }
                     top_logprob.update({token_str: current_logprobs[int(token)]})
                     logprobs_or_none = {
-                        "tokens": [
-                            self.detokenize([token]).decode("utf-8", errors="ignore")
-                        ],
+                        "tokens": [self.detokenize([token]).decode("utf-8", errors="ignore")],
                         "text_offset": [text_offset],
                         "token_logprobs": [current_logprobs[int(token)]],
                         "top_logprobs": [top_logprob],
@@ -1608,9 +1521,7 @@ class Llama:
                     "model": model_name,
                     "choices": [
                         {
-                            "text": self.detokenize([token]).decode(
-                                "utf-8", errors="ignore"
-                            ),
+                            "text": self.detokenize([token]).decode("utf-8", errors="ignore"),
                             "index": 0,
                             "logprobs": logprobs_or_none,
                             "finish_reason": None,
@@ -1685,17 +1596,11 @@ class Llama:
                     continue
                 text_offsets.append(
                     text_offset
-                    + len(
-                        self.detokenize(all_tokens[:idx]).decode(
-                            "utf-8", errors="ignore"
-                        )
-                    )
+                    + len(self.detokenize(all_tokens[:idx]).decode("utf-8", errors="ignore"))
                 )
                 tokens.append(token_str)
                 sorted_logprobs = list(
-                    sorted(
-                        zip(logprobs_token, range(len(logprobs_token))), reverse=True
-                    )
+                    sorted(zip(logprobs_token, range(len(logprobs_token))), reverse=True)
                 )
                 token_logprobs.append(logprobs_token[int(token)])
                 top_logprob: Optional[Dict[str, float]] = {
@@ -1958,9 +1863,7 @@ class Llama:
         logit_bias: Optional[Dict[int, float]] = None,
         logprobs: Optional[bool] = None,
         top_logprobs: Optional[int] = None,
-    ) -> Union[
-        CreateChatCompletionResponse, Iterator[CreateChatCompletionStreamResponse]
-    ]:
+    ) -> Union[CreateChatCompletionResponse, Iterator[CreateChatCompletionStreamResponse]]:
         """Generate a chat completion from a list of messages.
 
         Args:
@@ -2316,9 +2219,7 @@ class Llama:
             for additonal_file_name in additional_files:
                 # find the additional shard file:
                 matching_additional_files = [
-                    file
-                    for file in file_list
-                    if fnmatch.fnmatch(file, additonal_file_name)
+                    file for file in file_list if fnmatch.fnmatch(file, additonal_file_name)
                 ]
 
                 if len(matching_additional_files) == 0:
@@ -2383,9 +2284,7 @@ class LlamaState:
         self.seed = seed
 
 
-LogitsProcessor = Callable[
-    [npt.NDArray[np.intc], npt.NDArray[np.single]], npt.NDArray[np.single]
-]
+LogitsProcessor = Callable[[npt.NDArray[np.intc], npt.NDArray[np.single]], npt.NDArray[np.single]]
 
 
 class LogitsProcessorList(List[LogitsProcessor]):
@@ -2401,9 +2300,7 @@ StoppingCriteria = Callable[[npt.NDArray[np.intc], npt.NDArray[np.single]], bool
 
 
 class StoppingCriteriaList(List[StoppingCriteria]):
-    def __call__(
-        self, input_ids: npt.NDArray[np.intc], logits: npt.NDArray[np.single]
-    ) -> bool:
+    def __call__(self, input_ids: npt.NDArray[np.intc], logits: npt.NDArray[np.single]) -> bool:
         return any([stopping_criteria(input_ids, logits) for stopping_criteria in self])
 
 

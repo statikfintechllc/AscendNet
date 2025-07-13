@@ -75,9 +75,7 @@ class GptParams:
 
 
 def gpt_params_parse(argv=None):
-    parser = argparse.ArgumentParser(
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter
-    )
+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument(
         "-s",
         "--seed",
@@ -143,12 +141,8 @@ def gpt_params_parse(argv=None):
         help="ignore end of stream token and continue generating",
         dest="ignore_eos",
     )
-    parser.add_argument(
-        "--top_k", type=int, default=40, help="top-k sampling", dest="top_k"
-    )
-    parser.add_argument(
-        "--top_p", type=float, default=0.95, help="top-p samplin", dest="top_p"
-    )
+    parser.add_argument("--top_k", type=int, default=40, help="top-k sampling", dest="top_k")
+    parser.add_argument("--top_p", type=float, default=0.95, help="top-p samplin", dest="top_p")
     parser.add_argument(
         "--tfs",
         type=float,
@@ -156,9 +150,7 @@ def gpt_params_parse(argv=None):
         help="tail free sampling, parameter z (1.0 = disabled)",
         dest="tfs_z",
     )
-    parser.add_argument(
-        "--temp", type=float, default=0.80, help="temperature", dest="temp"
-    )
+    parser.add_argument("--temp", type=float, default=0.80, help="temperature", dest="temp")
     parser.add_argument(
         "--repeat_penalty",
         type=float,

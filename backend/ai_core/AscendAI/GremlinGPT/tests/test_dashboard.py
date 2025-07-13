@@ -29,8 +29,6 @@ def test_backend_api():
 
 
 def test_chat_handler():
-    res = requests.post(
-        "http://localhost:5050/api/chat", json={"text": "scan penny stocks"}
-    )
+    res = requests.post("http://localhost:5050/api/chat", json={"text": "scan penny stocks"})
     assert res.status_code == 200
     assert "response" in res.json()

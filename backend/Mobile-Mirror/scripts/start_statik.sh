@@ -24,9 +24,9 @@ else
     exit 1
 fi
 
-LOGFILE="$HOME/code-server.log"
-CERT="$HOME/code-server.crt"
-KEY="$HOME/code-server.key"
+LOGFILE="$HOME/statik-server.log"
+CERT="$HOME/statik-server.crt"
+KEY="$HOME/statik-server.key"
 PORT=8888
 
 # Colors for CLI
@@ -67,14 +67,14 @@ fi
 
 # Generate certs if missing
 if [[ ! -f "$CERT" || ! -f "$KEY" ]]; then
-    echo -e "${BOLD}${CYAN}[*] Generating self-signed certificate for code-server HTTPS...${RESET}"
-    openssl req -newkey rsa:4096 -nodes -keyout "$KEY" -x509 -days 365 -out "$CERT" -subj "/CN=code-server"
+    echo -e "${BOLD}${CYAN}[*] Generating self-signed certificate for statik-server HTTPS...${RESET}"
+    openssl req -newkey rsa:4096 -nodes -keyout "$KEY" -x509 -days 365 -out "$CERT" -subj "/CN=statik-server"
 else
     echo -e "${BOLD}${CYAN}[*] Certificate and key already exist.${RESET}"
 fi
 
-echo -e "${BOLD}${CYAN}[*] Starting code-server with HTTPS on port $PORT...${RESET}"
-code-server --bind-addr 0.0.0.0:$PORT --cert "$CERT" --cert-key "$KEY" >> "$LOGFILE" 2>&1 &
+echo -e "${BOLD}${CYAN}[*] Starting statik-server with HTTPS on port $PORT...${RESET}"
+statik-server --bind-addr 0.0.0.0:$PORT --cert "$CERT" --cert-key "$KEY" >> "$LOGFILE" 2>&1 &
 
 sleep 2
 
@@ -82,7 +82,7 @@ echo -e "${BOLD}${CYAN}[*] Remote dev environment started!${RESET}"
 
 # Generate QR code if qrencode is present
 if command -v qrencode >/dev/null 2>&1; then
-    echo -e "\n${BOLD}${CYAN}Scan this QR code to access code-server from your phone:${RESET}"
+    echo -e "\n${BOLD}${CYAN}Scan this QR code to access statik-server from your phone:${RESET}"
     echo -e "${BOLD}${CYAN}URL: $URL${RESET}\n"
     qrencode -t ansiutf8 "$URL"
     echo -e "\n${BOLD}${CYAN}Open this in your mobile browser and accept the self-signed cert warning.${RESET}\n"

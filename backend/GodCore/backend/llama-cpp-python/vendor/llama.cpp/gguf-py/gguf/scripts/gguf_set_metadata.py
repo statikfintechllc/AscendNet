@@ -60,13 +60,9 @@ def set_metadata(reader: GGUFReader, args: argparse.Namespace) -> None:
         sys.exit(1)
     current_value = field.parts[field.data[0]][0]
     new_value = handler(args.value)
-    logger.info(
-        f"* Preparing to change field {repr(args.key)} from {current_value} to {new_value}"
-    )
+    logger.info(f"* Preparing to change field {repr(args.key)} from {current_value} to {new_value}")
     if current_value == new_value:
-        logger.info(
-            f"- Key {repr(args.key)} already set to requested value {current_value}"
-        )
+        logger.info(f"- Key {repr(args.key)} already set to requested value {current_value}")
         sys.exit(0)
     if args.dry_run:
         sys.exit(0)
@@ -85,21 +81,15 @@ def set_metadata(reader: GGUFReader, args: argparse.Namespace) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(
-        description="Set a simple value in GGUF file metadata"
-    )
+    parser = argparse.ArgumentParser(description="Set a simple value in GGUF file metadata")
     parser.add_argument("model", type=str, help="GGUF format model filename")
     parser.add_argument("key", type=str, help="Metadata key to set")
     parser.add_argument("value", type=str, help="Metadata value to set")
-    parser.add_argument(
-        "--dry-run", action="store_true", help="Don't actually change anything"
-    )
+    parser.add_argument("--dry-run", action="store_true", help="Don't actually change anything")
     parser.add_argument(
         "--force", action="store_true", help="Change the field without confirmation"
     )
-    parser.add_argument(
-        "--verbose", action="store_true", help="increase output verbosity"
-    )
+    parser.add_argument("--verbose", action="store_true", help="increase output verbosity")
 
     args = parser.parse_args(None if len(sys.argv) > 1 else ["--help"])
 

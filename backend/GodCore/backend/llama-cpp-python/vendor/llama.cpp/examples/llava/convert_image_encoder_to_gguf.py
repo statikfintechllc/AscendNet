@@ -16,9 +16,7 @@ def k(raw_key: str, arch: str) -> str:
     return raw_key.format(arch=arch)
 
 
-def should_skip_tensor(
-    name: str, has_text: bool, has_vision: bool, has_llava: bool
-) -> bool:
+def should_skip_tensor(name: str, has_text: bool, has_vision: bool, has_llava: bool) -> bool:
     if name in (
         "logit_scale",
         "text_model.embeddings.position_ids",
@@ -113,9 +111,7 @@ ap.add_argument(
     help="Path to model directory cloned from HF Hub",
     required=True,
 )
-ap.add_argument(
-    "--use-f32", action="store_true", default=False, help="Use f32 instead of f16"
-)
+ap.add_argument("--use-f32", action="store_true", default=False, help="Use f32 instead of f16")
 ap.add_argument(
     "--bigendian",
     action="store_true",
@@ -196,9 +192,7 @@ args = ap.parse_args()
 
 
 if args.text_only and args.vision_only:
-    print(
-        "--text-only and --image-only arguments cannot be specified at the same time."
-    )
+    print("--text-only and --image-only arguments cannot be specified at the same time.")
     exit(1)
 
 if args.use_f32:
@@ -283,11 +277,7 @@ fout.add_bool("clip.has_text_encoder", has_text_encoder)
 fout.add_bool("clip.has_vision_encoder", has_vision_encoder)
 fout.add_bool("clip.has_llava_projector", has_llava_projector)
 fout.add_file_type(ftype)
-model_name = (
-    config["_name_or_path"]
-    if "_name_or_path" in config
-    else os.path.basename(dir_model)
-)
+model_name = config["_name_or_path"] if "_name_or_path" in config else os.path.basename(dir_model)
 fout.add_name(model_name)
 if args.text_only:
     fout.add_description("text-only CLIP model")
@@ -356,9 +346,7 @@ if has_vision_encoder:
     if args.clip_model_is_siglip:
         visual_projection_dim = 0
     else:
-        visual_projection_dim = v_hparams.get(
-            "projection_dim", config["projection_dim"]
-        )
+        visual_projection_dim = v_hparams.get("projection_dim", config["projection_dim"])
 
     # set vision_model hparams
     fout.add_uint32("clip.vision.image_size", v_hparams["image_size"])
@@ -366,12 +354,8 @@ if has_vision_encoder:
     fout.add_uint32(k(KEY_EMBEDDING_LENGTH, VISION), v_hparams["hidden_size"])
     fout.add_uint32(k(KEY_FEED_FORWARD_LENGTH, VISION), v_hparams["intermediate_size"])
     fout.add_uint32("clip.vision.projection_dim", visual_projection_dim)
-    fout.add_uint32(
-        k(KEY_ATTENTION_HEAD_COUNT, VISION), v_hparams["num_attention_heads"]
-    )
-    fout.add_float32(
-        k(KEY_ATTENTION_LAYERNORM_EPS, VISION), v_hparams["layer_norm_eps"]
-    )
+    fout.add_uint32(k(KEY_ATTENTION_HEAD_COUNT, VISION), v_hparams["num_attention_heads"])
+    fout.add_float32(k(KEY_ATTENTION_LAYERNORM_EPS, VISION), v_hparams["layer_norm_eps"])
     if feature_layers:
         block_count = max(feature_layers)
     else:
@@ -422,21 +406,13 @@ if has_vision_encoder:
                 image_grid_pinpoints.append(p)
         fout.add_array("clip.vision.image_grid_pinpoints", image_grid_pinpoints)
     if "image_crop_resolution" in v_hparams:
-        fout.add_uint32(
-            "clip.vision.image_crop_resolution", v_hparams["image_crop_resolution"]
-        )
+        fout.add_uint32("clip.vision.image_crop_resolution", v_hparams["image_crop_resolution"])
     if "image_aspect_ratio" in v_hparams:
-        fout.add_string(
-            "clip.vision.image_aspect_ratio", v_hparams["image_aspect_ratio"]
-        )
+        fout.add_string("clip.vision.image_aspect_ratio", v_hparams["image_aspect_ratio"])
     if "image_split_resolution" in v_hparams:
-        fout.add_uint32(
-            "clip.vision.image_split_resolution", v_hparams["image_split_resolution"]
-        )
+        fout.add_uint32("clip.vision.image_split_resolution", v_hparams["image_split_resolution"])
     if "mm_patch_merge_type" in v_hparams:
-        fout.add_string(
-            "clip.vision.mm_patch_merge_type", v_hparams["mm_patch_merge_type"]
-        )
+        fout.add_string("clip.vision.mm_patch_merge_type", v_hparams["mm_patch_merge_type"])
     if "mm_projector_type" in v_hparams:
         fout.add_string("clip.vision.mm_projector_type", v_hparams["mm_projector_type"])
     if feature_layers:
@@ -454,9 +430,7 @@ if has_vision_encoder:
             else args.image_std
         )  # pyright: ignore[reportAttributeAccessIssue]
     else:
-        image_mean = (
-            args.image_mean if args.image_mean is not None else default_image_mean
-        )
+        image_mean = args.image_mean if args.image_mean is not None else default_image_mean
         image_std = args.image_std if args.image_std is not None else default_image_std
     fout.add_array("clip.vision.image_mean", image_mean)
     fout.add_array("clip.vision.image_std", image_std)
@@ -471,9 +445,7 @@ if has_llava_projector:
     if feature_layers is None:
         model.vision_model.encoder.layers.pop(-1)
     else:
-        model.vision_model.encoder.layers = model.vision_model.encoder.layers[
-            : max(feature_layers)
-        ]
+        model.vision_model.encoder.layers = model.vision_model.encoder.layers[: max(feature_layers)]
 
     projector = torch.load(args.llava_projector)
     for name, data in projector.items():
@@ -490,9 +462,7 @@ if has_llava_projector:
 
 state_dict = model.state_dict()
 for name, data in state_dict.items():
-    if should_skip_tensor(
-        name, has_text_encoder, has_vision_encoder, has_llava_projector
-    ):
+    if should_skip_tensor(name, has_text_encoder, has_vision_encoder, has_llava_projector):
         # we don't need this
         print(f"skipping parameter: {name}")
         continue

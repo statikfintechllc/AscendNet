@@ -6,7 +6,7 @@ set -eu
 ENV_NAME="Mob-Dev"
 APPDIR="$HOME/.local/share/applications"
 ICNDIR="$HOME/.local/share/icons"
-LOGFILE="$APPDIR/code-server.log"
+LOGFILE="$APPDIR/statik-server.log"
 DESKTOP_FILE="$APPDIR/MobileDeveloper.desktop"
 
 echo "[*] Removing Mobile Developer files..."
@@ -14,7 +14,7 @@ echo "[*] Removing Mobile Developer files..."
 # Remove installed files
 rm -f \
   "$APPDIR/mobile_cli.sh" \
-  "$APPDIR/start_code.sh" \
+  "$APPDIR/start_statik.sh" \
   "$APPDIR/stop_code.sh" \
   "$LOGFILE" \
   "$DESKTOP_FILE" || true

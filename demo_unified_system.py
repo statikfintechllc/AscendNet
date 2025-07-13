@@ -88,7 +88,10 @@ async def demo_system_integration():
     print("=" * 50)
     
     # Show unified path structure
-    from ascendnet_orchestrator import AscendNetOrchestrator
+    import sys
+    import os
+    sys.path.append(os.path.join(os.path.dirname(__file__), 'scripts', 'deployment'))
+    from scripts.deployment.ascendnet_orchestrator import AscendNetOrchestrator
     
     orchestrator = AscendNetOrchestrator()
     

@@ -22,9 +22,7 @@ def main():
             mat_result = mat_1 @ mat_2
         else:
             MatMulOp1(mgr)(tensor_shape, tensor_in_1, tensor_in_2, tensor_out)
-            mat_result = tensor_out.data().reshape(
-                tensor_shape
-            )  # CPU is too slow for big sizes
+            mat_result = tensor_out.data().reshape(tensor_shape)  # CPU is too slow for big sizes
 
         print(f"{tensor_shape} input tensors:\n" f"{mat_1}\n" f"{mat_2}\n")
         print(f"Output :\n{mat_result}")

@@ -143,9 +143,7 @@ def llava_eval_image_embed(
 # /** load mmproj model */
 # CLIP_API struct clip_ctx * clip_model_load    (const char * fname, int verbosity);
 @ctypes_function("clip_model_load", [c_char_p, c_int], clip_ctx_p_ctypes)
-def clip_model_load(
-    fname: bytes, verbosity: Union[c_int, int], /
-) -> Optional[clip_ctx_p]: ...
+def clip_model_load(fname: bytes, verbosity: Union[c_int, int], /) -> Optional[clip_ctx_p]: ...
 
 
 # /** free mmproj model */

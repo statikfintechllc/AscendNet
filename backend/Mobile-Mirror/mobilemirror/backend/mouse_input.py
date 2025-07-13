@@ -4,6 +4,7 @@
 import subprocess
 from logger import log_event
 
+
 def move_mouse(x=None, y=None, click=False):
     try:
         if x is not None and y is not None:
@@ -14,12 +15,7 @@ def move_mouse(x=None, y=None, click=False):
             subprocess.run(["xdotool", "click", "1"], check=True)
             log_event(f"Mouse click at ({x}, {y})")
 
-        return {
-            "status": "mouse action sent",
-            "x": x,
-            "y": y,
-            "click": click
-        }
+        return {"status": "mouse action sent", "x": x, "y": y, "click": click}
 
     except subprocess.CalledProcessError as e:
         log_event(f"[ERR] move_mouse subprocess error: {e}")

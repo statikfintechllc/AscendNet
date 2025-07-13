@@ -8,9 +8,7 @@ import numpy.typing as npt
 
 class LlamaDraftModel(abc.ABC):
     @abc.abstractmethod
-    def __call__(
-        self, input_ids: npt.NDArray[np.intc], /, **kwargs: Any
-    ) -> npt.NDArray[np.intc]:
+    def __call__(self, input_ids: npt.NDArray[np.intc], /, **kwargs: Any) -> npt.NDArray[np.intc]:
         raise NotImplementedError()
 
 
@@ -54,9 +52,7 @@ class LlamaPromptLookupDecoding(LlamaDraftModel):
         # If no match is found, return an empty array
         return np.array([], dtype=np.intc)
 
-    def __call__(
-        self, input_ids: npt.NDArray[np.intc], /, **kwargs: Any
-    ) -> npt.NDArray[np.intc]:
+    def __call__(self, input_ids: npt.NDArray[np.intc], /, **kwargs: Any) -> npt.NDArray[np.intc]:
         return self.find_candidate_pred_tokens(
             input_ids=input_ids,
             max_ngram_size=self.max_ngram_size,

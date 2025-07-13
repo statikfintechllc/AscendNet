@@ -6,10 +6,7 @@ import os
 import sys
 
 # Necessary to load the local gguf package
-if (
-    "NO_LOCAL_GGUF" not in os.environ
-    and (Path(__file__).parent.parent.parent / "gguf-py").exists()
-):
+if "NO_LOCAL_GGUF" not in os.environ and (Path(__file__).parent.parent.parent / "gguf-py").exists():
     sys.path.insert(0, str(Path(__file__).parent.parent))
 
 import gguf
@@ -22,9 +19,7 @@ class TestMetadataMethod(unittest.TestCase):
             gguf.Metadata.id_to_title("Mixtral-8x7B-Instruct-v0.1"),
             "Mixtral 8x7B Instruct v0.1",
         )
-        self.assertEqual(
-            gguf.Metadata.id_to_title("Meta-Llama-3-8B"), "Meta Llama 3 8B"
-        )
+        self.assertEqual(gguf.Metadata.id_to_title("Meta-Llama-3-8B"), "Meta Llama 3 8B")
         self.assertEqual(
             gguf.Metadata.id_to_title("hermes-2-pro-llama-3-8b-DPO"),
             "Hermes 2 Pro Llama 3 8b DPO",
@@ -103,9 +98,7 @@ class TestMetadataMethod(unittest.TestCase):
         # Check that it can handle a real model id with no version code
         # Note that 4k in this string is non standard and microsoft were referring to context length rather than weight count
         self.assertEqual(
-            gguf.Metadata.get_model_id_components(
-                "microsoft/Phi-3-mini-4k-instruct", 4 * 10**9
-            ),
+            gguf.Metadata.get_model_id_components("microsoft/Phi-3-mini-4k-instruct", 4 * 10**9),
             (
                 "Phi-3-mini-4k-instruct",
                 "microsoft",
@@ -118,9 +111,7 @@ class TestMetadataMethod(unittest.TestCase):
 
         # There is some legitimate models with only thousands of parameters
         self.assertEqual(
-            gguf.Metadata.get_model_id_components(
-                "delphi-suite/stories-llama2-50k", 50 * 10**3
-            ),
+            gguf.Metadata.get_model_id_components("delphi-suite/stories-llama2-50k", 50 * 10**3),
             ("stories-llama2-50k", "delphi-suite", "stories-llama2", None, None, "50K"),
         )
 
@@ -139,9 +130,7 @@ class TestMetadataMethod(unittest.TestCase):
 
         # This is a real model_id where they append 2DPO to refer to Direct Preference Optimization
         self.assertEqual(
-            gguf.Metadata.get_model_id_components(
-                "crestf411/daybreak-kunoichi-2dpo-7b"
-            ),
+            gguf.Metadata.get_model_id_components("crestf411/daybreak-kunoichi-2dpo-7b"),
             (
                 "daybreak-kunoichi-2dpo-7b",
                 "crestf411",
@@ -179,9 +168,7 @@ class TestMetadataMethod(unittest.TestCase):
 
         # Has two potential versions in the basename
         self.assertEqual(
-            gguf.Metadata.get_model_id_components(
-                "NousResearch/Hermes-2-Theta-Llama-3-8B"
-            ),
+            gguf.Metadata.get_model_id_components("NousResearch/Hermes-2-Theta-Llama-3-8B"),
             (
                 "Hermes-2-Theta-Llama-3-8B",
                 "NousResearch",
@@ -200,9 +187,7 @@ class TestMetadataMethod(unittest.TestCase):
 
         # Underscore in the basename, and 1m for the context size
         self.assertEqual(
-            gguf.Metadata.get_model_id_components(
-                "internlm/internlm2_5-7b-chat-1m", 7 * 10**9
-            ),
+            gguf.Metadata.get_model_id_components("internlm/internlm2_5-7b-chat-1m", 7 * 10**9),
             (
                 "internlm2_5-7b-chat-1m",
                 "internlm",
@@ -227,9 +212,7 @@ class TestMetadataMethod(unittest.TestCase):
 
         # Two sizes, don't merge them, the other is the number of tokens on which it was trained
         self.assertEqual(
-            gguf.Metadata.get_model_id_components(
-                "abacaj/llama-161M-100B", 161 * 10**6
-            ),
+            gguf.Metadata.get_model_id_components("abacaj/llama-161M-100B", 161 * 10**6),
             ("llama-161M-100B", "abacaj", "llama", "100b", None, "161M"),
         )
 
@@ -262,9 +245,7 @@ class TestMetadataMethod(unittest.TestCase):
 
         # Instruct in a name without a size label
         self.assertEqual(
-            gguf.Metadata.get_model_id_components(
-                "mistralai/Mistral-Nemo-Instruct-2407"
-            ),
+            gguf.Metadata.get_model_id_components("mistralai/Mistral-Nemo-Instruct-2407"),
             (
                 "Mistral-Nemo-Instruct-2407",
                 "mistralai",
@@ -290,9 +271,7 @@ class TestMetadataMethod(unittest.TestCase):
 
         # Multiple versions
         self.assertEqual(
-            gguf.Metadata.get_model_id_components(
-                "OpenGVLab/Mini-InternVL-Chat-2B-V1-5"
-            ),
+            gguf.Metadata.get_model_id_components("OpenGVLab/Mini-InternVL-Chat-2B-V1-5"),
             (
                 "Mini-InternVL-Chat-2B-V1-5",
                 "OpenGVLab",
@@ -336,9 +315,7 @@ class TestMetadataMethod(unittest.TestCase):
 
         # Start with a dash and has dashes in rows
         self.assertEqual(
-            gguf.Metadata.get_model_id_components(
-                "mistralai/-Mistral--Nemo-Base-2407-"
-            ),
+            gguf.Metadata.get_model_id_components("mistralai/-Mistral--Nemo-Base-2407-"),
             (
                 "-Mistral--Nemo-Base-2407-",
                 "mistralai",
@@ -352,9 +329,7 @@ class TestMetadataMethod(unittest.TestCase):
         ## LoRA ##
 
         self.assertEqual(
-            gguf.Metadata.get_model_id_components(
-                "Llama-3-Instruct-abliteration-LoRA-8B"
-            ),
+            gguf.Metadata.get_model_id_components("Llama-3-Instruct-abliteration-LoRA-8B"),
             (
                 "Llama-3-Instruct-abliteration-LoRA-8B",
                 None,
@@ -367,9 +342,7 @@ class TestMetadataMethod(unittest.TestCase):
 
         # Negative size --> output is a LoRA adaper --> prune "LoRA" out of the name to avoid redundancy with the suffix
         self.assertEqual(
-            gguf.Metadata.get_model_id_components(
-                "Llama-3-Instruct-abliteration-LoRA-8B", -1234
-            ),
+            gguf.Metadata.get_model_id_components("Llama-3-Instruct-abliteration-LoRA-8B", -1234),
             (
                 "Llama-3-Instruct-abliteration-LoRA-8B",
                 None,
@@ -416,9 +389,7 @@ class TestMetadataMethod(unittest.TestCase):
             ],
             "base_model": ["EmbeddedLLM/Mistral-7B-Merge-14-v0", "janai-hq/trinity-v1"],
         }
-        got = gguf.Metadata.apply_metadata_heuristic(
-            gguf.Metadata(), model_card, None, None
-        )
+        got = gguf.Metadata.apply_metadata_heuristic(gguf.Metadata(), model_card, None, None)
         expect = gguf.Metadata()
         expect.base_models = [
             {
@@ -471,9 +442,7 @@ class TestMetadataMethod(unittest.TestCase):
                 }
             ]
         )
-        got = gguf.Metadata.apply_metadata_heuristic(
-            gguf.Metadata(), model_card, None, None
-        )
+        got = gguf.Metadata.apply_metadata_heuristic(gguf.Metadata(), model_card, None, None)
         self.assertEqual(got, expect)
 
         # Base Model spec is only url
@@ -488,9 +457,7 @@ class TestMetadataMethod(unittest.TestCase):
                 }
             ]
         )
-        got = gguf.Metadata.apply_metadata_heuristic(
-            gguf.Metadata(), model_card, None, None
-        )
+        got = gguf.Metadata.apply_metadata_heuristic(gguf.Metadata(), model_card, None, None)
         self.assertEqual(got, expect)
 
         # Base Model spec is given directly
@@ -514,9 +481,7 @@ class TestMetadataMethod(unittest.TestCase):
                 }
             ]
         )
-        got = gguf.Metadata.apply_metadata_heuristic(
-            gguf.Metadata(), model_card, None, None
-        )
+        got = gguf.Metadata.apply_metadata_heuristic(gguf.Metadata(), model_card, None, None)
         self.assertEqual(got, expect)
 
         # Dataset spec is inferred from model id
@@ -531,9 +496,7 @@ class TestMetadataMethod(unittest.TestCase):
                 }
             ]
         )
-        got = gguf.Metadata.apply_metadata_heuristic(
-            gguf.Metadata(), model_card, None, None
-        )
+        got = gguf.Metadata.apply_metadata_heuristic(gguf.Metadata(), model_card, None, None)
         self.assertEqual(got, expect)
 
         # Dataset spec is only url
@@ -548,9 +511,7 @@ class TestMetadataMethod(unittest.TestCase):
                 }
             ]
         )
-        got = gguf.Metadata.apply_metadata_heuristic(
-            gguf.Metadata(), model_card, None, None
-        )
+        got = gguf.Metadata.apply_metadata_heuristic(gguf.Metadata(), model_card, None, None)
         self.assertEqual(got, expect)
 
         # Dataset spec is given directly
@@ -574,9 +535,7 @@ class TestMetadataMethod(unittest.TestCase):
                 }
             ]
         )
-        got = gguf.Metadata.apply_metadata_heuristic(
-            gguf.Metadata(), model_card, None, None
-        )
+        got = gguf.Metadata.apply_metadata_heuristic(gguf.Metadata(), model_card, None, None)
         self.assertEqual(got, expect)
 
     def test_apply_metadata_heuristic_from_hf_parameters(self):

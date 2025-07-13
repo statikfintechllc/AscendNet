@@ -9,13 +9,13 @@
 
 # GremlinGPT v1.0.3 :: Module Integrity Directive
 
-from flask import Flask, send_from_directory
-from flask_socketio import SocketIO   # type: ignore 
+from flask import Flask, send_from_directory  # type: ignore
+from flask_socketio import SocketIO  # type: ignore
 from backend.router import register_routes
 from backend.api.api_endpoints import api_blueprint
 from loguru import logger
 from backend.globals import CFG
-import eventlet   # type: ignore
+import eventlet  # type: ignore
 import os
 import sys
 import traceback
@@ -68,17 +68,13 @@ def run_server_forever():
             broadcast_status(f"GremlinGPT backend server online at {host}:{port}")
             socketio.run(app, host=host, port=port)
         except KeyboardInterrupt:
-            logger.warning(
-                "[BACKEND] KeyboardInterrupt received. Shutting down server."
-            )
+            logger.warning("[BACKEND] KeyboardInterrupt received. Shutting down server.")
             broadcast_status("GremlinGPT backend server received shutdown signal.")
             break
         except Exception as e:
             err_info = f"[BACKEND] Server error: {e}\n{traceback.format_exc()}"
             logger.error(err_info)
-            broadcast_status(
-                f"GremlinGPT backend server encountered error and is restarting: {e}"
-            )
+            broadcast_status(f"GremlinGPT backend server encountered error and is restarting: {e}")
             # Wait before restart to avoid busy-loop
             import time
 

@@ -34,14 +34,14 @@ WATERMARK = "source:GremlinGPT"
 ORIGIN = "semantic_score"
 
 # Ensure punkt is available
-#NLTK_PATHS = ["/usr/local/share/nltk_data", ".data/nltk_data"]
-#for path in NLTK_PATHS:
+# NLTK_PATHS = ["/usr/local/share/nltk_data", ".data/nltk_data"]
+# for path in NLTK_PATHS:
 #    nltk.data.path.append(path)
 
-#try:
+# try:
 #    nltk.data.find("tokenizers/punkt")
-#except LookupError:
-    # Try downloading to a writable directory
+# except LookupError:
+# Try downloading to a writable directory
 #    for path in NLTK_PATHS:
 #        try:
 #            nltk.download("punkt", download_dir=path)
@@ -136,9 +136,7 @@ def tokenize(text: str):
         return []
 
 
-def semantic_similarity(
-    a: str, b: str, dynamic_language=True, sentence_level=False
-) -> float:
+def semantic_similarity(a: str, b: str, dynamic_language=True, sentence_level=False) -> float:
     """
     Computes semantic similarity between two texts:
         - Detects language automatically if dynamic_language is True.
@@ -155,9 +153,7 @@ def semantic_similarity(
             lang = "en"
         model = _get_model(lang)
         if not model:
-            logger.error(
-                f"[{ENGINE_NAME}] No valid model loaded for lang={lang}; returning 0.0"
-            )
+            logger.error(f"[{ENGINE_NAME}] No valid model loaded for lang={lang}; returning 0.0")
             return 0.0
 
         # Sentence-level similarity (average all combinations)
@@ -172,9 +168,7 @@ def semantic_similarity(
             max_per_b = np.max(sims.cpu().numpy(), axis=0)
             sim_avg = (np.mean(max_per_a) + np.mean(max_per_b)) / 2.0
             sim_clamped = float(np.clip(sim_avg, 0.0, 1.0))
-            logger.debug(
-                f"[{ENGINE_NAME}] Sentence-level similarity: {sim_clamped:.4f}"
-            )
+            logger.debug(f"[{ENGINE_NAME}] Sentence-level similarity: {sim_clamped:.4f}")
             return sim_clamped
 
         # Whole-text similarity
@@ -182,9 +176,7 @@ def semantic_similarity(
         emb_b = model.encode(text_b, convert_to_tensor=True)
         sim = util.cos_sim(emb_a, emb_b).item()
         sim_clamped = max(0.0, min(1.0, float(sim)))
-        logger.debug(
-            f"[{ENGINE_NAME}] Semantic similarity: {sim_clamped:.4f} (lang: {lang})"
-        )
+        logger.debug(f"[{ENGINE_NAME}] Semantic similarity: {sim_clamped:.4f} (lang: {lang})")
         return sim_clamped
 
     except Exception as e:

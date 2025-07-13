@@ -34,16 +34,12 @@ def create_completion(host, prompt, gbnf_grammar):
     )
     headers = {"Content-Type": "application/json"}
     data = {"prompt": prompt, "grammar": gbnf_grammar}
-    result = requests.post(
-        f"http://{host}/completion", headers=headers, json=data
-    ).json()
+    result = requests.post(f"http://{host}/completion", headers=headers, json=data).json()
     assert data.get("error") is None, data
     logging.info("Result: %s", result)
     content = result["content"]
     print(f"  Model: {result['model']}")
-    print(
-        f"  Result:\n{textwrap.indent(json.dumps(json.loads(content), indent=2), '    ')}"
-    )
+    print(f"  Result:\n{textwrap.indent(json.dumps(json.loads(content), indent=2), '    ')}")
     return content
 
 
@@ -186,9 +182,7 @@ class Book(BaseModel):
 
     title: str = Field(..., description="Title of the book.")
     author: str = Field(..., description="Author of the book.")
-    published_year: Optional[int] = Field(
-        ..., description="Publishing year of the book."
-    )
+    published_year: Optional[int] = Field(..., description="Publishing year of the book.")
     keywords: list[str] = Field(..., description="A list of keywords.")
     category: Category = Field(..., description="Category of the book.")
     summary: str = Field(..., description="Summary of the book.")
@@ -203,9 +197,7 @@ def example_struct(host):
     """
     print("- example_struct")
     tools = [Book]
-    gbnf_grammar, documentation = generate_gbnf_grammar_and_documentation(
-        pydantic_model_list=tools
-    )
+    gbnf_grammar, documentation = generate_gbnf_grammar_and_documentation(pydantic_model_list=tools)
     system_message = (
         "You are an advanced AI, tasked to create a dataset entry in JSON for a Book. The following is the expected output model:\n\n"
         + documentation
@@ -216,9 +208,7 @@ def example_struct(host):
     json_data = json.loads(text)
     # In this case, there's no function nor function_parameters.
     # Here the result will vary based on the LLM used.
-    keys = sorted(
-        ["title", "author", "published_year", "keywords", "category", "summary"]
-    )
+    keys = sorted(["title", "author", "published_year", "keywords", "category", "summary"])
     if keys != sorted(json_data.keys()):
         print(f"Unexpected result: {sorted(json_data.keys())}")
         return 1
@@ -240,17 +230,11 @@ def get_current_datetime(output_format: Optional[str] = None):
 def get_current_weather(location, unit):
     """Get the current weather in a given location"""
     if "London" in location:
-        return json.dumps(
-            {"location": "London", "temperature": "42", "unit": unit.value}
-        )
+        return json.dumps({"location": "London", "temperature": "42", "unit": unit.value})
     elif "New York" in location:
-        return json.dumps(
-            {"location": "New York", "temperature": "24", "unit": unit.value}
-        )
+        return json.dumps({"location": "New York", "temperature": "24", "unit": unit.value})
     elif "North Pole" in location:
-        return json.dumps(
-            {"location": "North Pole", "temperature": "-42", "unit": unit.value}
-        )
+        return json.dumps({"location": "North Pole", "temperature": "-42", "unit": unit.value})
     return json.dumps({"location": location, "temperature": "unknown"})
 
 
@@ -279,9 +263,7 @@ def example_concurrent(host):
         },
     }
     # Convert OpenAI function definition into pydantic model.
-    current_weather_tool_model = convert_dictionary_to_pydantic_model(
-        current_weather_tool
-    )
+    current_weather_tool_model = convert_dictionary_to_pydantic_model(current_weather_tool)
     # Add the actual function to a pydantic model.
     current_weather_tool_model = add_run_method_to_dynamic_model(
         current_weather_tool_model, get_current_weather

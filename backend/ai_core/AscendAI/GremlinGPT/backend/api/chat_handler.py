@@ -18,6 +18,7 @@ from agent_core.task_queue import enqueue_task
 from memory.vector_store import embedder
 from memory.log_history import log_event
 import logging
+
 logger = logging.getLogger("GremlinGPT.TaskQueue")
 from datetime import datetime
 
@@ -55,16 +56,14 @@ def chat(user_input=None):
             "timestamp": datetime.utcnow().isoformat(),
             "user_input": user_input,
             "watermark": "source:GremlinGPT",
-        }
+        },
     )
     log_event("chat", "parsed", {"input": user_input, "task_type": task.get("type", "unknown")})
 
     log_event("chat", "parsed", {"input": user_input, "task_type": task["type"]})
 
     if task["type"] == "unknown":
-        logger.warning(
-            f"[CHAT] Fallback NLP task for unrecognized command: {user_input}"
-        )
+        logger.warning(f"[CHAT] Fallback NLP task for unrecognized command: {user_input}")
         enqueue_task({"type": "nlp", "text": user_input})
 
     response = {

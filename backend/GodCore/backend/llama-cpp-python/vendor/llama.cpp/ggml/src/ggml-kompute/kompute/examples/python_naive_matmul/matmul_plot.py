@@ -4,13 +4,9 @@ import cv2
 import numpy as np
 
 
-def plot_tensor(
-    window_name: str, tensor: np.ndarray, coord_highlight: tuple[int, int] = None
-):
+def plot_tensor(window_name: str, tensor: np.ndarray, coord_highlight: tuple[int, int] = None):
     font_size = 48
-    image = np.zeros(
-        (tensor.shape[1] * font_size, tensor.shape[0] * font_size, 3), dtype=np.uint8
-    )
+    image = np.zeros((tensor.shape[1] * font_size, tensor.shape[0] * font_size, 3), dtype=np.uint8)
 
     for y in range(tensor.shape[1]):
         for x in range(tensor.shape[0]):

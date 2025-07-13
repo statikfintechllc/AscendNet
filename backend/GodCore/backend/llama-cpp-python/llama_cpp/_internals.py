@@ -167,9 +167,7 @@ class LlamaModel:
                 self.vocab, text, len(text), tokens, n_tokens, add_bos, special
             )
             if n_tokens < 0:
-                raise RuntimeError(
-                    f'Failed to tokenize: text="{text}" n_tokens={n_tokens}'
-                )
+                raise RuntimeError(f'Failed to tokenize: text="{text}" n_tokens={n_tokens}')
         return list(tokens[:n_tokens])
 
     def token_to_piece(self, token: int, special: bool = False) -> bytes:
@@ -204,19 +202,13 @@ class LlamaModel:
         buffer.value = b"\0" * buffer_size
         # iterate over model keys
         for i in range(llama_cpp.llama_model_meta_count(self.model)):
-            nbytes = llama_cpp.llama_model_meta_key_by_index(
-                self.model, i, buffer, buffer_size
-            )
+            nbytes = llama_cpp.llama_model_meta_key_by_index(self.model, i, buffer, buffer_size)
             if nbytes > buffer_size:
                 buffer_size = nbytes + 1
                 buffer = ctypes.create_string_buffer(buffer_size)
-                nbytes = llama_cpp.llama_model_meta_key_by_index(
-                    self.model, i, buffer, buffer_size
-                )
+                nbytes = llama_cpp.llama_model_meta_key_by_index(self.model, i, buffer, buffer_size)
             key = buffer.value.decode("utf-8")
-            nbytes = llama_cpp.llama_model_meta_val_str_by_index(
-                self.model, i, buffer, buffer_size
-            )
+            nbytes = llama_cpp.llama_model_meta_val_str_by_index(self.model, i, buffer, buffer_size)
             if nbytes > buffer_size:
                 buffer_size = nbytes + 1
                 buffer = ctypes.create_string_buffer(buffer_size)
@@ -347,9 +339,7 @@ class LlamaContext:
         #     penalty_freq,
         #     penalty_present,
         # )
-        raise NotImplementedError(
-            "sample_repetition_penalties is not implemented in llama.cpp"
-        )
+        raise NotImplementedError("sample_repetition_penalties is not implemented in llama.cpp")
 
     def sample_softmax(self, candidates: "_LlamaTokenDataArray"):
         # llama_cpp.llama_sample_softmax(
@@ -376,9 +366,7 @@ class LlamaContext:
         # )
         raise NotImplementedError("sample_min_p is not implemented in llama.cpp")
 
-    def sample_typical(
-        self, candidates: "_LlamaTokenDataArray", p: float, min_keep: int
-    ):
+    def sample_typical(self, candidates: "_LlamaTokenDataArray", p: float, min_keep: int):
         # llama_cpp.llama_sample_typical(
         #     self.ctx, llama_cpp.byref(candidates.candidates), p, min_keep
         # )
@@ -406,9 +394,7 @@ class LlamaContext:
         m: int,
         mu: llama_cpp.CtypesPointerOrRef[ctypes.c_float],
     ) -> int:
-        raise NotImplementedError(
-            "sample_token_mirostat is not implemented in llama.cpp"
-        )
+        raise NotImplementedError("sample_token_mirostat is not implemented in llama.cpp")
         # return llama_cpp.llama_sample_token_mirostat(
         #     self.ctx,
         #     llama_cpp.byref(candidates.candidates),
@@ -425,9 +411,7 @@ class LlamaContext:
         eta: float,
         mu: llama_cpp.CtypesPointerOrRef[ctypes.c_float],
     ) -> int:
-        raise NotImplementedError(
-            "sample_token_mirostat_v2 is not implemented in llama.cpp"
-        )
+        raise NotImplementedError("sample_token_mirostat_v2 is not implemented in llama.cpp")
         # return llama_cpp.llama_sample_token_mirostat_v2(
         #     self.ctx,
         #     llama_cpp.byref(candidates.candidates),
@@ -452,9 +436,7 @@ class LlamaContext:
 
     # Grammar
     def grammar_accept_token(self, grammar: LlamaGrammar, token: int):
-        raise NotImplementedError(
-            "grammar_accept_token is not implemented in llama.cpp"
-        )
+        raise NotImplementedError("grammar_accept_token is not implemented in llama.cpp")
         # llama_cpp.llama_grammar_accept_token(grammar.grammar, self.ctx, token)
 
     def reset_timings(self):
@@ -471,9 +453,7 @@ class LlamaContext:
 
 
 class LlamaBatch:
-    def __init__(
-        self, *, n_tokens: int, embd: int, n_seq_max: int, verbose: bool = True
-    ):
+    def __init__(self, *, n_tokens: int, embd: int, n_seq_max: int, verbose: bool = True):
         self._n_tokens = n_tokens
         self.embd = embd
         self.n_seq_max = n_seq_max
@@ -537,9 +517,7 @@ class LlamaTokenDataArray:
         self.n_vocab = n_vocab
         self.candidates_data = np.recarray(
             (self.n_vocab,),
-            dtype=np.dtype(
-                [("id", np.intc), ("logit", np.single), ("p", np.single)], align=True
-            ),
+            dtype=np.dtype([("id", np.intc), ("logit", np.single), ("p", np.single)], align=True),
         )
         self.candidates = llama_cpp.llama_token_data_array(
             data=self.candidates_data.ctypes.data_as(llama_cpp.llama_token_data_p),
@@ -650,9 +628,7 @@ class LlamaSamplingContext:
         for token, logit_bias in self.params.logit_bias.items():
             logits_array[token] += logit_bias
 
-        token_data_array = LlamaTokenDataArray(
-            n_vocab=n_vocab
-        )  # TODO: Only create this once
+        token_data_array = LlamaTokenDataArray(n_vocab=n_vocab)  # TODO: Only create this once
         token_data_array.copy_logits(logits_array)
 
         # apply penalties
@@ -703,18 +679,10 @@ class LlamaSamplingContext:
                 )
             else:
                 min_keep = max(1, self.params.n_probs)
-                ctx_main.sample_top_k(
-                    token_data_array, self.params.top_k, min_keep=min_keep
-                )
-                ctx_main.sample_typical(
-                    token_data_array, self.params.typical_p, min_keep=min_keep
-                )
-                ctx_main.sample_top_p(
-                    token_data_array, self.params.top_p, min_keep=min_keep
-                )
-                ctx_main.sample_min_p(
-                    token_data_array, self.params.min_p, min_keep=min_keep
-                )
+                ctx_main.sample_top_k(token_data_array, self.params.top_k, min_keep=min_keep)
+                ctx_main.sample_typical(token_data_array, self.params.typical_p, min_keep=min_keep)
+                ctx_main.sample_top_p(token_data_array, self.params.top_p, min_keep=min_keep)
+                ctx_main.sample_min_p(token_data_array, self.params.min_p, min_keep=min_keep)
                 ctx_main.sample_temp(token_data_array, self.params.temp)
                 id = ctx_main.sample_token(token_data_array)
         return id
@@ -731,9 +699,7 @@ import llama_cpp
 
 
 class CustomSampler:
-    def __init__(
-        self, apply_func: typing.Callable[[llama_cpp.llama_token_data_array], None]
-    ):
+    def __init__(self, apply_func: typing.Callable[[llama_cpp.llama_token_data_array], None]):
         self.apply_func = apply_func
 
         def apply_wrapper(
@@ -840,17 +806,11 @@ class LlamaSampler:
         )
         self._add_sampler(sampler)
 
-    def init_logit_bias(
-        self, n_vocab: int, n_logit_bias, logit_bias: llama_cpp.llama_logit_bias_p
-    ):
-        sampler = llama_cpp.llama_sampler_init_logit_bias(
-            n_vocab, n_logit_bias, logit_bias
-        )
+    def init_logit_bias(self, n_vocab: int, n_logit_bias, logit_bias: llama_cpp.llama_logit_bias_p):
+        sampler = llama_cpp.llama_sampler_init_logit_bias(n_vocab, n_logit_bias, logit_bias)
         self._add_sampler(sampler)
 
-    def add_custom(
-        self, apply_func: Callable[[llama_cpp.llama_token_data_array], None]
-    ):
+    def add_custom(self, apply_func: Callable[[llama_cpp.llama_token_data_array], None]):
         custom_sampler = CustomSampler(apply_func)
         sampler = custom_sampler.get_sampler()
         self._add_sampler(sampler)

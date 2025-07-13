@@ -43,6 +43,7 @@ def load_memory_config():
 CFG = load_config()
 MEM = load_memory_config()
 
+
 # === PATH MANAGEMENT ===
 def resolve_path(p):
     """Expands $ROOT and user home (~) dynamically"""
@@ -94,9 +95,7 @@ AGENT = {
 
 # === SCRAPER CONFIG ===
 SCRAPER = {
-    "profile": CFG["scraper"].get(
-        "browser_profile", "scraper/profiles/chromium_profile"
-    ),
+    "profile": CFG["scraper"].get("browser_profile", "scraper/profiles/chromium_profile"),
     "interval": CFG["scraper"].get("scrape_interval_sec", 30),
     "max_concurrent": CFG["scraper"].get("max_concurrent_scrapers", 1),
 }
@@ -104,7 +103,9 @@ SCRAPER = {
 
 # === MEMORY ENGINE SETTINGS ===
 MEMORY = {
-    "vector_backend": CFG["memory"].get("dashboard_selected_backend", CFG["memory"].get("vector_backend", "faiss")),
+    "vector_backend": CFG["memory"].get(
+        "dashboard_selected_backend", CFG["memory"].get("vector_backend", "faiss")
+    ),
     "embedding_format": CFG["memory"].get("embedding_format", "float32"),
     "auto_index": CFG["memory"].get("auto_index", True),
     "index_chunk_size": CFG["memory"].get("index_chunk_size", 128),

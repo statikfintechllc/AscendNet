@@ -20,9 +20,7 @@ import subprocess
 
 KERNEL_TAG = "kernel_writer"
 SOURCE_ROOT = Path("GremlinGPT")
-ROLLBACK_DIR = (
-    Path(CFG["paths"].get("checkpoints_dir", "run/checkpoints/")) / "snapshots"
-)
+ROLLBACK_DIR = Path(CFG["paths"].get("checkpoints_dir", "run/checkpoints/")) / "snapshots"
 ROLLBACK_DIR.mkdir(parents=True, exist_ok=True)
 
 

@@ -13,6 +13,7 @@ import uuid
 import json
 from pathlib import Path
 import logging
+
 logger = logging.getLogger("GremlinGPT.TaskQueue")
 from datetime import datetime, timedelta
 
@@ -36,9 +37,7 @@ class TaskQueue:
         task["id"] = task_id
         priority = task.get("priority", "normal").lower()
         if priority not in self.task_queue:
-            logger.warning(
-                f"[TaskQueue] Invalid priority '{priority}', defaulting to normal."
-            )
+            logger.warning(f"[TaskQueue] Invalid priority '{priority}', defaulting to normal.")
             priority = "normal"
         self.task_queue[priority].append(task)
         self.task_status[task_id] = "queued"
@@ -163,9 +162,7 @@ class TaskQueue:
                 data = json.load(f)
                 for level in self.task_queue:
                     self.task_queue[level].clear()
-                    self.task_queue[level].extend(
-                        data.get("queue", {}).get(level, [])
-                    )
+                    self.task_queue[level].extend(data.get("queue", {}).get(level, []))
                 self.task_status.update(data.get("status", {}))
                 self.task_meta = defaultdict(dict, data.get("meta", {}))
             logger.info("[TaskQueue] Queue restored from snapshot.")
@@ -194,6 +191,7 @@ class TaskQueue:
             logger.debug("[TaskQueue] get_next() → None")
         return task
 
+
 # --- Legacy function API for FSM compatibility ---
 # --- Legacy function API for FSM compatibility ---
 """
@@ -220,6 +218,7 @@ Usage:
 # Singleton instance for static functions
 
 _task_queue = TaskQueue()
+
 
 def enqueue_task(task):
     return _task_queue.enqueue_task(task)

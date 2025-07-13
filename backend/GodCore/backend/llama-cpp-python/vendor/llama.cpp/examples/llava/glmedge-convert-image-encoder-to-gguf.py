@@ -16,9 +16,7 @@ def k(raw_key: str, arch: str) -> str:
     return raw_key.format(arch=arch)
 
 
-def should_skip_tensor(
-    name: str, has_text: bool, has_vision: bool, has_llava: bool
-) -> bool:
+def should_skip_tensor(name: str, has_text: bool, has_vision: bool, has_llava: bool) -> bool:
     if name in (
         "logit_scale",
         "text_model.embeddings.position_ids",
@@ -109,9 +107,7 @@ ap.add_argument(
     help="Path to model directory cloned from HF Hub",
     required=True,
 )
-ap.add_argument(
-    "--use-f32", action="store_true", default=False, help="Use f32 instead of f16"
-)
+ap.add_argument("--use-f32", action="store_true", default=False, help="Use f32 instead of f16")
 ap.add_argument(
     "--text-only",
     action="store_true",
@@ -176,9 +172,7 @@ args = ap.parse_args()
 
 
 if args.text_only and args.vision_only:
-    print(
-        "--text-only and --image-only arguments cannot be specified at the same time."
-    )
+    print("--text-only and --image-only arguments cannot be specified at the same time.")
     exit(1)
 
 if args.use_f32:
@@ -252,11 +246,7 @@ fout.add_bool("clip.has_text_encoder", has_text_encoder)
 fout.add_bool("clip.has_vision_encoder", has_vision_encoder)
 fout.add_bool("clip.has_glm_projector", has_glm_projector)
 fout.add_file_type(ftype)
-model_name = (
-    config["_name_or_path"]
-    if "_name_or_path" in config
-    else os.path.basename(dir_model)
-)
+model_name = config["_name_or_path"] if "_name_or_path" in config else os.path.basename(dir_model)
 fout.add_name(model_name)
 if has_glm_projector:
     fout.add_description("image encoder for glm4v")
@@ -287,9 +277,7 @@ if has_vision_encoder:
     fout.add_uint32(k(KEY_EMBEDDING_LENGTH, VISION), v_hparams["hidden_size"])
     fout.add_uint32(k(KEY_FEED_FORWARD_LENGTH, VISION), v_hparams["intermediate_size"])
     fout.add_uint32("clip.vision.projection_dim", 0)
-    fout.add_uint32(
-        k(KEY_ATTENTION_HEAD_COUNT, VISION), v_hparams["num_attention_heads"]
-    )
+    fout.add_uint32(k(KEY_ATTENTION_HEAD_COUNT, VISION), v_hparams["num_attention_heads"])
     fout.add_float32(k(KEY_ATTENTION_LAYERNORM_EPS, VISION), 1e-6)
     fout.add_uint32(k(KEY_BLOCK_COUNT, VISION), v_hparams["num_hidden_layers"])
 
@@ -319,9 +307,7 @@ if has_glm_projector:
 
 state_dict = model.state_dict()  # pyright: ignore[reportAttributeAccessIssue]
 for name, data in state_dict.items():
-    if should_skip_tensor(
-        name, has_text_encoder, has_vision_encoder, has_glm_projector
-    ):
+    if should_skip_tensor(name, has_text_encoder, has_vision_encoder, has_glm_projector):
         # we don't need this
         print(f"skipping parameter: {name}")
         continue

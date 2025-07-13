@@ -7,9 +7,7 @@ print(
     subprocess.check_output(
         [
             "python",
-            os.path.join(
-                os.path.dirname(os.path.realpath(__file__)), "json_schema_to_grammar.py"
-            ),
+            os.path.join(os.path.dirname(os.path.realpath(__file__)), "json_schema_to_grammar.py"),
             *rest,
             "-",
             "--raw-pattern",

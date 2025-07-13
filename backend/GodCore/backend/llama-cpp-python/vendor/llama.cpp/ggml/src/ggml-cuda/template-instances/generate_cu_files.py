@@ -93,18 +93,14 @@ for ncols in [8, 16, 32, 64, 128]:
         ncols1 = ncols // ncols2
         if ncols == 128:
             continue  # Too much register pressure.
-        with open(
-            f"fattn-mma-f16-instance-ncols1_{ncols1}-ncols2_{ncols2}.cu", "w"
-        ) as f:
+        with open(f"fattn-mma-f16-instance-ncols1_{ncols1}-ncols2_{ncols2}.cu", "w") as f:
             f.write(SOURCE_FATTN_MMA_START)
 
             for head_size in [64, 80, 96, 112, 128, 256]:
                 if ncols == 128 and head_size == 256:
                     continue  # Needs too much shared memory.
                 f.write(
-                    SOURCE_FATTN_MMA_CASE.format(
-                        ncols1=ncols1, ncols2=ncols2, head_size=head_size
-                    )
+                    SOURCE_FATTN_MMA_CASE.format(ncols1=ncols1, ncols2=ncols2, head_size=head_size)
                 )
 
 for type in TYPES_MMQ:

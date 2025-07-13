@@ -30,9 +30,7 @@ class LibLlama:
 
     DEFAULT_PATH_LLAMA_H = "./include/llama.h"
     DEFAULT_PATH_INCLUDES = ["./ggml/include/", "./include/"]
-    DEFAULT_PATH_LIBLLAMA = (
-        "./build/src/libllama.so"  # CMakeLists.txt: BUILD_SHARED_LIBS ON
-    )
+    DEFAULT_PATH_LIBLLAMA = "./build/src/libllama.so"  # CMakeLists.txt: BUILD_SHARED_LIBS ON
 
     def __init__(
         self,
@@ -43,9 +41,7 @@ class LibLlama:
         path_llama_h = path_llama_h or self.DEFAULT_PATH_LLAMA_H
         path_includes = path_includes or self.DEFAULT_PATH_INCLUDES
         path_libllama = path_libllama or self.DEFAULT_PATH_LIBLLAMA
-        (self.ffi, self.lib) = self._load_libllama_cffi(
-            path_llama_h, path_includes, path_libllama
-        )
+        (self.ffi, self.lib) = self._load_libllama_cffi(path_llama_h, path_includes, path_libllama)
         self.lib.llama_backend_init()
 
     def _load_libllama_cffi(
@@ -102,9 +98,7 @@ class LibLlamaModel:
             cparams = libllama.context_default_params(**cparams)
         self.ctx = self.lib.llama_new_context_with_model(self.model, cparams)
         if not self.ctx:
-            raise RuntimeError(
-                "error: failed to create context for model '%s'" % path_model
-            )
+            raise RuntimeError("error: failed to create context for model '%s'" % path_model)
         n_tokens_max = self.lib.llama_n_ctx(self.ctx)
         self.token_ids = self.ffi.new("llama_token[]", n_tokens_max)
         self.text_buff = self.ffi.new("uint8_t[]", 1024)
@@ -360,30 +354,20 @@ def generator_added_lr_strip(tokenizer: TokenizerGroundtruth) -> Iterator[str]:
                 yield "a" + lstrip + token + rstrip + "z"
 
 
-def generator_random_added_tokens(
-    tokenizer: TokenizerGroundtruth, iterations=100
-) -> Iterator[str]:
+def generator_random_added_tokens(tokenizer: TokenizerGroundtruth, iterations=100) -> Iterator[str]:
     separations = [" ", "\n", "\t", "-", "!", "one", "1", "<s>", "</s>"]
-    all_tokens = list(
-        sorted(set(tokenizer.special_tokens + tokenizer.added_tokens + separations))
-    )
+    all_tokens = list(sorted(set(tokenizer.special_tokens + tokenizer.added_tokens + separations)))
     rand = random.Random()
     for m in range(iterations):
         rand.seed(m)
         words = rand.choices(all_tokens, k=500)
         if words and words[0] == tokenizer.bos_token:  # skip spam warning of double BOS
-            while (
-                len(words) > 1 and words[1] == tokenizer.bos_token
-            ):  # leave one starting BOS
+            while len(words) > 1 and words[1] == tokenizer.bos_token:  # leave one starting BOS
                 words.pop(0)
             if tokenizer.add_bos_token:  # drop all starting BOS
                 words.pop(0)
-        if (
-            words and words[-1] == tokenizer.eos_token
-        ):  # skip spam warning of double EOS
-            while (
-                len(words) > 1 and words[-2] == tokenizer.eos_token
-            ):  # leave one trailing EOS
+        if words and words[-1] == tokenizer.eos_token:  # skip spam warning of double EOS
+            while len(words) > 1 and words[-2] == tokenizer.eos_token:  # leave one trailing EOS
                 words.pop(-1)
             if tokenizer.add_bos_token:  # drop all trailing EOS
                 words.pop(-1)
@@ -464,9 +448,7 @@ def generator_random_unicodes(iterations=100) -> Iterator[str]:
         yield "".join(text)
 
 
-def generator_random_vocab_chars(
-    tokenizer: TokenizerGroundtruth, iterations=100
-) -> Iterator[str]:
+def generator_random_vocab_chars(tokenizer: TokenizerGroundtruth, iterations=100) -> Iterator[str]:
     """Brute force random text with vocab characters"""
 
     vocab_chars = set()
@@ -481,9 +463,7 @@ def generator_random_vocab_chars(
         yield "".join(text)
 
 
-def generator_random_vocab_words(
-    tokenizer: TokenizerGroundtruth, iterations=100
-) -> Iterator[str]:
+def generator_random_vocab_words(tokenizer: TokenizerGroundtruth, iterations=100) -> Iterator[str]:
     """Brute force random text from vocab words"""
 
     vocab = [w.strip() for w in tokenizer.vocab]
@@ -587,9 +567,7 @@ def main(argv: list[str] | None = None):
     parser.add_argument(
         "dir_tokenizer", type=str, help="directory containing 'tokenizer.model' file"
     )
-    parser.add_argument(
-        "--verbose", action="store_true", help="increase output verbosity"
-    )
+    parser.add_argument("--verbose", action="store_true", help="increase output verbosity")
     args = parser.parse_args(argv)
 
     logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO)

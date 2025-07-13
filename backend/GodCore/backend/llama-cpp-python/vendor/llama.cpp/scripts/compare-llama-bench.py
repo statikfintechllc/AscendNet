@@ -12,9 +12,7 @@ try:
     import git
     from tabulate import tabulate
 except ImportError as e:
-    print(
-        "the following Python libraries are required: GitPython, tabulate."
-    )  # noqa: NP100
+    print("the following Python libraries are required: GitPython, tabulate.")  # noqa: NP100
     raise e
 
 logger = logging.getLogger("compare-llama-bench")
@@ -179,21 +177,15 @@ if input_file is None:
 connection = sqlite3.connect(input_file)
 cursor = connection.cursor()
 
-build_len_min: int = cursor.execute(
-    "SELECT MIN(LENGTH(build_commit)) from test;"
-).fetchone()[0]
-build_len_max: int = cursor.execute(
-    "SELECT MAX(LENGTH(build_commit)) from test;"
-).fetchone()[0]
+build_len_min: int = cursor.execute("SELECT MIN(LENGTH(build_commit)) from test;").fetchone()[0]
+build_len_max: int = cursor.execute("SELECT MAX(LENGTH(build_commit)) from test;").fetchone()[0]
 
 if build_len_min != build_len_max:
     logger.warning(
         f"{input_file} contains commit hashes of differing lengths. It's possible that the wrong commits will be compared. "
         "Try purging the the database of old commits."
     )
-    cursor.execute(
-        f"UPDATE test SET build_commit = SUBSTRING(build_commit, 1, {build_len_min});"
-    )
+    cursor.execute(f"UPDATE test SET build_commit = SUBSTRING(build_commit, 1, {build_len_min});")
 
 build_len: int = build_len_min
 
@@ -362,9 +354,7 @@ def get_rows(properties):
             f"tc.build_commit = '{hexsha8_compare}'",
         ]
     )
-    group_order_string = ", ".join(
-        [f"tb.{p}" for p in properties] + ["tb.n_gen", "tb.n_prompt"]
-    )
+    group_order_string = ", ".join([f"tb.{p}" for p in properties] + ["tb.n_gen", "tb.n_prompt"])
     query = (
         f"SELECT {select_string} FROM test tb JOIN test tc ON {equal_string} "
         f"GROUP BY {group_order_string} ORDER BY {group_order_string};"
@@ -430,12 +420,7 @@ for row in rows_show:
         test_name = f"pp{n_prompt}+tg{n_gen}"
     #           Regular columns    test name    avg t/s values              Speedup
     #            VVVVVVVVVVVVV     VVVVVVVVV    VVVVVVVVVVVVVV              VVVVVVV
-    table.append(
-        list(row[:-4])
-        + [test_name]
-        + list(row[-2:])
-        + [float(row[-1]) / float(row[-2])]
-    )
+    table.append(list(row[:-4]) + [test_name] + list(row[-2:]) + [float(row[-1]) / float(row[-2])])
 
 # Some a-posteriori fixes to make the table contents prettier:
 for bool_property in BOOL_PROPERTIES:
@@ -470,8 +455,4 @@ if "gpu_info" in show:
 headers = [PRETTY_NAMES[p] for p in show]
 headers += ["Test", f"t/s {name_baseline}", f"t/s {name_compare}", "Speedup"]
 
-print(
-    tabulate(  # noqa: NP100
-        table, headers=headers, floatfmt=".2f", tablefmt=known_args.output
-    )
-)
+print(tabulate(table, headers=headers, floatfmt=".2f", tablefmt=known_args.output))  # noqa: NP100

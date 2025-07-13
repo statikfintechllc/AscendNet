@@ -73,9 +73,7 @@ def scoped_server(sp: ServerProcess):
     stop()
 
 
-logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
-)
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
 
 app = typer.Typer()
@@ -232,17 +230,13 @@ def run(
     chat_template: Annotated[
         Optional[str], typer.Option(help="Chat template override for llama-server")
     ] = None,
-    ollama: Annotated[
-        Optional[str], typer.Option(help="Ollama model tag to test")
-    ] = None,
+    ollama: Annotated[Optional[str], typer.Option(help="Ollama model tag to test")] = None,
     llama_baseline: Annotated[
         Optional[str],
         typer.Option(help="llama-server baseline binary path to use as baseline"),
     ] = None,
     n: Annotated[int, typer.Option(help="Number of times to run each test")] = 10,
-    temp: Annotated[
-        Optional[List[float]], typer.Option(help="Set of temperatures to test")
-    ] = None,
+    temp: Annotated[Optional[List[float]], typer.Option(help="Set of temperatures to test")] = None,
     top_p: Annotated[Optional[float], typer.Option(help="top_p")] = None,
     top_k: Annotated[Optional[int], typer.Option(help="top_k")] = None,
     ctk: Annotated[Optional[str], typer.Option(help="ctk")] = None,
@@ -255,9 +249,7 @@ def run(
     test_hello_world: Annotated[
         bool, typer.Option(help="Whether to run the hello world test")
     ] = True,
-    test_weather: Annotated[
-        bool, typer.Option(help="Whether to run the weather test")
-    ] = True,
+    test_weather: Annotated[bool, typer.Option(help="Whether to run the weather test")] = True,
     test_calc_result: Annotated[
         bool, typer.Option(help="Whether to run the calc result test")
     ] = False,
@@ -297,13 +289,9 @@ def run(
 
             tests = {}
             if test_hello_world:
-                tests["hello world"] = lambda server: do_test_hello_world(
-                    server, **request_kwargs
-                )
+                tests["hello world"] = lambda server: do_test_hello_world(server, **request_kwargs)
             if test_weather:
-                tests["weather"] = lambda server: do_test_weather(
-                    server, **request_kwargs
-                )
+                tests["weather"] = lambda server: do_test_weather(server, **request_kwargs)
             if test_calc_result:
                 tests["calc result"] = lambda server: do_test_calc_result(
                     server, None, 512, **request_kwargs

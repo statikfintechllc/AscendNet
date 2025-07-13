@@ -148,9 +148,7 @@ class ChatCompletionStreamResponseDelta(TypedDict):
 
 class ChatCompletionStreamResponseChoice(TypedDict):
     index: int
-    delta: Union[
-        ChatCompletionStreamResponseDelta, ChatCompletionStreamResponseDeltaEmpty
-    ]
+    delta: Union[ChatCompletionStreamResponseDelta, ChatCompletionStreamResponseDeltaEmpty]
     finish_reason: Optional[Literal["stop", "length", "tool_calls", "function_call"]]
     logprobs: NotRequired[Optional[ChatCompletionLogprobs]]
 
@@ -175,9 +173,7 @@ class ChatCompletionFunctionCallOption(TypedDict):
 
 class ChatCompletionRequestResponseFormat(TypedDict):
     type: Literal["text", "json_object"]
-    schema: NotRequired[
-        JsonType
-    ]  # https://docs.endpoints.anyscale.com/guides/json_mode/
+    schema: NotRequired[JsonType]  # https://docs.endpoints.anyscale.com/guides/json_mode/
 
 
 class ChatCompletionRequestMessageContentPartText(TypedDict):
@@ -234,9 +230,7 @@ class ChatCompletionRequestAssistantMessage(TypedDict):
     role: Literal["assistant"]
     content: NotRequired[str]
     tool_calls: NotRequired[ChatCompletionMessageToolCalls]
-    function_call: NotRequired[
-        ChatCompletionRequestAssistantMessageFunctionCall
-    ]  # DEPRECATED
+    function_call: NotRequired[ChatCompletionRequestAssistantMessageFunctionCall]  # DEPRECATED
 
 
 class ChatCompletionRequestToolMessage(TypedDict):

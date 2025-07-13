@@ -13,9 +13,7 @@ from llama_cpp.llama_types import List
 
 class BaseLlamaTokenizer(abc.ABC):
     @abc.abstractmethod
-    def tokenize(
-        self, text: bytes, add_bos: bool = True, special: bool = True
-    ) -> List[int]:
+    def tokenize(self, text: bytes, add_bos: bool = True, special: bool = True) -> List[int]:
         """Tokenize the text into tokens.
 
         Args:
@@ -46,9 +44,7 @@ class LlamaTokenizer(BaseLlamaTokenizer):
     def __init__(self, llama: llama_cpp.Llama):
         self._model = llama._model  # type: ignore
 
-    def tokenize(
-        self, text: bytes, add_bos: bool = True, special: bool = True
-    ) -> List[int]:
+    def tokenize(self, text: bytes, add_bos: bool = True, special: bool = True) -> List[int]:
         return self._model.tokenize(text, add_bos=add_bos, special=special)
 
     def detokenize(
@@ -59,9 +55,7 @@ class LlamaTokenizer(BaseLlamaTokenizer):
     ) -> bytes:
         return self._model.detokenize(tokens, special=special)
 
-    def encode(
-        self, text: str, add_bos: bool = True, special: bool = True
-    ) -> List[int]:
+    def encode(self, text: str, add_bos: bool = True, special: bool = True) -> List[int]:
         return self.tokenize(
             text.encode("utf-8", errors="ignore"), add_bos=add_bos, special=special
         )
@@ -78,9 +72,7 @@ class LlamaHFTokenizer(BaseLlamaTokenizer):
     def __init__(self, hf_tokenizer: Any):
         self.hf_tokenizer = hf_tokenizer
 
-    def tokenize(
-        self, text: bytes, add_bos: bool = True, special: bool = True
-    ) -> List[int]:
+    def tokenize(self, text: bytes, add_bos: bool = True, special: bool = True) -> List[int]:
         return self.hf_tokenizer.encode(
             text.decode("utf-8", errors="ignore"), add_special_tokens=special
         )
@@ -101,9 +93,9 @@ class LlamaHFTokenizer(BaseLlamaTokenizer):
             ).encode("utf-8", errors="ignore")
             return text[len(prev_text) :]
         else:
-            return self.hf_tokenizer.decode(
-                tokens, skip_special_tokens=skip_special_tokens
-            ).encode("utf-8", errors="ignore")
+            return self.hf_tokenizer.decode(tokens, skip_special_tokens=skip_special_tokens).encode(
+                "utf-8", errors="ignore"
+            )
 
     @classmethod
     def from_pretrained(cls, pretrained_model_name_or_path: str) -> "LlamaHFTokenizer":

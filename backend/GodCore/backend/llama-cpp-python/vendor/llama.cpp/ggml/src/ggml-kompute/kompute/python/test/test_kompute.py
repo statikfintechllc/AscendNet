@@ -55,9 +55,7 @@ def test_end_to_end():
     push_consts_a = [2]
     push_consts_b = [3]
 
-    algo = mgr.algorithm(
-        params, compile_source(shader), workgroup, spec_consts, push_consts_a
-    )
+    algo = mgr.algorithm(params, compile_source(shader), workgroup, spec_consts, push_consts_a)
 
     (
         mgr.sequence()

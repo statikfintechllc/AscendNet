@@ -24,11 +24,7 @@ def to_gguf_name(name: str) -> str:
     name = name.replace("text_model", "t").replace("vision_model", "v")
     name = name.replace("blocks", "blk").replace("embeddings.", "")
     name = name.replace("attn.", "attn_")
-    name = (
-        name.replace("mlp.fc1", "ffn_down")
-        .replace("mlp.fc2", "ffn_up")
-        .replace("proj.", "out.")
-    )
+    name = name.replace("mlp.fc1", "ffn_down").replace("mlp.fc2", "ffn_up").replace("proj.", "out.")
     # name = name.replace("layrnorm", "ln").replace("layer_norm", "ln").replace("layernorm", "ln")
     name = name.replace("norm1", "ln1").replace("norm2", "ln2")
     name = name.replace("merger.mlp", "mm")
@@ -65,9 +61,7 @@ def find_vision_tensors(qwen2vl, dtype) -> Dict[str, np.ndarray]:
         elif "patch_embed.proj.weight" in name:
             # NOTE: split Conv3D into Conv2Ds
             c1, c2, kt, kh, kw = ten.shape
-            assert (
-                kt == 2
-            ), "Current implmentation only support temporal_patch_size of 2"
+            assert kt == 2, "Current implmentation only support temporal_patch_size of 2"
             tensor_map["v.patch_embd.weight"] = ten[:, :, 0, ...]
             tensor_map["v.patch_embd.weight.1"] = ten[:, :, 1, ...]
         else:
@@ -129,9 +123,7 @@ def main(args):
         fout.add_bool("clip.use_gelu", False)
     elif "gelu" in cfg.vision_config.hidden_act.lower():
         fout.add_bool("clip.use_silu", False)
-        fout.add_bool(
-            "clip.use_gelu", "quick" not in cfg.vision_config.hidden_act.lower()
-        )
+        fout.add_bool("clip.use_gelu", "quick" not in cfg.vision_config.hidden_act.lower())
     else:
         raise ValueError()
 
@@ -174,8 +166,6 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("model_name", nargs="?", default="Qwen/Qwen2-VL-2B-Instruct")
-    parser.add_argument(
-        "--data_type", nargs="?", choices=["fp32", "fp16"], default="fp32"
-    )
+    parser.add_argument("--data_type", nargs="?", choices=["fp32", "fp16"], default="fp32")
     args = parser.parse_args()
     main(args)

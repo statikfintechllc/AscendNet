@@ -15,7 +15,7 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 # AscendNet root directory
-ASCENDNET_ROOT="/home/statiksmoke8/AscendNet"
+ASCENDNET_ROOT="$HOME/AscendNet"
 
 # Function to print colored output
 print_status() {
@@ -174,7 +174,7 @@ cat > launch_ascendnet.sh << 'EOF'
 
 set -e
 
-ASCENDNET_ROOT="/home/statiksmoke8/AscendNet"
+ASCENDNET_ROOT="$HOME/AscendNet"
 cd "$ASCENDNET_ROOT"
 
 echo "🚀 Launching AscendNet Unified System..."
@@ -198,7 +198,7 @@ cat > dev_launch.sh << 'EOF'
 
 set -e
 
-ASCENDNET_ROOT="/home/statiksmoke8/AscendNet"
+ASCENDNET_ROOT="$HOME/AscendNet"
 cd "$ASCENDNET_ROOT"
 
 echo "🛠️  Launching AscendNet in Development Mode..."
