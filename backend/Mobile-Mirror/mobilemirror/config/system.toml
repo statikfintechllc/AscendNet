@@ -1,0 +1,19 @@
+# system.toml — TouchCore runtime config
+
+[network]
+stream_port = 5901
+api_port = 8000
+frontend_port = 5000
+
+[paths]
+log_dir = "$HOME/.local/share/applications/system/services"
+default_file = "$HOME/sample.py"
+
+[theme]
+background = "#1e1e1e"
+foreground = "#ffffff"
+accent = "#00ffcc"
+
+[auth]
+token_env_var = "TOUCHCORE_TOKEN"
+default_token = "touchcore-access"

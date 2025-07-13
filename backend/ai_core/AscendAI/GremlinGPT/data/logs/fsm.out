@@ -1,0 +1,128 @@
+2025-07-10 18:52:28.673 | INFO     | backend.globals:<module>:64 - [GLOBALS] Configuration loaded and logger initialized.
+2025-07-10 18:52:28.673 | WARNING  | agent_core.task_queue:_load_snapshot:163 - [TaskQueue] Failed to load queue snapshot: Expecting ',' delimiter: line 24 column 1 (char 756)
+2025-07-10 18:52:31.476 | ERROR    | nlp_engine.transformer_core:<module>:35 - [TRANSFORMER] Failed to load model 'bert-base-uncased': CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero.
+2025-07-10 18:52:31.537 | INFO     | memory.vector_store.embedder:<module>:115 - [FAISS] Initialized new IndexFlatL2
+/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero. (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+2025-07-10 18:52:32.511 | INFO     | memory.vector_store.embedder:<module>:137 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-10 18:52:32.518 | INFO     | memory.vector_store.embedder:<module>:279 - [EMBEDDER] Initial disk load complete
+Traceback (most recent call last):
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/statiksmoke8/agent_core/fsm.py", line 18, in <module>
+    from executors.tool_executor import execute_tool
+  File "/home/statiksmoke8/executors/tool_executor.py", line 14, in <module>
+    from scraper.ask_monday_handler import handle as handle_ask_monday
+  File "/home/statiksmoke8/scraper/ask_monday_handler.py", line 17, in <module>
+    import pyautogui
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/pyautogui/__init__.py", line 246, in <module>
+    import mouseinfo
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/mouseinfo/__init__.py", line 223, in <module>
+    _display = Display(os.environ['DISPLAY'])
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/os.py", line 680, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'DISPLAY'
+2025-07-10 18:53:25.674 | INFO     | backend.globals:<module>:64 - [GLOBALS] Configuration loaded and logger initialized.
+2025-07-10 18:53:25.675 | WARNING  | agent_core.task_queue:_load_snapshot:163 - [TaskQueue] Failed to load queue snapshot: Expecting ',' delimiter: line 24 column 1 (char 756)
+2025-07-10 18:53:28.832 | ERROR    | nlp_engine.transformer_core:<module>:35 - [TRANSFORMER] Failed to load model 'bert-base-uncased': CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero.
+2025-07-10 18:53:28.893 | INFO     | memory.vector_store.embedder:<module>:115 - [FAISS] Initialized new IndexFlatL2
+/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero. (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+2025-07-10 18:53:29.980 | INFO     | memory.vector_store.embedder:<module>:137 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-10 18:53:29.987 | INFO     | memory.vector_store.embedder:<module>:279 - [EMBEDDER] Initial disk load complete
+Traceback (most recent call last):
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/statiksmoke8/agent_core/fsm.py", line 18, in <module>
+    from executors.tool_executor import execute_tool
+  File "/home/statiksmoke8/executors/tool_executor.py", line 14, in <module>
+    from scraper.ask_monday_handler import handle as handle_ask_monday
+  File "/home/statiksmoke8/scraper/ask_monday_handler.py", line 17, in <module>
+    import pyautogui
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/pyautogui/__init__.py", line 246, in <module>
+    import mouseinfo
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/mouseinfo/__init__.py", line 223, in <module>
+    _display = Display(os.environ['DISPLAY'])
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/os.py", line 680, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'DISPLAY'
+2025-07-10 18:54:30.106 | INFO     | backend.globals:<module>:64 - [GLOBALS] Configuration loaded and logger initialized.
+2025-07-10 18:54:30.107 | WARNING  | agent_core.task_queue:_load_snapshot:163 - [TaskQueue] Failed to load queue snapshot: Expecting ',' delimiter: line 24 column 1 (char 756)
+2025-07-10 18:54:33.176 | ERROR    | nlp_engine.transformer_core:<module>:35 - [TRANSFORMER] Failed to load model 'bert-base-uncased': CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero.
+2025-07-10 18:54:33.236 | INFO     | memory.vector_store.embedder:<module>:115 - [FAISS] Initialized new IndexFlatL2
+/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero. (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+2025-07-10 18:54:34.179 | INFO     | memory.vector_store.embedder:<module>:137 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-10 18:54:34.185 | INFO     | memory.vector_store.embedder:<module>:279 - [EMBEDDER] Initial disk load complete
+Traceback (most recent call last):
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/statiksmoke8/agent_core/fsm.py", line 18, in <module>
+    from executors.tool_executor import execute_tool
+  File "/home/statiksmoke8/executors/tool_executor.py", line 14, in <module>
+    from scraper.ask_monday_handler import handle as handle_ask_monday
+  File "/home/statiksmoke8/scraper/ask_monday_handler.py", line 17, in <module>
+    import pyautogui
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/pyautogui/__init__.py", line 246, in <module>
+    import mouseinfo
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/mouseinfo/__init__.py", line 223, in <module>
+    _display = Display(os.environ['DISPLAY'])
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/os.py", line 680, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'DISPLAY'
+2025-07-10 19:03:55.262 | INFO     | backend.globals:<module>:64 - [GLOBALS] Configuration loaded and logger initialized.
+2025-07-10 19:03:55.263 | WARNING  | agent_core.task_queue:_load_snapshot:163 - [TaskQueue] Failed to load queue snapshot: Expecting ',' delimiter: line 24 column 1 (char 756)
+2025-07-10 19:03:58.078 | ERROR    | nlp_engine.transformer_core:<module>:35 - [TRANSFORMER] Failed to load model 'bert-base-uncased': CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero.
+2025-07-10 19:03:58.140 | INFO     | memory.vector_store.embedder:<module>:115 - [FAISS] Initialized new IndexFlatL2
+/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero. (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+2025-07-10 19:03:59.053 | INFO     | memory.vector_store.embedder:<module>:137 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-10 19:03:59.059 | INFO     | memory.vector_store.embedder:<module>:279 - [EMBEDDER] Initial disk load complete
+Traceback (most recent call last):
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/statiksmoke8/agent_core/fsm.py", line 18, in <module>
+    from executors.tool_executor import execute_tool
+  File "/home/statiksmoke8/executors/tool_executor.py", line 14, in <module>
+    from scraper.ask_monday_handler import handle as handle_ask_monday
+  File "/home/statiksmoke8/scraper/ask_monday_handler.py", line 17, in <module>
+    import pyautogui
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/pyautogui/__init__.py", line 246, in <module>
+    import mouseinfo
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/mouseinfo/__init__.py", line 223, in <module>
+    _display = Display(os.environ['DISPLAY'])
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/os.py", line 680, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'DISPLAY'
+2025-07-12 13:28:05.355 | INFO     | backend.globals:<module>:64 - [GLOBALS] Configuration loaded and logger initialized.
+2025-07-12 13:28:05.359 | WARNING  | agent_core.task_queue:_load_snapshot:163 - [TaskQueue] Failed to load queue snapshot: Expecting ',' delimiter: line 24 column 1 (char 756)
+2025-07-12 13:28:08.588 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-07-12 13:28:08.678 | INFO     | memory.vector_store.embedder:<module>:115 - [FAISS] Initialized new IndexFlatL2
+2025-07-12 13:28:08.763 | INFO     | memory.vector_store.embedder:<module>:137 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-12 13:28:08.769 | INFO     | memory.vector_store.embedder:<module>:279 - [EMBEDDER] Initial disk load complete
+Traceback (most recent call last):
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/statiksmoke8/agent_core/fsm.py", line 18, in <module>
+    from executors.tool_executor import execute_tool
+  File "/home/statiksmoke8/executors/tool_executor.py", line 14, in <module>
+    from scraper.ask_monday_handler import handle as handle_ask_monday
+  File "/home/statiksmoke8/scraper/ask_monday_handler.py", line 17, in <module>
+    import pyautogui
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/pyautogui/__init__.py", line 246, in <module>
+    import mouseinfo
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/mouseinfo/__init__.py", line 223, in <module>
+    _display = Display(os.environ['DISPLAY'])
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/os.py", line 680, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'DISPLAY'

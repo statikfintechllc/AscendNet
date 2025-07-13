@@ -1,0 +1,23 @@
+name: gremlin-memory
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - pip
+  - numpy
+  - pandas
+  - faiss-cpu
+  - sqlite
+  - psutil
+  - loguru
+  - rich
+  - pip:
+      - chromadb==0.4.13
+      - sentence-transformers
+      - toml
+      - pygments
+      - pytest
+      - networkx
+      - watchdog
+

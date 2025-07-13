@@ -1,0 +1,17 @@
+torch
+transformers
+sentence-transformers
+scikit-learn
+numpy
+scipy
+pandas
+tqdm
+bert-score
+schedule
+huggingface-hub
+backend
+nltk
+spacy
+toml
+langdetect
+flask

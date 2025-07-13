@@ -1,0 +1,17 @@
+{
+  "name": "TouchCore",
+  "short_name": "TouchCore",
+  "description": "Live remote desktop + shell + editor over tunnel",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#1f1f1f",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "MobileDeveloper.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

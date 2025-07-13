@@ -1,0 +1,15 @@
+[Unit]
+Description=GremlinGPT Autonomous Agent
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/youruser/GremlinGPT
+ExecStart=/bin/zsh -c 'conda activate gremlin-orchestrator && python3 core/loop.py'
+Restart=always
+RestartSec=10
+User=youruser
+Environment="PATH=/home/youruser/miniconda3/envs/gremlin-orchestrator/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[Install]
+WantedBy=multi-user.target

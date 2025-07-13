@@ -651,3 +651,71 @@ href="https://github.com/statikfintechllc/AscendAI/blob/master/About Us/WHY_GREM
 │–notify–> [API/UI]
 │–release–> [escrow: smart contract, 3% fee]
 ```
+
+---
+
+⸻
+
+**ai_core/ (Unified AI Processing - GremlinGPT + GodCore + SignalCore)**
+
+	•	unified_core.py:
+	•	Integrates GremlinGPT autonomous decision making
+	•	Implements GodCore quantum processing and transcendence detection
+	•	Manages SignalCore recursive thought cycles with safety limits
+	•	Persistent memory ("soul") storage and loading
+	•	Async processing with mutation functions
+	•	State evolution: idle → active → evolving → autonomous → transcendent
+
+⸻
+
+**Integration Components (External Dependencies)**
+
+**AscendAI/GremlinGPT/ — Recursive Autonomous Cognitive System**
+	•	Location: /AscendAI/GremlinGPT/
+	•	Purpose: First R-SRACS (Recursive, Self-Referential Autonomous Cognitive System)
+	•	Features:
+	•	Autonomous decision making and self-mutation
+	•	Multi-agent orchestration and coordination
+	•	Recursive learning and evolution capabilities
+	•	Memory persistence and context management
+	•	Integration: Unified into backend/ai_core/unified_core.py
+	•	Components:
+	•	agent_core/ — Core autonomous agents
+	•	self_mutation_watcher/ — Self-improvement monitoring
+	•	memory/ — Persistent memory management
+	•	nlp_engine/ — Natural language processing
+	•	trading_core/ — Financial decision systems
+
+**GodCore/ — Quantum Processing & UI Router**
+	•	Location: /GodCore/
+	•	Purpose: Advanced AI model routing and quantum-level processing
+	•	Features:
+	•	Multi-model AI routing (Mistral, Monday.AI, etc.)
+	•	FastAPI-based intelligent request distribution
+	•	Quantum compression and storage management
+	•	Transcendence detection and state management
+	•	Integration: Core logic unified into backend/ai_core/unified_core.py
+	•	Components:
+	•	backend/router.py — AI model routing and load balancing
+	•	backend/GPT_handler.py — GPT integration and management
+	•	backend/MIS_handler.py — Mistral integration services
+	•	frontend/ — Web UI for model interaction
+	•	models/ — Local model storage and management
+
+**Mobile-Mirror/ — Remote Development Environment**
+	•	Location: /Mobile-Mirror/
+	•	Purpose: Secure mobile development and remote access
+	•	Features:
+	•	Mobile-first development environment
+	•	Tailscale mesh VPN integration
+	•	VSCode server (code-server) deployment
+	•	Zero-config remote development
+	•	Private mesh networking (no public IP needed)
+	•	Integration: Will be integrated as backend/mobile_mirror/ service
+	•	Components:
+	•	mobilemirror/ — Core mobile mirroring logic
+	•	scripts/ — Setup and deployment automation
+	•	env/ — Environment configuration
+	•	demos/ — Example configurations and use cases
+
+⸻

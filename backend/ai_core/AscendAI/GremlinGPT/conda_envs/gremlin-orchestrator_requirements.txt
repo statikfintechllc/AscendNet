@@ -1,0 +1,14 @@
+numpy
+pandas
+scipy
+tqdm
+sentence-transformers
+loguru
+pyyaml
+toml
+playwright
+langdetect
+nltk
+beautifulsoup4
+schedule
+

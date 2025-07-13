@@ -1,0 +1,30 @@
+name: runmistral
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      - llama-cpp-python
+      - fastapi
+      - uvicorn
+      - streamlit
+      - gradio
+      - requests
+      - numpy
+      - huggingface-hub
+      - sentencepiece
+      - rich
+      - pydantic
+      - python-multipart
+      - orjson
+      - tqdm
+      - matplotlib
+      - pandas
+      - scikit-learn
+      - scipy
+      - safetensors
+      - bitsandbytes
+      - accelerate
+

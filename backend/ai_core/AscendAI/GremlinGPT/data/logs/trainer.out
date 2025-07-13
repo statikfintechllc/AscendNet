@@ -1,0 +1,115 @@
+2025-07-10 18:52:29.180 | INFO     | backend.globals:<module>:64 - [GLOBALS] Configuration loaded and logger initialized.
+2025-07-10 18:52:29.183 | WARNING  | agent_core.task_queue:_load_snapshot:163 - [TaskQueue] Failed to load queue snapshot: Expecting ',' delimiter: line 24 column 1 (char 756)
+Traceback (most recent call last):
+  File "/home/statiksmoke8/memory/vector_store/embedder.py", line 18, in <module>
+    import faiss
+ModuleNotFoundError: No module named 'faiss'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-orchestrator/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-orchestrator/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/home/statiksmoke8/self_training/trainer.py", line 18, in <module>
+    from self_training.generate_dataset import extract_training_data
+  File "/home/statiksmoke8/self_training/generate_dataset.py", line 25, in <module>
+    from self_training.feedback_loop import inject_feedback
+  File "/home/statiksmoke8/self_training/feedback_loop.py", line 30, in <module>
+    from memory.vector_store.embedder import inject_watermark, package_embedding
+  File "/home/statiksmoke8/memory/vector_store/embedder.py", line 20, in <module>
+    import faiss_cpu as faiss  # type: ignore
+ModuleNotFoundError: No module named 'faiss_cpu'
+2025-07-10 18:53:26.282 | INFO     | backend.globals:<module>:64 - [GLOBALS] Configuration loaded and logger initialized.
+2025-07-10 18:53:26.285 | WARNING  | agent_core.task_queue:_load_snapshot:163 - [TaskQueue] Failed to load queue snapshot: Expecting ',' delimiter: line 24 column 1 (char 756)
+Traceback (most recent call last):
+  File "/home/statiksmoke8/memory/vector_store/embedder.py", line 18, in <module>
+    import faiss
+ModuleNotFoundError: No module named 'faiss'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-orchestrator/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-orchestrator/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/home/statiksmoke8/self_training/trainer.py", line 18, in <module>
+    from self_training.generate_dataset import extract_training_data
+  File "/home/statiksmoke8/self_training/generate_dataset.py", line 25, in <module>
+    from self_training.feedback_loop import inject_feedback
+  File "/home/statiksmoke8/self_training/feedback_loop.py", line 30, in <module>
+    from memory.vector_store.embedder import inject_watermark, package_embedding
+  File "/home/statiksmoke8/memory/vector_store/embedder.py", line 20, in <module>
+    import faiss_cpu as faiss  # type: ignore
+ModuleNotFoundError: No module named 'faiss_cpu'
+2025-07-10 18:54:30.727 | INFO     | backend.globals:<module>:64 - [GLOBALS] Configuration loaded and logger initialized.
+2025-07-10 18:54:30.730 | WARNING  | agent_core.task_queue:_load_snapshot:163 - [TaskQueue] Failed to load queue snapshot: Expecting ',' delimiter: line 24 column 1 (char 756)
+Traceback (most recent call last):
+  File "/home/statiksmoke8/memory/vector_store/embedder.py", line 18, in <module>
+    import faiss
+ModuleNotFoundError: No module named 'faiss'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-orchestrator/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-orchestrator/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/home/statiksmoke8/self_training/trainer.py", line 18, in <module>
+    from self_training.generate_dataset import extract_training_data
+  File "/home/statiksmoke8/self_training/generate_dataset.py", line 25, in <module>
+    from self_training.feedback_loop import inject_feedback
+  File "/home/statiksmoke8/self_training/feedback_loop.py", line 30, in <module>
+    from memory.vector_store.embedder import inject_watermark, package_embedding
+  File "/home/statiksmoke8/memory/vector_store/embedder.py", line 20, in <module>
+    import faiss_cpu as faiss  # type: ignore
+ModuleNotFoundError: No module named 'faiss_cpu'
+2025-07-10 19:03:55.876 | INFO     | backend.globals:<module>:64 - [GLOBALS] Configuration loaded and logger initialized.
+2025-07-10 19:03:55.880 | WARNING  | agent_core.task_queue:_load_snapshot:163 - [TaskQueue] Failed to load queue snapshot: Expecting ',' delimiter: line 24 column 1 (char 756)
+Traceback (most recent call last):
+  File "/home/statiksmoke8/memory/vector_store/embedder.py", line 18, in <module>
+    import faiss
+ModuleNotFoundError: No module named 'faiss'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-orchestrator/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-orchestrator/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/home/statiksmoke8/self_training/trainer.py", line 18, in <module>
+    from self_training.generate_dataset import extract_training_data
+  File "/home/statiksmoke8/self_training/generate_dataset.py", line 25, in <module>
+    from self_training.feedback_loop import inject_feedback
+  File "/home/statiksmoke8/self_training/feedback_loop.py", line 30, in <module>
+    from memory.vector_store.embedder import inject_watermark, package_embedding
+  File "/home/statiksmoke8/memory/vector_store/embedder.py", line 20, in <module>
+    import faiss_cpu as faiss  # type: ignore
+ModuleNotFoundError: No module named 'faiss_cpu'
+2025-07-12 13:28:05.842 | INFO     | backend.globals:<module>:64 - [GLOBALS] Configuration loaded and logger initialized.
+2025-07-12 13:28:05.845 | WARNING  | agent_core.task_queue:_load_snapshot:163 - [TaskQueue] Failed to load queue snapshot: Expecting ',' delimiter: line 24 column 1 (char 756)
+Traceback (most recent call last):
+  File "/home/statiksmoke8/memory/vector_store/embedder.py", line 18, in <module>
+    import faiss
+ModuleNotFoundError: No module named 'faiss'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-orchestrator/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-orchestrator/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/home/statiksmoke8/self_training/trainer.py", line 18, in <module>
+    from self_training.generate_dataset import extract_training_data
+  File "/home/statiksmoke8/self_training/generate_dataset.py", line 25, in <module>
+    from self_training.feedback_loop import inject_feedback
+  File "/home/statiksmoke8/self_training/feedback_loop.py", line 30, in <module>
+    from memory.vector_store.embedder import inject_watermark, package_embedding
+  File "/home/statiksmoke8/memory/vector_store/embedder.py", line 20, in <module>
+    import faiss_cpu as faiss  # type: ignore
+ModuleNotFoundError: No module named 'faiss_cpu'

@@ -1,0 +1,14 @@
+requests
+beautifulsoup4
+playwright
+lxml
+toml
+tqdm
+pandas
+numpy
+loguru
+sentence-transformers
+langdetect
+nltk
+schedule
+flask

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Mistral LLaMA Chat Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div id="chat-container">
+        <h2>Mistral LLaMA Chat</h2>
+        <div id="messages"></div>
+        <form id="chat-form" autocomplete="off">
+            <input type="text" id="message-input" placeholder="Type your message..." required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <script>
+        const messagesDiv = document.getElementById('messages');
+        const form = document.getElementById('chat-form');
+        const input = document.getElementById('message-input');
+
+        form.onsubmit = async (e) => {
+            e.preventDefault();
+            const userMsg = input.value.trim();
+            if (!userMsg) return;
+            appendMsg('You', userMsg);
+            input.value = '';
+            appendMsg('Bot', '<em>...</em>');
+            const resp = await fetch('/chat', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                body: 'message=' + encodeURIComponent(userMsg)
+            });
+            const data = await resp.json();
+            messagesDiv.lastElementChild.innerHTML = `<b>Bot:</b> ${data.response}`;
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        };
+
+        function appendMsg(sender, text) {
+            const div = document.createElement('div');
+            div.innerHTML = `<b>${sender}:</b> ${text}`;
+            messagesDiv.appendChild(div);
+        }
+    </script>
+</body>
+</html>

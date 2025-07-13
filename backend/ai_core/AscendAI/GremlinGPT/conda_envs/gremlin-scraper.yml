@@ -1,0 +1,32 @@
+name: gremlin-scraper
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - pip
+  - beautifulsoup4
+  - lxml
+  - aiohttp
+  - requests
+  - tqdm
+  - rich
+  - numpy
+  - flask-socketio
+  - pillow
+  - pytesseract
+  - pyautogui
+  - pyperclip
+  - platformdirs
+  - psutil
+  - pip:
+    - playwright
+    - loguru
+    - undetected-chromedriver
+    - websockets
+    - typing_extensions~=4.13.2
+    - pyngrok
+    - toml
+    - qrcode
+    - chromadb
+

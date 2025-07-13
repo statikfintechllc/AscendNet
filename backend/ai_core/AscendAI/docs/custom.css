@@ -1,0 +1,182 @@
+body {
+  background-color: #000;
+  color: #ddd;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  padding: 2rem;
+  margin: 0;
+  background-attachment: fixed;
+  background-image: linear-gradient(180deg, #000 0%, #111 100%);
+  overflow-x: hidden;
+}
+
+.markdown-body .anchor,
+.markdown-body hr {
+  display: none !important;
+}
+
+.markdown-body p > img[alt*="badge"] {
+  margin: 0 0.25rem 0 0 !important;
+  vertical-align: middle;
+}
+
+/* Headers */
+h1, h2, h3, h4, h5 {
+  color: gold;
+  text-shadow: 1px 1px 2px red, 0 0 10px #FFD700;
+  transition: all 0.3s ease;
+}
+
+h1:hover, h2:hover, h3:hover {
+  text-shadow: 0 0 5px #FFD700, 0 0 20px red;
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(0, 0, 0, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.1), 0 0 10px rgba(255, 0, 0, 0.05);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 2rem;
+  border-radius: 16px;
+  color: #ddd;
+}
+
+.glass p,
+.glass li,
+.glass table,
+.glass code {
+  color: #eaeaea;
+  text-shadow: 0 0 1px #000;
+}
+
+.glass h2, .glass h3 {
+  color: #FFD700;
+  text-shadow: 0 0 5px crimson, 0 0 10px gold;
+}
+
+.glass a {
+  color: #FF6A00;
+  text-shadow: 0 0 3px crimson;
+}
+
+.glass a:hover {
+  color: #FFD700;
+  text-shadow: 0 0 10px red;
+}
+
+a {
+  color: orangered;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: #FFD700;
+  text-shadow: 0 0 3px red, 0 0 10px gold;
+  text-decoration: underline;
+}
+
+/* Code Blocks */
+code {
+  background: #111;
+  color: crimson;
+  padding: 2px 5px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px #ff000033;
+}
+
+pre {
+  background: #111;
+  padding: 10px;
+  border: 1px solid #333;
+  overflow-x: auto;
+  box-shadow: 0 0 10px #ff000040;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+table, th, td {
+  border: 1px solid #444;
+}
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+/* Images */
+img {
+  border: 2px solid #666;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+img:hover {
+  box-shadow: 0 0 10px #FFD700;
+}
+
+/* Section animation */
+section, div, article {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: riseUp 0.8s ease-out forwards;
+}
+
+@keyframes riseUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Badge + HR FX */
+.badge, img[src*="badge"] {
+  box-shadow: 2px 2px 6px #111, 0 0 5px #B22222;
+  transition: all 0.3s ease;
+}
+
+.badge:hover, img[src*="badge"]:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 8px #FFD700, 0 0 15px #DC143C;
+}
+
+hr {
+  border: 0;
+  height: 2px;
+  background: linear-gradient(to right, silver, darkred, gold);
+  margin: 2rem 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#FF0000, #FFD700);
+  border-radius: 5px;
+  box-shadow: 0 0 5px gold, 0 0 10px red;
+}
+
+/* Back layer */
+::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: url('yourParallaxTexture.png');
+  background-size: cover;
+  background-attachment: fixed;
+  opacity: 0.05;
+  z-index: -1;
+  pointer-events: none;
+}
+
+* {
+  transition: all 0.3s ease-in-out;
+}

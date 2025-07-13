@@ -1,0 +1,110 @@
+body {
+  background-color: #111;
+  color: #fff;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  /* Gold/silver accent with red highlights */
+}
+
+#gremlin-app-root {
+  min-height: 90vh;
+  padding-top: 3vh;
+  padding-bottom: 8vh;
+  background: rgba(12, 12, 16, 0.87);
+  border-radius: 24px;
+  margin: 4vh auto;
+  max-width: 1200px;
+  box-shadow: 0 8px 32px #300 0.15, 0 0 2px 2px #bfa14e80;
+}
+
+.nav-tabs .nav-link.active {
+  background: linear-gradient(90deg,#900,#d4af37,#aaa 80%);
+  color: #fff;
+  border-color: #d4af37 #aaa #bfa14e #900;
+  font-weight: bold;
+}
+.nav-tabs .nav-link {
+  color: #d4af37;
+  background: #222;
+  border: none;
+}
+.nav-tabs {
+  border-bottom: 2px solid #d4af37;
+}
+
+.section-card {
+  background: rgba(34,34,40,0.97);
+  border-radius: 18px;
+  border: 2px solid #d4af37;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 12px #9008;
+  padding: 24px 20px;
+}
+
+#gremlin-chat-bar {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 1001;
+  background: linear-gradient(90deg,#900,#d4af37 55%,#aaa 98%);
+  border-top: 2px solid #d4af37;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 8px 24px;
+  cursor: pointer;
+  box-shadow: 0 -4px 22px #9004;
+  color: #fff;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+#gremlin-chat-bar:hover {
+  background: linear-gradient(90deg,#c00,#fffbe0 70%,#aaa 100%);
+  color: #900;
+}
+#gremlin-chat-fab {
+  position: fixed;
+  right: 36px; bottom: 85px;
+  z-index: 1100;
+  background: linear-gradient(140deg,#900 70%,#d4af37 100%);
+  color: #fff;
+  border-radius: 50%;
+  width: 64px; height: 64px;
+  box-shadow: 0 4px 32px #900a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.4em;
+  cursor: pointer;
+  border: 2px solid #d4af37;
+}
+#gremlin-chat-modal {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  top: 0; z-index: 1200;
+  background: rgba(10,10,10,0.95);
+  display: none;
+}
+#gremlin-chat-modal.active {
+  display: block;
+}
+#gremlin-chat-content {
+  background: #191919;
+  border-radius: 18px;
+  border: 2px solid #d4af37;
+  box-shadow: 0 0 24px #9008;
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%,-50%);
+  width: 95vw; max-width: 520px;
+  min-height: 360px;
+  padding: 18px 18px 82px 18px;
+}
+#gremlin-chat-close {
+  position: absolute;
+  right: 18px; top: 12px;
+  color: #bfa14e;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb { background: #900; border-radius: 8px; }
+::-webkit-scrollbar-track { background: #1a1a1a; }

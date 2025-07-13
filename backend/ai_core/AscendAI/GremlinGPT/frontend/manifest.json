@@ -1,0 +1,21 @@
+{
+  "name": "GremlinGPT Dashboard",
+  "short_name": "GremlinGPT",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#111111",
+  "background_color": "#111111",
+  "description": "GremlinGPT Autonomous AI Control Dashboard — Modern, offline, secure, and persistent. Red/Black/Gold/Silver premium theme.",
+  "icons": [
+    {
+      "src": "App_Icon_&_Loading_&_Inference_Image.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "App_Icon_&_Loading_&_Inference_Image.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

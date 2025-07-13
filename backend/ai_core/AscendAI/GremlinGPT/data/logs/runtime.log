@@ -1,0 +1,797 @@
+2025-06-07 21:13:40.240 | INFO     | backend.globals:<module>:65 - [GLOBALS] Configuration loaded and logger initialized.
+2025-06-07 21:13:41.198 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-06-07 21:13:42.064 | INFO     | memory.vector_store.embedder:<module>:50 - [EMBEDDER] Model loaded: all-MiniLM-L6-v2
+2025-06-07 21:13:42.257 | SUCCESS  | nlp_engine.tokenizer:<module>:32 - [TOKENIZER] Loaded: bert-base-uncased
+2025-06-07 21:13:52.417 | INFO     | __main__:main:54 - [CLI] Received input: How Are you today Gremlin?
+2025-06-07 21:13:52.421 | DEBUG    | nlp_engine.tokenizer:tokenize:61 - [TOKENIZER] Token count: 8
+2025-06-07 21:13:52.535 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 21:13:52.536 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: ef930c72-310b-49f5-8106-7270c52de8ca
+2025-06-07 21:13:52.536 | ERROR    | __main__:main:78 - [CLI] Error during input handling: name 'embed' is not defined
+Traceback (most recent call last):
+
+  File "/home/statiksmoke8/AscendAI/GremlinGPT/run/cli.py", line 85, in <module>
+    main()
+    └ <function main at 0x7c62f7230160>
+
+> File "/home/statiksmoke8/AscendAI/GremlinGPT/run/cli.py", line 55, in main
+    result = parse_nlp(user_input)
+             │         └ 'How Are you today Gremlin?'
+             └ <function parse_nlp at 0x7c62fb80c550>
+
+  File "/home/statiksmoke8/AscendAI/GremlinGPT/nlp_engine/parser.py", line 79, in parse_nlp
+    tokens = tokenize(text)
+             │        └ 'How Are you today Gremlin?'
+             └ <function tokenize at 0x7c62fb7255a0>
+
+  File "/home/statiksmoke8/AscendAI/GremlinGPT/nlp_engine/tokenizer.py", line 81, in tokenize
+    inject_watermark(origin=ORIGIN)
+    │                       └ 'tokenizer'
+    └ <function inject_watermark at 0x7c62fb80ce50>
+
+  File "/home/statiksmoke8/AscendAI/GremlinGPT/memory/vector_store/embedder.py", line 101, in inject_watermark
+    vector = embed(text)
+                   └ 'Watermark from tokenizer @ 2025-06-08T02:13:52.536183'
+
+NameError: name 'embed' is not defined
+2025-06-07 21:16:41.619 | INFO     | __main__:main:54 - [CLI] Received input: quite
+2025-06-07 21:16:41.622 | DEBUG    | nlp_engine.tokenizer:tokenize:61 - [TOKENIZER] Token count: 1
+2025-06-07 21:16:41.638 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 21:16:41.639 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: fdc594d2-810c-4f41-a6ee-1ae3870b4ede
+2025-06-07 21:16:41.639 | ERROR    | __main__:main:78 - [CLI] Error during input handling: name 'embed' is not defined
+Traceback (most recent call last):
+
+  File "/home/statiksmoke8/AscendAI/GremlinGPT/run/cli.py", line 85, in <module>
+    main()
+    └ <function main at 0x7c62f7230160>
+
+> File "/home/statiksmoke8/AscendAI/GremlinGPT/run/cli.py", line 55, in main
+    result = parse_nlp(user_input)
+             │         └ 'quite'
+             └ <function parse_nlp at 0x7c62fb80c550>
+
+  File "/home/statiksmoke8/AscendAI/GremlinGPT/nlp_engine/parser.py", line 79, in parse_nlp
+    tokens = tokenize(text)
+             │        └ 'quite'
+             └ <function tokenize at 0x7c62fb7255a0>
+
+  File "/home/statiksmoke8/AscendAI/GremlinGPT/nlp_engine/tokenizer.py", line 81, in tokenize
+    inject_watermark(origin=ORIGIN)
+    │                       └ 'tokenizer'
+    └ <function inject_watermark at 0x7c62fb80ce50>
+
+  File "/home/statiksmoke8/AscendAI/GremlinGPT/memory/vector_store/embedder.py", line 101, in inject_watermark
+    vector = embed(text)
+                   └ 'Watermark from tokenizer @ 2025-06-08T02:16:41.639685'
+
+NameError: name 'embed' is not defined
+2025-06-07 21:16:56.057 | INFO     | backend.globals:<module>:65 - [GLOBALS] Configuration loaded and logger initialized.
+2025-06-07 21:16:57.098 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-06-07 21:16:58.346 | INFO     | memory.vector_store.embedder:<module>:50 - [EMBEDDER] Model loaded: all-MiniLM-L6-v2
+2025-06-07 21:16:58.587 | SUCCESS  | nlp_engine.tokenizer:<module>:32 - [TOKENIZER] Loaded: bert-base-uncased
+2025-06-07 21:17:10.043 | INFO     | __main__:main:54 - [CLI] Received input: Hello, How are You Gremlin?
+2025-06-07 21:17:10.048 | DEBUG    | nlp_engine.tokenizer:tokenize:61 - [TOKENIZER] Token count: 9
+2025-06-07 21:17:10.161 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 21:17:10.162 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 8d7a8712-a0bf-4f8b-8871-acf6a246110b
+2025-06-07 21:17:10.172 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 37d0509c-8f8f-4367-bda2-e0c34315959a
+2025-06-07 21:17:10.172 | ERROR    | nlp_engine.pos_tagger:get_pos_tags:65 - [POS_TAGGER] Failed to tag input: 
+**********************************************************************
+  Resource [93mpunkt[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('punkt')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtokenizers/punkt/english/[0m
+
+  Searched in:
+    - '/home/statiksmoke8/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/share/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+    - '/home/statiksmoke8/nltk_data'
+**********************************************************************
+
+2025-06-07 21:17:10.180 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 21:17:10.181 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 75045a90-b1b5-4070-aa4f-a356f9c62bb8
+2025-06-07 21:17:10.186 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: bfda0954-5096-4c1d-b33b-dc7ed8ea0865
+2025-06-07 21:17:10.188 | DEBUG    | nlp_engine.tokenizer:tokenize:61 - [TOKENIZER] Token count: 9
+2025-06-07 21:17:10.192 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 21:17:10.193 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 7d6911b4-99ad-4f52-bcd3-3e14bea85eb0
+2025-06-07 21:17:10.198 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: d22a492d-0916-4e21-bc45-fbe22e651d49
+2025-06-07 21:17:10.205 | DEBUG    | nlp_engine.tokenizer:tokenize:61 - [TOKENIZER] Token count: 9
+2025-06-07 21:17:10.209 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 21:17:10.209 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 0fd2b725-6c42-49f7-bedd-9c03d27ec28b
+2025-06-07 21:17:10.214 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 7d1fcf21-5433-4f3c-bc9d-21c48932bbee
+2025-06-07 21:17:10.215 | ERROR    | nlp_engine.pos_tagger:get_pos_tags:65 - [POS_TAGGER] Failed to tag input: 
+**********************************************************************
+  Resource [93mpunkt[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('punkt')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtokenizers/punkt/english/[0m
+
+  Searched in:
+    - '/home/statiksmoke8/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/share/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+    - '/home/statiksmoke8/nltk_data'
+**********************************************************************
+
+2025-06-07 21:17:10.221 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 21:17:10.222 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: a365cd15-dd88-4471-9544-50471af8016e
+2025-06-07 21:17:10.227 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 0367fa0a-a410-4d0f-9d25-7ea767f33076
+2025-06-07 21:17:10.227 | WARNING  | backend.interface.commands:execute_command:93 - [COMMAND] Unknown command type: {'type': 'unknown', 'payload': 'Hello, How are You Gremlin?'}
+2025-06-07 21:17:10.228 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 69845a28-3104-42a4-a051-448e6862a420
+2025-06-07 21:17:10.228 | INFO     | memory.log_history:log_event:40 - [HISTORY] Logged chat :: parsed
+2025-06-07 21:17:10.228 | WARNING  | backend.api.chat_handler:chat:56 - [CHAT] Fallback NLP task for unrecognized command: Hello, How are You Gremlin?
+2025-06-07 21:17:10.228 | DEBUG    | agent_core.task_queue:enqueue_task:43 - [TaskQueue] Enqueued (normal): nlp (776e654e-d2a0-4fa7-8cda-1792ca89c2dc)
+2025-06-07 21:17:10.228 | DEBUG    | agent_core.task_queue:_save_snapshot:137 - [TaskQueue] Snapshot saved.
+2025-06-07 21:17:10.228 | ERROR    | __main__:main:78 - [CLI] Error during input handling: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+Traceback (most recent call last):
+
+  File "/home/statiksmoke8/AscendAI/GremlinGPT/run/cli.py", line 85, in <module>
+    main()
+    └ <function main at 0x7d80af527f40>
+
+> File "/home/statiksmoke8/AscendAI/GremlinGPT/run/cli.py", line 66, in main
+    response = chat(user_input)
+               │    └ 'Hello, How are You Gremlin?'
+               └ <function chat at 0x7d80b3c18940>
+
+  File "/home/statiksmoke8/AscendAI/GremlinGPT/backend/api/chat_handler.py", line 61, in chat
+    return jsonify(
+           └ <function jsonify at 0x7d80af6639a0>
+
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/flask/json/__init__.py", line 170, in jsonify
+    return current_app.json.response(*args, **kwargs)  # type: ignore[return-value]
+           │                          │       └ {}
+           │                          └ ({'response': 'Command interpreted as: unknown', 'tokens': ['hello', ',', 'how', 'are', 'you', 'gr', '##em', '##lin', '?'], '...
+           └ <LocalProxy unbound>
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/werkzeug/local.py", line 318, in __get__
+    obj = instance._get_current_object()
+          │        └ <member '_get_current_object' of 'LocalProxy' objects>
+          └ <LocalProxy unbound>
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/werkzeug/local.py", line 519, in _get_current_object
+    raise RuntimeError(unbound_message) from None
+                       └ 'Working outside of application context.\n\nThis typically means that you attempted to use functionality that needed\nthe cur...
+
+RuntimeError: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2025-06-07 21:17:41.403 | INFO     | backend.globals:<module>:65 - [GLOBALS] Configuration loaded and logger initialized.
+2025-06-07 21:17:42.678 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-06-07 21:17:43.514 | INFO     | memory.vector_store.embedder:<module>:50 - [EMBEDDER] Model loaded: all-MiniLM-L6-v2
+2025-06-07 21:17:43.711 | SUCCESS  | nlp_engine.tokenizer:<module>:32 - [TOKENIZER] Loaded: bert-base-uncased
+2025-06-07 21:17:44.054 | INFO     | agent_core.task_queue:_load_snapshot:153 - [TaskQueue] Queue restored from snapshot.
+2025-06-07 21:17:56.060 | INFO     | __main__:main:54 - [CLI] Received input: Hello, Gremlin, How Are You?
+2025-06-07 21:17:56.063 | DEBUG    | nlp_engine.tokenizer:tokenize:61 - [TOKENIZER] Token count: 10
+2025-06-07 21:17:56.178 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 21:17:56.179 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: e3fe6a97-0a74-4d9c-8876-ac3e9ecf9128
+2025-06-07 21:17:56.188 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: fc40f76a-3f79-438e-ad74-cec842a4455d
+2025-06-07 21:17:56.188 | ERROR    | nlp_engine.pos_tagger:get_pos_tags:65 - [POS_TAGGER] Failed to tag input: 
+**********************************************************************
+  Resource [93mpunkt[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('punkt')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtokenizers/punkt/english/[0m
+
+  Searched in:
+    - '/home/statiksmoke8/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/share/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+    - '/home/statiksmoke8/nltk_data'
+**********************************************************************
+
+2025-06-07 21:17:56.195 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 21:17:56.195 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 3f19d9f3-acec-4915-9822-159211fc8a3a
+2025-06-07 21:17:56.202 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: c984488d-6e9f-43a0-bd18-cb060d0e78c8
+2025-06-07 21:17:56.204 | DEBUG    | nlp_engine.tokenizer:tokenize:61 - [TOKENIZER] Token count: 10
+2025-06-07 21:17:56.208 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 21:17:56.209 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 443566c4-27e6-4d9b-aca9-d1b2d2322627
+2025-06-07 21:17:56.214 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: d4561526-ff92-4bc7-89e0-64457ff168e8
+2025-06-07 21:17:56.220 | DEBUG    | nlp_engine.tokenizer:tokenize:61 - [TOKENIZER] Token count: 10
+2025-06-07 21:17:56.223 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 21:17:56.224 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: f3855447-111c-40cb-97a2-741028ab675c
+2025-06-07 21:17:56.229 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 19e45a65-fdf4-4441-afb8-a153b8a10bc5
+2025-06-07 21:17:56.230 | ERROR    | nlp_engine.pos_tagger:get_pos_tags:65 - [POS_TAGGER] Failed to tag input: 
+**********************************************************************
+  Resource [93mpunkt[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('punkt')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtokenizers/punkt/english/[0m
+
+  Searched in:
+    - '/home/statiksmoke8/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/share/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+    - '/home/statiksmoke8/nltk_data'
+**********************************************************************
+
+2025-06-07 21:17:56.235 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 21:17:56.236 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 7ee9d704-6fae-4670-ac75-e033d3b971c5
+2025-06-07 21:17:56.242 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 621f16b3-122c-4814-b553-0564ccd1e29e
+2025-06-07 21:17:56.242 | WARNING  | backend.interface.commands:execute_command:93 - [COMMAND] Unknown command type: {'type': 'unknown', 'payload': 'Hello, Gremlin, How Are You?'}
+2025-06-07 21:17:56.242 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 0a6252ec-9b4e-40ba-957e-75514f8557f7
+2025-06-07 21:17:56.242 | INFO     | memory.log_history:log_event:40 - [HISTORY] Logged chat :: parsed
+2025-06-07 21:17:56.243 | WARNING  | backend.api.chat_handler:chat:56 - [CHAT] Fallback NLP task for unrecognized command: Hello, Gremlin, How Are You?
+2025-06-07 21:17:56.243 | DEBUG    | agent_core.task_queue:enqueue_task:43 - [TaskQueue] Enqueued (normal): nlp (fe599548-7160-486e-aea2-b52dbb009c66)
+2025-06-07 21:17:56.243 | DEBUG    | agent_core.task_queue:_save_snapshot:137 - [TaskQueue] Snapshot saved.
+2025-06-07 21:17:56.243 | ERROR    | __main__:main:78 - [CLI] Error during input handling: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+Traceback (most recent call last):
+
+  File "/home/statiksmoke8/AscendAI/GremlinGPT/run/cli.py", line 85, in <module>
+    main()
+    └ <function main at 0x70455ead0160>
+
+> File "/home/statiksmoke8/AscendAI/GremlinGPT/run/cli.py", line 66, in main
+    response = chat(user_input)
+               │    └ 'Hello, Gremlin, How Are You?'
+               └ <function chat at 0x70456107c9d0>
+
+  File "/home/statiksmoke8/AscendAI/GremlinGPT/backend/api/chat_handler.py", line 61, in chat
+    return jsonify(
+           └ <function jsonify at 0x70455ebf3b50>
+
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/flask/json/__init__.py", line 170, in jsonify
+    return current_app.json.response(*args, **kwargs)  # type: ignore[return-value]
+           │                          │       └ {}
+           │                          └ ({'response': 'Command interpreted as: unknown', 'tokens': ['hello', ',', 'gr', '##em', '##lin', ',', 'how', 'are', 'you', '?...
+           └ <LocalProxy unbound>
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/werkzeug/local.py", line 318, in __get__
+    obj = instance._get_current_object()
+          │        └ <member '_get_current_object' of 'LocalProxy' objects>
+          └ <LocalProxy unbound>
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/werkzeug/local.py", line 519, in _get_current_object
+    raise RuntimeError(unbound_message) from None
+                       └ 'Working outside of application context.\n\nThis typically means that you attempted to use functionality that needed\nthe cur...
+
+RuntimeError: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2025-06-07 22:51:50.965 | INFO     | backend.globals:<module>:65 - [GLOBALS] Configuration loaded and logger initialized.
+2025-06-07 22:51:52.222 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-06-07 22:51:53.138 | INFO     | memory.vector_store.embedder:<module>:50 - [EMBEDDER] Model loaded: all-MiniLM-L6-v2
+2025-06-07 22:51:53.411 | SUCCESS  | nlp_engine.tokenizer:<module>:32 - [TOKENIZER] Loaded: bert-base-uncased
+2025-06-07 22:51:53.806 | INFO     | agent_core.task_queue:_load_snapshot:153 - [TaskQueue] Queue restored from snapshot.
+2025-06-07 22:52:00.589 | INFO     | __main__:main:54 - [CLI] Received input: How are You Gremlin?
+2025-06-07 22:52:00.593 | DEBUG    | nlp_engine.tokenizer:tokenize:61 - [TOKENIZER] Token count: 7
+2025-06-07 22:52:00.711 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 22:52:00.712 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 3ed71ad8-0c34-48f5-8285-a36eea70fabd
+2025-06-07 22:52:00.721 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 743acb64-93b7-4a4d-a971-b05db10221d4
+2025-06-07 22:52:00.721 | ERROR    | nlp_engine.pos_tagger:get_pos_tags:65 - [POS_TAGGER] Failed to tag input: 
+**********************************************************************
+  Resource [93mpunkt[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('punkt')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtokenizers/punkt/english/[0m
+
+  Searched in:
+    - '/home/statiksmoke8/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/share/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+    - '/home/statiksmoke8/nltk_data'
+**********************************************************************
+
+2025-06-07 22:52:00.728 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 22:52:00.728 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: d6ee7d84-7a4b-4bef-8198-a8934d5610b0
+2025-06-07 22:52:00.735 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 87cbee6a-ce5a-48e6-8262-0b63367fab79
+2025-06-07 22:52:00.737 | DEBUG    | nlp_engine.tokenizer:tokenize:61 - [TOKENIZER] Token count: 7
+2025-06-07 22:52:00.741 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 22:52:00.742 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 1d77aa92-82b6-4b93-a607-51d5fde3dbfb
+2025-06-07 22:52:00.747 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: a0b755cb-cfdd-4159-b038-849a9a6219f4
+2025-06-07 22:52:00.753 | DEBUG    | nlp_engine.tokenizer:tokenize:61 - [TOKENIZER] Token count: 7
+2025-06-07 22:52:00.757 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 22:52:00.757 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: dbbfa366-8d4c-4642-b418-f4a939d40421
+2025-06-07 22:52:00.762 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: b1d12b39-086c-415e-860c-4b91d5b49669
+2025-06-07 22:52:00.763 | ERROR    | nlp_engine.pos_tagger:get_pos_tags:65 - [POS_TAGGER] Failed to tag input: 
+**********************************************************************
+  Resource [93mpunkt[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('punkt')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtokenizers/punkt/english/[0m
+
+  Searched in:
+    - '/home/statiksmoke8/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/share/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+    - '/home/statiksmoke8/nltk_data'
+**********************************************************************
+
+2025-06-07 22:52:00.769 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 22:52:00.769 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 4c68d156-8486-4303-945d-d1f6b9bff5be
+2025-06-07 22:52:00.774 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 254dac40-e8ba-442b-88b8-f5a7eb26bfd2
+2025-06-07 22:52:00.774 | WARNING  | backend.interface.commands:execute_command:93 - [COMMAND] Unknown command type: {'type': 'unknown', 'payload': 'How are You Gremlin?'}
+2025-06-07 22:52:00.775 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 20aee37d-5abb-4a1d-9b22-70f2d8700e2c
+2025-06-07 22:52:00.775 | INFO     | memory.log_history:log_event:40 - [HISTORY] Logged chat :: parsed
+2025-06-07 22:52:00.775 | WARNING  | backend.api.chat_handler:chat:56 - [CHAT] Fallback NLP task for unrecognized command: How are You Gremlin?
+2025-06-07 22:52:00.775 | DEBUG    | agent_core.task_queue:enqueue_task:43 - [TaskQueue] Enqueued (normal): nlp (41f2083d-5148-4733-a336-a4cf978a9082)
+2025-06-07 22:52:00.776 | DEBUG    | agent_core.task_queue:_save_snapshot:137 - [TaskQueue] Snapshot saved.
+2025-06-07 22:52:00.776 | ERROR    | __main__:main:78 - [CLI] Error during input handling: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+Traceback (most recent call last):
+
+  File "/home/statiksmoke8/AscendAI/GremlinGPT/run/cli.py", line 85, in <module>
+    main()
+    └ <function main at 0x7d82bc434280>
+
+> File "/home/statiksmoke8/AscendAI/GremlinGPT/run/cli.py", line 66, in main
+    response = chat(user_input)
+               │    └ 'How are You Gremlin?'
+               └ <function chat at 0x7d82ccc089d0>
+
+  File "/home/statiksmoke8/AscendAI/GremlinGPT/backend/api/chat_handler.py", line 61, in chat
+    return jsonify(
+           └ <function jsonify at 0x7d82bc54fc70>
+
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/flask/json/__init__.py", line 170, in jsonify
+    return current_app.json.response(*args, **kwargs)  # type: ignore[return-value]
+           │                          │       └ {}
+           │                          └ ({'response': 'Command interpreted as: unknown', 'tokens': ['how', 'are', 'you', 'gr', '##em', '##lin', '?'], 'result': {'sta...
+           └ <LocalProxy unbound>
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/werkzeug/local.py", line 318, in __get__
+    obj = instance._get_current_object()
+          │        └ <member '_get_current_object' of 'LocalProxy' objects>
+          └ <LocalProxy unbound>
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/werkzeug/local.py", line 519, in _get_current_object
+    raise RuntimeError(unbound_message) from None
+                       └ 'Working outside of application context.\n\nThis typically means that you attempted to use functionality that needed\nthe cur...
+
+RuntimeError: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2025-06-07 22:57:58.391 | INFO     | backend.globals:<module>:65 - [GLOBALS] Configuration loaded and logger initialized.
+2025-06-07 22:57:59.342 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-06-07 22:58:00.272 | INFO     | memory.vector_store.embedder:<module>:50 - [EMBEDDER] Model loaded: all-MiniLM-L6-v2
+2025-06-07 22:58:00.498 | SUCCESS  | nlp_engine.tokenizer:<module>:32 - [TOKENIZER] Loaded: bert-base-uncased
+2025-06-07 22:58:00.831 | INFO     | agent_core.task_queue:_load_snapshot:153 - [TaskQueue] Queue restored from snapshot.
+2025-06-07 22:58:14.144 | INFO     | __main__:main:54 - [CLI] Received input: How are you Gremlin?
+2025-06-07 22:58:14.147 | DEBUG    | nlp_engine.tokenizer:tokenize:61 - [TOKENIZER] Token count: 7
+2025-06-07 22:58:14.260 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 22:58:14.261 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 2b27afe2-d420-4f34-a683-95dfd35aa1c1
+2025-06-07 22:58:14.270 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 54ef4c66-68da-4f13-ae2e-387ff934acdd
+2025-06-07 22:58:14.270 | ERROR    | nlp_engine.pos_tagger:get_pos_tags:65 - [POS_TAGGER] Failed to tag input: 
+**********************************************************************
+  Resource [93mpunkt[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('punkt')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtokenizers/punkt/english/[0m
+
+  Searched in:
+    - '/home/statiksmoke8/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/share/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+    - '/home/statiksmoke8/nltk_data'
+**********************************************************************
+
+2025-06-07 22:58:14.277 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 22:58:14.277 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: af92a5d9-1a96-4e8b-950b-afcd67d73bca
+2025-06-07 22:58:14.284 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 3c568b4b-f88e-4ab7-b666-d81b235a0ef8
+2025-06-07 22:58:14.286 | DEBUG    | nlp_engine.tokenizer:tokenize:61 - [TOKENIZER] Token count: 7
+2025-06-07 22:58:14.290 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 22:58:14.290 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 0fab7f73-23c0-458b-953c-d6c027316e9c
+2025-06-07 22:58:14.295 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: d6ad5669-a461-489a-a351-768269f1fcd0
+2025-06-07 22:58:14.302 | DEBUG    | nlp_engine.tokenizer:tokenize:61 - [TOKENIZER] Token count: 7
+2025-06-07 22:58:14.306 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 22:58:14.306 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 16375e21-f49a-4248-ac19-01790626866f
+2025-06-07 22:58:14.311 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: c96bbc85-aef9-4059-b22b-62f4f1bf5983
+2025-06-07 22:58:14.312 | ERROR    | nlp_engine.pos_tagger:get_pos_tags:65 - [POS_TAGGER] Failed to tag input: 
+**********************************************************************
+  Resource [93mpunkt[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('punkt')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtokenizers/punkt/english/[0m
+
+  Searched in:
+    - '/home/statiksmoke8/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/share/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+    - '/home/statiksmoke8/nltk_data'
+**********************************************************************
+
+2025-06-07 22:58:14.317 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 22:58:14.317 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 5eef8c60-72a4-4cff-a220-d8ab9e1b28b1
+2025-06-07 22:58:14.323 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 68dd2d8f-6c5a-4cf9-a9b0-ae052131b5ce
+2025-06-07 22:58:14.323 | WARNING  | backend.interface.commands:execute_command:93 - [COMMAND] Unknown command type: {'type': 'unknown', 'payload': 'How are you Gremlin?'}
+2025-06-07 22:58:14.324 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: ea005db8-995a-4993-8adf-019874bb1914
+2025-06-07 22:58:14.324 | INFO     | memory.log_history:log_event:40 - [HISTORY] Logged chat :: parsed
+2025-06-07 22:58:14.324 | WARNING  | backend.api.chat_handler:chat:56 - [CHAT] Fallback NLP task for unrecognized command: How are you Gremlin?
+2025-06-07 22:58:14.324 | DEBUG    | agent_core.task_queue:enqueue_task:43 - [TaskQueue] Enqueued (normal): nlp (ad9b62b0-413c-4218-a918-38f821cc4b33)
+2025-06-07 22:58:14.325 | DEBUG    | agent_core.task_queue:_save_snapshot:137 - [TaskQueue] Snapshot saved.
+2025-06-07 22:58:14.325 | ERROR    | __main__:main:78 - [CLI] Error during input handling: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+Traceback (most recent call last):
+
+  File "/home/statiksmoke8/AscendAI/GremlinGPT/run/cli.py", line 85, in <module>
+    main()
+    └ <function main at 0x7446c59ac3a0>
+
+> File "/home/statiksmoke8/AscendAI/GremlinGPT/run/cli.py", line 66, in main
+    response = chat(user_input)
+               │    └ 'How are you Gremlin?'
+               └ <function chat at 0x7446da0489d0>
+
+  File "/home/statiksmoke8/AscendAI/GremlinGPT/backend/api/chat_handler.py", line 61, in chat
+    return jsonify(
+           └ <function jsonify at 0x7446c5ad3d90>
+
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/flask/json/__init__.py", line 170, in jsonify
+    return current_app.json.response(*args, **kwargs)  # type: ignore[return-value]
+           │                          │       └ {}
+           │                          └ ({'response': 'Command interpreted as: unknown', 'tokens': ['how', 'are', 'you', 'gr', '##em', '##lin', '?'], 'result': {'sta...
+           └ <LocalProxy unbound>
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/werkzeug/local.py", line 318, in __get__
+    obj = instance._get_current_object()
+          │        └ <member '_get_current_object' of 'LocalProxy' objects>
+          └ <LocalProxy unbound>
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/werkzeug/local.py", line 519, in _get_current_object
+    raise RuntimeError(unbound_message) from None
+                       └ 'Working outside of application context.\n\nThis typically means that you attempted to use functionality that needed\nthe cur...
+
+RuntimeError: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2025-06-07 23:33:56.719 | INFO     | backend.globals:<module>:65 - [GLOBALS] Configuration loaded and logger initialized.
+2025-06-07 23:33:57.641 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-06-07 23:33:58.705 | INFO     | memory.vector_store.embedder:<module>:50 - [EMBEDDER] Model loaded: all-MiniLM-L6-v2
+2025-06-07 23:33:58.914 | SUCCESS  | nlp_engine.tokenizer:<module>:32 - [TOKENIZER] Loaded: bert-base-uncased
+2025-06-07 23:33:59.247 | INFO     | agent_core.task_queue:_load_snapshot:153 - [TaskQueue] Queue restored from snapshot.
+2025-06-07 23:34:06.742 | INFO     | __main__:main:54 - [CLI] Received input: How are you Gremlin?
+2025-06-07 23:34:06.746 | DEBUG    | nlp_engine.tokenizer:tokenize:61 - [TOKENIZER] Token count: 7
+2025-06-07 23:34:06.861 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 23:34:06.862 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: d7c66e8b-e9da-4702-9df3-da257fb610ff
+2025-06-07 23:34:06.871 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 7baea16d-2c22-4102-8ca2-11cf88dd7cd1
+2025-06-07 23:34:06.872 | ERROR    | nlp_engine.pos_tagger:get_pos_tags:65 - [POS_TAGGER] Failed to tag input: 
+**********************************************************************
+  Resource [93mpunkt[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('punkt')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtokenizers/punkt/english/[0m
+
+  Searched in:
+    - '/home/statiksmoke8/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/share/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+    - '/home/statiksmoke8/nltk_data'
+**********************************************************************
+
+2025-06-07 23:34:06.879 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 23:34:06.879 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 6ce76f65-8cd6-425d-9d9e-dd3343f16135
+2025-06-07 23:34:06.886 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 7c92b2c1-b8fa-4055-a9ce-54f0742c6b67
+2025-06-07 23:34:06.888 | DEBUG    | nlp_engine.tokenizer:tokenize:61 - [TOKENIZER] Token count: 7
+2025-06-07 23:34:06.892 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 23:34:06.893 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 26165d5b-aded-42ee-acc4-4e1f159dde21
+2025-06-07 23:34:06.898 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 69ce3a49-ae54-470d-9a28-5c55545455d6
+2025-06-07 23:34:06.904 | DEBUG    | nlp_engine.tokenizer:tokenize:61 - [TOKENIZER] Token count: 7
+2025-06-07 23:34:06.908 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 23:34:06.909 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: f351d4d4-a287-4213-ab95-05c085185578
+2025-06-07 23:34:06.914 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: a137e02d-0af5-4d3a-a026-a33d88f79ae5
+2025-06-07 23:34:06.915 | ERROR    | nlp_engine.pos_tagger:get_pos_tags:65 - [POS_TAGGER] Failed to tag input: 
+**********************************************************************
+  Resource [93mpunkt[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('punkt')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtokenizers/punkt/english/[0m
+
+  Searched in:
+    - '/home/statiksmoke8/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/share/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+    - '/home/statiksmoke8/nltk_data'
+**********************************************************************
+
+2025-06-07 23:34:06.921 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 23:34:06.921 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 9bf335c8-5a0b-4099-ba23-35f677c50854
+2025-06-07 23:34:06.927 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 73b16e73-3bbb-42b4-af0d-3684c9e59c12
+2025-06-07 23:34:06.927 | WARNING  | backend.interface.commands:execute_command:93 - [COMMAND] Unknown command type: {'type': 'unknown', 'payload': 'How are you Gremlin?'}
+2025-06-07 23:34:06.927 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 74a20306-09cd-4b3c-91c6-374b3281591c
+2025-06-07 23:34:06.927 | INFO     | memory.log_history:log_event:40 - [HISTORY] Logged chat :: parsed
+2025-06-07 23:34:06.927 | WARNING  | backend.api.chat_handler:chat:56 - [CHAT] Fallback NLP task for unrecognized command: How are you Gremlin?
+2025-06-07 23:34:06.928 | DEBUG    | agent_core.task_queue:enqueue_task:43 - [TaskQueue] Enqueued (normal): nlp (7a86c675-d725-43b0-9c38-f6178ab8879c)
+2025-06-07 23:34:06.928 | DEBUG    | agent_core.task_queue:_save_snapshot:137 - [TaskQueue] Snapshot saved.
+2025-06-07 23:34:06.928 | ERROR    | __main__:main:78 - [CLI] Error during input handling: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+Traceback (most recent call last):
+
+  File "/home/statiksmoke8/AscendAI/GremlinGPT/run/cli.py", line 85, in <module>
+    main()
+    └ <function main at 0x71267b2184c0>
+
+> File "/home/statiksmoke8/AscendAI/GremlinGPT/run/cli.py", line 66, in main
+    response = chat(user_input)
+               │    └ 'How are you Gremlin?'
+               └ <function chat at 0x71267f9789d0>
+
+  File "/home/statiksmoke8/AscendAI/GremlinGPT/backend/api/chat_handler.py", line 61, in chat
+    return jsonify(
+           └ <function jsonify at 0x71267b33beb0>
+
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/flask/json/__init__.py", line 170, in jsonify
+    return current_app.json.response(*args, **kwargs)  # type: ignore[return-value]
+           │                          │       └ {}
+           │                          └ ({'response': 'Command interpreted as: unknown', 'tokens': ['how', 'are', 'you', 'gr', '##em', '##lin', '?'], 'result': {'sta...
+           └ <LocalProxy unbound>
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/werkzeug/local.py", line 318, in __get__
+    obj = instance._get_current_object()
+          │        └ <member '_get_current_object' of 'LocalProxy' objects>
+          └ <LocalProxy unbound>
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/werkzeug/local.py", line 519, in _get_current_object
+    raise RuntimeError(unbound_message) from None
+                       └ 'Working outside of application context.\n\nThis typically means that you attempted to use functionality that needed\nthe cur...
+
+RuntimeError: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2025-06-07 23:50:28.446 | INFO     | backend.globals:<module>:65 - [GLOBALS] Configuration loaded and logger initialized.
+2025-06-07 23:50:29.376 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-06-07 23:50:30.495 | INFO     | memory.vector_store.embedder:<module>:50 - [EMBEDDER] Model loaded: all-MiniLM-L6-v2
+2025-06-07 23:50:30.598 | SUCCESS  | nlp_engine.tokenizer:<module>:32 - [TOKENIZER] Loaded: bert-base-uncased
+2025-06-07 23:50:30.773 | INFO     | agent_core.task_queue:_load_snapshot:153 - [TaskQueue] Queue restored from snapshot.
+2025-06-07 23:50:38.333 | INFO     | __main__:main:54 - [CLI] Received input: How Are you Gremlin?
+2025-06-07 23:50:38.336 | DEBUG    | nlp_engine.tokenizer:tokenize:61 - [TOKENIZER] Token count: 7
+2025-06-07 23:50:38.456 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 23:50:38.456 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 01e299c5-cf69-4ece-b553-6c461d3d92bc
+2025-06-07 23:50:38.465 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: f54d2a56-1557-4a65-9933-0b8c73d7712f
+2025-06-07 23:50:38.466 | ERROR    | nlp_engine.pos_tagger:get_pos_tags:65 - [POS_TAGGER] Failed to tag input: 
+**********************************************************************
+  Resource [93mpunkt[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('punkt')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtokenizers/punkt/english/[0m
+
+  Searched in:
+    - '/home/statiksmoke8/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/share/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+    - '/home/statiksmoke8/AscendAI/GremlinGPT/data/nltk_data'
+**********************************************************************
+
+2025-06-07 23:50:38.473 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 23:50:38.473 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 288b80ba-b223-4699-a9ae-2612135be193
+2025-06-07 23:50:38.480 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 0492f82d-1d65-405a-b479-189ac815244a
+2025-06-07 23:50:38.482 | DEBUG    | nlp_engine.tokenizer:tokenize:61 - [TOKENIZER] Token count: 7
+2025-06-07 23:50:38.486 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 23:50:38.486 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 36158c5f-98bd-4afe-9678-a6d198f10339
+2025-06-07 23:50:38.492 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: c679eacd-9e9c-4272-973d-51bd12228b91
+2025-06-07 23:50:38.499 | DEBUG    | nlp_engine.tokenizer:tokenize:61 - [TOKENIZER] Token count: 7
+2025-06-07 23:50:38.502 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 23:50:38.503 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 5f2452e9-fa96-44cf-8813-b60fc338baeb
+2025-06-07 23:50:38.509 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 1f615409-63e6-4c12-bd61-3309e1d70113
+2025-06-07 23:50:38.509 | ERROR    | nlp_engine.pos_tagger:get_pos_tags:65 - [POS_TAGGER] Failed to tag input: 
+**********************************************************************
+  Resource [93mpunkt[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('punkt')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtokenizers/punkt/english/[0m
+
+  Searched in:
+    - '/home/statiksmoke8/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/share/nltk_data'
+    - '/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+    - '/home/statiksmoke8/AscendAI/GremlinGPT/data/nltk_data'
+**********************************************************************
+
+2025-06-07 23:50:38.515 | DEBUG    | memory.vector_store.embedder:embed_text:69 - [EMBEDDER] Embedding norm: 1.0000
+2025-06-07 23:50:38.515 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 781c225c-db9f-4709-8479-06b53dfe8a86
+2025-06-07 23:50:38.521 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 0a60e7c1-13fd-4d1f-a868-7e1235d77d92
+2025-06-07 23:50:38.521 | WARNING  | backend.interface.commands:execute_command:93 - [COMMAND] Unknown command type: {'type': 'unknown', 'payload': 'How Are you Gremlin?'}
+2025-06-07 23:50:38.522 | INFO     | memory.vector_store.embedder:package_embedding:93 - [EMBEDDER] Stored embedding: 12686d52-45d6-4abb-9a20-98d64e67eadc
+2025-06-07 23:50:38.522 | INFO     | memory.log_history:log_event:40 - [HISTORY] Logged chat :: parsed
+2025-06-07 23:50:38.522 | WARNING  | backend.api.chat_handler:chat:56 - [CHAT] Fallback NLP task for unrecognized command: How Are you Gremlin?
+2025-06-07 23:50:38.522 | DEBUG    | agent_core.task_queue:enqueue_task:43 - [TaskQueue] Enqueued (normal): nlp (eb5bdef4-d8e9-42f4-b15a-71ec902cddc8)
+2025-06-07 23:50:38.522 | DEBUG    | agent_core.task_queue:_save_snapshot:137 - [TaskQueue] Snapshot saved.
+2025-06-07 23:50:38.522 | ERROR    | __main__:main:78 - [CLI] Error during input handling: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+Traceback (most recent call last):
+
+  File "/home/statiksmoke8/AscendAI/GremlinGPT/run/cli.py", line 84, in <module>
+    main()
+    └ <function main at 0x765ce867f7f0>
+
+> File "/home/statiksmoke8/AscendAI/GremlinGPT/run/cli.py", line 66, in main
+    response = chat(user_input)
+               │    └ 'How Are you Gremlin?'
+               └ <function chat at 0x765be0f92d40>
+
+  File "/home/statiksmoke8/AscendAI/GremlinGPT/backend/api/chat_handler.py", line 61, in chat
+    return jsonify(
+           └ <function jsonify at 0x765bceb808b0>
+
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/flask/json/__init__.py", line 170, in jsonify
+    return current_app.json.response(*args, **kwargs)  # type: ignore[return-value]
+           │                          │       └ {}
+           │                          └ ({'response': 'Command interpreted as: unknown', 'tokens': ['how', 'are', 'you', 'gr', '##em', '##lin', '?'], 'result': {'sta...
+           └ <LocalProxy unbound>
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/werkzeug/local.py", line 318, in __get__
+    obj = instance._get_current_object()
+          │        └ <member '_get_current_object' of 'LocalProxy' objects>
+          └ <LocalProxy unbound>
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/werkzeug/local.py", line 519, in _get_current_object
+    raise RuntimeError(unbound_message) from None
+                       └ 'Working outside of application context.\n\nThis typically means that you attempted to use functionality that needed\nthe cur...
+
+RuntimeError: Working outside of application context.
+
+This typically means that you attempted to use functionality that needed
+the current application. To solve this, set up an application context
+with app.app_context(). See the documentation for more information.
+2025-07-10 18:52:27.727 | INFO     | backend.globals:<module>:64 - [GLOBALS] Configuration loaded and logger initialized.
+2025-07-10 18:52:27.752 | WARNING  | agent_core.task_queue:_load_snapshot:163 - [TaskQueue] Failed to load queue snapshot: Expecting ',' delimiter: line 24 column 1 (char 756)
+[SCRAPER_LOOP] Import error: No module named 'faiss_cpu'
+2025-07-10 18:53:24.622 | INFO     | backend.globals:<module>:64 - [GLOBALS] Configuration loaded and logger initialized.
+2025-07-10 18:53:24.644 | WARNING  | agent_core.task_queue:_load_snapshot:163 - [TaskQueue] Failed to load queue snapshot: Expecting ',' delimiter: line 24 column 1 (char 756)
+[SCRAPER_LOOP] Import error: No module named 'faiss_cpu'
+2025-07-10 18:54:29.030 | INFO     | backend.globals:<module>:64 - [GLOBALS] Configuration loaded and logger initialized.
+2025-07-10 18:54:29.050 | WARNING  | agent_core.task_queue:_load_snapshot:163 - [TaskQueue] Failed to load queue snapshot: Expecting ',' delimiter: line 24 column 1 (char 756)
+[SCRAPER_LOOP] Import error: No module named 'faiss_cpu'
+2025-07-10 19:03:54.208 | INFO     | backend.globals:<module>:64 - [GLOBALS] Configuration loaded and logger initialized.
+2025-07-10 19:03:54.231 | WARNING  | agent_core.task_queue:_load_snapshot:163 - [TaskQueue] Failed to load queue snapshot: Expecting ',' delimiter: line 24 column 1 (char 756)
+[SCRAPER_LOOP] Import error: No module named 'faiss_cpu'
+2025-07-12 13:28:04.521 | INFO     | backend.globals:<module>:64 - [GLOBALS] Configuration loaded and logger initialized.
+[TaskQueue] Failed to load queue snapshot: Expecting ',' delimiter: line 24 column 1 (char 756)
+2025-07-12 13:28:04.691 | ERROR    | memory.vector_store.embedder:<module>:32 - [EMBEDDER] chromadb import failed: No module named 'chromadb'
+2025-07-12 13:28:07.652 | ERROR    | nlp_engine.transformer_core:<module>:35 - [TRANSFORMER] Failed to load model 'bert-base-uncased': (MaxRetryError('HTTPSConnectionPool(host=\'huggingface.co\', port=443): Max retries exceeded with url: /api/models/bert-base-uncased/tree/main/additional_chat_templates?recursive=False&expand=False (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7ef37288da30>: Failed to resolve \'huggingface.co\' ([Errno -3] Temporary failure in name resolution)"))'), '(Request ID: 6eabe125-c85a-4528-8e52-b143f728292c)')
+2025-07-12 13:28:07.652 | ERROR    | memory.vector_store.embedder:<module>:121 - [FAISS] faiss unavailable; index not initialized
+2025-07-12 13:28:08.017 | ERROR    | memory.vector_store.embedder:<module>:145 - [EMBEDDER] Model load failed: (MaxRetryError('HTTPSConnectionPool(host=\'huggingface.co\', port=443): Max retries exceeded with url: /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7ef365c8b5b0>: Failed to resolve \'huggingface.co\' ([Errno -3] Temporary failure in name resolution)"))'), '(Request ID: 4e5a9b0c-6c32-4f85-93bd-8ddff5e4b34c)')
+2025-07-12 13:28:08.030 | INFO     | memory.vector_store.embedder:<module>:275 - [EMBEDDER] Initial disk load complete
+[EMBEDDER] faiss import failed: No module named 'faiss_cpu'
+Traceback (most recent call last):
+  File "/home/statiksmoke8/core/loop.py", line 16, in <module>
+    from agent_core import fsm
+  File "/home/statiksmoke8/AscendNet/server/AscendAI/GremlinGPT/agent_core/fsm.py", line 21, in <module>
+    from executors.tool_executor import execute_tool
+  File "/home/statiksmoke8/AscendNet/server/AscendAI/GremlinGPT/executors/tool_executor.py", line 14, in <module>
+    from scraper.ask_monday_handler import handle as handle_ask_monday
+  File "/home/statiksmoke8/AscendNet/server/AscendAI/GremlinGPT/scraper/ask_monday_handler.py", line 17, in <module>
+    import pyautogui
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages/pyautogui/__init__.py", line 246, in <module>
+    import mouseinfo
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages/mouseinfo/__init__.py", line 223, in <module>
+    _display = Display(os.environ['DISPLAY'])
+  File "/home/statiksmoke8/miniconda3/envs/gremlin-orchestrator/lib/python3.9/os.py", line 679, in __getitem__
+    raise KeyError(key) from None
+KeyError: 'DISPLAY'

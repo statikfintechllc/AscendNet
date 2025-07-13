@@ -1,0 +1,38 @@
+2025-07-10 18:52:30.321 | INFO     | backend.globals:<module>:64 - [GLOBALS] Configuration loaded and logger initialized.
+2025-07-10 18:52:30.885 | ERROR    | nlp_engine.transformer_core:<module>:35 - [TRANSFORMER] Failed to load model 'bert-base-uncased': CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero.
+2025-07-10 18:52:30.954 | ERROR    | __main__:<module>:87 - [EMBEDDER] Failed to initialize Chroma client: no such column: collections.topic
+2025-07-10 18:52:30.954 | INFO     | __main__:<module>:115 - [FAISS] Initialized new IndexFlatL2
+/home/statiksmoke8/miniconda3/envs/gremlin-memory/lib/python3.9/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero. (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+2025-07-10 18:52:31.920 | INFO     | __main__:<module>:137 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-10 18:52:31.926 | INFO     | __main__:<module>:279 - [EMBEDDER] Initial disk load complete
+2025-07-10 18:53:27.658 | INFO     | backend.globals:<module>:64 - [GLOBALS] Configuration loaded and logger initialized.
+2025-07-10 18:53:28.291 | ERROR    | nlp_engine.transformer_core:<module>:35 - [TRANSFORMER] Failed to load model 'bert-base-uncased': CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero.
+2025-07-10 18:53:28.356 | ERROR    | __main__:<module>:87 - [EMBEDDER] Failed to initialize Chroma client: no such column: collections.topic
+2025-07-10 18:53:28.356 | INFO     | __main__:<module>:115 - [FAISS] Initialized new IndexFlatL2
+/home/statiksmoke8/miniconda3/envs/gremlin-memory/lib/python3.9/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero. (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+2025-07-10 18:53:29.631 | INFO     | __main__:<module>:137 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-10 18:53:29.637 | INFO     | __main__:<module>:279 - [EMBEDDER] Initial disk load complete
+2025-07-10 18:54:32.119 | INFO     | backend.globals:<module>:64 - [GLOBALS] Configuration loaded and logger initialized.
+2025-07-10 18:54:32.708 | ERROR    | nlp_engine.transformer_core:<module>:35 - [TRANSFORMER] Failed to load model 'bert-base-uncased': CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero.
+2025-07-10 18:54:32.772 | ERROR    | __main__:<module>:87 - [EMBEDDER] Failed to initialize Chroma client: no such column: collections.topic
+2025-07-10 18:54:32.773 | INFO     | __main__:<module>:115 - [FAISS] Initialized new IndexFlatL2
+/home/statiksmoke8/miniconda3/envs/gremlin-memory/lib/python3.9/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero. (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+2025-07-10 18:54:34.989 | INFO     | __main__:<module>:137 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-10 18:54:34.995 | INFO     | __main__:<module>:279 - [EMBEDDER] Initial disk load complete
+2025-07-10 19:03:57.223 | INFO     | backend.globals:<module>:64 - [GLOBALS] Configuration loaded and logger initialized.
+2025-07-10 19:03:57.865 | ERROR    | nlp_engine.transformer_core:<module>:35 - [TRANSFORMER] Failed to load model 'bert-base-uncased': CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero.
+2025-07-10 19:03:57.941 | ERROR    | __main__:<module>:87 - [EMBEDDER] Failed to initialize Chroma client: no such column: collections.topic
+2025-07-10 19:03:57.942 | INFO     | __main__:<module>:115 - [FAISS] Initialized new IndexFlatL2
+/home/statiksmoke8/miniconda3/envs/gremlin-memory/lib/python3.9/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero. (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+2025-07-10 19:03:58.882 | INFO     | __main__:<module>:137 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-10 19:03:58.888 | INFO     | __main__:<module>:279 - [EMBEDDER] Initial disk load complete
+2025-07-12 13:28:08.391 | INFO     | backend.globals:<module>:64 - [GLOBALS] Configuration loaded and logger initialized.
+2025-07-12 13:28:08.396 | ERROR    | nlp_engine.transformer_core:<module>:35 - [TRANSFORMER] Failed to load model 'bert-base-uncased': (MaxRetryError('HTTPSConnectionPool(host=\'huggingface.co\', port=443): Max retries exceeded with url: /api/models/bert-base-uncased/tree/main/additional_chat_templates?recursive=False&expand=False (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x749042b01220>: Failed to resolve \'huggingface.co\' ([Errno -3] Temporary failure in name resolution)"))'), '(Request ID: 821db7f5-c3ed-43a3-b46a-98ac66fb5071)')
+2025-07-12 13:28:08.477 | ERROR    | __main__:<module>:87 - [EMBEDDER] Failed to initialize Chroma client: no such column: collections.topic
+2025-07-12 13:28:08.479 | INFO     | __main__:<module>:115 - [FAISS] Initialized new IndexFlatL2
+2025-07-12 13:28:08.911 | ERROR    | __main__:<module>:139 - [EMBEDDER] Model load failed: (MaxRetryError('HTTPSConnectionPool(host=\'huggingface.co\', port=443): Max retries exceeded with url: /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x749164be7d30>: Failed to resolve \'huggingface.co\' ([Errno -3] Temporary failure in name resolution)"))'), '(Request ID: 1f3a2a24-0c2f-404d-8251-e03d327fb141)')
+2025-07-12 13:28:08.917 | INFO     | __main__:<module>:279 - [EMBEDDER] Initial disk load complete

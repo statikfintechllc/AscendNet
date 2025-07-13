@@ -1,93 +1,58 @@
-# --- Ignore everything by default ---
-*
+# AscendNet Project .gitignore
 
-# --- Unignore key project files ---
-!.gitignore
-!README.md
-!LICENSE
-!FOUNDER_LOG.md
+# === SYSTEM FOLDERS (DO NOT INTEGRATE) ===
+# These are part of the host system and should not be tracked
+memforge/
+server/
+disk_forge/
+desktop/
+coldstorage/
+expansion_pool/
+godcore/
 
-# --- Unignore folders and all nested content ---
-!bootstrap/
-!bootstrap/**
-
-!AscendAI/
-!AscendAI/**
-!GremlinGPT/
-!GremlinGPT/**
-!OpenDevin/
-!OpenDevin/**
-!.github/
-!.github/**
-
-# --- Allow specific models ---
-!GremlinGPT/models/
-!GremlinGPT/models/Mistral-7b/
-!GremlinGPT/models/Mistral-7b/mistral_7b.temp
-!GremlinGPT/models/Mistral-7b/model_registry.py
-
-# --- AscendAI specific files ---
-!AscendAI/Ascend_Core/Models/model_registry.py
-!AscendAI/Ascend_Core/Modules/ask_monday.py
-!AscendAI/Ascend_Core/Modules/ask_monday_handler.py
-
-# --- Scripts ---
-!install_devin.sh
-
-# --- Devin-specific ignores ---
-OpenDevin/node_modules/
-OpenDevin/frontend/node_modules/
-OpenDevin/__pycache__/
-OpenDevin/.env
-OpenDevin/workspace/
-OpenDevin/.venv/
-OpenDevin/.DS_Store
-OpenDevin/*.log
-OpenDevin/.pytest_cache/
-
-# --- Python garbage ---
+# === STANDARD PROJECT IGNORES ===
+# Python
 __pycache__/
 *.py[cod]
 *.egg-info/
 *.egg
 *.pyo
+.env
+.venv/
+env/
 
-# --- System junk ---
-.DS_Store
-Thumbs.db
+# Logs and temporary files
 *.log
 *.swp
 *.tmp
+logs/*.log
 
-# --- VS Code ---
+# IDE and Editor files
 .vscode/
+.idea/
+*.swp
+*.swo
 
-# --- Conda environment ---
-env/
-.conda/
+# System files
+.DS_Store
+Thumbs.db
 
-# --- Jupyter ---
-.ipynb_checkpoints/
-*.ipynb
-
-# --- Node/npm ---
+# Node.js (if any frontend components)
 node_modules/
 dist/
-.cache/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# --- Memory overrides ---
-!OpenDevin/memory/task_*.md
-!OpenDevin/memory/instruction_*.md
+# Jupyter
+.ipynb_checkpoints/
 
-# --- LLaMA weights list ---
-!/bootstrap/llama_weights_and_models.txt
-=======
-!/AscendAI/Ascend_Core/Modules/ask_monday.py
+# Cache directories
+cache/
+.cache/
+temp/
+.pytest_cache/
 
-!/AscendAI/Ascend_Core/Modules/ask_monday_handler.py
-
-!/GremlinGPT/models/Mistral-7b/mistral_7b.temp
+# Soul persistence (runtime generated)
+storage/memory/soul.json
 

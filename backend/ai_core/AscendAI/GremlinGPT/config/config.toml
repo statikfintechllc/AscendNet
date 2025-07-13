@@ -1,0 +1,363 @@
+# ================================
+# GremlinGPT — Full System Config
+# Version: 1.0.3
+# ================================
+
+[system]
+name = "GremlinGPT"
+mode = "bootstrap"
+offline = true
+enable_patch_test = true
+debug = true
+log_level = "INFO"
+api_port = 8080
+cors_origins = ["*"]
+session_cookie_name = "gremlin_session"
+
+[security]
+SECRET_KEY = "SFTi"
+
+[ngrok]
+enabled = true
+# WARNING: Update 'authtoken' with your actual ngrok token before deploying to production.
+authtoken = "REPLACE_ME"      # REPLACE WITH YOUR TOKEN
+region = "US" 
+subdomain = ""
+
+[paths]
+base_dir = "."
+data_dir = "$ROOT/data/"
+models_dir = "$ROOT/nlp_engine/"
+checkpoints_dir = "$ROOT/run/checkpoints/"
+log_file = "$ROOT/run/logs/runtime.log"
+snapshot_dir = "$ROOT/run/checkpoints/snapshots/"
+vector_store_path = "$ROOT/memory/vector_store/faiss/"
+chroma_path = "$ROOT/memory/vector_store/chroma/"
+metadata_db = "$ROOT/memory/local_index/metadata.db"
+logs_dir = "$ROOT/data/logs/"
+training_sets_dir = "$ROOT/data/nlp_training_sets/"
+recovery_file = "$ROOT/run/recover.json"
+
+# -------------------------------------------
+# Agent Core / FSM / Recursion
+# -------------------------------------------
+[agent]
+max_tasks = 33
+task_retry_limit = 333
+log_agent_output = true
+default_priority = "medium"
+default_task_timeout = 13
+
+[agent_core]
+enabled = true
+fsm_enabled = true
+default_agent_type = "GeneralAgent"
+max_agents = 13
+agent_registry_path = "$ROOT/data/agents/"
+state_snapshot_path = "$ROOT/run/state_snapshot.json"
+fsm_tick_delay = 0.5
+
+[agents]
+enabled = true
+max_tasks = 33
+task_retry_limit = 333
+log_agent_output = true
+default_priority = "medium"
+default_task_timeout = 13
+
+[[agents.types]]
+name = "TaskAgent"
+enabled = true
+max_concurrent = 10
+
+[[agents.types]]
+name = "ScraperAgent"
+enabled = true
+max_concurrent = 5
+
+[[agents.types]]
+name = "TradingAgent"
+enabled = true
+max_concurrent = 3
+
+[[agents.types]]
+name = "MemoryAgent"
+enabled = true
+max_concurrent = 2
+
+[[agents.types]]
+name = "PlannerAgent"
+enabled = true
+max_concurrent = 2
+
+# -------------------------------------------
+# Shell Execution
+# -------------------------------------------
+[shell]
+enable_shell_tasks = true
+max_concurrent_shell = 2
+shell_log_path = "$ROOT/data/logs/shell_exec.log"
+default_timeout_sec = 10
+restrict_commands = ["rm", "shutdown", "reboot"]
+
+# -------------------------------------------
+# NLP / Language Processing
+# -------------------------------------------
+[nlp]
+enabled = true
+device = "cuda"   # or "cpu" or "auto"
+tokenizer_model = "bert-base-uncased"
+embedder_model = "all-MiniLM-L6-v2"
+transformer_model = "bert-base-uncased"
+embedding_dim = 384
+confidence_threshold = 0.7
+semantic_boost = true
+similarity_threshold = 0.75
+max_nlp_batch_size = 256
+
+# -------------------------------------------
+# Memory / Vector Store
+# -------------------------------------------
+[memory]
+enabled = true
+vector_backend = "faiss"     # Options: "faiss", "chromadb"
+embedding_format = "float32"
+auto_index = true
+index_chunk_size = 512
+snapshot_interval_min = 30
+allow_replaceable = true
+allowed_backends = ["faiss", "chromadb"]
+
+# Dashboard toggle: set to "faiss" or "chromadb" to select backend
+dashboard_selected_backend = "faiss"
+vector_cache_enabled = true
+cache_path = "$ROOT/memory/vector_store/cache/"
+max_memory_usage_gb = 115
+
+# -------------------------------------------
+# Core / Kernel / Loop
+# -------------------------------------------
+[core]
+enabled = true
+kernel_loop_enabled = true
+loop_tick_delay = 0.75
+snapshot_interval_min = 30
+recovery_file = "$ROOT/run/recover.json"
+
+# -------------------------------------------
+# Self-Training / Mutation / RL
+# -------------------------------------------
+[self_training]
+enabled = true
+mutation_engine_enabled = true
+feedback_loop_enabled = true
+retrain_trigger_file = "$ROOT/run/checkpoints/retrain_trigger.json"
+log_watch_dir = "$ROOT/data/logs/"
+training_output = "$ROOT/data/nlp_training_sets/mutated_dataset.json"
+overwrite_model = false
+allow_mutation = true
+feedback_interval_sec = 30
+mutation_interval_sec = 90
+
+# -------------------------------------------
+# Scraper / Web Data Tools (Full)
+# -------------------------------------------
+[scraper]
+enabled = true
+global_interval_sec = 15
+global_timeout_sec = 30
+max_concurrent_scrapers = 9
+retry_backoff_sec = 5.0
+browser_profile = "$ROOT/scraper/profiles/chromium_profile/"
+fallback_enabled = true
+watch_processes = ["TWS", "StocksToTrade"]
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+chromium_flags = ["--enable-gpu", "--no-sandbox"]
+device_emulation = "desktop"
+simulation_enabled = true
+routing_enabled = true
+
+[scraper.routing_map]
+"stt" = "stt_scraper"
+"tws" = "tws_scraper"
+"monday" = "ask_monday_handler"
+"web_knowledge" = "web_knowledge_scraper"
+
+[scraper.stt]
+enabled = true
+interval_sec = 20
+timeout_sec = 45
+
+[scraper.tws]
+enabled = true
+interval_sec = 25
+timeout_sec = 60
+
+[scraper.ask_monday]
+enabled = true
+interval_sec = 30
+timeout_sec = 30
+
+[scraper.web_knowledge]
+enabled = true
+interval_sec = 30
+timeout_sec = 45
+domains = ["example.com", "another.com"]
+
+[scraper.dom_navigator]
+enabled = true
+selector_config = "default"
+click_delay_ms = 300
+
+[scraper.page_simulator]
+enabled = true
+simulate_scroll = true
+simulate_typing = true
+random_delay_range_ms = [200, 600]
+
+[scraper.playwright]
+enabled = true
+chromium_flags = ["--enable-gpu", "--no-sandbox"]
+headless = true
+device = "desktop"
+
+[scraper.stt_credentials]
+username = "your_stt_user"
+password = "your_stt_pass"
+api_key = ""   # Gremlin Doesnt Use these, Once Configured
+
+[scraper.tws_credentials]
+username = "your_tws_user"
+password = "your_tws_pass"
+api_key = ""   # Gremlin Doesnt Use these, Once Configured
+
+[scraper.ask_monday_credentials]
+username = "your_monday_user"
+password = "your_monday_pass"
+api_token = ""   # Gremlin Doesnt Use these, Once Configured
+
+# -------------------------------------------
+# Trading Core / Signal Agents
+# -------------------------------------------
+[trading]
+enabled = true
+max_watchlist = 25
+min_confidence_signal = 0.6
+tax_region = "US"
+simulate_if_offline = true
+default_exchange = "NASDAQ"
+allow_shorting = true
+max_orders_per_minute = 5
+api_broker_url = ""
+trade_log_path = "$ROOT/data/logs/trading.log"
+
+[paper.trading_credentials]
+ibkr_api_key = ""   # Gremlin Doesnt Use these, Once Configured
+sim_broker_username = ""
+sim_broker_password = ""
+
+[real.trading_credentials]
+ibkr_api_key = ""   # Gremlin Doesnt Use these, Once Configured
+username = "your_tws_user"
+password = "your_tws_pass"
+
+# -------------------------------------------
+# Tools / Reward Model / Utilities
+# -------------------------------------------
+[tools]
+reward_model_enabled = true
+reward_model_path = "$ROOT/tools/reward_model.py"
+reward_baseline = 0.0
+reward_gain = 1.0
+reward_penalty = -1.0
+
+# -------------------------------------------
+# Backend Server / API / Dashboard
+# -------------------------------------------
+[backend]
+enabled = true
+session_cookie_name = "gremlins_forge"
+cors_origins = ["*"]
+ngrok_enabled = true
+dashboard_enabled = true
+allowed_api_routes = ["chat", "trade", "memory", "scrape", "shell", "mutation"]
+
+# -------------------------------------------
+# Dashboard / Frontend / Modules
+# -------------------------------------------
+[dashboard]
+enabled = true
+title = "GremlinGPT Command Console"
+theme = "dark"
+auto_launch_browser = true
+enable_qr_code = true
+enable_mobile_pwa = true
+poll_interval_ms = 500
+refresh_interval_ms = 1000
+allow_remote_control = true
+
+[auth]
+enabled = true
+
+[[auth.users]]
+username = "SFTi" # Change to your Prefered User.
+password = "changeme" # Change to your Prefered Pass.
+
+[modules.chat_interface]
+enabled = true
+max_history = 100
+allow_commands = true
+show_token_count = true
+nlp_routing_enabled = true
+
+[modules.task_tree]
+enabled = true
+display_depth = 5
+show_agent_ids = true
+enable_auto_scroll = true
+highlight_mutated_tasks = true
+
+[modules.memory_graph]
+enabled = true
+embedding_plot_mode = "umap"
+max_nodes = 300
+color_by = "origin"
+show_vector_labels = true
+allow_tag_filtering = true
+refresh_on_embedding = true
+
+[modules.trading_panel]
+enabled = true
+tracked_stocks = ["SPY", "BTC", "LQD", "AAPL", "TSLA"]
+auto_refresh = true
+refresh_interval_sec = 1
+show_unrealized_pnl = true
+enable_trade_logging = true
+highlight_signal_confidence = true
+
+[modules.memory_inspector]
+enabled = true
+show_metadata = true
+allow_edit = true
+max_results = 200
+embed_preview_chars = 1024
+filter_by_type = ["code_diff", "signal", "planner_task"]
+
+[modules.mutation_viewer]
+enabled = true
+highlight_deltas = true
+track_lineage = true
+show_watermark = true
+diff_threshold = 0.6
+semantic_score_enabled = true
+
+[modules.shell_output]
+enabled = true
+max_output_lines = 369
+auto_scroll = true
+timestamp_display = true
+command_input_enabled = true
+
+# -------------------------------------------
+# End Config
+# -------------------------------------------

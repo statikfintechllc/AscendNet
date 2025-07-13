@@ -1,0 +1,264 @@
+[
+  {
+    "tab": "Chat",
+    "features": [
+      {
+        "feature": "Agent Chat (FSM)",
+        "endpoint": "/api/chat",
+        "frontend": "ChatInterface.js",
+        "backend": "backend/api/chat_handler.py:chat",
+        "description": "Chat with FSM-driven agents."
+      },
+      {
+        "feature": "Task Tree (planner/queue)",
+        "endpoint": "/api/agent/tasks",
+        "frontend": "TaskTreeView.js",
+        "backend": "agent_core/task_queue.py",
+        "description": "View and manage agent task tree."
+      },
+      {
+        "feature": "Conversation Log",
+        "endpoint": "/api/chat/log",
+        "frontend": "ChatInterface.js",
+        "backend": "backend/api/chat_handler.py:log",
+        "description": "View chat history and logs."
+      }
+    ]
+  },
+  {
+    "tab": "Memory",
+    "features": [
+      {
+        "feature": "Memory Vector Search",
+        "endpoint": "/api/memory/search",
+        "frontend": "MemoryGraph.js",
+        "backend": "backend/api/memory_api.py:search",
+        "description": "Query persistent memory vectors using natural language."
+      },
+      {
+        "feature": "Snapshot & Restore",
+        "endpoint": "/api/memory/snapshot",
+        "frontend": "MemoryGraph.js",
+        "backend": "core/snapshot.py",
+        "description": "Create and restore memory snapshots."
+      },
+      {
+        "feature": "Log History Viewer",
+        "endpoint": "/api/memory/logs",
+        "frontend": "MemoryGraph.js",
+        "backend": "memory/log_history.py",
+        "description": "View memory log history."
+      }
+    ]
+  },
+  {
+    "tab": "Trading",
+    "features": [
+      {
+        "feature": "Signal Generator",
+        "endpoint": "/api/trading/signals",
+        "frontend": "TradingPanel.js",
+        "backend": "trading_core/signal_generator.py",
+        "description": "Generate and view trading signals."
+      },
+      {
+        "feature": "Portfolio Tracker",
+        "endpoint": "/api/trading/portfolio",
+        "frontend": "TradingPanel.js",
+        "backend": "trading_core/portfolio_tracker.py",
+        "description": "Track trading portfolio."
+      },
+      {
+        "feature": "Rules Engine",
+        "endpoint": "/api/trading/rules",
+        "frontend": "TradingPanel.js",
+        "backend": "trading_core/rules_engine.py",
+        "description": "View and manage trading rules."
+      },
+      {
+        "feature": "Tax Estimator",
+        "endpoint": "/api/trading/tax",
+        "frontend": "TradingPanel.js",
+        "backend": "trading_core/tax_estimator.py",
+        "description": "Estimate trading taxes."
+      },
+      {
+        "feature": "Stock Scraper",
+        "endpoint": "/api/trading/stock_scraper",
+        "frontend": "TradingPanel.js",
+        "backend": "trading_core/stock_scraper.py",
+        "description": "Scrape stock data."
+      }
+    ]
+  },
+  {
+    "tab": "Scraping",
+    "features": [
+      {
+        "feature": "DOM/Web Scraper",
+        "endpoint": "/api/scrape/dom",
+        "frontend": "RewardFeedView.js",
+        "backend": "backend/api/scraping_api.py:scrape_url",
+        "description": "Scrape DOM and web content."
+      },
+      {
+        "feature": "Monday.com Scraper",
+        "endpoint": "/api/scrape/monday",
+        "frontend": "RewardFeedView.js",
+        "backend": "backend/api/scraping_api.py:scrape_url",
+        "description": "Scrape Monday.com content."
+      },
+      {
+        "feature": "Router/Async Scraper",
+        "endpoint": "/api/scrape/router",
+        "frontend": "RewardFeedView.js",
+        "backend": "backend/api/scraping_api.py:scrape_url",
+        "description": "Route and run async scraping."
+      }
+    ]
+  },
+  {
+    "tab": "Self-Training",
+    "features": [
+      {
+        "feature": "Mutation Engine",
+        "endpoint": "/api/self_training/mutate",
+        "frontend": "TaskTreeView.js",
+        "backend": "self_training/mutation_engine.py",
+        "description": "Run mutation engine for self-training."
+      },
+      {
+        "feature": "Feedback Loop",
+        "endpoint": "/api/self_training/feedback",
+        "frontend": "TaskTreeView.js",
+        "backend": "self_training/feedback_loop.py",
+        "description": "Run feedback loop for self-training."
+      },
+      {
+        "feature": "Retrain Scheduler",
+        "endpoint": "/api/self_training/retrain",
+        "frontend": "TaskTreeView.js",
+        "backend": "self_training/trainer.py",
+        "description": "Schedule and run retraining."
+      },
+      {
+        "feature": "Watcher/Autonomy",
+        "endpoint": "/api/self_training/watcher",
+        "frontend": "TaskTreeView.js",
+        "backend": "self_training/watcher.py",
+        "description": "Monitor autonomy and file changes."
+      }
+    ]
+  },
+  {
+    "tab": "Executors",
+    "features": [
+      {
+        "feature": "Python Executor",
+        "endpoint": "/api/execute/python",
+        "frontend": "ToolExecutor.js",
+        "backend": "executors/python_executor.py",
+        "description": "Execute Python code."
+      },
+      {
+        "feature": "Shell Executor",
+        "endpoint": "/api/execute/shell",
+        "frontend": "ToolExecutor.js",
+        "backend": "executors/shell_executor.py",
+        "description": "Execute shell commands."
+      },
+      {
+        "feature": "Tool Executor",
+        "endpoint": "/api/execute/tool",
+        "frontend": "ToolExecutor.js",
+        "backend": "executors/tool_executor.py",
+        "description": "Execute custom tools."
+      }
+    ]
+  },
+  {
+    "tab": "Tools",
+    "features": [
+      {
+        "feature": "Reward Model",
+        "endpoint": "/api/tools/reward_model",
+        "frontend": "RewardFeedView.js",
+        "backend": "tools/reward_model.py",
+        "description": "View and run reward model."
+      },
+      {
+        "feature": "Custom Tools",
+        "endpoint": "/api/tools/custom",
+        "frontend": "RewardFeedView.js",
+        "backend": "tools/",
+        "description": "Run custom tools."
+      }
+    ]
+  },
+  {
+    "tab": "System",
+    "features": [
+      {
+        "feature": "Config Editor",
+        "endpoint": "/api/system/config",
+        "frontend": "SettingsTab.js",
+        "backend": "config/config.toml",
+        "description": "Edit system configuration."
+      },
+      {
+        "feature": "Backend Select (FAISS/Chroma)",
+        "endpoint": "/api/system/backend_select",
+        "frontend": "SettingsTab.js",
+        "backend": "backend/globals.py, memory/vector_store/embedder.py",
+        "description": "Select vector backend (FAISS/Chroma)."
+      },
+      {
+        "feature": "Ngrok Integration",
+        "endpoint": "/api/system/ngrok",
+        "frontend": "SettingsTab.js",
+        "backend": "run/ngrok_launcher.py",
+        "description": "Manage ngrok integration."
+      },
+      {
+        "feature": "Log Viewer",
+        "endpoint": "/api/system/logs",
+        "frontend": "SettingsTab.js",
+        "backend": "data/logs/",
+        "description": "View system logs."
+      },
+      {
+        "feature": "System Call Graph",
+        "endpoint": "/api/system/call_graph",
+        "frontend": "SettingsTab.js",
+        "backend": "docs/system_call_graph.md",
+        "description": "View system call graph."
+      }
+    ]
+  },
+  {
+    "tab": "Experimental",
+    "features": [
+      {
+        "feature": "Mutation Watcher",
+        "endpoint": "/api/experimental/mutation_watcher",
+        "frontend": "ExperimentalTab.js",
+        "backend": "self_mutation_watcher/watcher.py",
+        "description": "Watch for code mutations."
+      },
+      {
+        "feature": "Test/New Agents",
+        "endpoint": "/api/experimental/new_agents",
+        "frontend": "ExperimentalTab.js",
+        "backend": "dev-experiment/new_agents/",
+        "description": "Test and run new agents."
+      },
+      {
+        "feature": "Broken Scraper List",
+        "endpoint": "/api/experimental/broken_scrapers",
+        "frontend": "ExperimentalTab.js",
+        "backend": "dev-experiment/broken_scrapers/",
+        "description": "List and test broken scrapers."
+      }
+    ]
+  }
+]

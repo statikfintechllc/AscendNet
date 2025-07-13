@@ -1,0 +1,73 @@
+2025-07-10 18:52:29.271 | INFO     | backend.globals:<module>:64 - [GLOBALS] Configuration loaded and logger initialized.
+2025-07-10 18:52:30.671 | ERROR    | nlp_engine.transformer_core:<module>:35 - [TRANSFORMER] Failed to load model 'bert-base-uncased': CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero.
+2025-07-10 18:52:30.733 | INFO     | memory.vector_store.embedder:<module>:115 - [FAISS] Initialized new IndexFlatL2
+/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero. (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+2025-07-10 18:52:32.264 | INFO     | memory.vector_store.embedder:<module>:137 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-10 18:52:32.271 | INFO     | memory.vector_store.embedder:<module>:279 - [EMBEDDER] Initial disk load complete
+[nltk_data] Downloading package punkt to /home/statiksmoke8/AscendNet/
+[nltk_data]     server/AscendAI/GremlinGPT/data/nltk_data...
+[nltk_data]   Unzipping tokenizers/punkt.zip.
+2025-07-10 18:52:33.271 | SUCCESS  | tokenizer:<module>:31 - [TOKENIZER] Loaded: bert-base-uncased
+[NLP_CHECK] ImportError: cannot import name 'Tokenizer' from 'tokenizer' (/home/statiksmoke8/nlp_engine/tokenizer.py)
+[NLP_CHECK] Could not write to $HOME/data/logs/nlp.out: [Errno 2] No such file or directory: '$HOME/data/logs/nlp.out'
+2025-07-10 18:53:26.387 | INFO     | backend.globals:<module>:64 - [GLOBALS] Configuration loaded and logger initialized.
+2025-07-10 18:53:27.988 | ERROR    | nlp_engine.transformer_core:<module>:35 - [TRANSFORMER] Failed to load model 'bert-base-uncased': CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero.
+2025-07-10 18:53:28.057 | INFO     | memory.vector_store.embedder:<module>:115 - [FAISS] Initialized new IndexFlatL2
+/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero. (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+2025-07-10 18:53:29.036 | INFO     | memory.vector_store.embedder:<module>:137 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-10 18:53:29.042 | INFO     | memory.vector_store.embedder:<module>:279 - [EMBEDDER] Initial disk load complete
+[nltk_data] Downloading package punkt to /home/statiksmoke8/AscendNet/
+[nltk_data]     server/AscendAI/GremlinGPT/data/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt to /home/statiksmoke8/AscendNet/
+[nltk_data]     server/AscendAI/GremlinGPT/data/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+2025-07-10 18:53:29.339 | SUCCESS  | tokenizer:<module>:31 - [TOKENIZER] Loaded: bert-base-uncased
+[NLP_CHECK] ImportError: cannot import name 'Tokenizer' from 'tokenizer' (/home/statiksmoke8/nlp_engine/tokenizer.py)
+[NLP_CHECK] Could not write to $HOME/data/logs/nlp.out: [Errno 2] No such file or directory: '$HOME/data/logs/nlp.out'
+2025-07-10 18:54:30.799 | INFO     | backend.globals:<module>:64 - [GLOBALS] Configuration loaded and logger initialized.
+2025-07-10 18:54:32.456 | ERROR    | nlp_engine.transformer_core:<module>:35 - [TRANSFORMER] Failed to load model 'bert-base-uncased': CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero.
+2025-07-10 18:54:32.541 | INFO     | memory.vector_store.embedder:<module>:115 - [FAISS] Initialized new IndexFlatL2
+/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero. (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+2025-07-10 18:54:33.558 | INFO     | memory.vector_store.embedder:<module>:137 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-10 18:54:33.564 | INFO     | memory.vector_store.embedder:<module>:279 - [EMBEDDER] Initial disk load complete
+[nltk_data] Downloading package punkt to /home/statiksmoke8/AscendNet/
+[nltk_data]     server/AscendAI/GremlinGPT/data/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt to /home/statiksmoke8/AscendNet/
+[nltk_data]     server/AscendAI/GremlinGPT/data/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+2025-07-10 18:54:33.849 | SUCCESS  | tokenizer:<module>:31 - [TOKENIZER] Loaded: bert-base-uncased
+[NLP_CHECK] ImportError: cannot import name 'Tokenizer' from 'tokenizer' (/home/statiksmoke8/nlp_engine/tokenizer.py)
+[NLP_CHECK] Could not write to $HOME/data/logs/nlp.out: [Errno 2] No such file or directory: '$HOME/data/logs/nlp.out'
+2025-07-10 19:03:55.990 | INFO     | backend.globals:<module>:64 - [GLOBALS] Configuration loaded and logger initialized.
+2025-07-10 19:03:57.590 | ERROR    | nlp_engine.transformer_core:<module>:35 - [TRANSFORMER] Failed to load model 'bert-base-uncased': CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero.
+2025-07-10 19:03:57.652 | INFO     | memory.vector_store.embedder:<module>:115 - [FAISS] Initialized new IndexFlatL2
+/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero. (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+2025-07-10 19:03:58.712 | INFO     | memory.vector_store.embedder:<module>:137 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-10 19:03:58.718 | INFO     | memory.vector_store.embedder:<module>:279 - [EMBEDDER] Initial disk load complete
+[nltk_data] Downloading package punkt to /home/statiksmoke8/AscendNet/
+[nltk_data]     server/AscendAI/GremlinGPT/data/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package punkt to /home/statiksmoke8/AscendNet/
+[nltk_data]     server/AscendAI/GremlinGPT/data/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+2025-07-10 19:03:59.002 | SUCCESS  | tokenizer:<module>:31 - [TOKENIZER] Loaded: bert-base-uncased
+[NLP_CHECK] ImportError: cannot import name 'Tokenizer' from 'tokenizer' (/home/statiksmoke8/nlp_engine/tokenizer.py)
+[NLP_CHECK] Could not write to $HOME/data/logs/nlp.out: [Errno 2] No such file or directory: '$HOME/data/logs/nlp.out'
+2025-07-12 13:28:06.961 | INFO     | backend.globals:<module>:64 - [GLOBALS] Configuration loaded and logger initialized.
+2025-07-12 13:28:08.589 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-07-12 13:28:08.677 | INFO     | memory.vector_store.embedder:<module>:118 - [FAISS] Initialized new IndexFlatL2
+2025-07-12 13:28:08.763 | INFO     | memory.vector_store.embedder:<module>:143 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-12 13:28:08.769 | INFO     | memory.vector_store.embedder:<module>:275 - [EMBEDDER] Initial disk load complete
+[nltk_data] Error loading punkt: <urlopen error [Errno -3] Temporary
+[nltk_data]     failure in name resolution>
+[nltk_data] Error loading punkt: <urlopen error [Errno -3] Temporary
+[nltk_data]     failure in name resolution>
+2025-07-12 13:28:08.938 | SUCCESS  | tokenizer:<module>:31 - [TOKENIZER] Loaded: bert-base-uncased
+[NLP_CHECK] ImportError: cannot import name 'Tokenizer' from 'tokenizer' (/home/statiksmoke8/nlp_engine/tokenizer.py)
+[NLP_CHECK] Could not write to $HOME/data/logs/nlp.out: [Errno 2] No such file or directory: '$HOME/data/logs/nlp.out'

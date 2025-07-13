@@ -1,0 +1,58 @@
+{
+  "system": {
+    "name": "AscendNet",
+    "version": "1.0.0-alpha",
+    "environment": "development"
+  },
+  "paths": {
+    "root": "/home/statiksmoke8/AscendNet",
+    "backend": "/home/statiksmoke8/AscendNet/backend",
+    "frontend": "/home/statiksmoke8/AscendNet/frontend",
+    "docs": "/home/statiksmoke8/AscendNet/docs",
+    "scripts": "/home/statiksmoke8/AscendNet/scripts",
+    "smart_contracts": "/home/statiksmoke8/AscendNet/smart-contracts",
+    "api": "/home/statiksmoke8/AscendNet/backend/api",
+    "p2p": "/home/statiksmoke8/AscendNet/backend/p2p",
+    "compute": "/home/statiksmoke8/AscendNet/backend/compute",
+    "payments": "/home/statiksmoke8/AscendNet/backend/payments",
+    "storage": "/home/statiksmoke8/AscendNet/backend/storage",
+    "auth": "/home/statiksmoke8/AscendNet/backend/auth",
+    "utils": "/home/statiksmoke8/AscendNet/backend/utils",
+    "ascend_ai": "/home/statiksmoke8/AscendNet/AscendAI",
+    "gremlin_gpt": "/home/statiksmoke8/AscendNet/AscendAI/GremlinGPT",
+    "god_core": "/home/statiksmoke8/AscendNet/GodCore",
+    "mobile_mirror": "/home/statiksmoke8/AscendNet/Mobile-Mirror",
+    "signal_core": "/home/statiksmoke8/AscendNet/backend/ai_core/signal_core",
+    "quantum_storage": "/home/statiksmoke8/AscendNet/backend/storage/quantum",
+    "cold_storage": "/home/statiksmoke8/AscendNet/storage/cold",
+    "mem_forge": "/home/statiksmoke8/AscendNet/storage/memory",
+    "expansion_pool": "/home/statiksmoke8/AscendNet/storage/expansion",
+    "config": "/home/statiksmoke8/AscendNet/config",
+    "logs": "/home/statiksmoke8/AscendNet/logs",
+    "cache": "/home/statiksmoke8/AscendNet/cache",
+    "tests": "/home/statiksmoke8/AscendNet/tests",
+    "sandbox": "/home/statiksmoke8/AscendNet/sandbox",
+    "temp": "/home/statiksmoke8/AscendNet/temp"
+  },
+  "components": {
+    "api_enabled": true,
+    "p2p_enabled": true,
+    "compute_enabled": true,
+    "payments_enabled": true,
+    "ascend_ai_enabled": true,
+    "gremlin_gpt_enabled": true,
+    "god_core_enabled": true,
+    "mobile_mirror_enabled": true,
+    "signal_core_enabled": true
+  },
+  "network": {
+    "p2p_port": 8001,
+    "api_port": 8000,
+    "discovery_enabled": true
+  },
+  "storage": {
+    "ipfs_enabled": true,
+    "quantum_compression": true,
+    "cache_size_mb": 1024
+  }
+}

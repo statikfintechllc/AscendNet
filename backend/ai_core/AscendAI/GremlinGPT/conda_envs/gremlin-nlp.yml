@@ -1,0 +1,33 @@
+name: gremlin-nlp
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.9
+  - pip
+  - numpy
+  - scipy
+  - pandas
+  - scikit-learn
+  - spacy
+  - nltk
+  - sentence-transformers
+  - transformers
+  - tqdm
+  - loguru
+  - psutil           # for all agent/core usage
+  - rich             # recommended for colored logging
+  - pip:
+      - torch
+      - faiss-cpu
+      - langdetect
+      - chromadb
+      - toml
+      - flask-socketio
+      - eventlet
+      - pyngrok        # for ngrok integration if ever needed
+      - pygments       # colorized logging for anything using rich/pytest
+      - pytest         # test runner
+      - networkx       # task/memory/graph support
+      - watchdog       # live file watching, optional but harmless
+      - flask

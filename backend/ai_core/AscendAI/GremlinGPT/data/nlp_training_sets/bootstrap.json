@@ -1,0 +1,13 @@
+[
+  {
+    "input": "scrape https://example.com",
+    "expected_action": "trigger_scrape",
+    "tags": ["bootstrap", "prebuilt"]
+  },
+  {
+    "input": "scan penny stocks",
+    "expected_action": "signal_scan",
+    "tags": ["bootstrap", "market"]
+  }
+]
+

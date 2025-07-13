@@ -1,0 +1,52 @@
+# === DO NOT IGNORE GremlinGPT folder ===
+!GremlinGPT/
+!GremlinGPT/**
+
+# Ignore everything in GremlinGPT/data/prompts/
+GremlinGPT/data/prompts/*
+
+# Except the README.md file
+!GremlinGPT/data/prompts/README.md
+
+# === MODEL FILES ===
+/models/*
+!models/README.md
+*.gguf
+*.pth
+*.ckpt
+*Systems.internal
+
+# === LOGS AND OUTPUT FILES ===
+
+*.jsonl
+*.sig
+*.tmp
+*.sqlite
+*.sqlite3
+*.db
+
+# === PYTHON CACHE ===
+__pycache__/
+*.py[cod]
+*.so
+
+# === ENVIRONMENTS & SECRETS ===
+.env
+*.env
+.envrc
+*.pem
+*.key
+
+# === SYSTEM TRASH ===
+.DS_Store
+Thumbs.db
+*.swp
+*.bak
+.cache/
+backup_*/
+
+# === SECRET KEYS OR API KEYS FOLDERS ===
+API_Keys/
+
+# === VIRTUAL ENVIRONMENTS ===
+venv/

@@ -1,0 +1,106 @@
+agents:
+
+  default:
+    profile: "gremlin_v1"
+    retry_limit: 333  # High value intentional: allows the bootstrap agent to recursively retry tasks many times during initialization and self-evolution, ensuring robust startup and adaptability.
+    tools:
+      - scrape
+      - signal_scan
+      - nlp
+      - self_train
+    notes: "Bootstrap agent. Evolves recursively."
+
+  planner_agent:
+    profile: "planner_genesis"
+    retry_limit: 5
+    tools:
+      - plan
+      - reprioritize
+      - enqueue
+    notes: "Plans next steps and schedules work into the task queue."
+
+  executor_agent:
+    profile: "executor_core"
+    retry_limit: 10
+    tools:
+      - python
+      - shell
+      - scrape
+      - nlp
+    notes: "Executes logic and code-related tasks with isolation sandbox."
+
+  trainer_agent:
+    profile: "trainer_loop_v1"
+    retry_limit: 3
+    tools:
+      - self_train
+      - feedback_loop
+      - generate_dataset
+    notes: "Triggers feedback ingestion and self-learning tasks."
+
+  signal_scanner:
+    profile: "marketscan_alpha"
+    retry_limit: 2
+    tools:
+      - signal_scan
+    notes: "Dedicated scanner for stock signals and patterns."
+
+  mutator_agent:
+    profile: "code_mutator"
+    retry_limit: 3
+    tools:
+      - diff_scan
+      - mutate_code
+    notes: "Monitors and mutates source files based on heuristics."
+
+profiles:
+
+  gremlin_v1:
+    description: "Bootstrap/primary agent. Handles core recursion, bootstrapping, and general tasks."
+    default_tools: ["scrape", "signal_scan", "nlp", "self_train"]
+    max_concurrent_tasks: 2
+    isolation: "moderate"
+    priority: "normal"
+
+  planner_genesis:
+    description: "Planner. Responsible for next-step logic, task scheduling, and work queue management."
+    default_tools: ["plan", "reprioritize", "enqueue"]
+    max_concurrent_tasks: 1
+    isolation: "high"
+    priority: "high"
+
+  executor_core:
+    description: "Executor. Runs code and logic tasks in a sandboxed environment."
+    default_tools: ["python", "shell", "scrape", "nlp"]
+    max_concurrent_tasks: 3
+    isolation: "very_high"
+    priority: "critical"
+
+  trainer_loop_v1:
+    description: "Self-trainer. Monitors logs, triggers feedback loops, builds datasets."
+    default_tools: ["self_train", "feedback_loop", "generate_dataset"]
+    max_concurrent_tasks: 1
+    isolation: "medium"
+    priority: "normal"
+
+  marketscan_alpha:
+    description: "Market scanner for real-time signal and pattern detection."
+    default_tools: ["signal_scan"]
+    max_concurrent_tasks: 1
+    isolation: "low"
+    priority: "high"
+
+  code_mutator:
+    description: "Mutator. Watches and mutates source code based on diffs and heuristics."
+    default_tools: ["diff_scan", "mutate_code"]
+    max_concurrent_tasks: 1
+    isolation: "critical"
+    priority: "high"
+meta:
+  # format_version: Specifies the schema version for this YAML file. 
+  # Expected values: Numeric, incremented with breaking changes (e.g., 1.0, 2.0).
+  # When upgrading format_version, ensure all consumers of this file are updated to handle the new schema.
+  # Backward compatibility is not guaranteed across major versions; provide migration steps in documentation if breaking changes are introduced.
+  format_version: 1.0
+  created: "2025-05-27"
+  origin: "GremlinGPT v1.0.3 :: Agent Role Definition"

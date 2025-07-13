@@ -1,0 +1,35 @@
+# Python cache
+__pycache__/
+*.pyc
+*.egg-info/
+
+# Node modules
+node_modules/
+frontend/node_modules/
+
+# Editor/project files
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.venv/
+
+# Log files
+*.log
+
+# Frontend build output
+frontend/build/
+
+# Model files and folders
+models/Mistral-13B-Instruct/mistral-13b-instruct-v0.1.Q5_K_M.gguf
+
+# Ignore all models/ except for .gitkeep files
+models/
+!models/.gitkeep
+!models/Mistral-13B-Instruct/.gitkeep
+

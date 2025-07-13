@@ -1,0 +1,12 @@
+numpy
+scipy
+faiss-cpu
+chromadb
+pandas
+sqlalchemy
+tqdm
+sentence-transformers
+langdetect
+nltk
+backend
+schedule

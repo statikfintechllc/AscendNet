@@ -1,0 +1,17 @@
+127.0.0.1 - - [10/Jul/2025 19:37:08] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2025 19:37:08] "GET /app.js HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2025 19:37:08] "GET /theme.css HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2025 19:37:08] "GET /Icon_Logo/Background_Image_For_App.png HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2025 19:37:08] "GET /Icon_Logo/App_Icon_&_Loading_&_Inference_Image.png HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2025 19:37:14] "GET /manifest.json HTTP/1.1" 200 -
+127.0.0.1 - - [10/Jul/2025 20:20:02] code 404, message File not found
+127.0.0.1 - - [10/Jul/2025 20:20:02] "GET /api?timeout=32s HTTP/1.1" 404 -
+127.0.0.1 - - [10/Jul/2025 20:20:02] code 404, message File not found
+127.0.0.1 - - [10/Jul/2025 20:20:02] "GET /apis?timeout=32s HTTP/1.1" 404 -
+127.0.0.1 - - [12/Jul/2025 13:30:05] "GET / HTTP/1.1" 304 -
+127.0.0.1 - - [12/Jul/2025 13:30:05] "GET /theme.css HTTP/1.1" 304 -
+127.0.0.1 - - [12/Jul/2025 13:30:05] "GET /app.js HTTP/1.1" 304 -
+127.0.0.1 - - [12/Jul/2025 13:30:05] "GET /Icon_Logo/Background_Image_For_App.png HTTP/1.1" 304 -
+127.0.0.1 - - [12/Jul/2025 18:38:56] "GET / HTTP/1.1" 304 -
+127.0.0.1 - - [12/Jul/2025 18:38:56] "GET /Icon_Logo/App_Icon_&_Loading_&_Inference_Image.png HTTP/1.1" 304 -
+127.0.0.1 - - [12/Jul/2025 18:38:58] "GET / HTTP/1.1" 304 -

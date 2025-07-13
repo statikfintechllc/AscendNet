@@ -1,0 +1,34 @@
+name: gremlin-dashboard
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.9
+  - pip
+  - flask-socketio
+  - dash
+  - plotly
+  - aiohttp
+  - eventlet
+  - loguru
+  - uvicorn
+  - jinja2
+  - psutil             # process stats, always safe
+  - rich               # for color logging
+  - pandas             # dashboard data ops
+  - platformdirs       # safer log/tmp/cache paths
+  - pip:
+      - waitress
+      - requests
+      - websockets
+      - toml
+      - qrcode[pil]
+      - backend
+      - pyngrok
+      - qrcode
+      - pygments       # color logs
+      - pytest         # testing
+      - networkx       # task/graph if dashboard needs it
+      - gunicorn       # optional, production WSGI
+      - watchdog       # optional, for live reload/file watch
+      - chromadb

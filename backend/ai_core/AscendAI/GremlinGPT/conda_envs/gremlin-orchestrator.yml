@@ -1,0 +1,22 @@
+name: gremlin-orchestrator
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.9
+  - pip
+  - numpy            # REQUIRED for embedder.py and watcher.py
+  - pyyaml
+  - loguru
+  - click
+  - rich
+  - psutil
+  - schedule
+  - jsonschema
+  - pip:
+      - watchdog
+      - pyautogui
+      - networkx
+      - toml
+      - pyngrok      # (optional, if you use ngrok automation)
+      - pygments     # (recommended for rich/color logs)
