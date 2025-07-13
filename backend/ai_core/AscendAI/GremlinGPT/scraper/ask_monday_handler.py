@@ -20,57 +20,22 @@ import pyperclip
 import pytesseract
 import subprocess
 import platform
+import shutil
 from PIL import ImageGrab, Image
 from datetime import datetime, timedelta
 from pathlib import Path
 import json
 import argparse
-from typing import Optional
 
 try:
-    from backend.globals import logger
-    from memory.vector_store.embedder import (
-        embed_text as _embed_text,
-        package_embedding as _package_embedding,
-        inject_watermark as _inject_watermark,
-    )
-    from memory.log_history import log_event as original_log_event
+    from utils.logging_config import get_module_logger
 
-    def log_event(message: Optional[str] = None, **kwargs) -> None:
-        """Wrapper for log_event with flexible parameters."""
-        if message and not kwargs:
-            # Simple string message
-            original_log_event("info", "general", {"message": message})
-        elif kwargs:
-            # Pass through with original parameters
-            original_log_event(**kwargs)
-        else:
-            pass
-
-    # Create properly typed wrapper functions
-    def embed_text(x: str) -> list[float]:
-        """Convert text to embedding vector."""
-        result = _embed_text(x)
-        if hasattr(result, "tolist"):
-            return result.tolist()  # Convert numpy array to list
-        elif isinstance(result, list):
-            return result
-        else:
-            return [0.0] * 768  # Default embedding size
-
-    def package_embedding(**x) -> None:
-        """Package embedding data."""
-        if len(x) >= 3:
-            args = list(x.values())
-            _package_embedding(args[0], args[1], args[2])
-
-    def inject_watermark(**x) -> None:
-        """Inject watermark into data."""
-        origin = x.get("origin", "unknown")
-        _inject_watermark(origin)
-
+    # Initialize module-specific logger
+    logger = get_module_logger("scraper")
+    from memory.vector_store.embedder import embed_text, package_embedding, inject_watermark
+    from memory.log_history import log_event
 except ImportError:
-    # Minimal fallback implementations
+    # Minimal fallback logger if Gremlin infra not loaded
     class _MiniLogger:
         def info(self, *a, **k):
             print("[INFO]", *a, **k, file=sys.stderr)
@@ -86,34 +51,30 @@ except ImportError:
 
     logger = _MiniLogger()
 
-    def embed_text(x: str) -> list[float]:
-        """Fallback embedding function."""
-        return [0.0] * 768  # Return default embedding
+    def embed_text(text):
+        try:
+            import numpy as np
 
-    def package_embedding(**x) -> None:
-        """Fallback package embedding function."""
+            return np.zeros(64, dtype="float32")
+        except ImportError:
+            return [0.0] * 64
+
+    def package_embedding(text, vector, meta):
+        return {}
+
+    def inject_watermark(origin="unknown"):
+        return {}
+
+    def log_event(event_type, task_type, details, status="ok", meta=None):
         pass
-
-    def inject_watermark(**x) -> None:
-        """Fallback watermark function."""
-        pass
-
-    def log_event(message: Optional[str] = None, **kwargs) -> None:
-        """Fallback log event function."""
-        if message:
-            logger.info(f"Event: {message}")
-        elif kwargs:
-            logger.info(f"Event: {kwargs}")
-        else:
-            pass
 
 
 # ---- GREMLIN FLAVOR: Watermark, structure, memory
 WATERMARK = "source:GremlinGPT"
 ORIGIN = "ask_monday_handler"
 
-SCREENSHOT_DIR = Path(os.path.expanduser("data/logs/screenshots"))
-MEMORY_DIR = Path(os.path.expanduser("data/logs/chat_responses"))
+SCREENSHOT_DIR = Path("data/logs/screenshots")
+MEMORY_DIR = Path("data/logs/chat_responses")
 SCREENSHOT_DIR.mkdir(parents=True, exist_ok=True)
 MEMORY_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -257,6 +218,14 @@ def ocr_images(image_paths):
 def save_to_memory(prompt, response):
     timestamp = datetime.utcnow().isoformat()
     vector = embed_text(response)
+    # Ensure vector is a list of floats
+    try:
+        import numpy as np
+
+        if isinstance(vector, np.ndarray):
+            vector = vector.tolist()
+    except ImportError:
+        pass
     summary = f"GremlinGPT ChatGPT response to: {prompt[:100]}"
     package_embedding(
         text=summary,
@@ -270,9 +239,7 @@ def save_to_memory(prompt, response):
         },
     )
     inject_watermark(origin=ORIGIN)
-    log_event(
-        event_type="ask", task_type="gremlin_query", details={"prompt": prompt}, status="external"
-    )
+    log_event("ask", "gremlin_query", {"prompt": prompt}, status="external")
     filename = MEMORY_DIR / f"chat_response_{timestamp.replace(':','').replace('-','')}.md"
     with open(filename, "w") as f:
         f.write(f"# Prompt:\n{prompt}\n\n# Response:\n{response}\n")
@@ -336,10 +303,10 @@ def handle(task):
 
 # Optional: FastAPI server for streaming (toggle with --serve)
 def serve_api(port=8080, host="0.0.0.0"):
-    from fastapi import FastAPI, Request  # type: ignore
-    from fastapi.middleware.cors import CORSMiddleware  # type: ignore
-    from fastapi.responses import StreamingResponse  # type: ignore
-    import uvicorn  # type: ignore
+    from fastapi import FastAPI, Request
+    from fastapi.middleware.cors import CORSMiddleware
+    from fastapi.responses import StreamingResponse
+    import uvicorn
 
     app = FastAPI()
     app.add_middleware(

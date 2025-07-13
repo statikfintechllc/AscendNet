@@ -22,7 +22,10 @@ import os
 import shutil
 from datetime import datetime
 from pathlib import Path
-from backend.globals import logger
+from utils.logging_config import get_module_logger
+
+# Initialize module-specific logger
+logger = get_module_logger("backend")
 
 DEFAULT_ARCHIVE_DIR = "docs/"
 

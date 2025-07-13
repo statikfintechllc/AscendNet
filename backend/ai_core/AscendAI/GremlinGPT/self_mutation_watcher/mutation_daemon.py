@@ -13,7 +13,10 @@ import time
 import threading
 import requests
 from datetime import datetime
-from loguru import logger
+from utils.logging_config import get_module_logger
+
+# Initialize module-specific logger
+logger = get_module_logger("self_mutation_watcher")
 from pathlib import Path
 import json
 import uuid
@@ -97,7 +100,7 @@ def archive_dataset(output_path):
     if not os.path.exists(output_path):
         return
     timestamp = datetime.utcnow().strftime("%Y%m%dT%H%M%S")
-    archive_name = f"GremlinGPT/docs/dataset_dump_{timestamp}.jsonl"
+    archive_name = f"docs/dataset_dump_{timestamp}.jsonl"
     try:
         shutil.copyfile(output_path, archive_name)
         logger.info(f"[WATCHER] Dataset backup created → {archive_name}")

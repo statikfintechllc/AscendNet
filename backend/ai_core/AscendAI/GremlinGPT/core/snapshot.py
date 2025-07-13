@@ -20,7 +20,10 @@ import uuid
 
 from nlp_engine.diff_engine import diff_texts
 from memory.vector_store.embedder import embed_text, package_embedding
-from backend.globals import logger
+from utils.logging_config import get_module_logger
+
+# Initialize module-specific logger
+logger = get_module_logger("core")
 
 SNAPSHOT_ROOT = Path("run/checkpoints/snapshots/")
 SNAPSHOT_ROOT.mkdir(parents=True, exist_ok=True)

@@ -2,4 +2,1277 @@
 
 [1;36m[INSTALL] Initializing GremlinGPT installation...[0m
 
-./install.sh:40: SCRIPT: parameter not set
+grep: lookbehind assertion is not fixed length
+grep: lookbehind assertion is not fixed length
+grep: lookbehind assertion is not fixed length
+grep: lookbehind assertion is not fixed length
+
+[1;36m[INSTALL] Creating directory structure...[0m
+
+Exists:  data/logs
+Exists:  run/checkpoints
+Exists:  data/prompts
+Exists:  data/raw_scrapes
+Exists:  data/embeddings
+Exists:  data/nlp_training_sets
+Exists:  data/logs
+Exists:  memory/vector_store/faiss
+Exists:  memory/vector_store/chroma
+Exists:  memory/local_index/documents
+Exists:  memory/local_index/scripts
+Created: scraper/persistence/cookies
+Created: scraper/profiles/chromium_profile
+Exists:  frontend/components
+Exists:  tests
+Exists:  docs
+Created: data/nltk_data
+
+[1;36m[INSTALL] Ensuring conda is initialized...[0m
+
+[*] Ensuring conda is initialized...
+
+[1;36m[INSTALL] Building all conda environments via ./conda_envs/create_envs.sh...[0m
+
+[GremlinGPT] Creating conda environments...
+[INFO] Checking environment: gremlin-nlp
+[SKIP] Environment 'gremlin-nlp' already exists.
+[INFO] Checking environment: gremlin-dashboard
+[SKIP] Environment 'gremlin-dashboard' already exists.
+[INFO] Checking environment: gremlin-scraper
+[SKIP] Environment 'gremlin-scraper' already exists.
+[INFO] Checking environment: gremlin-memory
+[SKIP] Environment 'gremlin-memory' already exists.
+[INFO] Checking environment: gremlin-orchestrator
+[SKIP] Environment 'gremlin-orchestrator' already exists.
+[GremlinGPT] ✅ All environments checked, created, and pip-requirements installed if present.
+
+[1;36m[INSTALL] Activating gremlin-nlp and installing deps...[0m
+
+Requirement already satisfied: flask in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (3.1.1)
+Requirement already satisfied: eventlet in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (0.40.0)
+Requirement already satisfied: blinker>=1.9.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from flask) (1.9.0)
+Requirement already satisfied: click>=8.1.3 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from flask) (8.1.8)
+Requirement already satisfied: itsdangerous>=2.2.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from flask) (2.2.0)
+Requirement already satisfied: jinja2>=3.1.2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from flask) (3.1.6)
+Requirement already satisfied: markupsafe>=2.1.1 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from flask) (3.0.2)
+Requirement already satisfied: werkzeug>=3.1.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from flask) (3.1.3)
+Requirement already satisfied: dnspython>=1.15.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from eventlet) (2.7.0)
+Requirement already satisfied: greenlet>=1.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from eventlet) (3.2.2)
+Requirement already satisfied: pip in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (25.1.1)
+Requirement already satisfied: spacy in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (3.7.2)
+Requirement already satisfied: spacy-legacy<3.1.0,>=3.0.11 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy) (3.0.12)
+Requirement already satisfied: spacy-loggers<2.0.0,>=1.0.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy) (1.0.4)
+Requirement already satisfied: murmurhash<1.1.0,>=0.28.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy) (1.0.12)
+Requirement already satisfied: cymem<2.1.0,>=2.0.2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy) (2.0.6)
+Requirement already satisfied: preshed<3.1.0,>=3.0.2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy) (3.0.9)
+Requirement already satisfied: thinc<8.3.0,>=8.1.8 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy) (8.2.2)
+Requirement already satisfied: wasabi<1.2.0,>=0.9.1 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy) (0.9.1)
+Requirement already satisfied: srsly<3.0.0,>=2.4.3 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy) (2.5.1)
+Requirement already satisfied: catalogue<2.1.0,>=2.0.6 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy) (2.0.10)
+Requirement already satisfied: weasel<0.4.0,>=0.1.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy) (0.3.4)
+Requirement already satisfied: typer<0.10.0,>=0.3.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy) (0.9.0)
+Requirement already satisfied: smart-open<7.0.0,>=5.2.1 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy) (5.2.1)
+Requirement already satisfied: tqdm<5.0.0,>=4.38.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy) (4.67.1)
+Requirement already satisfied: requests<3.0.0,>=2.13.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy) (2.32.3)
+Requirement already satisfied: pydantic!=1.8,!=1.8.1,<3.0.0,>=1.7.4 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy) (2.10.3)
+Requirement already satisfied: jinja2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy) (3.1.6)
+Requirement already satisfied: setuptools in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy) (78.1.1)
+Requirement already satisfied: packaging>=20.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy) (24.2)
+Requirement already satisfied: langcodes<4.0.0,>=3.2.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy) (3.3.0)
+Requirement already satisfied: numpy>=1.19.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy) (1.26.4)
+Requirement already satisfied: annotated-types>=0.6.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from pydantic!=1.8,!=1.8.1,<3.0.0,>=1.7.4->spacy) (0.6.0)
+Requirement already satisfied: pydantic-core==2.27.1 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from pydantic!=1.8,!=1.8.1,<3.0.0,>=1.7.4->spacy) (2.27.1)
+Requirement already satisfied: typing-extensions>=4.12.2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from pydantic!=1.8,!=1.8.1,<3.0.0,>=1.7.4->spacy) (4.12.2)
+Requirement already satisfied: charset-normalizer<4,>=2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from requests<3.0.0,>=2.13.0->spacy) (3.3.2)
+Requirement already satisfied: idna<4,>=2.5 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from requests<3.0.0,>=2.13.0->spacy) (3.7)
+Requirement already satisfied: urllib3<3,>=1.21.1 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from requests<3.0.0,>=2.13.0->spacy) (2.3.0)
+Requirement already satisfied: certifi>=2017.4.17 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from requests<3.0.0,>=2.13.0->spacy) (2025.4.26)
+Requirement already satisfied: blis<0.8.0,>=0.7.8 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from thinc<8.3.0,>=8.1.8->spacy) (0.7.9)
+Requirement already satisfied: confection<1.0.0,>=0.0.1 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from thinc<8.3.0,>=8.1.8->spacy) (0.1.4)
+Requirement already satisfied: click<9.0.0,>=7.1.1 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from typer<0.10.0,>=0.3.0->spacy) (8.1.8)
+Requirement already satisfied: cloudpathlib<0.17.0,>=0.7.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from weasel<0.4.0,>=0.1.0->spacy) (0.16.0)
+Requirement already satisfied: MarkupSafe>=2.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from jinja2->spacy) (3.0.2)
+Requirement already satisfied: torch in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (2.7.1)
+Requirement already satisfied: filelock in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch) (3.17.0)
+Requirement already satisfied: typing-extensions>=4.10.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch) (4.12.2)
+Requirement already satisfied: sympy>=1.13.3 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch) (1.13.3)
+Requirement already satisfied: networkx in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch) (3.4.2)
+Requirement already satisfied: jinja2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch) (3.1.6)
+Requirement already satisfied: fsspec in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch) (2024.12.0)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.6.77 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch) (12.6.77)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.6.77 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch) (12.6.77)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.6.80 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch) (12.6.80)
+Requirement already satisfied: nvidia-cudnn-cu12==9.5.1.17 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch) (9.5.1.17)
+Requirement already satisfied: nvidia-cublas-cu12==12.6.4.1 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch) (12.6.4.1)
+Requirement already satisfied: nvidia-cufft-cu12==11.3.0.4 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch) (11.3.0.4)
+Requirement already satisfied: nvidia-curand-cu12==10.3.7.77 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch) (10.3.7.77)
+Requirement already satisfied: nvidia-cusolver-cu12==11.7.1.2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch) (11.7.1.2)
+Requirement already satisfied: nvidia-cusparse-cu12==12.5.4.2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch) (12.5.4.2)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.6.3 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch) (0.6.3)
+Requirement already satisfied: nvidia-nccl-cu12==2.26.2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch) (2.26.2)
+Requirement already satisfied: nvidia-nvtx-cu12==12.6.77 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch) (12.6.77)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.6.85 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch) (12.6.85)
+Requirement already satisfied: nvidia-cufile-cu12==1.11.1.6 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch) (1.11.1.6)
+Requirement already satisfied: triton==3.3.1 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch) (3.3.1)
+Requirement already satisfied: setuptools>=40.8.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from triton==3.3.1->torch) (78.1.1)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from sympy>=1.13.3->torch) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from jinja2->torch) (3.0.2)
+Requirement already satisfied: torchvision in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (0.22.1)
+Requirement already satisfied: numpy in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torchvision) (1.26.4)
+Requirement already satisfied: torch==2.7.1 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torchvision) (2.7.1)
+Requirement already satisfied: pillow!=8.3.*,>=5.3.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torchvision) (11.1.0)
+Requirement already satisfied: filelock in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (3.17.0)
+Requirement already satisfied: typing-extensions>=4.10.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (4.12.2)
+Requirement already satisfied: sympy>=1.13.3 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (1.13.3)
+Requirement already satisfied: networkx in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (3.4.2)
+Requirement already satisfied: jinja2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (3.1.6)
+Requirement already satisfied: fsspec in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (2024.12.0)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.6.77 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (12.6.77)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.6.77 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (12.6.77)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.6.80 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (12.6.80)
+Requirement already satisfied: nvidia-cudnn-cu12==9.5.1.17 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (9.5.1.17)
+Requirement already satisfied: nvidia-cublas-cu12==12.6.4.1 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (12.6.4.1)
+Requirement already satisfied: nvidia-cufft-cu12==11.3.0.4 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (11.3.0.4)
+Requirement already satisfied: nvidia-curand-cu12==10.3.7.77 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (10.3.7.77)
+Requirement already satisfied: nvidia-cusolver-cu12==11.7.1.2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (11.7.1.2)
+Requirement already satisfied: nvidia-cusparse-cu12==12.5.4.2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (12.5.4.2)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.6.3 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (0.6.3)
+Requirement already satisfied: nvidia-nccl-cu12==2.26.2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (2.26.2)
+Requirement already satisfied: nvidia-nvtx-cu12==12.6.77 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (12.6.77)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.6.85 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (12.6.85)
+Requirement already satisfied: nvidia-cufile-cu12==1.11.1.6 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (1.11.1.6)
+Requirement already satisfied: triton==3.3.1 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (3.3.1)
+Requirement already satisfied: setuptools>=40.8.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from triton==3.3.1->torch==2.7.1->torchvision) (78.1.1)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from sympy>=1.13.3->torch==2.7.1->torchvision) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from jinja2->torch==2.7.1->torchvision) (3.0.2)
+Requirement already satisfied: torchaudio in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (2.7.1)
+Requirement already satisfied: torch==2.7.1 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torchaudio) (2.7.1)
+Requirement already satisfied: filelock in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (3.17.0)
+Requirement already satisfied: typing-extensions>=4.10.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (4.12.2)
+Requirement already satisfied: sympy>=1.13.3 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (1.13.3)
+Requirement already satisfied: networkx in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (3.4.2)
+Requirement already satisfied: jinja2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (3.1.6)
+Requirement already satisfied: fsspec in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (2024.12.0)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.6.77 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (12.6.77)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.6.77 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (12.6.77)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.6.80 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (12.6.80)
+Requirement already satisfied: nvidia-cudnn-cu12==9.5.1.17 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (9.5.1.17)
+Requirement already satisfied: nvidia-cublas-cu12==12.6.4.1 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (12.6.4.1)
+Requirement already satisfied: nvidia-cufft-cu12==11.3.0.4 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (11.3.0.4)
+Requirement already satisfied: nvidia-curand-cu12==10.3.7.77 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (10.3.7.77)
+Requirement already satisfied: nvidia-cusolver-cu12==11.7.1.2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (11.7.1.2)
+Requirement already satisfied: nvidia-cusparse-cu12==12.5.4.2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (12.5.4.2)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.6.3 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (0.6.3)
+Requirement already satisfied: nvidia-nccl-cu12==2.26.2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (2.26.2)
+Requirement already satisfied: nvidia-nvtx-cu12==12.6.77 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (12.6.77)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.6.85 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (12.6.85)
+Requirement already satisfied: nvidia-cufile-cu12==1.11.1.6 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (1.11.1.6)
+Requirement already satisfied: triton==3.3.1 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (3.3.1)
+Requirement already satisfied: setuptools>=40.8.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from triton==3.3.1->torch==2.7.1->torchaudio) (78.1.1)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from sympy>=1.13.3->torch==2.7.1->torchaudio) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from jinja2->torch==2.7.1->torchaudio) (3.0.2)
+Requirement already satisfied: sentence-transformers in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (4.1.0)
+Requirement already satisfied: transformers<5.0.0,>=4.41.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from sentence-transformers) (4.51.3)
+Requirement already satisfied: tqdm in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from sentence-transformers) (4.67.1)
+Requirement already satisfied: torch>=1.11.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from sentence-transformers) (2.7.1)
+Requirement already satisfied: scikit-learn in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from sentence-transformers) (1.6.1)
+Requirement already satisfied: scipy in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from sentence-transformers) (1.12.0)
+Requirement already satisfied: huggingface-hub>=0.20.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from sentence-transformers) (0.31.2)
+Requirement already satisfied: Pillow in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from sentence-transformers) (11.1.0)
+Requirement already satisfied: typing_extensions>=4.5.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from sentence-transformers) (4.12.2)
+Requirement already satisfied: filelock in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from transformers<5.0.0,>=4.41.0->sentence-transformers) (3.17.0)
+Requirement already satisfied: numpy>=1.17 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from transformers<5.0.0,>=4.41.0->sentence-transformers) (1.26.4)
+Requirement already satisfied: packaging>=20.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from transformers<5.0.0,>=4.41.0->sentence-transformers) (24.2)
+Requirement already satisfied: pyyaml>=5.1 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from transformers<5.0.0,>=4.41.0->sentence-transformers) (6.0.2)
+Requirement already satisfied: regex!=2019.12.17 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from transformers<5.0.0,>=4.41.0->sentence-transformers) (2024.11.6)
+Requirement already satisfied: requests in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from transformers<5.0.0,>=4.41.0->sentence-transformers) (2.32.3)
+Requirement already satisfied: tokenizers<0.22,>=0.21 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from transformers<5.0.0,>=4.41.0->sentence-transformers) (0.21.0)
+Requirement already satisfied: safetensors>=0.4.3 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from transformers<5.0.0,>=4.41.0->sentence-transformers) (0.5.3)
+Requirement already satisfied: fsspec>=2023.5.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from huggingface-hub>=0.20.0->sentence-transformers) (2024.12.0)
+Requirement already satisfied: sympy>=1.13.3 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (1.13.3)
+Requirement already satisfied: networkx in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (3.4.2)
+Requirement already satisfied: jinja2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (3.1.6)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.6.77 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (12.6.77)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.6.77 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (12.6.77)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.6.80 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (12.6.80)
+Requirement already satisfied: nvidia-cudnn-cu12==9.5.1.17 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (9.5.1.17)
+Requirement already satisfied: nvidia-cublas-cu12==12.6.4.1 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (12.6.4.1)
+Requirement already satisfied: nvidia-cufft-cu12==11.3.0.4 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (11.3.0.4)
+Requirement already satisfied: nvidia-curand-cu12==10.3.7.77 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (10.3.7.77)
+Requirement already satisfied: nvidia-cusolver-cu12==11.7.1.2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (11.7.1.2)
+Requirement already satisfied: nvidia-cusparse-cu12==12.5.4.2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (12.5.4.2)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.6.3 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (0.6.3)
+Requirement already satisfied: nvidia-nccl-cu12==2.26.2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (2.26.2)
+Requirement already satisfied: nvidia-nvtx-cu12==12.6.77 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (12.6.77)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.6.85 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (12.6.85)
+Requirement already satisfied: nvidia-cufile-cu12==1.11.1.6 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (1.11.1.6)
+Requirement already satisfied: triton==3.3.1 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (3.3.1)
+Requirement already satisfied: setuptools>=40.8.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from triton==3.3.1->torch>=1.11.0->sentence-transformers) (78.1.1)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from sympy>=1.13.3->torch>=1.11.0->sentence-transformers) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from jinja2->torch>=1.11.0->sentence-transformers) (3.0.2)
+Requirement already satisfied: charset-normalizer<4,>=2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from requests->transformers<5.0.0,>=4.41.0->sentence-transformers) (3.3.2)
+Requirement already satisfied: idna<4,>=2.5 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from requests->transformers<5.0.0,>=4.41.0->sentence-transformers) (3.7)
+Requirement already satisfied: urllib3<3,>=1.21.1 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from requests->transformers<5.0.0,>=4.41.0->sentence-transformers) (2.3.0)
+Requirement already satisfied: certifi>=2017.4.17 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from requests->transformers<5.0.0,>=4.41.0->sentence-transformers) (2025.4.26)
+Requirement already satisfied: joblib>=1.2.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from scikit-learn->sentence-transformers) (1.4.2)
+Requirement already satisfied: threadpoolctl>=3.1.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from scikit-learn->sentence-transformers) (3.5.0)
+Requirement already satisfied: transformers in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (4.51.3)
+Requirement already satisfied: filelock in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from transformers) (3.17.0)
+Requirement already satisfied: huggingface-hub<1.0,>=0.30.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from transformers) (0.31.2)
+Requirement already satisfied: numpy>=1.17 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from transformers) (1.26.4)
+Requirement already satisfied: packaging>=20.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from transformers) (24.2)
+Requirement already satisfied: pyyaml>=5.1 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from transformers) (6.0.2)
+Requirement already satisfied: regex!=2019.12.17 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from transformers) (2024.11.6)
+Requirement already satisfied: requests in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from transformers) (2.32.3)
+Requirement already satisfied: tokenizers<0.22,>=0.21 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from transformers) (0.21.0)
+Requirement already satisfied: safetensors>=0.4.3 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from transformers) (0.5.3)
+Requirement already satisfied: tqdm>=4.27 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from transformers) (4.67.1)
+Requirement already satisfied: fsspec>=2023.5.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from huggingface-hub<1.0,>=0.30.0->transformers) (2024.12.0)
+Requirement already satisfied: typing-extensions>=3.7.4.3 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from huggingface-hub<1.0,>=0.30.0->transformers) (4.12.2)
+Requirement already satisfied: charset-normalizer<4,>=2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from requests->transformers) (3.3.2)
+Requirement already satisfied: idna<4,>=2.5 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from requests->transformers) (3.7)
+Requirement already satisfied: urllib3<3,>=1.21.1 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from requests->transformers) (2.3.0)
+Requirement already satisfied: certifi>=2017.4.17 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from requests->transformers) (2025.4.26)
+Requirement already satisfied: bs4 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (0.0.2)
+Requirement already satisfied: beautifulsoup4 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from bs4) (4.13.4)
+Requirement already satisfied: soupsieve>1.2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from beautifulsoup4->bs4) (2.7)
+Requirement already satisfied: typing-extensions>=4.0.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from beautifulsoup4->bs4) (4.12.2)
+Requirement already satisfied: nltk in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (3.9.1)
+Requirement already satisfied: click in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from nltk) (8.1.8)
+Requirement already satisfied: joblib in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from nltk) (1.4.2)
+Requirement already satisfied: regex>=2021.8.3 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from nltk) (2024.11.6)
+Requirement already satisfied: tqdm in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from nltk) (4.67.1)
+Requirement already satisfied: pytesseract in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (0.3.13)
+Requirement already satisfied: packaging>=21.3 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from pytesseract) (24.2)
+Requirement already satisfied: Pillow>=8.0.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from pytesseract) (11.1.0)
+Requirement already satisfied: playwright in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (1.52.0)
+Requirement already satisfied: pyee<14,>=13 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from playwright) (13.0.0)
+Requirement already satisfied: greenlet<4.0.0,>=3.1.1 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from playwright) (3.2.2)
+Requirement already satisfied: typing-extensions in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from pyee<14,>=13->playwright) (4.12.2)
+Requirement already satisfied: pyautogui in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (0.9.54)
+Requirement already satisfied: python3-Xlib in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from pyautogui) (0.15)
+Requirement already satisfied: pymsgbox in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from pyautogui) (1.0.9)
+Requirement already satisfied: pytweening>=1.0.4 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from pyautogui) (1.2.0)
+Requirement already satisfied: pyscreeze>=0.1.21 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from pyautogui) (1.0.1)
+Requirement already satisfied: pygetwindow>=0.0.5 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from pyautogui) (0.0.9)
+Requirement already satisfied: mouseinfo in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from pyautogui) (0.1.3)
+Requirement already satisfied: pyrect in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from pygetwindow>=0.0.5->pyautogui) (0.2.0)
+Requirement already satisfied: Pillow>=9.2.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from pyscreeze>=0.1.21->pyautogui) (11.1.0)
+Requirement already satisfied: pyperclip in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from mouseinfo->pyautogui) (1.9.0)
+Requirement already satisfied: flask in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (3.1.1)
+Requirement already satisfied: blinker>=1.9.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from flask) (1.9.0)
+Requirement already satisfied: click>=8.1.3 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from flask) (8.1.8)
+Requirement already satisfied: itsdangerous>=2.2.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from flask) (2.2.0)
+Requirement already satisfied: jinja2>=3.1.2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from flask) (3.1.6)
+Requirement already satisfied: markupsafe>=2.1.1 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from flask) (3.0.2)
+Requirement already satisfied: werkzeug>=3.1.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from flask) (3.1.3)
+Requirement already satisfied: flask-socketio in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (5.5.1)
+Requirement already satisfied: Flask>=0.9 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from flask-socketio) (3.1.1)
+Requirement already satisfied: python-socketio>=5.12.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from flask-socketio) (5.13.0)
+Requirement already satisfied: blinker>=1.9.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from Flask>=0.9->flask-socketio) (1.9.0)
+Requirement already satisfied: click>=8.1.3 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from Flask>=0.9->flask-socketio) (8.1.8)
+Requirement already satisfied: itsdangerous>=2.2.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from Flask>=0.9->flask-socketio) (2.2.0)
+Requirement already satisfied: jinja2>=3.1.2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from Flask>=0.9->flask-socketio) (3.1.6)
+Requirement already satisfied: markupsafe>=2.1.1 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from Flask>=0.9->flask-socketio) (3.0.2)
+Requirement already satisfied: werkzeug>=3.1.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from Flask>=0.9->flask-socketio) (3.1.3)
+Requirement already satisfied: bidict>=0.21.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from python-socketio>=5.12.0->flask-socketio) (0.23.1)
+Requirement already satisfied: python-engineio>=4.11.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from python-socketio>=5.12.0->flask-socketio) (4.12.2)
+Requirement already satisfied: simple-websocket>=0.10.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from python-engineio>=4.11.0->python-socketio>=5.12.0->flask-socketio) (1.1.0)
+Requirement already satisfied: wsproto in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from simple-websocket>=0.10.0->python-engineio>=4.11.0->python-socketio>=5.12.0->flask-socketio) (1.2.0)
+Requirement already satisfied: h11<1,>=0.9.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from wsproto->simple-websocket>=0.10.0->python-engineio>=4.11.0->python-socketio>=5.12.0->flask-socketio) (0.16.0)
+Requirement already satisfied: eventlet in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (0.40.0)
+Requirement already satisfied: dnspython>=1.15.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from eventlet) (2.7.0)
+Requirement already satisfied: greenlet>=1.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from eventlet) (3.2.2)
+/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero. (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+Collecting en-core-web-sm==3.7.1
+  Downloading https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl (12.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.8/12.8 MB 8.0 MB/s eta 0:00:00
+Requirement already satisfied: spacy<3.8.0,>=3.7.2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from en-core-web-sm==3.7.1) (3.7.2)
+Requirement already satisfied: spacy-legacy<3.1.0,>=3.0.11 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (3.0.12)
+Requirement already satisfied: spacy-loggers<2.0.0,>=1.0.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (1.0.4)
+Requirement already satisfied: murmurhash<1.1.0,>=0.28.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (1.0.12)
+Requirement already satisfied: cymem<2.1.0,>=2.0.2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (2.0.6)
+Requirement already satisfied: preshed<3.1.0,>=3.0.2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (3.0.9)
+Requirement already satisfied: thinc<8.3.0,>=8.1.8 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (8.2.2)
+Requirement already satisfied: wasabi<1.2.0,>=0.9.1 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (0.9.1)
+Requirement already satisfied: srsly<3.0.0,>=2.4.3 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (2.5.1)
+Requirement already satisfied: catalogue<2.1.0,>=2.0.6 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (2.0.10)
+Requirement already satisfied: weasel<0.4.0,>=0.1.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (0.3.4)
+Requirement already satisfied: typer<0.10.0,>=0.3.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (0.9.0)
+Requirement already satisfied: smart-open<7.0.0,>=5.2.1 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (5.2.1)
+Requirement already satisfied: tqdm<5.0.0,>=4.38.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (4.67.1)
+Requirement already satisfied: requests<3.0.0,>=2.13.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (2.32.3)
+Requirement already satisfied: pydantic!=1.8,!=1.8.1,<3.0.0,>=1.7.4 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (2.10.3)
+Requirement already satisfied: jinja2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (3.1.6)
+Requirement already satisfied: setuptools in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (78.1.1)
+Requirement already satisfied: packaging>=20.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (24.2)
+Requirement already satisfied: langcodes<4.0.0,>=3.2.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (3.3.0)
+Requirement already satisfied: numpy>=1.19.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (1.26.4)
+Requirement already satisfied: annotated-types>=0.6.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from pydantic!=1.8,!=1.8.1,<3.0.0,>=1.7.4->spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (0.6.0)
+Requirement already satisfied: pydantic-core==2.27.1 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from pydantic!=1.8,!=1.8.1,<3.0.0,>=1.7.4->spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (2.27.1)
+Requirement already satisfied: typing-extensions>=4.12.2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from pydantic!=1.8,!=1.8.1,<3.0.0,>=1.7.4->spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (4.12.2)
+Requirement already satisfied: charset-normalizer<4,>=2 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from requests<3.0.0,>=2.13.0->spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (3.3.2)
+Requirement already satisfied: idna<4,>=2.5 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from requests<3.0.0,>=2.13.0->spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (3.7)
+Requirement already satisfied: urllib3<3,>=1.21.1 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from requests<3.0.0,>=2.13.0->spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (2.3.0)
+Requirement already satisfied: certifi>=2017.4.17 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from requests<3.0.0,>=2.13.0->spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (2025.4.26)
+Requirement already satisfied: blis<0.8.0,>=0.7.8 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from thinc<8.3.0,>=8.1.8->spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (0.7.9)
+Requirement already satisfied: confection<1.0.0,>=0.0.1 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from thinc<8.3.0,>=8.1.8->spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (0.1.4)
+Requirement already satisfied: click<9.0.0,>=7.1.1 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from typer<0.10.0,>=0.3.0->spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (8.1.8)
+Requirement already satisfied: cloudpathlib<0.17.0,>=0.7.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from weasel<0.4.0,>=0.1.0->spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (0.16.0)
+Requirement already satisfied: MarkupSafe>=2.0 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from jinja2->spacy<3.8.0,>=3.7.2->en-core-web-sm==3.7.1) (3.0.2)
+[38;5;2m✔ Download and installation successful[0m
+You can now load the package via spacy.load('en_core_web_sm')
+Requirement already satisfied: nltk in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (3.9.1)
+Requirement already satisfied: click in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from nltk) (8.1.8)
+Requirement already satisfied: joblib in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from nltk) (1.4.2)
+Requirement already satisfied: regex>=2021.8.3 in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from nltk) (2024.11.6)
+Requirement already satisfied: tqdm in ./miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages (from nltk) (4.67.1)
+/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/runpy.py:126: RuntimeWarning: 'nltk.downloader' found in sys.modules after import of package 'nltk', but prior to execution of 'nltk.downloader'; this may result in unpredictable behaviour
+  warn(RuntimeWarning(msg))
+[nltk_data] Downloading package punkt to
+[nltk_data]     /home/statiksmoke8/data/nltk_data...
+[nltk_data]   Unzipping tokenizers/punkt.zip.
+/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/runpy.py:126: RuntimeWarning: 'nltk.downloader' found in sys.modules after import of package 'nltk', but prior to execution of 'nltk.downloader'; this may result in unpredictable behaviour
+  warn(RuntimeWarning(msg))
+[nltk_data] Downloading package punkt to
+[nltk_data]     /home/statiksmoke8/data/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package averaged_perceptron_tagger to
+[nltk_data]     /home/statiksmoke8/data/nltk_data...
+[nltk_data]   Unzipping taggers/averaged_perceptron_tagger.zip.
+[nltk_data] Downloading package wordnet to
+[nltk_data]     /home/statiksmoke8/data/nltk_data...
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/statiksmoke8/data/nltk_data...
+[nltk_data]   Unzipping corpora/stopwords.zip.
+[*] Checking CUDA in current environment:
+/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero. (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+[CUDA] torch.cuda.is_available: False
+[CUDA] torch.cuda.device_count: 2
+[CUDA] torch.cuda.current_device: None
+[CUDA] torch.cuda.get_device_name: None
+/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero. (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+[GPU-TEST] Loading BERT on cpu
+/home/statiksmoke8/miniconda3/envs/gremlin-nlp/lib/python3.10/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero. (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+[GPU-TEST] Loading MiniLM on cpu
+
+[1;36m[INSTALL] Activating gremlin-scraper...[0m
+
+Requirement already satisfied: flask in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (3.1.1)
+Collecting eventlet
+  Downloading eventlet-0.40.1-py3-none-any.whl.metadata (5.4 kB)
+Requirement already satisfied: blinker>=1.9.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from flask) (1.9.0)
+Requirement already satisfied: click>=8.1.3 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from flask) (8.1.8)
+Requirement already satisfied: importlib-metadata>=3.6.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from flask) (8.7.0)
+Requirement already satisfied: itsdangerous>=2.2.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from flask) (2.2.0)
+Requirement already satisfied: jinja2>=3.1.2 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from flask) (3.1.6)
+Requirement already satisfied: markupsafe>=2.1.1 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from flask) (3.0.2)
+Requirement already satisfied: werkzeug>=3.1.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from flask) (3.1.3)
+Collecting dnspython>=1.15.0 (from eventlet)
+  Downloading dnspython-2.7.0-py3-none-any.whl.metadata (5.8 kB)
+Requirement already satisfied: greenlet>=1.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from eventlet) (3.2.2)
+Requirement already satisfied: zipp>=3.20 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from importlib-metadata>=3.6.0->flask) (3.22.0)
+Downloading eventlet-0.40.1-py3-none-any.whl (364 kB)
+Downloading dnspython-2.7.0-py3-none-any.whl (313 kB)
+Installing collected packages: dnspython, eventlet
+
+Successfully installed dnspython-2.7.0 eventlet-0.40.1
+Requirement already satisfied: pip in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (25.1.1)
+Requirement already satisfied: torch in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (2.7.1)
+Requirement already satisfied: filelock in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch) (3.18.0)
+Requirement already satisfied: typing-extensions>=4.10.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch) (4.13.2)
+Requirement already satisfied: sympy>=1.13.3 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch) (1.14.0)
+Requirement already satisfied: networkx in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch) (3.2.1)
+Requirement already satisfied: jinja2 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch) (3.1.6)
+Requirement already satisfied: fsspec in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch) (2025.5.1)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.6.77 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch) (12.6.77)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.6.77 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch) (12.6.77)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.6.80 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch) (12.6.80)
+Requirement already satisfied: nvidia-cudnn-cu12==9.5.1.17 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch) (9.5.1.17)
+Requirement already satisfied: nvidia-cublas-cu12==12.6.4.1 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch) (12.6.4.1)
+Requirement already satisfied: nvidia-cufft-cu12==11.3.0.4 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch) (11.3.0.4)
+Requirement already satisfied: nvidia-curand-cu12==10.3.7.77 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch) (10.3.7.77)
+Requirement already satisfied: nvidia-cusolver-cu12==11.7.1.2 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch) (11.7.1.2)
+Requirement already satisfied: nvidia-cusparse-cu12==12.5.4.2 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch) (12.5.4.2)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.6.3 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch) (0.6.3)
+Requirement already satisfied: nvidia-nccl-cu12==2.26.2 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch) (2.26.2)
+Requirement already satisfied: nvidia-nvtx-cu12==12.6.77 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch) (12.6.77)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.6.85 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch) (12.6.85)
+Requirement already satisfied: nvidia-cufile-cu12==1.11.1.6 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch) (1.11.1.6)
+Requirement already satisfied: triton==3.3.1 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch) (3.3.1)
+Requirement already satisfied: setuptools>=40.8.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from triton==3.3.1->torch) (80.9.0)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from sympy>=1.13.3->torch) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from jinja2->torch) (3.0.2)
+Requirement already satisfied: torchvision in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (0.22.1)
+Requirement already satisfied: numpy in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torchvision) (2.0.2)
+Requirement already satisfied: torch==2.7.1 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torchvision) (2.7.1)
+Requirement already satisfied: pillow!=8.3.*,>=5.3.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torchvision) (11.2.1)
+Requirement already satisfied: filelock in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (3.18.0)
+Requirement already satisfied: typing-extensions>=4.10.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (4.13.2)
+Requirement already satisfied: sympy>=1.13.3 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (1.14.0)
+Requirement already satisfied: networkx in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (3.2.1)
+Requirement already satisfied: jinja2 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (3.1.6)
+Requirement already satisfied: fsspec in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (2025.5.1)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.6.77 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (12.6.77)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.6.77 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (12.6.77)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.6.80 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (12.6.80)
+Requirement already satisfied: nvidia-cudnn-cu12==9.5.1.17 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (9.5.1.17)
+Requirement already satisfied: nvidia-cublas-cu12==12.6.4.1 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (12.6.4.1)
+Requirement already satisfied: nvidia-cufft-cu12==11.3.0.4 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (11.3.0.4)
+Requirement already satisfied: nvidia-curand-cu12==10.3.7.77 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (10.3.7.77)
+Requirement already satisfied: nvidia-cusolver-cu12==11.7.1.2 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (11.7.1.2)
+Requirement already satisfied: nvidia-cusparse-cu12==12.5.4.2 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (12.5.4.2)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.6.3 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (0.6.3)
+Requirement already satisfied: nvidia-nccl-cu12==2.26.2 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (2.26.2)
+Requirement already satisfied: nvidia-nvtx-cu12==12.6.77 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (12.6.77)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.6.85 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (12.6.85)
+Requirement already satisfied: nvidia-cufile-cu12==1.11.1.6 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (1.11.1.6)
+Requirement already satisfied: triton==3.3.1 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (3.3.1)
+Requirement already satisfied: setuptools>=40.8.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from triton==3.3.1->torch==2.7.1->torchvision) (80.9.0)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from sympy>=1.13.3->torch==2.7.1->torchvision) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from jinja2->torch==2.7.1->torchvision) (3.0.2)
+Requirement already satisfied: torchaudio in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (2.7.1)
+Requirement already satisfied: torch==2.7.1 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torchaudio) (2.7.1)
+Requirement already satisfied: filelock in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (3.18.0)
+Requirement already satisfied: typing-extensions>=4.10.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (4.13.2)
+Requirement already satisfied: sympy>=1.13.3 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (1.14.0)
+Requirement already satisfied: networkx in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (3.2.1)
+Requirement already satisfied: jinja2 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (3.1.6)
+Requirement already satisfied: fsspec in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (2025.5.1)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.6.77 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (12.6.77)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.6.77 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (12.6.77)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.6.80 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (12.6.80)
+Requirement already satisfied: nvidia-cudnn-cu12==9.5.1.17 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (9.5.1.17)
+Requirement already satisfied: nvidia-cublas-cu12==12.6.4.1 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (12.6.4.1)
+Requirement already satisfied: nvidia-cufft-cu12==11.3.0.4 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (11.3.0.4)
+Requirement already satisfied: nvidia-curand-cu12==10.3.7.77 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (10.3.7.77)
+Requirement already satisfied: nvidia-cusolver-cu12==11.7.1.2 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (11.7.1.2)
+Requirement already satisfied: nvidia-cusparse-cu12==12.5.4.2 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (12.5.4.2)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.6.3 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (0.6.3)
+Requirement already satisfied: nvidia-nccl-cu12==2.26.2 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (2.26.2)
+Requirement already satisfied: nvidia-nvtx-cu12==12.6.77 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (12.6.77)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.6.85 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (12.6.85)
+Requirement already satisfied: nvidia-cufile-cu12==1.11.1.6 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (1.11.1.6)
+Requirement already satisfied: triton==3.3.1 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (3.3.1)
+Requirement already satisfied: setuptools>=40.8.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from triton==3.3.1->torch==2.7.1->torchaudio) (80.9.0)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from sympy>=1.13.3->torch==2.7.1->torchaudio) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from jinja2->torch==2.7.1->torchaudio) (3.0.2)
+Requirement already satisfied: sentence_transformers in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (4.1.0)
+Requirement already satisfied: transformers<5.0.0,>=4.41.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from sentence_transformers) (4.52.4)
+Requirement already satisfied: tqdm in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from sentence_transformers) (4.67.1)
+Requirement already satisfied: torch>=1.11.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from sentence_transformers) (2.7.1)
+Requirement already satisfied: scikit-learn in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from sentence_transformers) (1.6.1)
+Requirement already satisfied: scipy in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from sentence_transformers) (1.13.1)
+Requirement already satisfied: huggingface-hub>=0.20.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from sentence_transformers) (0.32.4)
+Requirement already satisfied: Pillow in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from sentence_transformers) (11.2.1)
+Requirement already satisfied: typing_extensions>=4.5.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from sentence_transformers) (4.13.2)
+Requirement already satisfied: filelock in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from transformers<5.0.0,>=4.41.0->sentence_transformers) (3.18.0)
+Requirement already satisfied: numpy>=1.17 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from transformers<5.0.0,>=4.41.0->sentence_transformers) (2.0.2)
+Requirement already satisfied: packaging>=20.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from transformers<5.0.0,>=4.41.0->sentence_transformers) (25.0)
+Requirement already satisfied: pyyaml>=5.1 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from transformers<5.0.0,>=4.41.0->sentence_transformers) (6.0.2)
+Requirement already satisfied: regex!=2019.12.17 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from transformers<5.0.0,>=4.41.0->sentence_transformers) (2024.11.6)
+Requirement already satisfied: requests in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from transformers<5.0.0,>=4.41.0->sentence_transformers) (2.32.3)
+Requirement already satisfied: tokenizers<0.22,>=0.21 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from transformers<5.0.0,>=4.41.0->sentence_transformers) (0.21.1)
+Requirement already satisfied: safetensors>=0.4.3 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from transformers<5.0.0,>=4.41.0->sentence_transformers) (0.5.3)
+Requirement already satisfied: fsspec>=2023.5.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from huggingface-hub>=0.20.0->sentence_transformers) (2025.5.1)
+Requirement already satisfied: hf-xet<2.0.0,>=1.1.2 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from huggingface-hub>=0.20.0->sentence_transformers) (1.1.3)
+Requirement already satisfied: sympy>=1.13.3 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch>=1.11.0->sentence_transformers) (1.14.0)
+Requirement already satisfied: networkx in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch>=1.11.0->sentence_transformers) (3.2.1)
+Requirement already satisfied: jinja2 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch>=1.11.0->sentence_transformers) (3.1.6)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.6.77 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch>=1.11.0->sentence_transformers) (12.6.77)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.6.77 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch>=1.11.0->sentence_transformers) (12.6.77)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.6.80 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch>=1.11.0->sentence_transformers) (12.6.80)
+Requirement already satisfied: nvidia-cudnn-cu12==9.5.1.17 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch>=1.11.0->sentence_transformers) (9.5.1.17)
+Requirement already satisfied: nvidia-cublas-cu12==12.6.4.1 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch>=1.11.0->sentence_transformers) (12.6.4.1)
+Requirement already satisfied: nvidia-cufft-cu12==11.3.0.4 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch>=1.11.0->sentence_transformers) (11.3.0.4)
+Requirement already satisfied: nvidia-curand-cu12==10.3.7.77 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch>=1.11.0->sentence_transformers) (10.3.7.77)
+Requirement already satisfied: nvidia-cusolver-cu12==11.7.1.2 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch>=1.11.0->sentence_transformers) (11.7.1.2)
+Requirement already satisfied: nvidia-cusparse-cu12==12.5.4.2 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch>=1.11.0->sentence_transformers) (12.5.4.2)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.6.3 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch>=1.11.0->sentence_transformers) (0.6.3)
+Requirement already satisfied: nvidia-nccl-cu12==2.26.2 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch>=1.11.0->sentence_transformers) (2.26.2)
+Requirement already satisfied: nvidia-nvtx-cu12==12.6.77 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch>=1.11.0->sentence_transformers) (12.6.77)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.6.85 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch>=1.11.0->sentence_transformers) (12.6.85)
+Requirement already satisfied: nvidia-cufile-cu12==1.11.1.6 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch>=1.11.0->sentence_transformers) (1.11.1.6)
+Requirement already satisfied: triton==3.3.1 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from torch>=1.11.0->sentence_transformers) (3.3.1)
+Requirement already satisfied: setuptools>=40.8.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from triton==3.3.1->torch>=1.11.0->sentence_transformers) (80.9.0)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from sympy>=1.13.3->torch>=1.11.0->sentence_transformers) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from jinja2->torch>=1.11.0->sentence_transformers) (3.0.2)
+Requirement already satisfied: charset-normalizer<4,>=2 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from requests->transformers<5.0.0,>=4.41.0->sentence_transformers) (3.4.2)
+Requirement already satisfied: idna<4,>=2.5 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from requests->transformers<5.0.0,>=4.41.0->sentence_transformers) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from requests->transformers<5.0.0,>=4.41.0->sentence_transformers) (2.4.0)
+Requirement already satisfied: certifi>=2017.4.17 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from requests->transformers<5.0.0,>=4.41.0->sentence_transformers) (2025.4.26)
+Requirement already satisfied: joblib>=1.2.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from scikit-learn->sentence_transformers) (1.5.1)
+Requirement already satisfied: threadpoolctl>=3.1.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from scikit-learn->sentence_transformers) (3.6.0)
+Requirement already satisfied: transformers in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (4.52.4)
+Requirement already satisfied: filelock in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from transformers) (3.18.0)
+Requirement already satisfied: huggingface-hub<1.0,>=0.30.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from transformers) (0.32.4)
+Requirement already satisfied: numpy>=1.17 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from transformers) (2.0.2)
+Requirement already satisfied: packaging>=20.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from transformers) (25.0)
+Requirement already satisfied: pyyaml>=5.1 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from transformers) (6.0.2)
+Requirement already satisfied: regex!=2019.12.17 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from transformers) (2024.11.6)
+Requirement already satisfied: requests in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from transformers) (2.32.3)
+Requirement already satisfied: tokenizers<0.22,>=0.21 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from transformers) (0.21.1)
+Requirement already satisfied: safetensors>=0.4.3 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from transformers) (0.5.3)
+Requirement already satisfied: tqdm>=4.27 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from transformers) (4.67.1)
+Requirement already satisfied: fsspec>=2023.5.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from huggingface-hub<1.0,>=0.30.0->transformers) (2025.5.1)
+Requirement already satisfied: typing-extensions>=3.7.4.3 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from huggingface-hub<1.0,>=0.30.0->transformers) (4.13.2)
+Requirement already satisfied: hf-xet<2.0.0,>=1.1.2 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from huggingface-hub<1.0,>=0.30.0->transformers) (1.1.3)
+Requirement already satisfied: charset-normalizer<4,>=2 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from requests->transformers) (3.4.2)
+Requirement already satisfied: idna<4,>=2.5 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from requests->transformers) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from requests->transformers) (2.4.0)
+Requirement already satisfied: certifi>=2017.4.17 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from requests->transformers) (2025.4.26)
+Requirement already satisfied: playwright in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (1.52.0)
+Requirement already satisfied: pyee<14,>=13 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from playwright) (13.0.0)
+Requirement already satisfied: greenlet<4.0.0,>=3.1.1 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from playwright) (3.2.2)
+Requirement already satisfied: typing-extensions in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from pyee<14,>=13->playwright) (4.13.2)
+Requirement already satisfied: pyautogui in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (0.9.54)
+Requirement already satisfied: pymsgbox in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from pyautogui) (1.0.9)
+Requirement already satisfied: pytweening>=1.0.4 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from pyautogui) (1.2.0)
+Requirement already satisfied: pyscreeze>=0.1.21 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from pyautogui) (1.0.1)
+Requirement already satisfied: pygetwindow>=0.0.5 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from pyautogui) (0.0.9)
+Requirement already satisfied: mouseinfo in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from pyautogui) (0.1.3)
+Requirement already satisfied: python3-Xlib in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from pyautogui) (0.15)
+Requirement already satisfied: pyrect in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from pygetwindow>=0.0.5->pyautogui) (0.2.0)
+Requirement already satisfied: Pillow>=9.2.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from pyscreeze>=0.1.21->pyautogui) (11.2.1)
+Requirement already satisfied: pyperclip in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from mouseinfo->pyautogui) (1.9.0)
+Requirement already satisfied: flask in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (3.1.1)
+Requirement already satisfied: blinker>=1.9.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from flask) (1.9.0)
+Requirement already satisfied: click>=8.1.3 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from flask) (8.1.8)
+Requirement already satisfied: importlib-metadata>=3.6.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from flask) (8.7.0)
+Requirement already satisfied: itsdangerous>=2.2.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from flask) (2.2.0)
+Requirement already satisfied: jinja2>=3.1.2 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from flask) (3.1.6)
+Requirement already satisfied: markupsafe>=2.1.1 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from flask) (3.0.2)
+Requirement already satisfied: werkzeug>=3.1.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from flask) (3.1.3)
+Requirement already satisfied: zipp>=3.20 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from importlib-metadata>=3.6.0->flask) (3.22.0)
+Requirement already satisfied: flask-socketio in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (5.5.1)
+Requirement already satisfied: Flask>=0.9 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from flask-socketio) (3.1.1)
+Requirement already satisfied: python-socketio>=5.12.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from flask-socketio) (5.13.0)
+Requirement already satisfied: blinker>=1.9.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from Flask>=0.9->flask-socketio) (1.9.0)
+Requirement already satisfied: click>=8.1.3 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from Flask>=0.9->flask-socketio) (8.1.8)
+Requirement already satisfied: importlib-metadata>=3.6.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from Flask>=0.9->flask-socketio) (8.7.0)
+Requirement already satisfied: itsdangerous>=2.2.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from Flask>=0.9->flask-socketio) (2.2.0)
+Requirement already satisfied: jinja2>=3.1.2 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from Flask>=0.9->flask-socketio) (3.1.6)
+Requirement already satisfied: markupsafe>=2.1.1 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from Flask>=0.9->flask-socketio) (3.0.2)
+Requirement already satisfied: werkzeug>=3.1.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from Flask>=0.9->flask-socketio) (3.1.3)
+Requirement already satisfied: zipp>=3.20 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from importlib-metadata>=3.6.0->Flask>=0.9->flask-socketio) (3.22.0)
+Requirement already satisfied: bidict>=0.21.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from python-socketio>=5.12.0->flask-socketio) (0.23.1)
+Requirement already satisfied: python-engineio>=4.11.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from python-socketio>=5.12.0->flask-socketio) (4.12.1)
+Requirement already satisfied: simple-websocket>=0.10.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from python-engineio>=4.11.0->python-socketio>=5.12.0->flask-socketio) (1.1.0)
+Requirement already satisfied: wsproto in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from simple-websocket>=0.10.0->python-engineio>=4.11.0->python-socketio>=5.12.0->flask-socketio) (1.2.0)
+Requirement already satisfied: h11<1,>=0.9.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from wsproto->simple-websocket>=0.10.0->python-engineio>=4.11.0->python-socketio>=5.12.0->flask-socketio) (0.16.0)
+Requirement already satisfied: eventlet in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (0.40.1)
+Requirement already satisfied: dnspython>=1.15.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from eventlet) (2.7.0)
+Requirement already satisfied: greenlet>=1.0 in ./miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages (from eventlet) (3.2.2)
+/home/statiksmoke8/miniconda3/envs/gremlin-scraper/bin/python: No module named spacy
+[*] Checking CUDA in current environment:
+/home/statiksmoke8/miniconda3/envs/gremlin-scraper/lib/python3.9/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero. (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+[CUDA] torch.cuda.is_available: False
+[CUDA] torch.cuda.device_count: 2
+[CUDA] torch.cuda.current_device: None
+[CUDA] torch.cuda.get_device_name: None
+
+[1;36m[INSTALL] Activating gremlin-memory...[0m
+
+Requirement already satisfied: flask in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (3.1.1)
+Collecting eventlet
+  Using cached eventlet-0.40.1-py3-none-any.whl.metadata (5.4 kB)
+Requirement already satisfied: blinker>=1.9.0 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from flask) (1.9.0)
+Requirement already satisfied: click>=8.1.3 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from flask) (8.1.8)
+Requirement already satisfied: importlib-metadata>=3.6.0 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from flask) (8.7.0)
+Requirement already satisfied: itsdangerous>=2.2.0 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from flask) (2.2.0)
+Requirement already satisfied: jinja2>=3.1.2 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from flask) (3.1.6)
+Requirement already satisfied: markupsafe>=2.1.1 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from flask) (3.0.2)
+Requirement already satisfied: werkzeug>=3.1.0 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from flask) (3.1.3)
+Collecting dnspython>=1.15.0 (from eventlet)
+  Using cached dnspython-2.7.0-py3-none-any.whl.metadata (5.8 kB)
+Collecting greenlet>=1.0 (from eventlet)
+  Downloading greenlet-3.2.3-cp39-cp39-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (4.1 kB)
+Requirement already satisfied: zipp>=3.20 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from importlib-metadata>=3.6.0->flask) (3.22.0)
+Using cached eventlet-0.40.1-py3-none-any.whl (364 kB)
+Using cached dnspython-2.7.0-py3-none-any.whl (313 kB)
+Downloading greenlet-3.2.3-cp39-cp39-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (580 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 580.8/580.8 kB 7.7 MB/s eta 0:00:00
+Installing collected packages: greenlet, dnspython, eventlet
+
+Successfully installed dnspython-2.7.0 eventlet-0.40.1 greenlet-3.2.3
+Requirement already satisfied: pip in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (25.1.1)
+Requirement already satisfied: flask in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (3.1.1)
+Requirement already satisfied: blinker>=1.9.0 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from flask) (1.9.0)
+Requirement already satisfied: click>=8.1.3 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from flask) (8.1.8)
+Requirement already satisfied: importlib-metadata>=3.6.0 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from flask) (8.7.0)
+Requirement already satisfied: itsdangerous>=2.2.0 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from flask) (2.2.0)
+Requirement already satisfied: jinja2>=3.1.2 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from flask) (3.1.6)
+Requirement already satisfied: markupsafe>=2.1.1 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from flask) (3.0.2)
+Requirement already satisfied: werkzeug>=3.1.0 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from flask) (3.1.3)
+Requirement already satisfied: zipp>=3.20 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from importlib-metadata>=3.6.0->flask) (3.22.0)
+Requirement already satisfied: chromadb in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (0.4.13)
+Requirement already satisfied: requests>=2.28 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from chromadb) (2.32.3)
+Requirement already satisfied: pydantic>=1.9 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from chromadb) (2.11.5)
+Requirement already satisfied: chroma-hnswlib==0.7.3 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from chromadb) (0.7.3)
+Requirement already satisfied: fastapi>=0.95.2 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from chromadb) (0.115.12)
+Requirement already satisfied: uvicorn>=0.18.3 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from uvicorn[standard]>=0.18.3->chromadb) (0.34.3)
+Requirement already satisfied: posthog>=2.4.0 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from chromadb) (4.2.0)
+Requirement already satisfied: typing-extensions>=4.5.0 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from chromadb) (4.14.0)
+Requirement already satisfied: pulsar-client>=3.1.0 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from chromadb) (3.7.0)
+Requirement already satisfied: onnxruntime>=1.14.1 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from chromadb) (1.19.2)
+Requirement already satisfied: tokenizers>=0.13.2 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from chromadb) (0.21.1)
+Requirement already satisfied: pypika>=0.48.9 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from chromadb) (0.48.9)
+Requirement already satisfied: tqdm>=4.65.0 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from chromadb) (4.67.1)
+Requirement already satisfied: overrides>=7.3.1 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from chromadb) (7.7.0)
+Requirement already satisfied: importlib-resources in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from chromadb) (6.5.2)
+Requirement already satisfied: bcrypt>=4.0.1 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from chromadb) (4.3.0)
+Requirement already satisfied: typer>=0.9.0 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from chromadb) (0.16.0)
+Requirement already satisfied: numpy>=1.22.5 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from chromadb) (1.26.4)
+Requirement already satisfied: starlette<0.47.0,>=0.40.0 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from fastapi>=0.95.2->chromadb) (0.46.2)
+Requirement already satisfied: annotated-types>=0.6.0 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from pydantic>=1.9->chromadb) (0.7.0)
+Requirement already satisfied: pydantic-core==2.33.2 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from pydantic>=1.9->chromadb) (2.33.2)
+Requirement already satisfied: typing-inspection>=0.4.0 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from pydantic>=1.9->chromadb) (0.4.1)
+Requirement already satisfied: anyio<5,>=3.6.2 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from starlette<0.47.0,>=0.40.0->fastapi>=0.95.2->chromadb) (4.9.0)
+Requirement already satisfied: exceptiongroup>=1.0.2 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from anyio<5,>=3.6.2->starlette<0.47.0,>=0.40.0->fastapi>=0.95.2->chromadb) (1.3.0)
+Requirement already satisfied: idna>=2.8 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from anyio<5,>=3.6.2->starlette<0.47.0,>=0.40.0->fastapi>=0.95.2->chromadb) (3.10)
+Requirement already satisfied: sniffio>=1.1 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from anyio<5,>=3.6.2->starlette<0.47.0,>=0.40.0->fastapi>=0.95.2->chromadb) (1.3.1)
+Requirement already satisfied: coloredlogs in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from onnxruntime>=1.14.1->chromadb) (15.0.1)
+Requirement already satisfied: flatbuffers in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from onnxruntime>=1.14.1->chromadb) (25.2.10)
+Requirement already satisfied: packaging in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from onnxruntime>=1.14.1->chromadb) (25.0)
+Requirement already satisfied: protobuf in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from onnxruntime>=1.14.1->chromadb) (6.31.1)
+Requirement already satisfied: sympy in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from onnxruntime>=1.14.1->chromadb) (1.14.0)
+Requirement already satisfied: six>=1.5 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from posthog>=2.4.0->chromadb) (1.17.0)
+Requirement already satisfied: python-dateutil>=2.2 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from posthog>=2.4.0->chromadb) (2.9.0.post0)
+Requirement already satisfied: backoff>=1.10.0 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from posthog>=2.4.0->chromadb) (2.2.1)
+Requirement already satisfied: distro>=1.5.0 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from posthog>=2.4.0->chromadb) (1.9.0)
+Requirement already satisfied: charset-normalizer<4,>=2 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from requests>=2.28->chromadb) (3.4.2)
+Requirement already satisfied: urllib3<3,>=1.21.1 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from requests>=2.28->chromadb) (2.4.0)
+Requirement already satisfied: certifi>=2017.4.17 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from requests>=2.28->chromadb) (2025.4.26)
+Requirement already satisfied: huggingface-hub<1.0,>=0.16.4 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from tokenizers>=0.13.2->chromadb) (0.32.4)
+Requirement already satisfied: filelock in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from huggingface-hub<1.0,>=0.16.4->tokenizers>=0.13.2->chromadb) (3.18.0)
+Requirement already satisfied: fsspec>=2023.5.0 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from huggingface-hub<1.0,>=0.16.4->tokenizers>=0.13.2->chromadb) (2025.5.1)
+Requirement already satisfied: pyyaml>=5.1 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from huggingface-hub<1.0,>=0.16.4->tokenizers>=0.13.2->chromadb) (6.0.2)
+Requirement already satisfied: hf-xet<2.0.0,>=1.1.2 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from huggingface-hub<1.0,>=0.16.4->tokenizers>=0.13.2->chromadb) (1.1.3)
+Requirement already satisfied: click>=8.0.0 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from typer>=0.9.0->chromadb) (8.1.8)
+Requirement already satisfied: shellingham>=1.3.0 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from typer>=0.9.0->chromadb) (1.5.4)
+Requirement already satisfied: rich>=10.11.0 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from typer>=0.9.0->chromadb) (14.0.0)
+Requirement already satisfied: markdown-it-py>=2.2.0 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from rich>=10.11.0->typer>=0.9.0->chromadb) (3.0.0)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from rich>=10.11.0->typer>=0.9.0->chromadb) (2.19.1)
+Requirement already satisfied: mdurl~=0.1 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from markdown-it-py>=2.2.0->rich>=10.11.0->typer>=0.9.0->chromadb) (0.1.2)
+Requirement already satisfied: h11>=0.8 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from uvicorn>=0.18.3->uvicorn[standard]>=0.18.3->chromadb) (0.16.0)
+Requirement already satisfied: httptools>=0.6.3 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from uvicorn[standard]>=0.18.3->chromadb) (0.6.4)
+Requirement already satisfied: python-dotenv>=0.13 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from uvicorn[standard]>=0.18.3->chromadb) (1.1.0)
+Requirement already satisfied: uvloop>=0.15.1 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from uvicorn[standard]>=0.18.3->chromadb) (0.21.0)
+Requirement already satisfied: watchfiles>=0.13 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from uvicorn[standard]>=0.18.3->chromadb) (1.0.5)
+Requirement already satisfied: websockets>=10.4 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from uvicorn[standard]>=0.18.3->chromadb) (15.0.1)
+Requirement already satisfied: humanfriendly>=9.1 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from coloredlogs->onnxruntime>=1.14.1->chromadb) (10.0)
+Requirement already satisfied: zipp>=3.1.0 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from importlib-resources->chromadb) (3.22.0)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from sympy->onnxruntime>=1.14.1->chromadb) (1.3.0)
+Requirement already satisfied: faiss-cpu in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (1.11.0)
+Requirement already satisfied: numpy<3.0,>=1.25.0 in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from faiss-cpu) (1.26.4)
+Requirement already satisfied: packaging in ./miniconda3/envs/gremlin-memory/lib/python3.9/site-packages (from faiss-cpu) (25.0)
+
+[1;36m[INSTALL] Activating gremlin-dashboard...[0m
+
+Requirement already satisfied: flask in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (3.1.0)
+Requirement already satisfied: eventlet in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (0.39.0)
+Requirement already satisfied: Werkzeug>=3.1 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from flask) (3.1.3)
+Requirement already satisfied: Jinja2>=3.1.2 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from flask) (3.1.6)
+Requirement already satisfied: itsdangerous>=2.2 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from flask) (2.2.0)
+Requirement already satisfied: click>=8.1.3 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from flask) (8.1.8)
+Requirement already satisfied: blinker>=1.9 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from flask) (1.9.0)
+Requirement already satisfied: dnspython>=1.15.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from eventlet) (2.4.2)
+Requirement already satisfied: greenlet>=1.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from eventlet) (3.1.1)
+Requirement already satisfied: MarkupSafe>=2.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from Jinja2>=3.1.2->flask) (3.0.2)
+Requirement already satisfied: pip in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (25.1.1)
+Requirement already satisfied: torch in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (2.7.1)
+Requirement already satisfied: filelock in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch) (3.18.0)
+Requirement already satisfied: typing-extensions>=4.10.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch) (4.12.2)
+Requirement already satisfied: sympy>=1.13.3 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch) (1.14.0)
+Requirement already satisfied: networkx in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch) (3.4.2)
+Requirement already satisfied: jinja2 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch) (3.1.6)
+Requirement already satisfied: fsspec in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch) (2025.5.1)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.6.77 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch) (12.6.77)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.6.77 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch) (12.6.77)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.6.80 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch) (12.6.80)
+Requirement already satisfied: nvidia-cudnn-cu12==9.5.1.17 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch) (9.5.1.17)
+Requirement already satisfied: nvidia-cublas-cu12==12.6.4.1 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch) (12.6.4.1)
+Requirement already satisfied: nvidia-cufft-cu12==11.3.0.4 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch) (11.3.0.4)
+Requirement already satisfied: nvidia-curand-cu12==10.3.7.77 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch) (10.3.7.77)
+Requirement already satisfied: nvidia-cusolver-cu12==11.7.1.2 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch) (11.7.1.2)
+Requirement already satisfied: nvidia-cusparse-cu12==12.5.4.2 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch) (12.5.4.2)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.6.3 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch) (0.6.3)
+Requirement already satisfied: nvidia-nccl-cu12==2.26.2 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch) (2.26.2)
+Requirement already satisfied: nvidia-nvtx-cu12==12.6.77 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch) (12.6.77)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.6.85 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch) (12.6.85)
+Requirement already satisfied: nvidia-cufile-cu12==1.11.1.6 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch) (1.11.1.6)
+Requirement already satisfied: triton==3.3.1 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch) (3.3.1)
+Requirement already satisfied: setuptools>=40.8.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from triton==3.3.1->torch) (78.1.1)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from sympy>=1.13.3->torch) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from jinja2->torch) (3.0.2)
+Requirement already satisfied: torchvision in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (0.22.1)
+Requirement already satisfied: numpy in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torchvision) (2.0.1)
+Requirement already satisfied: torch==2.7.1 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torchvision) (2.7.1)
+Requirement already satisfied: pillow!=8.3.*,>=5.3.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torchvision) (11.2.1)
+Requirement already satisfied: filelock in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (3.18.0)
+Requirement already satisfied: typing-extensions>=4.10.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (4.12.2)
+Requirement already satisfied: sympy>=1.13.3 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (1.14.0)
+Requirement already satisfied: networkx in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (3.4.2)
+Requirement already satisfied: jinja2 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (3.1.6)
+Requirement already satisfied: fsspec in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (2025.5.1)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.6.77 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (12.6.77)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.6.77 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (12.6.77)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.6.80 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (12.6.80)
+Requirement already satisfied: nvidia-cudnn-cu12==9.5.1.17 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (9.5.1.17)
+Requirement already satisfied: nvidia-cublas-cu12==12.6.4.1 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (12.6.4.1)
+Requirement already satisfied: nvidia-cufft-cu12==11.3.0.4 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (11.3.0.4)
+Requirement already satisfied: nvidia-curand-cu12==10.3.7.77 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (10.3.7.77)
+Requirement already satisfied: nvidia-cusolver-cu12==11.7.1.2 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (11.7.1.2)
+Requirement already satisfied: nvidia-cusparse-cu12==12.5.4.2 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (12.5.4.2)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.6.3 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (0.6.3)
+Requirement already satisfied: nvidia-nccl-cu12==2.26.2 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (2.26.2)
+Requirement already satisfied: nvidia-nvtx-cu12==12.6.77 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (12.6.77)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.6.85 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (12.6.85)
+Requirement already satisfied: nvidia-cufile-cu12==1.11.1.6 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (1.11.1.6)
+Requirement already satisfied: triton==3.3.1 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchvision) (3.3.1)
+Requirement already satisfied: setuptools>=40.8.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from triton==3.3.1->torch==2.7.1->torchvision) (78.1.1)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from sympy>=1.13.3->torch==2.7.1->torchvision) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from jinja2->torch==2.7.1->torchvision) (3.0.2)
+Requirement already satisfied: torchaudio in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (2.7.1)
+Requirement already satisfied: torch==2.7.1 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torchaudio) (2.7.1)
+Requirement already satisfied: filelock in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (3.18.0)
+Requirement already satisfied: typing-extensions>=4.10.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (4.12.2)
+Requirement already satisfied: sympy>=1.13.3 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (1.14.0)
+Requirement already satisfied: networkx in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (3.4.2)
+Requirement already satisfied: jinja2 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (3.1.6)
+Requirement already satisfied: fsspec in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (2025.5.1)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.6.77 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (12.6.77)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.6.77 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (12.6.77)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.6.80 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (12.6.80)
+Requirement already satisfied: nvidia-cudnn-cu12==9.5.1.17 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (9.5.1.17)
+Requirement already satisfied: nvidia-cublas-cu12==12.6.4.1 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (12.6.4.1)
+Requirement already satisfied: nvidia-cufft-cu12==11.3.0.4 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (11.3.0.4)
+Requirement already satisfied: nvidia-curand-cu12==10.3.7.77 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (10.3.7.77)
+Requirement already satisfied: nvidia-cusolver-cu12==11.7.1.2 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (11.7.1.2)
+Requirement already satisfied: nvidia-cusparse-cu12==12.5.4.2 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (12.5.4.2)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.6.3 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (0.6.3)
+Requirement already satisfied: nvidia-nccl-cu12==2.26.2 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (2.26.2)
+Requirement already satisfied: nvidia-nvtx-cu12==12.6.77 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (12.6.77)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.6.85 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (12.6.85)
+Requirement already satisfied: nvidia-cufile-cu12==1.11.1.6 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (1.11.1.6)
+Requirement already satisfied: triton==3.3.1 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch==2.7.1->torchaudio) (3.3.1)
+Requirement already satisfied: setuptools>=40.8.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from triton==3.3.1->torch==2.7.1->torchaudio) (78.1.1)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from sympy>=1.13.3->torch==2.7.1->torchaudio) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from jinja2->torch==2.7.1->torchaudio) (3.0.2)
+Requirement already satisfied: sentence-transformers in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (4.1.0)
+Requirement already satisfied: transformers<5.0.0,>=4.41.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from sentence-transformers) (4.52.4)
+Requirement already satisfied: tqdm in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from sentence-transformers) (4.67.1)
+Requirement already satisfied: torch>=1.11.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from sentence-transformers) (2.7.1)
+Requirement already satisfied: scikit-learn in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from sentence-transformers) (1.7.0)
+Requirement already satisfied: scipy in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from sentence-transformers) (1.15.3)
+Requirement already satisfied: huggingface-hub>=0.20.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from sentence-transformers) (0.32.4)
+Requirement already satisfied: Pillow in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from sentence-transformers) (11.2.1)
+Requirement already satisfied: typing_extensions>=4.5.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from sentence-transformers) (4.12.2)
+Requirement already satisfied: filelock in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from transformers<5.0.0,>=4.41.0->sentence-transformers) (3.18.0)
+Requirement already satisfied: numpy>=1.17 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from transformers<5.0.0,>=4.41.0->sentence-transformers) (2.0.1)
+Requirement already satisfied: packaging>=20.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from transformers<5.0.0,>=4.41.0->sentence-transformers) (24.2)
+Requirement already satisfied: pyyaml>=5.1 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from transformers<5.0.0,>=4.41.0->sentence-transformers) (6.0.2)
+Requirement already satisfied: regex!=2019.12.17 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from transformers<5.0.0,>=4.41.0->sentence-transformers) (2024.11.6)
+Requirement already satisfied: requests in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from transformers<5.0.0,>=4.41.0->sentence-transformers) (2.32.3)
+Requirement already satisfied: tokenizers<0.22,>=0.21 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from transformers<5.0.0,>=4.41.0->sentence-transformers) (0.21.1)
+Requirement already satisfied: safetensors>=0.4.3 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from transformers<5.0.0,>=4.41.0->sentence-transformers) (0.5.3)
+Requirement already satisfied: fsspec>=2023.5.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from huggingface-hub>=0.20.0->sentence-transformers) (2025.5.1)
+Requirement already satisfied: hf-xet<2.0.0,>=1.1.2 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from huggingface-hub>=0.20.0->sentence-transformers) (1.1.3)
+Requirement already satisfied: sympy>=1.13.3 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (1.14.0)
+Requirement already satisfied: networkx in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (3.4.2)
+Requirement already satisfied: jinja2 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (3.1.6)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.6.77 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (12.6.77)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.6.77 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (12.6.77)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.6.80 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (12.6.80)
+Requirement already satisfied: nvidia-cudnn-cu12==9.5.1.17 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (9.5.1.17)
+Requirement already satisfied: nvidia-cublas-cu12==12.6.4.1 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (12.6.4.1)
+Requirement already satisfied: nvidia-cufft-cu12==11.3.0.4 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (11.3.0.4)
+Requirement already satisfied: nvidia-curand-cu12==10.3.7.77 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (10.3.7.77)
+Requirement already satisfied: nvidia-cusolver-cu12==11.7.1.2 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (11.7.1.2)
+Requirement already satisfied: nvidia-cusparse-cu12==12.5.4.2 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (12.5.4.2)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.6.3 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (0.6.3)
+Requirement already satisfied: nvidia-nccl-cu12==2.26.2 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (2.26.2)
+Requirement already satisfied: nvidia-nvtx-cu12==12.6.77 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (12.6.77)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.6.85 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (12.6.85)
+Requirement already satisfied: nvidia-cufile-cu12==1.11.1.6 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (1.11.1.6)
+Requirement already satisfied: triton==3.3.1 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from torch>=1.11.0->sentence-transformers) (3.3.1)
+Requirement already satisfied: setuptools>=40.8.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from triton==3.3.1->torch>=1.11.0->sentence-transformers) (78.1.1)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from sympy>=1.13.3->torch>=1.11.0->sentence-transformers) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from jinja2->torch>=1.11.0->sentence-transformers) (3.0.2)
+Requirement already satisfied: charset-normalizer<4,>=2 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from requests->transformers<5.0.0,>=4.41.0->sentence-transformers) (3.4.2)
+Requirement already satisfied: idna<4,>=2.5 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from requests->transformers<5.0.0,>=4.41.0->sentence-transformers) (3.7)
+Requirement already satisfied: urllib3<3,>=1.21.1 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from requests->transformers<5.0.0,>=4.41.0->sentence-transformers) (2.4.0)
+Requirement already satisfied: certifi>=2017.4.17 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from requests->transformers<5.0.0,>=4.41.0->sentence-transformers) (2025.4.26)
+Requirement already satisfied: joblib>=1.2.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from scikit-learn->sentence-transformers) (1.5.1)
+Requirement already satisfied: threadpoolctl>=3.1.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from scikit-learn->sentence-transformers) (3.6.0)
+Requirement already satisfied: transformers in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (4.52.4)
+Requirement already satisfied: filelock in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from transformers) (3.18.0)
+Requirement already satisfied: huggingface-hub<1.0,>=0.30.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from transformers) (0.32.4)
+Requirement already satisfied: numpy>=1.17 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from transformers) (2.0.1)
+Requirement already satisfied: packaging>=20.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from transformers) (24.2)
+Requirement already satisfied: pyyaml>=5.1 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from transformers) (6.0.2)
+Requirement already satisfied: regex!=2019.12.17 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from transformers) (2024.11.6)
+Requirement already satisfied: requests in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from transformers) (2.32.3)
+Requirement already satisfied: tokenizers<0.22,>=0.21 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from transformers) (0.21.1)
+Requirement already satisfied: safetensors>=0.4.3 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from transformers) (0.5.3)
+Requirement already satisfied: tqdm>=4.27 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from transformers) (4.67.1)
+Requirement already satisfied: fsspec>=2023.5.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from huggingface-hub<1.0,>=0.30.0->transformers) (2025.5.1)
+Requirement already satisfied: typing-extensions>=3.7.4.3 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from huggingface-hub<1.0,>=0.30.0->transformers) (4.12.2)
+Requirement already satisfied: hf-xet<2.0.0,>=1.1.2 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from huggingface-hub<1.0,>=0.30.0->transformers) (1.1.3)
+Requirement already satisfied: charset-normalizer<4,>=2 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from requests->transformers) (3.4.2)
+Requirement already satisfied: idna<4,>=2.5 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from requests->transformers) (3.7)
+Requirement already satisfied: urllib3<3,>=1.21.1 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from requests->transformers) (2.4.0)
+Requirement already satisfied: certifi>=2017.4.17 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from requests->transformers) (2025.4.26)
+Requirement already satisfied: pyautogui in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (0.9.54)
+Requirement already satisfied: python3-Xlib in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from pyautogui) (0.15)
+Requirement already satisfied: pymsgbox in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from pyautogui) (1.0.9)
+Requirement already satisfied: pytweening>=1.0.4 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from pyautogui) (1.2.0)
+Requirement already satisfied: pyscreeze>=0.1.21 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from pyautogui) (1.0.1)
+Requirement already satisfied: pygetwindow>=0.0.5 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from pyautogui) (0.0.9)
+Requirement already satisfied: mouseinfo in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from pyautogui) (0.1.3)
+Requirement already satisfied: pyrect in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from pygetwindow>=0.0.5->pyautogui) (0.2.0)
+Requirement already satisfied: Pillow>=9.2.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from pyscreeze>=0.1.21->pyautogui) (11.2.1)
+Requirement already satisfied: pyperclip in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from mouseinfo->pyautogui) (1.9.0)
+Requirement already satisfied: flask in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (3.1.0)
+Requirement already satisfied: Werkzeug>=3.1 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from flask) (3.1.3)
+Requirement already satisfied: Jinja2>=3.1.2 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from flask) (3.1.6)
+Requirement already satisfied: itsdangerous>=2.2 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from flask) (2.2.0)
+Requirement already satisfied: click>=8.1.3 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from flask) (8.1.8)
+Requirement already satisfied: blinker>=1.9 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from flask) (1.9.0)
+Requirement already satisfied: MarkupSafe>=2.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from Jinja2>=3.1.2->flask) (3.0.2)
+Requirement already satisfied: flask-socketio in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (5.3.1)
+Requirement already satisfied: Flask>=0.9 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from flask-socketio) (3.1.0)
+Requirement already satisfied: python-socketio>=5.0.2 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from flask-socketio) (5.3.0)
+Requirement already satisfied: Werkzeug>=3.1 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from Flask>=0.9->flask-socketio) (3.1.3)
+Requirement already satisfied: Jinja2>=3.1.2 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from Flask>=0.9->flask-socketio) (3.1.6)
+Requirement already satisfied: itsdangerous>=2.2 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from Flask>=0.9->flask-socketio) (2.2.0)
+Requirement already satisfied: click>=8.1.3 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from Flask>=0.9->flask-socketio) (8.1.8)
+Requirement already satisfied: blinker>=1.9 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from Flask>=0.9->flask-socketio) (1.9.0)
+Requirement already satisfied: MarkupSafe>=2.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from Jinja2>=3.1.2->Flask>=0.9->flask-socketio) (3.0.2)
+Requirement already satisfied: bidict>=0.21.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from python-socketio>=5.0.2->flask-socketio) (0.21.2)
+Requirement already satisfied: python-engineio>=4.1.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from python-socketio>=5.0.2->flask-socketio) (4.1.0)
+Requirement already satisfied: eventlet in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (0.39.0)
+Requirement already satisfied: dnspython>=1.15.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from eventlet) (2.4.2)
+Requirement already satisfied: greenlet>=1.0 in ./miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages (from eventlet) (3.1.1)
+[*] Checking CUDA in current environment:
+/home/statiksmoke8/miniconda3/envs/gremlin-dashboard/lib/python3.10/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero. (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+[CUDA] torch.cuda.is_available: False
+[CUDA] torch.cuda.device_count: 2
+[CUDA] torch.cuda.current_device: None
+[CUDA] torch.cuda.get_device_name: None
+
+[1;36m[INSTALL] Activating gremlin-orchestrator...[0m
+
+Requirement already satisfied: pip in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (25.1.1)
+Requirement already satisfied: torch in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (2.7.1)
+Requirement already satisfied: filelock in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch) (3.18.0)
+Requirement already satisfied: typing-extensions>=4.10.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch) (4.12.2)
+Requirement already satisfied: sympy>=1.13.3 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch) (1.14.0)
+Requirement already satisfied: networkx in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch) (3.2.1)
+Requirement already satisfied: jinja2 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch) (3.1.6)
+Requirement already satisfied: fsspec in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch) (2025.5.1)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.6.77 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch) (12.6.77)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.6.77 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch) (12.6.77)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.6.80 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch) (12.6.80)
+Requirement already satisfied: nvidia-cudnn-cu12==9.5.1.17 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch) (9.5.1.17)
+Requirement already satisfied: nvidia-cublas-cu12==12.6.4.1 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch) (12.6.4.1)
+Requirement already satisfied: nvidia-cufft-cu12==11.3.0.4 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch) (11.3.0.4)
+Requirement already satisfied: nvidia-curand-cu12==10.3.7.77 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch) (10.3.7.77)
+Requirement already satisfied: nvidia-cusolver-cu12==11.7.1.2 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch) (11.7.1.2)
+Requirement already satisfied: nvidia-cusparse-cu12==12.5.4.2 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch) (12.5.4.2)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.6.3 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch) (0.6.3)
+Requirement already satisfied: nvidia-nccl-cu12==2.26.2 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch) (2.26.2)
+Requirement already satisfied: nvidia-nvtx-cu12==12.6.77 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch) (12.6.77)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.6.85 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch) (12.6.85)
+Requirement already satisfied: nvidia-cufile-cu12==1.11.1.6 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch) (1.11.1.6)
+Requirement already satisfied: triton==3.3.1 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch) (3.3.1)
+Requirement already satisfied: setuptools>=40.8.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from triton==3.3.1->torch) (72.1.0)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from sympy>=1.13.3->torch) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from jinja2->torch) (3.0.2)
+Requirement already satisfied: torchvision in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (0.22.1)
+Requirement already satisfied: numpy in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torchvision) (2.0.2)
+Requirement already satisfied: torch==2.7.1 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torchvision) (2.7.1)
+Requirement already satisfied: pillow!=8.3.*,>=5.3.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torchvision) (11.2.1)
+Requirement already satisfied: filelock in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (3.18.0)
+Requirement already satisfied: typing-extensions>=4.10.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (4.12.2)
+Requirement already satisfied: sympy>=1.13.3 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (1.14.0)
+Requirement already satisfied: networkx in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (3.2.1)
+Requirement already satisfied: jinja2 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (3.1.6)
+Requirement already satisfied: fsspec in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (2025.5.1)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.6.77 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (12.6.77)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.6.77 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (12.6.77)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.6.80 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (12.6.80)
+Requirement already satisfied: nvidia-cudnn-cu12==9.5.1.17 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (9.5.1.17)
+Requirement already satisfied: nvidia-cublas-cu12==12.6.4.1 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (12.6.4.1)
+Requirement already satisfied: nvidia-cufft-cu12==11.3.0.4 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (11.3.0.4)
+Requirement already satisfied: nvidia-curand-cu12==10.3.7.77 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (10.3.7.77)
+Requirement already satisfied: nvidia-cusolver-cu12==11.7.1.2 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (11.7.1.2)
+Requirement already satisfied: nvidia-cusparse-cu12==12.5.4.2 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (12.5.4.2)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.6.3 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (0.6.3)
+Requirement already satisfied: nvidia-nccl-cu12==2.26.2 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (2.26.2)
+Requirement already satisfied: nvidia-nvtx-cu12==12.6.77 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (12.6.77)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.6.85 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (12.6.85)
+Requirement already satisfied: nvidia-cufile-cu12==1.11.1.6 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (1.11.1.6)
+Requirement already satisfied: triton==3.3.1 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchvision) (3.3.1)
+Requirement already satisfied: setuptools>=40.8.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from triton==3.3.1->torch==2.7.1->torchvision) (72.1.0)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from sympy>=1.13.3->torch==2.7.1->torchvision) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from jinja2->torch==2.7.1->torchvision) (3.0.2)
+Requirement already satisfied: torchaudio in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (2.7.1)
+Requirement already satisfied: torch==2.7.1 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torchaudio) (2.7.1)
+Requirement already satisfied: filelock in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (3.18.0)
+Requirement already satisfied: typing-extensions>=4.10.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (4.12.2)
+Requirement already satisfied: sympy>=1.13.3 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (1.14.0)
+Requirement already satisfied: networkx in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (3.2.1)
+Requirement already satisfied: jinja2 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (3.1.6)
+Requirement already satisfied: fsspec in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (2025.5.1)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.6.77 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (12.6.77)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.6.77 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (12.6.77)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.6.80 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (12.6.80)
+Requirement already satisfied: nvidia-cudnn-cu12==9.5.1.17 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (9.5.1.17)
+Requirement already satisfied: nvidia-cublas-cu12==12.6.4.1 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (12.6.4.1)
+Requirement already satisfied: nvidia-cufft-cu12==11.3.0.4 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (11.3.0.4)
+Requirement already satisfied: nvidia-curand-cu12==10.3.7.77 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (10.3.7.77)
+Requirement already satisfied: nvidia-cusolver-cu12==11.7.1.2 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (11.7.1.2)
+Requirement already satisfied: nvidia-cusparse-cu12==12.5.4.2 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (12.5.4.2)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.6.3 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (0.6.3)
+Requirement already satisfied: nvidia-nccl-cu12==2.26.2 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (2.26.2)
+Requirement already satisfied: nvidia-nvtx-cu12==12.6.77 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (12.6.77)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.6.85 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (12.6.85)
+Requirement already satisfied: nvidia-cufile-cu12==1.11.1.6 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (1.11.1.6)
+Requirement already satisfied: triton==3.3.1 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch==2.7.1->torchaudio) (3.3.1)
+Requirement already satisfied: setuptools>=40.8.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from triton==3.3.1->torch==2.7.1->torchaudio) (72.1.0)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from sympy>=1.13.3->torch==2.7.1->torchaudio) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from jinja2->torch==2.7.1->torchaudio) (3.0.2)
+Requirement already satisfied: backend in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (0.2.4.1)
+Requirement already satisfied: bs4 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (0.0.2)
+Requirement already satisfied: beautifulsoup4 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from bs4) (4.13.4)
+Requirement already satisfied: soupsieve>1.2 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from beautifulsoup4->bs4) (2.7)
+Requirement already satisfied: typing-extensions>=4.0.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from beautifulsoup4->bs4) (4.12.2)
+Requirement already satisfied: nltk in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (3.9.1)
+Requirement already satisfied: click in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from nltk) (8.1.8)
+Requirement already satisfied: joblib in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from nltk) (1.5.1)
+Requirement already satisfied: regex>=2021.8.3 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from nltk) (2024.11.6)
+Requirement already satisfied: tqdm in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from nltk) (4.67.1)
+Requirement already satisfied: langdetect in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (1.0.9)
+Requirement already satisfied: six in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from langdetect) (1.17.0)
+Requirement already satisfied: pytesseract in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (0.3.13)
+Requirement already satisfied: packaging>=21.3 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from pytesseract) (25.0)
+Requirement already satisfied: Pillow>=8.0.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from pytesseract) (11.2.1)
+Requirement already satisfied: sentence-transformers in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (4.1.0)
+Requirement already satisfied: transformers<5.0.0,>=4.41.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from sentence-transformers) (4.52.4)
+Requirement already satisfied: tqdm in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from sentence-transformers) (4.67.1)
+Requirement already satisfied: torch>=1.11.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from sentence-transformers) (2.7.1)
+Requirement already satisfied: scikit-learn in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from sentence-transformers) (1.6.1)
+Requirement already satisfied: scipy in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from sentence-transformers) (1.13.1)
+Requirement already satisfied: huggingface-hub>=0.20.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from sentence-transformers) (0.32.4)
+Requirement already satisfied: Pillow in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from sentence-transformers) (11.2.1)
+Requirement already satisfied: typing_extensions>=4.5.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from sentence-transformers) (4.12.2)
+Requirement already satisfied: filelock in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from transformers<5.0.0,>=4.41.0->sentence-transformers) (3.18.0)
+Requirement already satisfied: numpy>=1.17 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from transformers<5.0.0,>=4.41.0->sentence-transformers) (2.0.2)
+Requirement already satisfied: packaging>=20.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from transformers<5.0.0,>=4.41.0->sentence-transformers) (25.0)
+Requirement already satisfied: pyyaml>=5.1 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from transformers<5.0.0,>=4.41.0->sentence-transformers) (6.0.2)
+Requirement already satisfied: regex!=2019.12.17 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from transformers<5.0.0,>=4.41.0->sentence-transformers) (2024.11.6)
+Requirement already satisfied: requests in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from transformers<5.0.0,>=4.41.0->sentence-transformers) (2.32.3)
+Requirement already satisfied: tokenizers<0.22,>=0.21 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from transformers<5.0.0,>=4.41.0->sentence-transformers) (0.21.1)
+Requirement already satisfied: safetensors>=0.4.3 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from transformers<5.0.0,>=4.41.0->sentence-transformers) (0.5.3)
+Requirement already satisfied: fsspec>=2023.5.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from huggingface-hub>=0.20.0->sentence-transformers) (2025.5.1)
+Requirement already satisfied: hf-xet<2.0.0,>=1.1.2 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from huggingface-hub>=0.20.0->sentence-transformers) (1.1.3)
+Requirement already satisfied: sympy>=1.13.3 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch>=1.11.0->sentence-transformers) (1.14.0)
+Requirement already satisfied: networkx in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch>=1.11.0->sentence-transformers) (3.2.1)
+Requirement already satisfied: jinja2 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch>=1.11.0->sentence-transformers) (3.1.6)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.6.77 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch>=1.11.0->sentence-transformers) (12.6.77)
+Requirement already satisfied: nvidia-cuda-runtime-cu12==12.6.77 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch>=1.11.0->sentence-transformers) (12.6.77)
+Requirement already satisfied: nvidia-cuda-cupti-cu12==12.6.80 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch>=1.11.0->sentence-transformers) (12.6.80)
+Requirement already satisfied: nvidia-cudnn-cu12==9.5.1.17 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch>=1.11.0->sentence-transformers) (9.5.1.17)
+Requirement already satisfied: nvidia-cublas-cu12==12.6.4.1 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch>=1.11.0->sentence-transformers) (12.6.4.1)
+Requirement already satisfied: nvidia-cufft-cu12==11.3.0.4 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch>=1.11.0->sentence-transformers) (11.3.0.4)
+Requirement already satisfied: nvidia-curand-cu12==10.3.7.77 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch>=1.11.0->sentence-transformers) (10.3.7.77)
+Requirement already satisfied: nvidia-cusolver-cu12==11.7.1.2 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch>=1.11.0->sentence-transformers) (11.7.1.2)
+Requirement already satisfied: nvidia-cusparse-cu12==12.5.4.2 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch>=1.11.0->sentence-transformers) (12.5.4.2)
+Requirement already satisfied: nvidia-cusparselt-cu12==0.6.3 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch>=1.11.0->sentence-transformers) (0.6.3)
+Requirement already satisfied: nvidia-nccl-cu12==2.26.2 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch>=1.11.0->sentence-transformers) (2.26.2)
+Requirement already satisfied: nvidia-nvtx-cu12==12.6.77 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch>=1.11.0->sentence-transformers) (12.6.77)
+Requirement already satisfied: nvidia-nvjitlink-cu12==12.6.85 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch>=1.11.0->sentence-transformers) (12.6.85)
+Requirement already satisfied: nvidia-cufile-cu12==1.11.1.6 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch>=1.11.0->sentence-transformers) (1.11.1.6)
+Requirement already satisfied: triton==3.3.1 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from torch>=1.11.0->sentence-transformers) (3.3.1)
+Requirement already satisfied: setuptools>=40.8.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from triton==3.3.1->torch>=1.11.0->sentence-transformers) (72.1.0)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from sympy>=1.13.3->torch>=1.11.0->sentence-transformers) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from jinja2->torch>=1.11.0->sentence-transformers) (3.0.2)
+Requirement already satisfied: charset-normalizer<4,>=2 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from requests->transformers<5.0.0,>=4.41.0->sentence-transformers) (3.4.2)
+Requirement already satisfied: idna<4,>=2.5 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from requests->transformers<5.0.0,>=4.41.0->sentence-transformers) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from requests->transformers<5.0.0,>=4.41.0->sentence-transformers) (2.4.0)
+Requirement already satisfied: certifi>=2017.4.17 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from requests->transformers<5.0.0,>=4.41.0->sentence-transformers) (2025.4.26)
+Requirement already satisfied: joblib>=1.2.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from scikit-learn->sentence-transformers) (1.5.1)
+Requirement already satisfied: threadpoolctl>=3.1.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from scikit-learn->sentence-transformers) (3.6.0)
+Requirement already satisfied: transformers in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (4.52.4)
+Requirement already satisfied: filelock in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from transformers) (3.18.0)
+Requirement already satisfied: huggingface-hub<1.0,>=0.30.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from transformers) (0.32.4)
+Requirement already satisfied: numpy>=1.17 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from transformers) (2.0.2)
+Requirement already satisfied: packaging>=20.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from transformers) (25.0)
+Requirement already satisfied: pyyaml>=5.1 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from transformers) (6.0.2)
+Requirement already satisfied: regex!=2019.12.17 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from transformers) (2024.11.6)
+Requirement already satisfied: requests in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from transformers) (2.32.3)
+Requirement already satisfied: tokenizers<0.22,>=0.21 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from transformers) (0.21.1)
+Requirement already satisfied: safetensors>=0.4.3 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from transformers) (0.5.3)
+Requirement already satisfied: tqdm>=4.27 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from transformers) (4.67.1)
+Requirement already satisfied: fsspec>=2023.5.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from huggingface-hub<1.0,>=0.30.0->transformers) (2025.5.1)
+Requirement already satisfied: typing-extensions>=3.7.4.3 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from huggingface-hub<1.0,>=0.30.0->transformers) (4.12.2)
+Requirement already satisfied: hf-xet<2.0.0,>=1.1.2 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from huggingface-hub<1.0,>=0.30.0->transformers) (1.1.3)
+Requirement already satisfied: charset-normalizer<4,>=2 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from requests->transformers) (3.4.2)
+Requirement already satisfied: idna<4,>=2.5 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from requests->transformers) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from requests->transformers) (2.4.0)
+Requirement already satisfied: certifi>=2017.4.17 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from requests->transformers) (2025.4.26)
+Requirement already satisfied: playwright in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (1.52.0)
+Requirement already satisfied: pyee<14,>=13 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from playwright) (13.0.0)
+Requirement already satisfied: greenlet<4.0.0,>=3.1.1 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from playwright) (3.2.3)
+Requirement already satisfied: typing-extensions in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from pyee<14,>=13->playwright) (4.12.2)
+Requirement already satisfied: pyautogui in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (0.9.54)
+Requirement already satisfied: python3-Xlib in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from pyautogui) (0.15)
+Requirement already satisfied: pymsgbox in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from pyautogui) (1.0.9)
+Requirement already satisfied: pytweening>=1.0.4 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from pyautogui) (1.2.0)
+Requirement already satisfied: pyscreeze>=0.1.21 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from pyautogui) (1.0.1)
+Requirement already satisfied: pygetwindow>=0.0.5 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from pyautogui) (0.0.9)
+Requirement already satisfied: mouseinfo in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from pyautogui) (0.1.3)
+Requirement already satisfied: pyrect in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from pygetwindow>=0.0.5->pyautogui) (0.2.0)
+Requirement already satisfied: Pillow>=9.2.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from pyscreeze>=0.1.21->pyautogui) (11.2.1)
+Requirement already satisfied: pyperclip in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from mouseinfo->pyautogui) (1.9.0)
+Requirement already satisfied: flask in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (3.1.1)
+Requirement already satisfied: blinker>=1.9.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from flask) (1.9.0)
+Requirement already satisfied: click>=8.1.3 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from flask) (8.1.8)
+Requirement already satisfied: importlib-metadata>=3.6.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from flask) (8.7.0)
+Requirement already satisfied: itsdangerous>=2.2.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from flask) (2.2.0)
+Requirement already satisfied: jinja2>=3.1.2 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from flask) (3.1.6)
+Requirement already satisfied: markupsafe>=2.1.1 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from flask) (3.0.2)
+Requirement already satisfied: werkzeug>=3.1.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from flask) (3.1.3)
+Requirement already satisfied: zipp>=3.20 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from importlib-metadata>=3.6.0->flask) (3.23.0)
+Collecting flask-socketio
+  Downloading Flask_SocketIO-5.5.1-py3-none-any.whl.metadata (2.6 kB)
+Requirement already satisfied: Flask>=0.9 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from flask-socketio) (3.1.1)
+Collecting python-socketio>=5.12.0 (from flask-socketio)
+  Downloading python_socketio-5.13.0-py3-none-any.whl.metadata (3.2 kB)
+Requirement already satisfied: blinker>=1.9.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from Flask>=0.9->flask-socketio) (1.9.0)
+Requirement already satisfied: click>=8.1.3 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from Flask>=0.9->flask-socketio) (8.1.8)
+Requirement already satisfied: importlib-metadata>=3.6.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from Flask>=0.9->flask-socketio) (8.7.0)
+Requirement already satisfied: itsdangerous>=2.2.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from Flask>=0.9->flask-socketio) (2.2.0)
+Requirement already satisfied: jinja2>=3.1.2 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from Flask>=0.9->flask-socketio) (3.1.6)
+Requirement already satisfied: markupsafe>=2.1.1 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from Flask>=0.9->flask-socketio) (3.0.2)
+Requirement already satisfied: werkzeug>=3.1.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from Flask>=0.9->flask-socketio) (3.1.3)
+Requirement already satisfied: zipp>=3.20 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from importlib-metadata>=3.6.0->Flask>=0.9->flask-socketio) (3.23.0)
+Collecting bidict>=0.21.0 (from python-socketio>=5.12.0->flask-socketio)
+  Downloading bidict-0.23.1-py3-none-any.whl.metadata (8.7 kB)
+Collecting python-engineio>=4.11.0 (from python-socketio>=5.12.0->flask-socketio)
+  Downloading python_engineio-4.12.2-py3-none-any.whl.metadata (2.2 kB)
+Collecting simple-websocket>=0.10.0 (from python-engineio>=4.11.0->python-socketio>=5.12.0->flask-socketio)
+  Downloading simple_websocket-1.1.0-py3-none-any.whl.metadata (1.5 kB)
+Collecting wsproto (from simple-websocket>=0.10.0->python-engineio>=4.11.0->python-socketio>=5.12.0->flask-socketio)
+  Downloading wsproto-1.2.0-py3-none-any.whl.metadata (5.6 kB)
+Collecting h11<1,>=0.9.0 (from wsproto->simple-websocket>=0.10.0->python-engineio>=4.11.0->python-socketio>=5.12.0->flask-socketio)
+  Using cached h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Downloading Flask_SocketIO-5.5.1-py3-none-any.whl (18 kB)
+Downloading python_socketio-5.13.0-py3-none-any.whl (77 kB)
+Downloading bidict-0.23.1-py3-none-any.whl (32 kB)
+Downloading python_engineio-4.12.2-py3-none-any.whl (59 kB)
+Downloading simple_websocket-1.1.0-py3-none-any.whl (13 kB)
+Downloading wsproto-1.2.0-py3-none-any.whl (24 kB)
+Using cached h11-0.16.0-py3-none-any.whl (37 kB)
+Installing collected packages: h11, bidict, wsproto, simple-websocket, python-engineio, python-socketio, flask-socketio
+
+Successfully installed bidict-0.23.1 flask-socketio-5.5.1 h11-0.16.0 python-engineio-4.12.2 python-socketio-5.13.0 simple-websocket-1.1.0 wsproto-1.2.0
+Collecting eventlet
+  Using cached eventlet-0.40.1-py3-none-any.whl.metadata (5.4 kB)
+Collecting dnspython>=1.15.0 (from eventlet)
+  Using cached dnspython-2.7.0-py3-none-any.whl.metadata (5.8 kB)
+Requirement already satisfied: greenlet>=1.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from eventlet) (3.2.3)
+Using cached eventlet-0.40.1-py3-none-any.whl (364 kB)
+Using cached dnspython-2.7.0-py3-none-any.whl (313 kB)
+Installing collected packages: dnspython, eventlet
+
+Successfully installed dnspython-2.7.0 eventlet-0.40.1
+Requirement already satisfied: flask in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (3.1.1)
+Requirement already satisfied: eventlet in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (0.40.1)
+Requirement already satisfied: blinker>=1.9.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from flask) (1.9.0)
+Requirement already satisfied: click>=8.1.3 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from flask) (8.1.8)
+Requirement already satisfied: importlib-metadata>=3.6.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from flask) (8.7.0)
+Requirement already satisfied: itsdangerous>=2.2.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from flask) (2.2.0)
+Requirement already satisfied: jinja2>=3.1.2 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from flask) (3.1.6)
+Requirement already satisfied: markupsafe>=2.1.1 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from flask) (3.0.2)
+Requirement already satisfied: werkzeug>=3.1.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from flask) (3.1.3)
+Requirement already satisfied: dnspython>=1.15.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from eventlet) (2.7.0)
+Requirement already satisfied: greenlet>=1.0 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from eventlet) (3.2.3)
+Requirement already satisfied: zipp>=3.20 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from importlib-metadata>=3.6.0->flask) (3.23.0)
+/home/statiksmoke8/miniconda3/envs/gremlin-orchestrator/bin/python: No module named spacy
+Requirement already satisfied: nltk in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (3.9.1)
+Requirement already satisfied: click in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from nltk) (8.1.8)
+Requirement already satisfied: joblib in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from nltk) (1.5.1)
+Requirement already satisfied: regex>=2021.8.3 in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from nltk) (2024.11.6)
+Requirement already satisfied: tqdm in ./miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages (from nltk) (4.67.1)
+/home/statiksmoke8/miniconda3/envs/gremlin-orchestrator/lib/python3.9/runpy.py:127: RuntimeWarning: 'nltk.downloader' found in sys.modules after import of package 'nltk', but prior to execution of 'nltk.downloader'; this may result in unpredictable behaviour
+  warn(RuntimeWarning(msg))
+[nltk_data] Downloading package punkt to
+[nltk_data]     /home/statiksmoke8/data/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+/home/statiksmoke8/miniconda3/envs/gremlin-orchestrator/lib/python3.9/runpy.py:127: RuntimeWarning: 'nltk.downloader' found in sys.modules after import of package 'nltk', but prior to execution of 'nltk.downloader'; this may result in unpredictable behaviour
+  warn(RuntimeWarning(msg))
+[nltk_data] Downloading package punkt to
+[nltk_data]     /home/statiksmoke8/data/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package averaged_perceptron_tagger to
+[nltk_data]     /home/statiksmoke8/data/nltk_data...
+[nltk_data]   Package averaged_perceptron_tagger is already up-to-
+[nltk_data]       date!
+[nltk_data] Downloading package wordnet to
+[nltk_data]     /home/statiksmoke8/data/nltk_data...
+[nltk_data]   Package wordnet is already up-to-date!
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/statiksmoke8/data/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+[*] Checking CUDA in current environment:
+/home/statiksmoke8/miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero. (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+[CUDA] torch.cuda.is_available: False
+[CUDA] torch.cuda.device_count: 2
+[CUDA] torch.cuda.current_device: None
+[CUDA] torch.cuda.get_device_name: None
+/home/statiksmoke8/miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero. (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+[GPU-TEST] Loading BERT on cpu
+/home/statiksmoke8/miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages/torch/cuda/__init__.py:174: UserWarning: CUDA initialization: CUDA unknown error - this may be due to an incorrectly set up environment, e.g. changing env variable CUDA_VISIBLE_DEVICES after program start. Setting the available devices to be zero. (Triggered internally at /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+[GPU-TEST] Loading MiniLM on cpu
+
+[1;36m[INSTALL] Checking for ngrok CLI...[0m
+
+[INFO] ngrok installed: /home/statiksmoke8/.local/bin/ngrok
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+xdotool is already the newest version (1:3.20160805.1-5build1).
+The following additional packages will be installed:
+  bsdextrautils bsdutils eject fdisk libblkid1 libblkid1:i386 libfdisk1
+  libmount1 libmount1:i386 libsmartcols1 libuuid1 mount rfkill
+  util-linux-extra uuid-runtime
+Suggested packages:
+  nfs-common util-linux-locales
+The following packages will be upgraded:
+  bsdextrautils bsdutils eject fdisk libblkid1 libblkid1:i386 libfdisk1
+  libmount1 libmount1:i386 libsmartcols1 libuuid1 mount rfkill util-linux
+  util-linux-extra uuid-runtime
+16 upgraded, 0 newly installed, 0 to remove and 13 not upgraded.
+Need to get 2,636 kB of archives.
+After this operation, 0 B of additional disk space will be used.
+Get:1 http://us.archive.ubuntu.com/ubuntu noble-updates/main amd64 bsdutils amd64 1:2.39.3-9ubuntu6.3 [95.9 kB]
+Get:2 http://us.archive.ubuntu.com/ubuntu noble-updates/main amd64 libsmartcols1 amd64 2.39.3-9ubuntu6.3 [65.4 kB]
+Get:3 http://us.archive.ubuntu.com/ubuntu noble-updates/universe amd64 util-linux-extra amd64 2.39.3-9ubuntu6.3 [121 kB]
+Get:4 http://us.archive.ubuntu.com/ubuntu noble-updates/main amd64 util-linux amd64 2.39.3-9ubuntu6.3 [1,128 kB]
+Get:5 http://us.archive.ubuntu.com/ubuntu noble-updates/main amd64 mount amd64 2.39.3-9ubuntu6.3 [118 kB]
+Get:6 http://us.archive.ubuntu.com/ubuntu noble-updates/main amd64 libuuid1 amd64 2.39.3-9ubuntu6.3 [35.8 kB]
+Get:7 http://us.archive.ubuntu.com/ubuntu noble-updates/main amd64 uuid-runtime amd64 2.39.3-9ubuntu6.3 [33.1 kB]
+Get:8 http://us.archive.ubuntu.com/ubuntu noble-updates/main i386 libblkid1 i386 2.39.3-9ubuntu6.3 [193 kB]
+Get:9 http://us.archive.ubuntu.com/ubuntu noble-updates/main amd64 libblkid1 amd64 2.39.3-9ubuntu6.3 [123 kB]
+Get:10 http://us.archive.ubuntu.com/ubuntu noble-updates/main i386 libmount1 i386 2.39.3-9ubuntu6.3 [201 kB]
+Get:11 http://us.archive.ubuntu.com/ubuntu noble-updates/main amd64 libmount1 amd64 2.39.3-9ubuntu6.3 [134 kB]
+Get:12 http://us.archive.ubuntu.com/ubuntu noble-updates/main amd64 eject amd64 2.39.3-9ubuntu6.3 [26.3 kB]
+Get:13 http://us.archive.ubuntu.com/ubuntu noble-updates/main amd64 libfdisk1 amd64 2.39.3-9ubuntu6.3 [146 kB]
+Get:14 http://us.archive.ubuntu.com/ubuntu noble-updates/main amd64 bsdextrautils amd64 2.39.3-9ubuntu6.3 [73.7 kB]
+Get:15 http://us.archive.ubuntu.com/ubuntu noble-updates/main amd64 fdisk amd64 2.39.3-9ubuntu6.3 [122 kB]
+Get:16 http://us.archive.ubuntu.com/ubuntu noble-updates/main amd64 rfkill amd64 2.39.3-9ubuntu6.3 [20.4 kB]
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend requires a screen at least 13 lines tall and 31 columns wide.)
+debconf: falling back to frontend: Readline
+Fetched 2,636 kB in 1s (3,517 kB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 429963 files and directories currently installed.)
+Preparing to unpack .../bsdutils_1%3a2.39.3-9ubuntu6.3_amd64.deb ...
+Unpacking bsdutils (1:2.39.3-9ubuntu6.3) over (1:2.39.3-9ubuntu6.2) ...
+Setting up bsdutils (1:2.39.3-9ubuntu6.3) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 429963 files and directories currently installed.)
+Preparing to unpack .../libsmartcols1_2.39.3-9ubuntu6.3_amd64.deb ...
+Unpacking libsmartcols1:amd64 (2.39.3-9ubuntu6.3) over (2.39.3-9ubuntu6.2) ...
+Setting up libsmartcols1:amd64 (2.39.3-9ubuntu6.3) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 429963 files and directories currently installed.)
+Preparing to unpack .../util-linux-extra_2.39.3-9ubuntu6.3_amd64.deb ...
+Unpacking util-linux-extra (2.39.3-9ubuntu6.3) over (2.39.3-9ubuntu6.2) ...
+Preparing to unpack .../util-linux_2.39.3-9ubuntu6.3_amd64.deb ...
+Unpacking util-linux (2.39.3-9ubuntu6.3) over (2.39.3-9ubuntu6.2) ...
+Setting up util-linux (2.39.3-9ubuntu6.3) ...
+fstrim.service is a disabled or a static unit not running, not starting it.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 429963 files and directories currently installed.)
+Preparing to unpack .../mount_2.39.3-9ubuntu6.3_amd64.deb ...
+Unpacking mount (2.39.3-9ubuntu6.3) over (2.39.3-9ubuntu6.2) ...
+Preparing to unpack .../libuuid1_2.39.3-9ubuntu6.3_amd64.deb ...
+Unpacking libuuid1:amd64 (2.39.3-9ubuntu6.3) over (2.39.3-9ubuntu6.2) ...
+Setting up libuuid1:amd64 (2.39.3-9ubuntu6.3) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 429963 files and directories currently installed.)
+Preparing to unpack .../0-uuid-runtime_2.39.3-9ubuntu6.3_amd64.deb ...
+Unpacking uuid-runtime (2.39.3-9ubuntu6.3) over (2.39.3-9ubuntu6.2) ...
+Preparing to unpack .../1-libblkid1_2.39.3-9ubuntu6.3_amd64.deb ...
+De-configuring libblkid1:i386 (2.39.3-9ubuntu6.2), to allow configuration of libblkid1:amd64 (2.39.3-9ubuntu6.3) ...
+Unpacking libblkid1:amd64 (2.39.3-9ubuntu6.3) over (2.39.3-9ubuntu6.2) ...
+Preparing to unpack .../2-libblkid1_2.39.3-9ubuntu6.3_i386.deb ...
+Unpacking libblkid1:i386 (2.39.3-9ubuntu6.3) over (2.39.3-9ubuntu6.2) ...
+Preparing to unpack .../3-libmount1_2.39.3-9ubuntu6.3_amd64.deb ...
+De-configuring libmount1:i386 (2.39.3-9ubuntu6.2), to allow configuration of libmount1:amd64 (2.39.3-9ubuntu6.3) ...
+Unpacking libmount1:amd64 (2.39.3-9ubuntu6.3) over (2.39.3-9ubuntu6.2) ...
+Preparing to unpack .../4-libmount1_2.39.3-9ubuntu6.3_i386.deb ...
+Unpacking libmount1:i386 (2.39.3-9ubuntu6.3) over (2.39.3-9ubuntu6.2) ...
+Preparing to unpack .../5-eject_2.39.3-9ubuntu6.3_amd64.deb ...
+Unpacking eject (2.39.3-9ubuntu6.3) over (2.39.3-9ubuntu6.2) ...
+Preparing to unpack .../6-libfdisk1_2.39.3-9ubuntu6.3_amd64.deb ...
+Unpacking libfdisk1:amd64 (2.39.3-9ubuntu6.3) over (2.39.3-9ubuntu6.2) ...
+Preparing to unpack .../7-bsdextrautils_2.39.3-9ubuntu6.3_amd64.deb ...
+Unpacking bsdextrautils (2.39.3-9ubuntu6.3) over (2.39.3-9ubuntu6.2) ...
+Preparing to unpack .../8-fdisk_2.39.3-9ubuntu6.3_amd64.deb ...
+Unpacking fdisk (2.39.3-9ubuntu6.3) over (2.39.3-9ubuntu6.2) ...
+Preparing to unpack .../9-rfkill_2.39.3-9ubuntu6.3_amd64.deb ...
+Unpacking rfkill (2.39.3-9ubuntu6.3) over (2.39.3-9ubuntu6.2) ...
+Setting up bsdextrautils (2.39.3-9ubuntu6.3) ...
+Setting up rfkill (2.39.3-9ubuntu6.3) ...
+Setting up uuid-runtime (2.39.3-9ubuntu6.3) ...
+uuidd.service is a disabled or a static unit not running, not starting it.
+Setting up libblkid1:amd64 (2.39.3-9ubuntu6.3) ...
+Setting up libblkid1:i386 (2.39.3-9ubuntu6.3) ...
+Setting up util-linux-extra (2.39.3-9ubuntu6.3) ...
+Setting up libfdisk1:amd64 (2.39.3-9ubuntu6.3) ...
+Setting up libmount1:amd64 (2.39.3-9ubuntu6.3) ...
+Setting up libmount1:i386 (2.39.3-9ubuntu6.3) ...
+Setting up fdisk (2.39.3-9ubuntu6.3) ...
+Setting up eject (2.39.3-9ubuntu6.3) ...
+Setting up mount (2.39.3-9ubuntu6.3) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.4) ...
+
+[1;36m[INSTALL] Setup systemd service[0m
+
+APPLOC=/home/statiksmoke8
+START_SCRIPT=/home/statiksmoke8/start_all.sh
+USER=statiksmoke8
+[✓] Systemd service registered and running.
+
+[1;36m[INSTALL] Setting RTC wake + GUI login automation...[0m
+
+
+[1;36m[INSTALL] Setting up TWS and STT auto-login script...[0m
+
+[1;32m[✓] Wake timer, autologin, and systemd service bootstrapped.[0m
+
+[1;36m[INSTALL] Finalizing installation and creating desktop entry...[0m
+
+
+[1;36m[INSTALL] GremlinGPT installation completed successfully![0m
+
+[1;32m[✓] GremlinGPT installation completed successfully![0m
+
+[1;36m[INSTALL] You can now run GremlinGPT using the command: /home/statiksmoke8/utils/dash_cli.sh[0m
+
+[1;32m[INSTALL] GremlinGPT installation completed successfully.[0m
+
+[1;36m[INSTALL] Installation log saved to data/logs/install.log('~/data/logs/install.log')[0m
+

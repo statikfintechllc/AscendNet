@@ -14,10 +14,15 @@ import json
 from datetime import datetime
 from pathlib import Path
 import numpy as np
-from backend.globals import logger
+from utils.logging_config import get_module_logger
+
+# Initialize module-specific logger
+logger = get_module_logger("tools")
 from nlp_engine.semantic_score import semantic_similarity
 from nlp_engine.diff_engine import diff_texts
-from agent_core.fsm import inject_task  # For feedback loop
+
+# Lazy import to avoid circular dependency
+# from agent_core.fsm import inject_task  # For feedback loop
 
 LOG_HISTORY_DIR = Path("data/logs/")
 REWARD_LOG = LOG_HISTORY_DIR / "rewards.jsonl"
@@ -38,7 +43,7 @@ def evaluate_result(task_type, output_text, reference_text=None):
     if reference_text:
         similarity = semantic_similarity(output_text, reference_text)
         delta = np.linalg.norm(np.array([similarity]) - np.array([1.0]))
-        confidence = max(0.0, 1.0 - delta)
+        confidence = max(0.0, float(1.0 - delta))  # Convert to float
         reward = similarity
         reason = "semantic_match"
     else:
@@ -91,18 +96,23 @@ def evaluate_with_diff(
         base["diff_lines"] = diff_info["diff_lines"]
         # Feedback loop: inject feedback for self-training
         if feedback_loop:
-            inject_task(
-                {
-                    "type": "reward_feedback",
-                    "task": task_type,
-                    "output": output_text,
-                    "reference": reference_text,
-                    "reward": base["reward"],
-                    "semantic_score": diff_info["semantic_score"],
-                    "embedding_delta": diff_info["embedding_delta"],
-                    "timestamp": base["timestamp"],
-                }
-            )
+            try:
+                from agent_core.fsm import inject_task  # Lazy import to avoid circular dependency
+
+                inject_task(
+                    {
+                        "type": "reward_feedback",
+                        "task": task_type,
+                        "output": output_text,
+                        "reference": reference_text,
+                        "reward": base["reward"],
+                        "semantic_score": diff_info["semantic_score"],
+                        "embedding_delta": diff_info["embedding_delta"],
+                        "timestamp": base["timestamp"],
+                    }
+                )
+            except ImportError:
+                logger.warning("[REWARD] Cannot import inject_task - feedback loop disabled")
     return base
 
 

@@ -16,10 +16,12 @@ export default function ChatInterface(targetId) {
     fetch("/api/chat", {
       method: "POST",
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({message})
+      body: JSON.stringify({message: text})
     }).then(res => res.json()).then(data => {
       const log = document.getElementById("chatLog");
+      log.innerHTML += `<div><b>You:</b> ${text}</div>`;
       log.innerHTML += `<div><b>Bot:</b> ${data.response}</div>`;
+      document.getElementById("chatInput").value = "";
     });
   };
 }

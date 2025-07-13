@@ -46,9 +46,15 @@ Memory is designed for:
 - Fast semantic retrieval
 - Continuous learning via vector deltas
 - High-granularity tagging and lineage tracking
-- Configurable backend (FAISS or ChromaDB)
+- **Dynamic backend switching (FAISS ↔ ChromaDB)**
+- **Runtime configuration via dashboard/API**
 
 Embeddings are 384-dim float32 vectors (MiniLM-L6-v2) optimized for local FAISS/Chroma indexing.
+
+**Recent Updates:**
+- Fixed FAISS method signature compatibility
+- Added dynamic backend selection
+- Implemented real-time switching via API endpoints
 
 ---
 

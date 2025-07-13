@@ -19,7 +19,7 @@ logger = logging.getLogger("GremlinGPT.TaskQueue")
 import networkx as nx
 from datetime import datetime
 from scraper import source_router, web_knowledge_scraper
-import flask  # type: ignore
+import flask
 
 planner_bp = flask.Blueprint("planner", __name__)
 

@@ -759,39 +759,7 @@ RuntimeError: Working outside of application context.
 This typically means that you attempted to use functionality that needed
 the current application. To solve this, set up an application context
 with app.app_context(). See the documentation for more information.
-2025-07-10 18:52:27.727 | INFO     | backend.globals:<module>:64 - [GLOBALS] Configuration loaded and logger initialized.
-2025-07-10 18:52:27.752 | WARNING  | agent_core.task_queue:_load_snapshot:163 - [TaskQueue] Failed to load queue snapshot: Expecting ',' delimiter: line 24 column 1 (char 756)
-[SCRAPER_LOOP] Import error: No module named 'faiss_cpu'
-2025-07-10 18:53:24.622 | INFO     | backend.globals:<module>:64 - [GLOBALS] Configuration loaded and logger initialized.
-2025-07-10 18:53:24.644 | WARNING  | agent_core.task_queue:_load_snapshot:163 - [TaskQueue] Failed to load queue snapshot: Expecting ',' delimiter: line 24 column 1 (char 756)
-[SCRAPER_LOOP] Import error: No module named 'faiss_cpu'
-2025-07-10 18:54:29.030 | INFO     | backend.globals:<module>:64 - [GLOBALS] Configuration loaded and logger initialized.
-2025-07-10 18:54:29.050 | WARNING  | agent_core.task_queue:_load_snapshot:163 - [TaskQueue] Failed to load queue snapshot: Expecting ',' delimiter: line 24 column 1 (char 756)
-[SCRAPER_LOOP] Import error: No module named 'faiss_cpu'
-2025-07-10 19:03:54.208 | INFO     | backend.globals:<module>:64 - [GLOBALS] Configuration loaded and logger initialized.
-2025-07-10 19:03:54.231 | WARNING  | agent_core.task_queue:_load_snapshot:163 - [TaskQueue] Failed to load queue snapshot: Expecting ',' delimiter: line 24 column 1 (char 756)
-[SCRAPER_LOOP] Import error: No module named 'faiss_cpu'
-2025-07-12 13:28:04.521 | INFO     | backend.globals:<module>:64 - [GLOBALS] Configuration loaded and logger initialized.
-[TaskQueue] Failed to load queue snapshot: Expecting ',' delimiter: line 24 column 1 (char 756)
-2025-07-12 13:28:04.691 | ERROR    | memory.vector_store.embedder:<module>:32 - [EMBEDDER] chromadb import failed: No module named 'chromadb'
-2025-07-12 13:28:07.652 | ERROR    | nlp_engine.transformer_core:<module>:35 - [TRANSFORMER] Failed to load model 'bert-base-uncased': (MaxRetryError('HTTPSConnectionPool(host=\'huggingface.co\', port=443): Max retries exceeded with url: /api/models/bert-base-uncased/tree/main/additional_chat_templates?recursive=False&expand=False (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7ef37288da30>: Failed to resolve \'huggingface.co\' ([Errno -3] Temporary failure in name resolution)"))'), '(Request ID: 6eabe125-c85a-4528-8e52-b143f728292c)')
-2025-07-12 13:28:07.652 | ERROR    | memory.vector_store.embedder:<module>:121 - [FAISS] faiss unavailable; index not initialized
-2025-07-12 13:28:08.017 | ERROR    | memory.vector_store.embedder:<module>:145 - [EMBEDDER] Model load failed: (MaxRetryError('HTTPSConnectionPool(host=\'huggingface.co\', port=443): Max retries exceeded with url: /api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=False&expand=False (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x7ef365c8b5b0>: Failed to resolve \'huggingface.co\' ([Errno -3] Temporary failure in name resolution)"))'), '(Request ID: 4e5a9b0c-6c32-4f85-93bd-8ddff5e4b34c)')
-2025-07-12 13:28:08.030 | INFO     | memory.vector_store.embedder:<module>:275 - [EMBEDDER] Initial disk load complete
-[EMBEDDER] faiss import failed: No module named 'faiss_cpu'
 Traceback (most recent call last):
-  File "/home/statiksmoke8/core/loop.py", line 16, in <module>
-    from agent_core import fsm
-  File "/home/statiksmoke8/AscendNet/server/AscendAI/GremlinGPT/agent_core/fsm.py", line 21, in <module>
-    from executors.tool_executor import execute_tool
-  File "/home/statiksmoke8/AscendNet/server/AscendAI/GremlinGPT/executors/tool_executor.py", line 14, in <module>
-    from scraper.ask_monday_handler import handle as handle_ask_monday
-  File "/home/statiksmoke8/AscendNet/server/AscendAI/GremlinGPT/scraper/ask_monday_handler.py", line 17, in <module>
-    import pyautogui
-  File "/home/statiksmoke8/miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages/pyautogui/__init__.py", line 246, in <module>
-    import mouseinfo
-  File "/home/statiksmoke8/miniconda3/envs/gremlin-orchestrator/lib/python3.9/site-packages/mouseinfo/__init__.py", line 223, in <module>
-    _display = Display(os.environ['DISPLAY'])
-  File "/home/statiksmoke8/miniconda3/envs/gremlin-orchestrator/lib/python3.9/os.py", line 679, in __getitem__
-    raise KeyError(key) from None
-KeyError: 'DISPLAY'
+  File "/home/statiksmoke8/core/loop.py", line 15, in <module>
+    from backend.globals import CFG, logger
+ModuleNotFoundError: No module named 'backend.globals'

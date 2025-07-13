@@ -1,0 +1,13 @@
+2025-07-12 23:02:12.373 | INFO     | __main__:setup_module_logger:68 - [LOGGING] Module logger initialized for utils -> /home/statiksmoke8/data/logs/utils/utils.log
+2025-07-12 23:07:48.989 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for utils -> /home/statiksmoke8/data/logs/utils/utils.log
+2025-07-12 23:11:04.170 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for utils -> /home/statiksmoke8/data/logs/utils/utils.log
+2025-07-13 00:02:48.914 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for utils -> /home/statiksmoke8/data/logs/utils/utils.log
+2025-07-13 00:05:22.162 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for utils -> /home/statiksmoke8/data/logs/utils/utils.log
+2025-07-13 00:05:43.367 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for utils -> /home/statiksmoke8/data/logs/utils/utils.log
+2025-07-13 00:06:02.751 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for utils -> /home/statiksmoke8/data/logs/utils/utils.log
+2025-07-13 00:06:15.573 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for utils -> /home/statiksmoke8/data/logs/utils/utils.log
+2025-07-13 00:06:58.225 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for utils -> /home/statiksmoke8/data/logs/utils/utils.log
+2025-07-13 00:07:22.896 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for utils -> /home/statiksmoke8/data/logs/utils/utils.log
+2025-07-13 00:09:00.165 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for utils -> /home/statiksmoke8/data/logs/utils/utils.log
+2025-07-13 00:10:50.689 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for utils -> /home/statiksmoke8/data/logs/utils/utils.log
+2025-07-13 00:11:37.241 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for utils -> /home/statiksmoke8/data/logs/utils/utils.log

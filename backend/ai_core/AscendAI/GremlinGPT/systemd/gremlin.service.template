@@ -1,0 +1,26 @@
+[Unit]
+Description=GremlinGPT Autonomous Agent
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=__GREMLIN_PATH__
+ExecStart=/bin/bash -c 'source __HOME__/miniconda3/etc/profile.d/conda.sh && conda activate gremlin-orchestrator && python3 core/loop.py'
+Restart=always
+RestartSec=10
+User=__USERNAME__
+Group=__USERNAME__
+Environment="PYTHONPATH=__GREMLIN_PATH__"
+Environment="PATH=__HOME__/miniconda3/envs/gremlin-orchestrator/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+Environment="CONDA_DEFAULT_ENV=gremlin-orchestrator"
+Environment="CONDA_PREFIX=__HOME__/miniconda3/envs/gremlin-orchestrator"
+Environment="HOME=__HOME__"
+StandardOutput=journal
+StandardError=journal
+KillMode=mixed
+KillSignal=SIGTERM
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target

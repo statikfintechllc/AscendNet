@@ -1,0 +1,169 @@
+2025-07-12 23:02:12.311 | INFO     | __main__:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:03:14.320 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:03:14.327 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:03:19.951 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:03:19.958 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:03:19.960 | INFO     | backend.interface.commands:<module>:113 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-12 23:03:21.129 | INFO     | backend.interface.commands:<module>:138 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-12 23:03:21.136 | INFO     | backend.interface.commands:<module>:284 - [EMBEDDER] Initial disk load complete
+2025-07-12 23:03:21.473 | SUCCESS  | nlp_engine.tokenizer:<module>:31 - [TOKENIZER] Loaded: bert-base-uncased
+2025-07-12 23:03:21.481 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:03:21.488 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:03:21.534 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:07:09.464 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:07:09.471 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:07:09.478 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:07:15.127 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:07:44.069 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:07:44.076 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:07:48.994 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:07:49.003 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:07:49.008 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:07:49.010 | INFO     | backend.interface.commands:<module>:113 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-12 23:07:50.091 | INFO     | backend.interface.commands:<module>:138 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-12 23:07:50.097 | INFO     | backend.interface.commands:<module>:284 - [EMBEDDER] Initial disk load complete
+2025-07-12 23:07:50.306 | SUCCESS  | nlp_engine.tokenizer:<module>:31 - [TOKENIZER] Loaded: bert-base-uncased
+2025-07-12 23:07:50.311 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:07:50.335 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:09:45.676 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:09:45.684 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:10:32.660 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:10:32.666 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:10:32.674 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:10:38.783 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:10:38.802 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:10:57.878 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:10:57.885 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:11:04.179 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:11:04.191 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:11:04.197 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:11:04.199 | INFO     | backend.interface.commands:<module>:113 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-12 23:11:05.334 | INFO     | backend.interface.commands:<module>:138 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-12 23:11:05.341 | INFO     | backend.interface.commands:<module>:284 - [EMBEDDER] Initial disk load complete
+2025-07-12 23:11:05.567 | SUCCESS  | nlp_engine.tokenizer:<module>:31 - [TOKENIZER] Loaded: bert-base-uncased
+2025-07-12 23:11:05.573 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:11:05.603 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:59:36.283 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:59:36.290 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-12 23:59:46.121 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:00:19.855 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:00:19.862 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:00:20.629 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-07-13 00:00:20.702 | INFO     | memory.vector_store.embedder:<module>:126 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-13 00:00:21.817 | INFO     | memory.vector_store.embedder:<module>:274 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-13 00:00:21.825 | INFO     | memory.vector_store.embedder:<module>:410 - [EMBEDDER] Initial disk load complete
+2025-07-13 00:02:42.555 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:02:42.561 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:02:48.921 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:02:49.163 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:02:49.165 | INFO     | backend.interface.commands:<module>:113 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-13 00:02:50.137 | INFO     | backend.interface.commands:<module>:138 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-13 00:02:50.145 | INFO     | backend.interface.commands:<module>:284 - [EMBEDDER] Initial disk load complete
+2025-07-13 00:02:50.178 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:02:50.184 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:02:50.386 | INFO     | backend.server:<module>:39 - [SERVER] NLTK configured to use: /home/statiksmoke8/AscendNet/server/AscendAI/GremlinGPT/data/nltk_data
+2025-07-13 00:04:53.924 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:04:53.930 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:04:54.696 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-07-13 00:04:56.375 | INFO     | memory.vector_store.embedder:<module>:126 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-13 00:04:57.486 | INFO     | memory.vector_store.embedder:<module>:274 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-13 00:04:57.492 | INFO     | memory.vector_store.embedder:<module>:410 - [EMBEDDER] Initial disk load complete
+2025-07-13 00:05:16.895 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:05:16.901 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:05:16.908 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:05:22.043 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:05:22.190 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:05:22.192 | INFO     | backend.interface.commands:<module>:113 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-13 00:05:23.312 | INFO     | backend.interface.commands:<module>:138 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-13 00:05:23.320 | INFO     | backend.interface.commands:<module>:284 - [EMBEDDER] Initial disk load complete
+2025-07-13 00:05:36.481 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:05:36.487 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:05:36.495 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:05:43.222 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:05:43.402 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:05:43.404 | INFO     | backend.interface.commands:<module>:113 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-13 00:05:44.549 | INFO     | backend.interface.commands:<module>:138 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-13 00:05:44.556 | INFO     | backend.interface.commands:<module>:284 - [EMBEDDER] Initial disk load complete
+2025-07-13 00:05:50.083 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:05:50.088 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:05:50.094 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:05:55.379 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:05:58.180 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:05:58.187 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:06:02.756 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:06:12.603 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:06:12.609 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:06:13.287 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-07-13 00:06:13.863 | INFO     | memory.vector_store.embedder:<module>:126 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-13 00:06:14.990 | INFO     | memory.vector_store.embedder:<module>:274 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-13 00:06:14.996 | INFO     | memory.vector_store.embedder:<module>:410 - [EMBEDDER] Initial disk load complete
+2025-07-13 00:06:15.578 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:06:15.615 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:06:15.617 | INFO     | backend.interface.commands:<module>:113 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-13 00:06:16.751 | INFO     | backend.interface.commands:<module>:138 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-13 00:06:16.758 | INFO     | backend.interface.commands:<module>:284 - [EMBEDDER] Initial disk load complete
+2025-07-13 00:06:53.719 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:06:53.726 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:06:58.230 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:07:08.577 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:07:08.583 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:07:09.365 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-07-13 00:07:09.940 | INFO     | memory.vector_store.embedder:<module>:126 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-13 00:07:11.024 | INFO     | memory.vector_store.embedder:<module>:274 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-13 00:07:11.032 | INFO     | memory.vector_store.embedder:<module>:410 - [EMBEDDER] Initial disk load complete
+2025-07-13 00:07:11.296 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:07:18.265 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:07:18.273 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:07:22.901 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:07:23.144 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:07:23.146 | INFO     | backend.interface.commands:<module>:113 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-13 00:07:24.224 | INFO     | backend.interface.commands:<module>:138 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-13 00:07:24.229 | INFO     | backend.interface.commands:<module>:284 - [EMBEDDER] Initial disk load complete
+2025-07-13 00:07:24.252 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:07:24.257 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:07:24.329 | INFO     | backend.server:<module>:39 - [SERVER] NLTK configured to use: /home/statiksmoke8/AscendNet/server/AscendAI/GremlinGPT/data/nltk_data
+2025-07-13 00:08:44.839 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:08:44.847 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:08:45.614 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-07-13 00:08:45.680 | INFO     | memory.vector_store.embedder:<module>:126 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-13 00:08:46.779 | INFO     | memory.vector_store.embedder:<module>:274 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-13 00:08:46.784 | INFO     | memory.vector_store.embedder:<module>:410 - [EMBEDDER] Initial disk load complete
+2025-07-13 00:08:53.925 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:08:53.931 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:08:53.939 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:09:00.049 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:09:00.193 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:09:00.195 | INFO     | backend.interface.commands:<module>:113 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-13 00:09:01.340 | INFO     | backend.interface.commands:<module>:138 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-13 00:09:01.346 | INFO     | backend.interface.commands:<module>:284 - [EMBEDDER] Initial disk load complete
+2025-07-13 00:10:03.210 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:10:03.217 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:10:03.224 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:10:08.002 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:10:45.530 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:10:45.535 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:10:45.541 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:10:50.569 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:10:50.717 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:10:50.719 | INFO     | backend.interface.commands:<module>:113 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-13 00:10:51.839 | INFO     | backend.interface.commands:<module>:138 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-13 00:10:51.846 | INFO     | backend.interface.commands:<module>:284 - [EMBEDDER] Initial disk load complete
+2025-07-13 00:10:51.853 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:11:34.311 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:11:34.317 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:11:35.005 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-07-13 00:11:35.479 | INFO     | memory.vector_store.embedder:<module>:126 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-13 00:11:36.639 | INFO     | memory.vector_store.embedder:<module>:274 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-13 00:11:36.645 | INFO     | memory.vector_store.embedder:<module>:410 - [EMBEDDER] Initial disk load complete
+2025-07-13 00:11:36.655 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:11:37.142 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:18:06.122 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:18:06.130 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/data/logs/backend/backend.log
+2025-07-13 00:22:23.619 | INFO     | utils.logging_config:setup_module_logger:69 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/AscendNet/server/AscendAI/GremlinGPT/data/logs/backend/backend.log
+2025-07-13 00:22:23.627 | INFO     | utils.logging_config:setup_module_logger:69 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/AscendNet/server/AscendAI/GremlinGPT/data/logs/backend/backend.log
+2025-07-13 00:22:34.456 | INFO     | utils.logging_config:setup_module_logger:69 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/AscendNet/server/AscendAI/GremlinGPT/data/logs/backend/backend.log
+2025-07-13 00:22:34.464 | INFO     | utils.logging_config:setup_module_logger:69 - [LOGGING] Module logger initialized for backend -> /home/statiksmoke8/AscendNet/server/AscendAI/GremlinGPT/data/logs/backend/backend.log
+2025-07-13 00:22:35.258 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-07-13 00:22:36.459 | INFO     | memory.vector_store.embedder:<module>:126 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-13 00:22:37.476 | INFO     | memory.vector_store.embedder:<module>:274 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-13 00:22:37.482 | INFO     | memory.vector_store.embedder:<module>:410 - [EMBEDDER] Initial disk load complete

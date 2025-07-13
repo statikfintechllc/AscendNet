@@ -12,7 +12,10 @@
 import psutil
 import random
 import math
-from loguru import logger  # type: ignore
+from utils.logging_config import get_module_logger
+
+# Initialize module-specific logger
+logger = get_module_logger("utils")  # type: ignore
 from typing import Dict, Any
 import json
 from backend.globals import CFG

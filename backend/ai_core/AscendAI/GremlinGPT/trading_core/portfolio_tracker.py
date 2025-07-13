@@ -25,7 +25,10 @@
 import json
 from pathlib import Path
 from datetime import datetime
-from backend.globals import logger
+from utils.logging_config import get_module_logger
+
+# Initialize module-specific logger
+logger = get_module_logger("trading_core")
 from memory.vector_store.embedder import embed_text, package_embedding, inject_watermark
 import shutil
 import math

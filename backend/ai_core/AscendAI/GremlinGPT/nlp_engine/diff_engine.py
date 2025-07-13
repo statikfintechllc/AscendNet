@@ -13,7 +13,10 @@
 from difflib import unified_diff
 import numpy as np
 from typing import Dict
-from loguru import logger
+from utils.logging_config import get_module_logger
+
+# Initialize module-specific logger
+logger = get_module_logger("nlp_engine")
 
 from nlp_engine.semantic_score import semantic_similarity
 from nlp_engine.transformer_core import encode

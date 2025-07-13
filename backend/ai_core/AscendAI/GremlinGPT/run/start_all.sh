@@ -102,7 +102,7 @@ fi
 
 echo "Backend:     http://localhost:8000"
 echo "Frontend:    http://localhost:8080"
-echo "Logs:        $GREMLIN_HOME/run/logs/"
+echo "Logs:        $GREMLIN_HOME/data/logs/"
 
 # --- Dashboard Launch Info ---
 if [ -d "$GREMLIN_HOME/frontend" ] && [ -f "$GREMLIN_HOME/frontend/package.json" ]; then

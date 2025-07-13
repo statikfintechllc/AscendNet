@@ -1,0 +1,121 @@
+2025-07-12 23:02:12.322 | INFO     | __main__:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-12 23:03:14.427 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-12 23:03:17.959 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-07-12 23:03:18.543 | INFO     | memory.vector_store.embedder:<module>:126 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-12 23:03:19.925 | INFO     | memory.vector_store.embedder:<module>:274 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-12 23:03:19.932 | INFO     | memory.vector_store.embedder:<module>:410 - [EMBEDDER] Initial disk load complete
+2025-07-12 23:03:19.944 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-12 23:07:09.568 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-12 23:07:12.936 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-07-12 23:07:13.512 | INFO     | memory.vector_store.embedder:<module>:126 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-12 23:07:14.602 | INFO     | memory.vector_store.embedder:<module>:274 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-12 23:07:14.608 | INFO     | memory.vector_store.embedder:<module>:410 - [EMBEDDER] Initial disk load complete
+2025-07-12 23:07:15.096 | SUCCESS  | nlp_engine.tokenizer:<module>:31 - [TOKENIZER] Loaded: bert-base-uncased
+2025-07-12 23:07:15.101 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-12 23:07:44.189 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-12 23:07:47.485 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-07-12 23:07:47.763 | INFO     | memory.vector_store.embedder:<module>:126 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-12 23:07:48.826 | INFO     | memory.vector_store.embedder:<module>:274 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-12 23:07:48.831 | INFO     | memory.vector_store.embedder:<module>:410 - [EMBEDDER] Initial disk load complete
+2025-07-12 23:07:48.841 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-12 23:10:32.758 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-12 23:10:36.110 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-07-12 23:10:36.681 | INFO     | memory.vector_store.embedder:<module>:126 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-12 23:10:38.265 | INFO     | memory.vector_store.embedder:<module>:274 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-12 23:10:38.270 | INFO     | memory.vector_store.embedder:<module>:410 - [EMBEDDER] Initial disk load complete
+2025-07-12 23:10:38.752 | SUCCESS  | nlp_engine.tokenizer:<module>:31 - [TOKENIZER] Loaded: bert-base-uncased
+2025-07-12 23:10:38.758 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-12 23:10:57.977 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-12 23:11:01.468 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-07-12 23:11:02.834 | INFO     | memory.vector_store.embedder:<module>:126 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-12 23:11:03.970 | INFO     | memory.vector_store.embedder:<module>:274 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-12 23:11:03.977 | INFO     | memory.vector_store.embedder:<module>:410 - [EMBEDDER] Initial disk load complete
+2025-07-12 23:11:03.990 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-12 23:59:36.512 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-12 23:59:44.328 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-07-12 23:59:44.415 | INFO     | memory.vector_store.embedder:<module>:126 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-12 23:59:45.461 | INFO     | memory.vector_store.embedder:<module>:274 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-12 23:59:45.467 | INFO     | memory.vector_store.embedder:<module>:410 - [EMBEDDER] Initial disk load complete
+2025-07-12 23:59:46.078 | SUCCESS  | nlp_engine.tokenizer:<module>:31 - [TOKENIZER] Loaded: bert-base-uncased
+2025-07-12 23:59:46.087 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:00:17.280 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:00:22.102 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:02:42.664 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:02:45.615 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-07-13 00:02:47.596 | INFO     | memory.vector_store.embedder:<module>:126 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-13 00:02:48.656 | INFO     | memory.vector_store.embedder:<module>:274 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-13 00:02:48.663 | INFO     | memory.vector_store.embedder:<module>:410 - [EMBEDDER] Initial disk load complete
+2025-07-13 00:02:48.676 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:04:51.764 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:04:57.497 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:05:16.970 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:05:20.144 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-07-13 00:05:20.363 | INFO     | memory.vector_store.embedder:<module>:126 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-13 00:05:21.525 | INFO     | memory.vector_store.embedder:<module>:274 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-13 00:05:21.531 | INFO     | memory.vector_store.embedder:<module>:410 - [EMBEDDER] Initial disk load complete
+2025-07-13 00:05:22.012 | SUCCESS  | nlp_engine.tokenizer:<module>:31 - [TOKENIZER] Loaded: bert-base-uncased
+2025-07-13 00:05:22.017 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:05:36.558 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:05:39.935 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-07-13 00:05:41.375 | INFO     | memory.vector_store.embedder:<module>:126 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-13 00:05:42.620 | INFO     | memory.vector_store.embedder:<module>:274 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-13 00:05:42.627 | INFO     | memory.vector_store.embedder:<module>:410 - [EMBEDDER] Initial disk load complete
+2025-07-13 00:05:43.184 | SUCCESS  | nlp_engine.tokenizer:<module>:31 - [TOKENIZER] Loaded: bert-base-uncased
+2025-07-13 00:05:43.191 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:05:50.169 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:05:53.104 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-07-13 00:05:53.675 | INFO     | memory.vector_store.embedder:<module>:126 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-13 00:05:54.824 | INFO     | memory.vector_store.embedder:<module>:274 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-13 00:05:54.830 | INFO     | memory.vector_store.embedder:<module>:410 - [EMBEDDER] Initial disk load complete
+2025-07-13 00:05:55.339 | SUCCESS  | nlp_engine.tokenizer:<module>:31 - [TOKENIZER] Loaded: bert-base-uncased
+2025-07-13 00:05:55.346 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:05:58.284 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:06:01.134 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-07-13 00:06:01.379 | INFO     | memory.vector_store.embedder:<module>:126 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-13 00:06:02.594 | INFO     | memory.vector_store.embedder:<module>:274 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-13 00:06:02.599 | INFO     | memory.vector_store.embedder:<module>:410 - [EMBEDDER] Initial disk load complete
+2025-07-13 00:06:02.609 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:06:10.244 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:06:15.001 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:06:15.452 | SUCCESS  | nlp_engine.tokenizer:<module>:31 - [TOKENIZER] Loaded: bert-base-uncased
+2025-07-13 00:06:53.881 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:06:56.745 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-07-13 00:06:56.962 | INFO     | memory.vector_store.embedder:<module>:126 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-13 00:06:58.063 | INFO     | memory.vector_store.embedder:<module>:274 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-13 00:06:58.069 | INFO     | memory.vector_store.embedder:<module>:410 - [EMBEDDER] Initial disk load complete
+2025-07-13 00:06:58.078 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:07:06.253 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:07:11.281 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:07:18.367 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:07:21.567 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-07-13 00:07:21.630 | INFO     | memory.vector_store.embedder:<module>:126 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-13 00:07:22.732 | INFO     | memory.vector_store.embedder:<module>:274 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-13 00:07:22.738 | INFO     | memory.vector_store.embedder:<module>:410 - [EMBEDDER] Initial disk load complete
+2025-07-13 00:07:22.749 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:08:42.302 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:08:46.789 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:08:54.000 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:08:56.822 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-07-13 00:08:58.432 | INFO     | memory.vector_store.embedder:<module>:126 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-13 00:08:59.563 | INFO     | memory.vector_store.embedder:<module>:274 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-13 00:08:59.568 | INFO     | memory.vector_store.embedder:<module>:410 - [EMBEDDER] Initial disk load complete
+2025-07-13 00:09:00.019 | SUCCESS  | nlp_engine.tokenizer:<module>:31 - [TOKENIZER] Loaded: bert-base-uncased
+2025-07-13 00:09:00.024 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:10:03.286 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:10:06.158 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-07-13 00:10:06.434 | INFO     | memory.vector_store.embedder:<module>:126 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-13 00:10:07.522 | INFO     | memory.vector_store.embedder:<module>:274 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-13 00:10:07.528 | INFO     | memory.vector_store.embedder:<module>:410 - [EMBEDDER] Initial disk load complete
+2025-07-13 00:10:07.971 | SUCCESS  | nlp_engine.tokenizer:<module>:31 - [TOKENIZER] Loaded: bert-base-uncased
+2025-07-13 00:10:07.977 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:10:45.616 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:10:48.383 | SUCCESS  | nlp_engine.transformer_core:<module>:33 - [TRANSFORMER] Loaded model: bert-base-uncased on cuda
+2025-07-13 00:10:48.945 | INFO     | memory.vector_store.embedder:<module>:126 - [FAISS] Loaded index from ./memory/vector_store/faiss/faiss_index.index
+2025-07-13 00:10:50.076 | INFO     | memory.vector_store.embedder:<module>:274 - [EMBEDDER] Loaded model: all-MiniLM-L6-v2
+2025-07-13 00:10:50.081 | INFO     | memory.vector_store.embedder:<module>:410 - [EMBEDDER] Initial disk load complete
+2025-07-13 00:10:50.536 | SUCCESS  | nlp_engine.tokenizer:<module>:31 - [TOKENIZER] Loaded: bert-base-uncased
+2025-07-13 00:10:50.541 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:11:31.845 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:11:36.650 | INFO     | utils.logging_config:setup_module_logger:68 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/data/logs/memory/memory.log
+2025-07-13 00:22:32.001 | INFO     | utils.logging_config:setup_module_logger:69 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/AscendNet/server/AscendAI/GremlinGPT/data/logs/memory/memory.log
+2025-07-13 00:22:37.487 | INFO     | utils.logging_config:setup_module_logger:69 - [LOGGING] Module logger initialized for memory -> /home/statiksmoke8/AscendNet/server/AscendAI/GremlinGPT/data/logs/memory/memory.log

@@ -16,9 +16,9 @@ import json
 import uuid
 from typing import Union
 
-log_dir = (CFG.get("paths") or {}).get("log_dir")
+log_dir = (CFG.get("paths") or {}).get("logs_dir")  # Fixed to match config.toml
 if not log_dir or not isinstance(log_dir, str):
-    raise RuntimeError("Missing or invalid 'log_dir' in CFG['paths']")
+    raise RuntimeError("Missing or invalid 'logs_dir' in CFG['paths']")
 ERROR_LOG_FILE = Path(log_dir) / "task_errors.jsonl"
 
 # Configure logger for error logging

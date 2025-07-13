@@ -29,7 +29,7 @@ from memory.log_history import log_event
 
 WATERMARK = "source:GremlinGPT"
 KEYWORDS = ["FAIL", "LOW_CONF", "INVALID", "delta", "error", "retry", "timeout", "null"]
-ROOT_DIR = os.path.expanduser("run/logs")
+ROOT_DIR = os.path.expanduser("data/logs")
 OUTPUT_FILE = os.path.expanduser("data/nlp_training_sets/auto_generated.jsonl")
 LINEAGE_TAG = str(uuid.uuid4())
 CONFIDENCE_THRESHOLD = 0.4  # Reserved for future use

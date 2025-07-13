@@ -17,7 +17,10 @@ from datetime import datetime
 from nlp_engine.tokenizer import tokenize
 from nlp_engine.pos_tagger import get_pos_tags
 from memory.vector_store.embedder import embed_text, package_embedding, inject_watermark
-from backend.globals import logger
+from utils.logging_config import get_module_logger
+
+# Initialize module-specific logger
+logger = get_module_logger("nlp_engine")
 
 WATERMARK = "source:GremlinGPT"
 ORIGIN = "nlp_parser"

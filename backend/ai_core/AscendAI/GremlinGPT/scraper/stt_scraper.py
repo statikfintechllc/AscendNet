@@ -14,7 +14,10 @@ import json
 import platform
 from datetime import datetime
 from pathlib import Path
-from loguru import logger
+from utils.logging_config import get_module_logger
+
+# Initialize module-specific logger
+logger = get_module_logger("scraper")
 
 MODULE = "stt_scraper"
 DEFAULT_FALLBACK = {

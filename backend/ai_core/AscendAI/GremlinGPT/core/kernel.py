@@ -13,7 +13,11 @@ from pathlib import Path
 from memory.vector_store.embedder import embed_text, package_embedding
 from self_training.feedback_loop import inject_feedback
 from nlp_engine.diff_engine import diff_texts
-from backend.globals import logger, CFG
+from utils.logging_config import get_module_logger
+
+# Initialize module-specific logger
+logger = get_module_logger("core")
+from backend.globals import CFG
 import shutil
 import uuid
 import subprocess

@@ -12,8 +12,12 @@
 
 import schedule
 import time
-from backend.globals import logger
+from utils.logging_config import get_module_logger
+
+# Initialize module-specific logger
+logger = get_module_logger("backend")
 import threading
+from backend.globals import CFG
 
 # Thread-safe LOOP access
 _LOOP = None

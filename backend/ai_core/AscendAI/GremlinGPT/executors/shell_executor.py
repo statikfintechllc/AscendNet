@@ -16,7 +16,10 @@ import json
 from datetime import datetime
 from pathlib import Path
 from memory.vector_store.embedder import package_embedding
-from backend.globals import logger
+from utils.logging_config import get_module_logger
+
+# Initialize module-specific logger
+logger = get_module_logger("executors")
 
 # --- Import encode for embedding shell logs ---
 try:
@@ -28,7 +31,7 @@ except ImportError:
         return np.zeros(384, dtype="float32")
 
 
-LOG_PATH = Path("run/logs/shell_log.jsonl")
+LOG_PATH = Path("data/logs/shell_log.jsonl")
 LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
 
 SAFE_COMMANDS = {

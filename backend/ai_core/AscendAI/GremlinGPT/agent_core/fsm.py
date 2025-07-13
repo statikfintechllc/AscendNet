@@ -50,7 +50,7 @@ console = Console()
 task_queue = TaskQueue()
 tick_delay = CFG.get("loop", {}).get("fsm_tick_delay", 0.5)
 DATASET_PATH = "data/nlp_training_sets/auto_generated.jsonl"
-LOG_CRASH_PATH = "run/logs/fsm_crash.log"
+LOG_CRASH_PATH = "data/logs/fsm_crash.log"
 
 
 def auto_push():

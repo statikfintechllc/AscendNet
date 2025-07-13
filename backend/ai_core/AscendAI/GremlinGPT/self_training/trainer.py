@@ -11,18 +11,21 @@
 
 import time
 import json
-from loguru import logger
+from utils.logging_config import get_module_logger
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 from backend.globals import CFG
 from self_training.generate_dataset import extract_training_data
 from self_training.mutation_engine import mutate_dataset
 from memory.vector_store.embedder import package_embedding, embed_text, inject_watermark
-from mini_attention import MiniMultiHeadAttention
+from nlp_engine.mini_attention import MiniMultiHeadAttention
 from datetime import datetime
 import numpy as np
 import os
 import sys
+
+# Initialize self_training module logger
+logger = get_module_logger("self_training")
 
 LOG_DIR = CFG["paths"].get("data_dir", "data/") + "logs/"
 OUTPUT_PATH = CFG["paths"].get("data_dir", "data/") + "nlp_training_sets/mutated_dataset.json"
@@ -34,7 +37,7 @@ attention = MiniMultiHeadAttention(embed_dim=64, num_heads=4)
 
 class LogEventHandler(FileSystemEventHandler):
     def on_modified(self, event):
-        if event.src_path.endswith(".log"):
+        if str(event.src_path).endswith(".log"):
             logger.info("[TRAINER] Log updated. Triggering retraining...")
             trigger_retrain()
 
@@ -60,7 +63,13 @@ def trigger_retrain():
 
         # === Simulate attention training behavior ===
         dummy_input = np.random.rand(8, 64)
-        out, weights = attention.forward(dummy_input)
+        attention_output = attention.forward(dummy_input)
+        if isinstance(attention_output, tuple):
+            out = attention_output[0]
+            weights = attention_output[1] if len(attention_output) > 1 else None
+        else:
+            out = attention_output
+            weights = None
 
         embed_text_summary = (
             f"Trainer activated attention w/ {attention.num_heads} heads | out shape: {out.shape}"

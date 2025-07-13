@@ -16,7 +16,10 @@ import os
 import toml
 import json
 from pathlib import Path
-from loguru import logger
+from utils.logging_config import get_module_logger
+
+# Initialize module-specific logger
+logger = get_module_logger("backend")
 
 # === CONFIGURATION PATHS ===
 CONFIG_PATH = "config/config.toml"
@@ -49,20 +52,22 @@ def resolve_path(p):
     """Expands $ROOT and user home (~) dynamically"""
     if not isinstance(p, str):
         return str(p)
-    base = Path(os.path.expanduser(CFG["paths"].get("base_dir", "."))).resolve()
-    return os.path.expanduser(p.replace("$ROOT", str(base)))
+    # Use current script directory as the project root, not the config base_dir
+    project_root = Path(__file__).parent.parent.resolve()
+    return os.path.expanduser(p.replace("$ROOT", str(project_root)))
 
 
 BASE_DIR = resolve_path(CFG["paths"].get("base_dir", "."))
 DATA_DIR = resolve_path(CFG["paths"].get("data_dir", "data"))
 MODELS_DIR = resolve_path(CFG["paths"].get("models_dir", "models"))
 CHECKPOINTS_DIR = resolve_path(CFG["paths"].get("checkpoints_dir", "run/checkpoints"))
-LOG_FILE = resolve_path(CFG["paths"].get("log_file", "run/logs/runtime.log"))
+LOG_FILE = resolve_path(CFG["paths"].get("log_file", "data/logs/runtime.log"))
 
 
 # === LOGGER INITIALIZATION ===
-logger.add(LOG_FILE, rotation="1 MB", retention="5 days", enqueue=True)
-logger.info("[GLOBALS] Configuration loaded and logger initialized.")
+from utils.logging_config import setup_module_logger
+
+logger = setup_module_logger("backend")
 
 
 # === HARDWARE PREFERENCES ===
@@ -131,6 +136,32 @@ LOOP = {
     "mutation_enabled": CFG.get("loop", {}).get("mutation_enabled", True),
     "self_training_enabled": CFG.get("loop", {}).get("self_training_enabled", True),
 }
+
+
+# === DASHBOARD BACKEND SELECTION ===
+def set_dashboard_backend(backend):
+    """Update the dashboard selected backend in config and memory"""
+    global MEMORY
+    if backend in ["faiss", "chroma"]:
+        MEMORY["vector_backend"] = backend
+        CFG["memory"]["dashboard_selected_backend"] = backend
+        # Also update the config file
+        try:
+            with open(CONFIG_PATH, "w") as f:
+                toml.dump(CFG, f)
+            logger.info(f"[GLOBALS] Dashboard backend updated to: {backend}")
+            return True
+        except Exception as e:
+            logger.error(f"[GLOBALS] Failed to update backend: {e}")
+            return False
+    else:
+        logger.error(f"[GLOBALS] Invalid backend: {backend}")
+        return False
+
+
+def get_dashboard_backend():
+    """Get the current dashboard selected backend"""
+    return MEMORY.get("vector_backend", "faiss")
 
 
 # === AGENT ROLE ASSIGNMENTS ===

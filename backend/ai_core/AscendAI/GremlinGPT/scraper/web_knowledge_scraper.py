@@ -10,6 +10,17 @@
 # GremlinGPT v1.0.3 :: Module Integrity Directive
 # This script is a component of the GremlinGPT system, under Alpha expansion.
 
+import os
+import json
+import asyncio
+import aiohttp
+from datetime import datetime
+from urllib.parse import urlparse
+from bs4 import BeautifulSoup
+from utils.logging_config import get_module_logger
+
+# Initialize scraper-specific logger
+logger = get_module_logger("scraper")
 
 from scraper.dom_navigator import extract_dom_structure
 from memory.vector_store.embedder import embed_text, package_embedding, inject_watermark
@@ -90,10 +101,10 @@ async def scrape_web_knowledge(urls):
 
 def run_search_and_scrape(urls):
     try:
-        os.makedirs("run/logs", exist_ok=True)
+        os.makedirs("data/logs", exist_ok=True)
         results = asyncio.run(scrape_web_knowledge(urls))
 
-        with open("run/logs/sample_scrape.json", "w") as f:
+        with open("data/logs/sample_scrape.json", "w") as f:
             json.dump(results, f, indent=2)
 
         logger.info(f"[{ORIGIN}] Scrape batch complete.")

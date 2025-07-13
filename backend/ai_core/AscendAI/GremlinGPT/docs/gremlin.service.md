@@ -30,7 +30,16 @@ href="https://github.com/statikfintechllc/AscendAI/blob/master/About Us/WHY_GREM
 
 # GremlinGPT v1.0.3 Linux Service (Systemd)
 
-This unit file installs GremlinGPT as a **persistent autonomous Linux service**.
+This unit file installs GremlinGPT as a **persistent autonomous Linux service** that runs without user intervention.
+
+## Features
+
+- ✅ **No user interaction required** - Runs completely autonomously
+- ✅ **Proper conda environment activation** - Uses bash with conda profile sourcing
+- ✅ **Comprehensive environment setup** - All necessary env vars configured
+- ✅ **Robust restart handling** - Graceful shutdown with 30s timeout
+- ✅ **Journal logging** - Logs to systemd journal for easy monitoring
+- ✅ **Network dependency** - Waits for network before starting
 
 ## Setup Path
 
@@ -40,20 +49,35 @@ GremlinGPT/systemd/gremlin.service
 
 ⸻
 
-Install the Service
-	1.	Copy service file to systemd:
+## Install the Service
+
+**Option 1: Automatic (Recommended)**
+Run the install script which will configure everything automatically:
 ```bash
-sudo cp GremlinGPT/systemd/gremlin.service /etc/systemd/system/
+./install.sh
 ```
 
-2.	Reload systemd and enable on boot:
+**Option 2: Manual Installation**
+
+1. Copy service file to systemd:
+```bash
+sudo cp systemd/gremlin.service /etc/systemd/system/
+```
+
+2. Edit the service file to match your paths:
+```bash
+sudo nano /etc/systemd/system/gremlin.service
+# Update WorkingDirectory, User, Group, and paths to match your setup
+```
+
+3. Reload systemd and enable on boot:
 ```bash
 sudo systemctl daemon-reexec && \
 sudo systemctl daemon-reload && \
 sudo systemctl enable gremlin
 ```
 
-3.	Start the service:
+4. Start the service:
 ```bash
 sudo systemctl start gremlin
 ```

@@ -1,0 +1,2 @@
+2025-07-12 23:02:12.384 | INFO     | __main__:setup_module_logger:68 - [LOGGING] Module logger initialized for frontend -> /home/statiksmoke8/data/logs/frontend/frontend.log
+2025-07-12 23:02:12.385 | SUCCESS  | __main__:create_all_module_loggers:97 - [LOGGING] Initialized loggers for 14 modules

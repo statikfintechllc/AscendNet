@@ -1,4 +1,4 @@
-t=2025-07-10T18:52:29-0500 lvl=warn msg="ngrok config file found at both XDG and legacy locations, using XDG location" xdg_path=/home/statiksmoke8/.config/ngrok/ngrok.yml legacy_path=/home/statiksmoke8/.ngrok2/ngrok.yml
+t=2025-07-10T18:51:23-0500 lvl=warn msg="ngrok config file found at both XDG and legacy locations, using XDG location" xdg_path=/home/statiksmoke8/.config/ngrok/ngrok.yml legacy_path=/home/statiksmoke8/.ngrok2/ngrok.yml
 ERROR:  authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.
 ERROR:  Your authtoken: REPLACE_ME
 ERROR:  Instructions to install your authtoken are on your ngrok dashboard:
@@ -7,68 +7,8 @@ ERROR:
 ERROR:  ERR_NGROK_105
 ERROR:  https://ngrok.com/docs/errors/err_ngrok_105
 ERROR:  
-t=2025-07-10T18:52:30-0500 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.\nYour authtoken: REPLACE_ME\nInstructions to install your authtoken are on your ngrok dashboard:\nhttps://dashboard.ngrok.com/get-started/your-authtoken\r\n\r\nERR_NGROK_105\r\n"
-t=2025-07-10T18:52:30-0500 lvl=eror msg="session closing" obj=tunnels.session err="authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.\nYour authtoken: REPLACE_ME\nInstructions to install your authtoken are on your ngrok dashboard:\nhttps://dashboard.ngrok.com/get-started/your-authtoken\r\n\r\nERR_NGROK_105\r\n"
-t=2025-07-10T18:52:30-0500 lvl=eror msg="terminating with error" obj=app err="authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.\nYour authtoken: REPLACE_ME\nInstructions to install your authtoken are on your ngrok dashboard:\nhttps://dashboard.ngrok.com/get-started/your-authtoken\r\n\r\nERR_NGROK_105\r\n"
-t=2025-07-10T18:52:30-0500 lvl=crit msg="command failed" err="authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.\nYour authtoken: REPLACE_ME\nInstructions to install your authtoken are on your ngrok dashboard:\nhttps://dashboard.ngrok.com/get-started/your-authtoken\r\n\r\nERR_NGROK_105\r\n"
-[NGROK] ERROR: Ngrok tunnel failed: The ngrok process errored on start: authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.\nYour authtoken: REPLACE_ME\nInstructions to install your authtoken are on your ngrok dashboard:\nhttps://dashboard.ngrok.com/get-started/your-authtoken\r\n\r\nERR_NGROK_105\r\n.
-t=2025-07-10T18:53:27-0500 lvl=warn msg="ngrok config file found at both XDG and legacy locations, using XDG location" xdg_path=/home/statiksmoke8/.config/ngrok/ngrok.yml legacy_path=/home/statiksmoke8/.ngrok2/ngrok.yml
-ERROR:  authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.
-ERROR:  Your authtoken: REPLACE_ME
-ERROR:  Instructions to install your authtoken are on your ngrok dashboard:
-ERROR:  https://dashboard.ngrok.com/get-started/your-authtoken
-ERROR:  
-ERROR:  ERR_NGROK_105
-ERROR:  https://ngrok.com/docs/errors/err_ngrok_105
-ERROR:  
-t=2025-07-10T18:53:27-0500 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.\nYour authtoken: REPLACE_ME\nInstructions to install your authtoken are on your ngrok dashboard:\nhttps://dashboard.ngrok.com/get-started/your-authtoken\r\n\r\nERR_NGROK_105\r\n"
-t=2025-07-10T18:53:27-0500 lvl=eror msg="session closing" obj=tunnels.session err="authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.\nYour authtoken: REPLACE_ME\nInstructions to install your authtoken are on your ngrok dashboard:\nhttps://dashboard.ngrok.com/get-started/your-authtoken\r\n\r\nERR_NGROK_105\r\n"
-t=2025-07-10T18:53:27-0500 lvl=eror msg="terminating with error" obj=app err="authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.\nYour authtoken: REPLACE_ME\nInstructions to install your authtoken are on your ngrok dashboard:\nhttps://dashboard.ngrok.com/get-started/your-authtoken\r\n\r\nERR_NGROK_105\r\n"
-t=2025-07-10T18:53:27-0500 lvl=crit msg="command failed" err="authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.\nYour authtoken: REPLACE_ME\nInstructions to install your authtoken are on your ngrok dashboard:\nhttps://dashboard.ngrok.com/get-started/your-authtoken\r\n\r\nERR_NGROK_105\r\n"
-[NGROK] ERROR: Ngrok tunnel failed: The ngrok process errored on start: authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.\nYour authtoken: REPLACE_ME\nInstructions to install your authtoken are on your ngrok dashboard:\nhttps://dashboard.ngrok.com/get-started/your-authtoken\r\n\r\nERR_NGROK_105\r\n.
-t=2025-07-10T18:54:31-0500 lvl=warn msg="ngrok config file found at both XDG and legacy locations, using XDG location" xdg_path=/home/statiksmoke8/.config/ngrok/ngrok.yml legacy_path=/home/statiksmoke8/.ngrok2/ngrok.yml
-ERROR:  authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.
-ERROR:  Your authtoken: REPLACE_ME
-ERROR:  Instructions to install your authtoken are on your ngrok dashboard:
-ERROR:  https://dashboard.ngrok.com/get-started/your-authtoken
-ERROR:  
-ERROR:  ERR_NGROK_105
-ERROR:  https://ngrok.com/docs/errors/err_ngrok_105
-ERROR:  
-t=2025-07-10T18:54:31-0500 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.\nYour authtoken: REPLACE_ME\nInstructions to install your authtoken are on your ngrok dashboard:\nhttps://dashboard.ngrok.com/get-started/your-authtoken\r\n\r\nERR_NGROK_105\r\n"
-t=2025-07-10T18:54:31-0500 lvl=eror msg="session closing" obj=tunnels.session err="authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.\nYour authtoken: REPLACE_ME\nInstructions to install your authtoken are on your ngrok dashboard:\nhttps://dashboard.ngrok.com/get-started/your-authtoken\r\n\r\nERR_NGROK_105\r\n"
-t=2025-07-10T18:54:31-0500 lvl=eror msg="terminating with error" obj=app err="authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.\nYour authtoken: REPLACE_ME\nInstructions to install your authtoken are on your ngrok dashboard:\nhttps://dashboard.ngrok.com/get-started/your-authtoken\r\n\r\nERR_NGROK_105\r\n"
-t=2025-07-10T18:54:31-0500 lvl=crit msg="command failed" err="authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.\nYour authtoken: REPLACE_ME\nInstructions to install your authtoken are on your ngrok dashboard:\nhttps://dashboard.ngrok.com/get-started/your-authtoken\r\n\r\nERR_NGROK_105\r\n"
-[NGROK] ERROR: Ngrok tunnel failed: The ngrok process errored on start: authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.\nYour authtoken: REPLACE_ME\nInstructions to install your authtoken are on your ngrok dashboard:\nhttps://dashboard.ngrok.com/get-started/your-authtoken\r\n\r\nERR_NGROK_105\r\n.
-t=2025-07-10T19:03:56-0500 lvl=warn msg="ngrok config file found at both XDG and legacy locations, using XDG location" xdg_path=/home/statiksmoke8/.config/ngrok/ngrok.yml legacy_path=/home/statiksmoke8/.ngrok2/ngrok.yml
-ERROR:  authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.
-ERROR:  Your authtoken: REPLACE_ME
-ERROR:  Instructions to install your authtoken are on your ngrok dashboard:
-ERROR:  https://dashboard.ngrok.com/get-started/your-authtoken
-ERROR:  
-ERROR:  ERR_NGROK_105
-ERROR:  https://ngrok.com/docs/errors/err_ngrok_105
-ERROR:  
-t=2025-07-10T19:03:57-0500 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.\nYour authtoken: REPLACE_ME\nInstructions to install your authtoken are on your ngrok dashboard:\nhttps://dashboard.ngrok.com/get-started/your-authtoken\r\n\r\nERR_NGROK_105\r\n"
-t=2025-07-10T19:03:57-0500 lvl=eror msg="session closing" obj=tunnels.session err="authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.\nYour authtoken: REPLACE_ME\nInstructions to install your authtoken are on your ngrok dashboard:\nhttps://dashboard.ngrok.com/get-started/your-authtoken\r\n\r\nERR_NGROK_105\r\n"
-t=2025-07-10T19:03:57-0500 lvl=eror msg="terminating with error" obj=app err="authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.\nYour authtoken: REPLACE_ME\nInstructions to install your authtoken are on your ngrok dashboard:\nhttps://dashboard.ngrok.com/get-started/your-authtoken\r\n\r\nERR_NGROK_105\r\n"
-t=2025-07-10T19:03:57-0500 lvl=crit msg="command failed" err="authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.\nYour authtoken: REPLACE_ME\nInstructions to install your authtoken are on your ngrok dashboard:\nhttps://dashboard.ngrok.com/get-started/your-authtoken\r\n\r\nERR_NGROK_105\r\n"
-[NGROK] ERROR: Ngrok tunnel failed: The ngrok process errored on start: authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.\nYour authtoken: REPLACE_ME\nInstructions to install your authtoken are on your ngrok dashboard:\nhttps://dashboard.ngrok.com/get-started/your-authtoken\r\n\r\nERR_NGROK_105\r\n.
-t=2025-07-12T13:28:06-0500 lvl=warn msg="ngrok config file found at both XDG and legacy locations, using XDG location" xdg_path=/home/statiksmoke8/.config/ngrok/ngrok.yml legacy_path=/home/statiksmoke8/.ngrok2/ngrok.yml
-t=2025-07-12T13:28:06-0500 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com on 127.0.0.53:53: server misbehaving"
-t=2025-07-12T13:28:06-0500 lvl=warn msg="failed to check for update" obj=updater err="Post \"https://update.equinox.io/check\": dial tcp: lookup update.equinox.io on 127.0.0.53:53: server misbehaving"
-t=2025-07-12T13:28:07-0500 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com on 127.0.0.53:53: server misbehaving"
-t=2025-07-12T13:28:08-0500 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.us.ngrok-agent.com:443\": dial tcp: lookup connect.us.ngrok-agent.com on 127.0.0.53:53: server misbehaving"
-ERROR:  authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.
-ERROR:  Your authtoken: REPLACE_ME
-ERROR:  Instructions to install your authtoken are on your ngrok dashboard:
-ERROR:  https://dashboard.ngrok.com/get-started/your-authtoken
-ERROR:  
-ERROR:  ERR_NGROK_105
-ERROR:  https://ngrok.com/docs/errors/err_ngrok_105
-ERROR:  
-t=2025-07-12T13:28:10-0500 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.\nYour authtoken: REPLACE_ME\nInstructions to install your authtoken are on your ngrok dashboard:\nhttps://dashboard.ngrok.com/get-started/your-authtoken\r\n\r\nERR_NGROK_105\r\n"
-t=2025-07-12T13:28:10-0500 lvl=eror msg="session closing" obj=tunnels.session err="authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.\nYour authtoken: REPLACE_ME\nInstructions to install your authtoken are on your ngrok dashboard:\nhttps://dashboard.ngrok.com/get-started/your-authtoken\r\n\r\nERR_NGROK_105\r\n"
-t=2025-07-12T13:28:10-0500 lvl=eror msg="terminating with error" obj=app err="authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.\nYour authtoken: REPLACE_ME\nInstructions to install your authtoken are on your ngrok dashboard:\nhttps://dashboard.ngrok.com/get-started/your-authtoken\r\n\r\nERR_NGROK_105\r\n"
-t=2025-07-12T13:28:10-0500 lvl=crit msg="command failed" err="authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.\nYour authtoken: REPLACE_ME\nInstructions to install your authtoken are on your ngrok dashboard:\nhttps://dashboard.ngrok.com/get-started/your-authtoken\r\n\r\nERR_NGROK_105\r\n"
+t=2025-07-10T18:51:24-0500 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.\nYour authtoken: REPLACE_ME\nInstructions to install your authtoken are on your ngrok dashboard:\nhttps://dashboard.ngrok.com/get-started/your-authtoken\r\n\r\nERR_NGROK_105\r\n"
+t=2025-07-10T18:51:24-0500 lvl=eror msg="session closing" obj=tunnels.session err="authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.\nYour authtoken: REPLACE_ME\nInstructions to install your authtoken are on your ngrok dashboard:\nhttps://dashboard.ngrok.com/get-started/your-authtoken\r\n\r\nERR_NGROK_105\r\n"
+t=2025-07-10T18:51:24-0500 lvl=eror msg="terminating with error" obj=app err="authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.\nYour authtoken: REPLACE_ME\nInstructions to install your authtoken are on your ngrok dashboard:\nhttps://dashboard.ngrok.com/get-started/your-authtoken\r\n\r\nERR_NGROK_105\r\n"
+t=2025-07-10T18:51:24-0500 lvl=crit msg="command failed" err="authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.\nYour authtoken: REPLACE_ME\nInstructions to install your authtoken are on your ngrok dashboard:\nhttps://dashboard.ngrok.com/get-started/your-authtoken\r\n\r\nERR_NGROK_105\r\n"
 [NGROK] ERROR: Ngrok tunnel failed: The ngrok process errored on start: authentication failed: The authtoken you specified does not look like a proper ngrok tunnel authtoken.\nYour authtoken: REPLACE_ME\nInstructions to install your authtoken are on your ngrok dashboard:\nhttps://dashboard.ngrok.com/get-started/your-authtoken\r\n\r\nERR_NGROK_105\r\n.

@@ -16,7 +16,10 @@ import json
 import numpy as np
 import faiss  # type: ignore
 from datetime import datetime
-from loguru import logger
+from utils.logging_config import get_module_logger
+
+# Initialize module-specific logger
+logger = get_module_logger("backend")
 
 # --- Resilient Imports ---
 try:

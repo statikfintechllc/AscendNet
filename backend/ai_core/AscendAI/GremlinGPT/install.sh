@@ -200,7 +200,7 @@ elif [ -f "$HOME/anaconda3/etc/profile.d/conda.sh" ]; then
 fi
 
 conda activate gremlin-nlp >> "$LOGFILE" 2>&1
-pip_install_or_fail spacy torch torchvision torchaudio sentence-transformers transformers bs4 nltk pytesseract playwright pyautogui >> "$LOGFILE" 2>&1
+pip_install_or_fail spacy torch torchvision torchaudio sentence-transformers transformers bs4 nltk pytesseract playwright pyautogui flask flask-socketio watchdog eventlet >> "$LOGFILE" 2>&1
 python -m spacy download en_core_web_sm >> "$LOGFILE" 2>&1 || { echo "${RED}[FAIL] spaCy model${NC}"; exit 1; }
 playwright install >> "$LOGFILE" 2>&1 || { echo "${RED}[FAIL] playwright${NC}"; exit 1; }
 pip install nltk >> "$LOGFILE" 2>&1
@@ -208,7 +208,7 @@ export NLTK_DATA=$HOME/data/nltk_data
 python -m nltk.downloader -d "$NLTK_DATA" punkt >> "$LOGFILE" 2>&1
 download_nltk >> "$LOGFILE" 2>&1
 check_cuda >> "$LOGFILE" 2>&1
-
+sudo apt-get install python3-tk python3-dev
 python -c "
 from transformers import AutoTokenizer, AutoModel
 import torch
@@ -232,10 +232,25 @@ elif [ -f "$HOME/anaconda3/etc/profile.d/conda.sh" ]; then
     source "$HOME/anaconda3/etc/profile.d/conda.sh"
 fi
 conda activate gremlin-scraper >> "$LOGFILE" 2>&1
-pip_install_or_fail torch torchvision torchaudio sentence-transformers transformers playwright pyautogui >> "$LOGFILE" 2>&1
+pip_install_or_fail torch torchvision watchdog torchaudio sentence-transformers transformers playwright pyautogui flask flask-socketio eventlet >> "$LOGFILE" 2>&1
 python -m spacy download en_core_web_sm >> "$LOGFILE" 2>&1
 playwright install >> "$LOGFILE" 2>&1
 check_cuda >> "$LOGFILE" 2>&1
+sudo apt-get install python3-tk python3-dev
+conda deactivate >> "$LOGFILE" 2>&1
+
+# 5. gremlin-scraper env setup, if not already set up. This is a duplicate of the previous step, but for gremlin-memory
+# This is a duplicate of the previous step, but for gremlin-memory
+# This is necessary to ensure that the gremlin-memory environment is set up correctly
+# and to avoid conflicts with the gremlin-scraper environment.
+banner "Activating gremlin-memory..."
+if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
+    source "$HOME/miniconda3/etc/profile.d/conda.sh"
+elif [ -f "$HOME/anaconda3/etc/profile.d/conda.sh" ]; then
+    source "$HOME/anaconda3/etc/profile.d/conda.sh"
+fi
+conda activate gremlin-memory >> "$LOGFILE" 2>&1
+pip_install_or_fail eventlet flask chromadb watchdog faiss-cpu >> "$LOGFILE" 2>&1
 conda deactivate >> "$LOGFILE" 2>&1
 
 # 6. gremlin-dashboard env setup, if not already set up
@@ -246,7 +261,8 @@ elif [ -f "$HOME/anaconda3/etc/profile.d/conda.sh" ]; then
     source "$HOME/anaconda3/etc/profile.d/conda.sh"
 fi
 conda activate gremlin-dashboard >> "$LOGFILE" 2>&1
-pip_install_or_fail torch torchvision torchaudio sentence-transformers transformers pyautogui >> "$LOGFILE" 2>&1
+pip_install_or_fail flask eventlet torch watchdog torchvision torchaudio sentence-transformers transformers pyautogui >> "$LOGFILE" 2>&1
+sudo apt-get install python3-tk python3-dev tesseract-ocr
 check_cuda >> "$LOGFILE" 2>&1
 conda deactivate >> "$LOGFILE" 2>&1
 
@@ -258,7 +274,8 @@ elif [ -f "$HOME/anaconda3/etc/profile.d/conda.sh" ]; then
     source "$HOME/anaconda3/etc/profile.d/conda.sh"
 fi
 conda activate gremlin-orchestrator >> "$LOGFILE" 2>&1
-pip_install_or_fail torch torchvision torchaudio backend bs4 nltk langdetect pytesseract sentence-transformers transformers playwright pyautogui >> "$LOGFILE" 2>&1
+pip_install_or_fail torch torchvision torchaudio watchdog bs4 nltk langdetect pytesseract sentence-transformers transformers playwright pyautogui flask flask-socketio eventlet >> "$LOGFILE" 2>&1
+sudo apt-get install python3-tk python3-dev tesseract-ocr
 python -m spacy download en_core_web_sm >> "$LOGFILE" 2>&1
 playwright install >> "$LOGFILE" 2>&1
 pip install nltk >> "$LOGFILE" 2>&1
@@ -316,7 +333,9 @@ else
     echo "[INFO] ngrok installed: $(which ngrok)"
 fi >> "$LOGFILE" 2>&1
 
-sudo apt install -y xdotool util-linux
+# === System package dependencies ===
+echo "[*] Installing required system packages (including python3-tk for GUI support and tesseract-ocr for OCR)..."
+sudo apt install -y xdotool util-linux python3-tk python3-dev tesseract-ocr
 
 # set -x  # Enable command tracing for debugging. Uncomment if needed.
 
@@ -334,15 +353,26 @@ sudo tee "$SYSTEMD_UNIT_PATH" > /dev/null <<EOF
 [Unit]
 Description=GremlinGPT Autonomous Agent
 After=network.target
+Wants=network-online.target
 
 [Service]
 Type=simple
 WorkingDirectory=$APPLOC
-ExecStart=/bin/zsh -c 'conda activate gremlin-orchestrator && $START_SCRIPT'
+ExecStart=/bin/bash -c 'source $HOME/miniconda3/etc/profile.d/conda.sh && conda activate gremlin-orchestrator && python3 core/loop.py'
 Restart=always
 RestartSec=10
 User=$USER
-Environment="PATH=$APPLOC/miniconda3/envs/gremlin-orchestrator/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+Group=$USER
+Environment="PYTHONPATH=$APPLOC"
+Environment="PATH=$HOME/miniconda3/envs/gremlin-orchestrator/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+Environment="CONDA_DEFAULT_ENV=gremlin-orchestrator"
+Environment="CONDA_PREFIX=$HOME/miniconda3/envs/gremlin-orchestrator"
+Environment="HOME=$HOME"
+StandardOutput=journal
+StandardError=journal
+KillMode=mixed
+KillSignal=SIGTERM
+TimeoutStopSec=30
 
 [Install]
 WantedBy=multi-user.target

@@ -13,9 +13,12 @@ import tempfile
 import uuid
 import os
 from pathlib import Path
-from backend.globals import logger
+from utils.logging_config import get_module_logger
 
-EXEC_LOG_DIR = Path("run/logs/executions/")
+# Initialize module-specific logger
+logger = get_module_logger("executors")
+
+EXEC_LOG_DIR = Path("data/logs/executions/")
 EXEC_LOG_DIR.mkdir(parents=True, exist_ok=True)
 
 

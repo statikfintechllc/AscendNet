@@ -1,15 +1,26 @@
 [Unit]
 Description=GremlinGPT Autonomous Agent
 After=network.target
+Wants=network-online.target
 
 [Service]
 Type=simple
-WorkingDirectory=/home/youruser/GremlinGPT
-ExecStart=/bin/zsh -c 'conda activate gremlin-orchestrator && python3 core/loop.py'
+WorkingDirectory=/home/statiksmoke8/AscendNet/server/AscendAI/GremlinGPT
+ExecStart=/bin/bash -c 'source /home/statiksmoke8/miniconda3/etc/profile.d/conda.sh && conda activate gremlin-orchestrator && python3 core/loop.py'
 Restart=always
 RestartSec=10
-User=youruser
-Environment="PATH=/home/youruser/miniconda3/envs/gremlin-orchestrator/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+User=statiksmoke8
+Group=statiksmoke8
+Environment="PYTHONPATH=/home/statiksmoke8/AscendNet/server/AscendAI/GremlinGPT"
+Environment="PATH=/home/statiksmoke8/miniconda3/envs/gremlin-orchestrator/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+Environment="CONDA_DEFAULT_ENV=gremlin-orchestrator"
+Environment="CONDA_PREFIX=/home/statiksmoke8/miniconda3/envs/gremlin-orchestrator"
+Environment="HOME=/home/statiksmoke8"
+StandardOutput=journal
+StandardError=journal
+KillMode=mixed
+KillSignal=SIGTERM
+TimeoutStopSec=30
 
 [Install]
 WantedBy=multi-user.target
