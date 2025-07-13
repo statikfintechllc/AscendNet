@@ -90,51 +90,8 @@ async def demo_system_integration():
     # Show unified path structure
     import sys
     import os
-    import importlib.util
-    from pathlib import Path
-    from typing import Any, Optional, Type
-    
-    # Add the deployment directory to the path
-    deployment_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'deployment'))
-    orchestrator_path = os.path.join(deployment_path, "ascendnet_orchestrator.py")
-    
-    # Try to load the orchestrator module dynamically
-    OrchestratorClass: Optional[Type[Any]] = None
-    if os.path.exists(orchestrator_path):
-        try:
-            spec = importlib.util.spec_from_file_location("ascendnet_orchestrator", orchestrator_path)
-            if spec and spec.loader:
-                module = importlib.util.module_from_spec(spec)
-                spec.loader.exec_module(module)
-                OrchestratorClass = getattr(module, "AscendNetOrchestrator", None)
-        except Exception as e:
-            print(f"⚠️  Failed to load AscendNetOrchestrator: {e}")
-    
-    # Fallback class if import fails
-    if OrchestratorClass is None:
-        print("⚠️  AscendNetOrchestrator not available - using fallback")
-        class AscendNetOrchestrator:
-            def __init__(self):
-                self.root = Path.home() / "AscendNet"
-                
-            def get_path(self, component: str) -> Path:
-                return self.root / component
-                
-            def load_config(self):
-                return {
-                    "system": {
-                        "name": "AscendNet (Fallback Mode)",
-                        "version": "dev",
-                        "environment": "development"
-                    },
-                    "components": {
-                        "api": True,
-                        "ai_core": True,
-                        "p2p": False
-                    }
-                }
-    else:
-        AscendNetOrchestrator = OrchestratorClass
+    sys.path.append(os.path.join(os.path.dirname(__file__), 'scripts', 'deployment'))
+    from scripts.deployment.ascendnet_orchestrator import AscendNetOrchestrator
     
     orchestrator = AscendNetOrchestrator()
     
