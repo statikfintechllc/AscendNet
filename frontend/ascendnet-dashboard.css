@@ -1,0 +1,636 @@
+/* AscendNet Unified Dashboard CSS */
+
+:root {
+    --ascendnet-primary: #1a1a1a;
+    --ascendnet-secondary: #2d2d2d;
+    --ascendnet-accent: #ffd700;
+    --ascendnet-danger: #ff4444;
+    --ascendnet-success: #00ff88;
+    --ascendnet-warning: #ffaa00;
+    --ascendnet-info: #00aaff;
+    --ascendnet-text: #ffffff;
+    --ascendnet-text-secondary: #cccccc;
+    --ascendnet-border: #444444;
+    --ascendnet-hover: #3d3d3d;
+    --ascendnet-gradient: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    --ascendnet-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    --ascendnet-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body.ascendnet-dashboard {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--ascendnet-primary);
+    color: var(--ascendnet-text);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Header Styles */
+.ascendnet-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    background: var(--ascendnet-gradient);
+    border-bottom: 1px solid var(--ascendnet-border);
+    box-shadow: var(--ascendnet-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.ascendnet-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.ascendnet-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+}
+
+.ascendnet-brand h1 {
+    font-size: 24px;
+    font-weight: 700;
+    background: linear-gradient(45deg, var(--ascendnet-accent), #ff6b35);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.ascendnet-brand .version {
+    font-size: 12px;
+    color: var(--ascendnet-text-secondary);
+    font-weight: 500;
+}
+
+/* Component Switcher (X/ChatGPT style) */
+.component-switcher {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--ascendnet-secondary);
+    border-radius: 12px;
+    padding: 4px;
+    border: 1px solid var(--ascendnet-border);
+}
+
+.component-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    color: var(--ascendnet-text-secondary);
+    cursor: pointer;
+    transition: var(--ascendnet-transition);
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.component-btn:hover {
+    background: var(--ascendnet-hover);
+    color: var(--ascendnet-text);
+}
+
+.component-btn.active {
+    background: var(--ascendnet-accent);
+    color: var(--ascendnet-primary);
+    font-weight: 600;
+}
+
+.component-icon {
+    font-size: 16px;
+}
+
+.component-name {
+    font-size: 13px;
+}
+
+/* Global Status */
+.global-status {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.status-indicator {
+    font-size: 12px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+.notifications-btn {
+    background: transparent;
+    border: 1px solid var(--ascendnet-border);
+    border-radius: 8px;
+    padding: 8px;
+    color: var(--ascendnet-text);
+    cursor: pointer;
+    font-size: 16px;
+    transition: var(--ascendnet-transition);
+}
+
+.notifications-btn:hover {
+    background: var(--ascendnet-hover);
+    border-color: var(--ascendnet-accent);
+}
+
+/* Main Content */
+.ascendnet-main {
+    flex: 1;
+    position: relative;
+    min-height: calc(100vh - 80px);
+}
+
+.component-view {
+    display: none;
+    flex-direction: column;
+    height: calc(100vh - 80px);
+}
+
+.component-view.active {
+    display: flex;
+}
+
+/* Overview Styles */
+#overview {
+    padding: 24px;
+}
+
+.overview-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.overview-header h2 {
+    font-size: 32px;
+    margin-bottom: 8px;
+    background: linear-gradient(45deg, var(--ascendnet-accent), #ff6b35);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.overview-header p {
+    color: var(--ascendnet-text-secondary);
+    font-size: 16px;
+}
+
+.system-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.system-card {
+    background: var(--ascendnet-gradient);
+    border: 1px solid var(--ascendnet-border);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: var(--ascendnet-shadow);
+    transition: var(--ascendnet-transition);
+}
+
+.system-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.system-card h3 {
+    font-size: 18px;
+    margin-bottom: 16px;
+    color: var(--ascendnet-accent);
+}
+
+/* Status Card */
+.status-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--ascendnet-border);
+}
+
+.status-row:last-child {
+    border-bottom: none;
+}
+
+.service-name {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.service-status {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.service-status.running {
+    background: rgba(0, 255, 136, 0.2);
+    color: var(--ascendnet-success);
+}
+
+.launch-btn {
+    background: var(--ascendnet-accent);
+    color: var(--ascendnet-primary);
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--ascendnet-transition);
+}
+
+.launch-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+/* Action Grid */
+.action-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.action-tile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: var(--ascendnet-secondary);
+    border: 1px solid var(--ascendnet-border);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--ascendnet-transition);
+    text-align: left;
+}
+
+.action-tile:hover {
+    background: var(--ascendnet-hover);
+    border-color: var(--ascendnet-accent);
+    transform: translateY(-1px);
+}
+
+.action-icon {
+    font-size: 24px;
+}
+
+.action-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.action-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ascendnet-text);
+}
+
+.action-desc {
+    font-size: 12px;
+    color: var(--ascendnet-text-secondary);
+}
+
+/* Memory Stream */
+.memory-stream {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.memory-entry {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--ascendnet-border);
+    font-size: 12px;
+}
+
+.memory-entry:last-child {
+    border-bottom: none;
+}
+
+.memory-time {
+    color: var(--ascendnet-text-secondary);
+    font-family: 'JetBrains Mono', monospace;
+    min-width: 60px;
+}
+
+.memory-source {
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    min-width: 80px;
+    text-align: center;
+}
+
+.memory-source.gremlin {
+    background: rgba(255, 68, 68, 0.2);
+    color: var(--ascendnet-danger);
+}
+
+.memory-source.godcore {
+    background: rgba(0, 170, 255, 0.2);
+    color: var(--ascendnet-info);
+}
+
+.memory-source.statik {
+    background: rgba(255, 215, 0, 0.2);
+    color: var(--ascendnet-accent);
+}
+
+.memory-content {
+    flex: 1;
+    color: var(--ascendnet-text-secondary);
+}
+
+/* Network Stats */
+.network-info {
+    margin-bottom: 16px;
+}
+
+.network-stat {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 14px;
+}
+
+.stat-label {
+    color: var(--ascendnet-text-secondary);
+}
+
+.stat-value {
+    color: var(--ascendnet-text);
+    font-weight: 600;
+}
+
+.network-btn {
+    width: 100%;
+    background: var(--ascendnet-accent);
+    color: var(--ascendnet-primary);
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--ascendnet-transition);
+}
+
+.network-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+/* Component Container Styles */
+.component-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: var(--ascendnet-secondary);
+    border-bottom: 1px solid var(--ascendnet-border);
+}
+
+.component-header h2 {
+    font-size: 20px;
+    color: var(--ascendnet-accent);
+}
+
+.component-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.control-btn {
+    background: var(--ascendnet-primary);
+    color: var(--ascendnet-text);
+    border: 1px solid var(--ascendnet-border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: var(--ascendnet-transition);
+}
+
+.control-btn:hover {
+    background: var(--ascendnet-hover);
+    border-color: var(--ascendnet-accent);
+}
+
+.control-btn.danger {
+    border-color: var(--ascendnet-danger);
+    color: var(--ascendnet-danger);
+}
+
+.control-btn.danger:hover {
+    background: rgba(255, 68, 68, 0.1);
+}
+
+.component-container {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.component-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: var(--ascendnet-primary);
+}
+
+/* Notification Panel */
+.notification-panel {
+    position: fixed;
+    top: 80px;
+    right: -400px;
+    width: 400px;
+    height: calc(100vh - 80px);
+    background: var(--ascendnet-gradient);
+    border-left: 1px solid var(--ascendnet-border);
+    padding: 24px;
+    transition: var(--ascendnet-transition);
+    z-index: 90;
+    box-shadow: var(--ascendnet-shadow);
+}
+
+.notification-panel.open {
+    right: 0;
+}
+
+.notification-panel h3 {
+    margin-bottom: 16px;
+    color: var(--ascendnet-accent);
+}
+
+.notification-list {
+    max-height: calc(100vh - 160px);
+    overflow-y: auto;
+}
+
+.notification-item {
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    border-left: 4px solid;
+    font-size: 13px;
+}
+
+.notification-item.info {
+    background: rgba(0, 170, 255, 0.1);
+    border-color: var(--ascendnet-info);
+}
+
+.notification-item.success {
+    background: rgba(0, 255, 136, 0.1);
+    border-color: var(--ascendnet-success);
+}
+
+.notification-time {
+    display: block;
+    font-size: 11px;
+    color: var(--ascendnet-text-secondary);
+    margin-bottom: 4px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* Loading Overlay */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 26, 26, 0.9);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.loading-overlay.active {
+    display: flex;
+}
+
+.loading-spinner {
+    width: 48px;
+    height: 48px;
+    border: 4px solid var(--ascendnet-border);
+    border-top: 4px solid var(--ascendnet-accent);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 16px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-overlay p {
+    color: var(--ascendnet-text-secondary);
+    font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .component-switcher {
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    
+    .component-switcher::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .component-btn .component-name {
+        display: none;
+    }
+    
+    .system-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .ascendnet-header {
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px;
+    }
+    
+    .component-switcher {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .ascendnet-main {
+        min-height: calc(100vh - 120px);
+    }
+    
+    .component-view {
+        height: calc(100vh - 120px);
+    }
+    
+    #overview {
+        padding: 16px;
+    }
+    
+    .system-grid {
+        gap: 16px;
+    }
+    
+    .action-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .notification-panel {
+        width: 100%;
+        right: -100%;
+    }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--ascendnet-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--ascendnet-border);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--ascendnet-hover);
+}

@@ -78,19 +78,23 @@ pip install -r requirements.txt
 ### Quick Demo
 ```bash
 # Run unified system demo
-python scripts/development/demo_unified_system.py
+python docs/guides/demo_unified_system.py
 ```
 
 ## ⚡ Quick Commands
 
 ```bash
+# Unified Dashboard (Recommended)
+python start_api.py                         # Start unified dashboard on http://localhost:8000
+python ascendnet_orchestrator.py            # Start full orchestrated system
+
 # Setup and Installation
-./scripts/setup.sh                           # Complete system setup
-python scripts/development/demo_unified_system.py  # Run system demo
+./scripts/setup.sh                          # Complete system setup
+python docs/guides/demo_unified_system.py   # Run system demo
 
 # Development
-python scripts/deployment/api_server.py      # Start API server
-python scripts/deployment/start_api.py       # Alternative API startup
+python scripts/deployment/api_server.py     # Start API server only
+python scripts/deployment/start_api.py      # Alternative API startup
 
 # Testing
 ./scripts/testing/test_e2e.sh               # Run E2E tests
@@ -103,12 +107,14 @@ python scripts/deployment/start_api.py       # Alternative API startup
 ## 📖 Documentation
 
 - **📚 [Complete Documentation](docs/README.md)** - Main documentation hub with navigation
-- **� [Installation Guide](docs/setup/INSTALLATION_GUIDE.md)** - Detailed setup instructions
+- **🔧 [Installation Guide](docs/setup/INSTALLATION_GUIDE.md)** - Detailed setup instructions
 - **👥 [User Guide](docs/user/USER_GUIDE.md)** - How to use AscendNet
 - **🏗️ [Architecture Overview](docs/architecture/MAIN_ARCHITECTURE.md)** - System architecture
 - **🔌 [API Reference](docs/api/API.md)** - Complete API documentation
 - **🧪 [Testing Guide](docs/testing/E2E_COMPLETE.md)** - E2E testing documentation
 - **🔄 [Integration Status](docs/integration/STATIK_INTEGRATION_COMPLETE.md)** - System integration status
+- **🎯 [Unified Dashboard](docs/UNIFIED_DASHBOARD_COMPLETE.md)** - X/ChatGPT-style unified interface
+- **🛠️ [Troubleshooting](docs/guides/TROUBLESHOOTING.md)** - Common issues and solutions
 
 ## 🔗 Related Repositories
 
@@ -130,6 +136,7 @@ python scripts/deployment/start_api.py       # Alternative API startup
 ## 🏆 Features
 
 - ✅ **Production Ready** - Comprehensive E2E testing (95% success rate)
+- ✅ **Unified Dashboard** - X/ChatGPT-style interface with component switching
 - ✅ **Unified API** - FastAPI-based REST endpoints
 - ✅ **AI Integration** - Multiple AI models and processing cores
 - ✅ **P2P Network** - Decentralized compute and prompt marketplace
@@ -141,29 +148,53 @@ python scripts/deployment/start_api.py       # Alternative API startup
 
 ```
 AscendNet/
-├── 📁 backend/          # Core system components
-├── 📁 docs/             # Organized documentation
-│   ├── 📁 api/          # API documentation
-│   ├── 📁 architecture/ # System design docs
-│   ├── 📁 guides/       # User guides
-│   ├── 📁 setup/        # Installation guides
-│   └── 📁 user/         # User documentation
-├── 📁 scripts/          # Organized automation scripts
-│   ├── 📁 development/  # Development tools
-│   ├── 📁 deployment/   # Deployment scripts
-│   └── 📁 testing/      # Testing scripts
-├── 📁 frontend/         # Web interface
-├── 📁 statik-server/    # Self-hosted development environment
-└── 📁 smart-contracts/  # Blockchain components
+├── � api_server.py                    # Unified FastAPI server
+├── � start_api.py                     # Quick dashboard launcher  
+├── � ascendnet_orchestrator.py        # Component orchestrator
+├── � requirements.txt                 # Python dependencies
+├── 📁 backend/                         # Core system components
+│   ├── 📁 ai_core/                     # AI processing systems
+│   ├── 📁 Mobile-Mirror/               # Mobile development
+│   ├── 📁 p2p/                         # P2P networking
+│   └── 📁 GodCore/                     # Multi-model routing
+├── 📁 docs/                            # Organized documentation
+│   ├── 📁 api/                         # API documentation
+│   ├── 📁 architecture/                # System design docs
+│   ├── 📁 guides/                      # User guides & troubleshooting
+│   │   ├── � demo_unified_system.py   # System demo
+│   │   └── � system_status.py         # Status checker
+│   ├── 📁 setup/                       # Installation guides
+│   ├── 📁 user/                        # User documentation
+│   ├── 📁 integration/                 # Integration status docs
+│   ├── 📁 testing/                     # Testing documentation
+│   ├── 📁 migration/                   # Migration guides
+│   └── 📁 archive/                     # Historical documents
+├── 📁 scripts/                         # Organized automation scripts
+│   ├── 📁 development/                 # Development tools
+│   ├── 📁 deployment/                  # Deployment scripts
+│   │   └── � launch_ascendnet.sh      # Production launcher
+│   └── 📁 testing/                     # Testing scripts
+│       ├── � debug_e2e.sh             # Debug E2E tests
+│       ├── � e2e_dashboard.sh         # Dashboard E2E tests
+│       ├── � test_e2e.sh              # Basic E2E tests
+│       ├── � test_e2e_complete.sh     # Complete E2E suite
+│       └── 📄 production_e2e.sh        # Production E2E tests
+├── 📁 frontend/                        # Unified dashboard interface
+│   ├── � ascendnet-dashboard.html     # Main dashboard
+│   ├── � ascendnet-dashboard.css      # Dashboard styling
+│   └── � ascendnet-dashboard.js       # Dashboard logic
+├── 📁 statik-server/                   # Self-hosted development environment
+└── 📁 smart-contracts/                 # Blockchain components
 ```
 
 ## 📊 System Status
 
-Current system status: **🟢 FULLY OPERATIONAL & ORGANIZED**
+Current system status: **🟢 FULLY OPERATIONAL & UNIFIED**
 - ✅ **Code-Server → Statik-Server Migration**: Complete
 - ✅ **Project Organization**: Complete  
 - ✅ **Documentation Structure**: Organized & Indexed
 - ✅ **Script Organization**: Categorized by function
+- ✅ **Unified Dashboard**: X/ChatGPT-style interface with component switching
 - ✅ **API Server**: Ready for deployment
 - ✅ **AI Core**: Unified & operational
 - ✅ **P2P Network**: Architecture complete
@@ -173,6 +204,7 @@ Current system status: **🟢 FULLY OPERATIONAL & ORGANIZED**
 ## 🆕 Recent Updates
 
 **Latest Release** - July 2025
+- ✨ **Unified Dashboard**: X/ChatGPT-style interface with seamless component switching
 - ✨ **Complete System Unification**: All components now work together seamlessly
 - 🔄 **Code-Server → Statik-Server Migration**: Full branding and architecture update
 - 📁 **Professional Organization**: Scripts and documentation properly categorized

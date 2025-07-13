@@ -176,10 +176,10 @@ python -m mobilemirror.core.main
 python ascendnet_orchestrator.py
 
 # Test unified integration
-python demo_unified_system.py
+python docs/guides/demo_unified_system.py
 
 # Monitor system status
-python system_status.py
+python docs/guides/system_status.py
 ```
 
 ### 5. Verification

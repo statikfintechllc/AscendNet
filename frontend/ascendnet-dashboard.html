@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AscendNet - Unified AI Development Platform</title>
+    <link rel="stylesheet" href="./ascendnet-dashboard.css">
+    <link rel="icon" type="image/png" href="./assets/ascendnet-icon.png">
+</head>
+<body class="ascendnet-dashboard">
+    <!-- Main Navigation Header -->
+    <header class="ascendnet-header">
+        <div class="ascendnet-brand">
+            <img src="./assets/ascendnet-logo.png" alt="AscendNet" class="ascendnet-logo">
+            <h1>AscendNet</h1>
+            <span class="version">Unified AI Development Platform</span>
+        </div>
+        
+        <!-- Component Switcher (like X/ChatGPT style) -->
+        <nav class="component-switcher">
+            <button class="component-btn active" data-component="overview">
+                <span class="component-icon">🏠</span>
+                <span class="component-name">Overview</span>
+            </button>
+            <button class="component-btn" data-component="statik-server">
+                <span class="component-icon">💻</span>
+                <span class="component-name">Statik-Server</span>
+            </button>
+            <button class="component-btn" data-component="gremlin">
+                <span class="component-icon">🤖</span>
+                <span class="component-name">GremlinGPT</span>
+            </button>
+            <button class="component-btn" data-component="godcore">
+                <span class="component-icon">⚛️</span>
+                <span class="component-name">GodCore</span>
+            </button>
+            <button class="component-btn" data-component="mobile">
+                <span class="component-icon">📱</span>
+                <span class="component-name">Mobile-Mirror</span>
+            </button>
+            <button class="component-btn" data-component="p2p">
+                <span class="component-icon">🌐</span>
+                <span class="component-name">P2P Network</span>
+            </button>
+            <button class="component-btn" data-component="memory">
+                <span class="component-icon">🧠</span>
+                <span class="component-name">AI Memory</span>
+            </button>
+            <button class="component-btn" data-component="admin">
+                <span class="component-icon">⚙️</span>
+                <span class="component-name">System Admin</span>
+            </button>
+        </nav>
+
+        <div class="global-status">
+            <span class="status-indicator" id="global-status-dot">🟢</span>
+            <span id="global-status-text">All Systems Operational</span>
+            <button class="notifications-btn" id="notifications">🔔</button>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="ascendnet-main">
+        <!-- Overview Component -->
+        <div class="component-view active" id="overview">
+            <div class="overview-header">
+                <h2>🚀 AscendNet Unified Platform</h2>
+                <p>Your sovereign AI development environment - access all components from one unified interface</p>
+            </div>
+            
+            <div class="system-grid">
+                <!-- System Status Card -->
+                <div class="system-card status-card">
+                    <h3>📊 System Status</h3>
+                    <div class="status-overview">
+                        <div class="status-row">
+                            <span class="service-name">💻 Statik-Server</span>
+                            <span class="service-status running">🟢 Online</span>
+                            <button onclick="launchComponent('statik-server')" class="launch-btn">🚀 Launch</button>
+                        </div>
+                        <div class="status-row">
+                            <span class="service-name">🤖 GremlinGPT</span>
+                            <span class="service-status running">🟢 Active</span>
+                            <button onclick="launchComponent('gremlin')" class="launch-btn">🚀 Launch</button>
+                        </div>
+                        <div class="status-row">
+                            <span class="service-name">⚛️ GodCore</span>
+                            <span class="service-status running">🟢 Ready</span>
+                            <button onclick="launchComponent('godcore')" class="launch-btn">🚀 Launch</button>
+                        </div>
+                        <div class="status-row">
+                            <span class="service-name">📱 Mobile-Mirror</span>
+                            <span class="service-status running">🟢 Connected</span>
+                            <button onclick="launchComponent('mobile')" class="launch-btn">🚀 Launch</button>
+                        </div>
+                        <div class="status-row">
+                            <span class="service-name">🌐 P2P Network</span>
+                            <span class="service-status running">🟢 Meshed</span>
+                            <button onclick="launchComponent('p2p')" class="launch-btn">🚀 Launch</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions Card -->
+                <div class="system-card actions-card">
+                    <h3>⚡ Quick Actions</h3>
+                    <div class="action-grid">
+                        <button class="action-tile" onclick="quickAction('code')">
+                            <span class="action-icon">💻</span>
+                            <div class="action-info">
+                                <span class="action-title">Start Coding</span>
+                                <span class="action-desc">VS Code + Copilot</span>
+                            </div>
+                        </button>
+                        <button class="action-tile" onclick="quickAction('chat')">
+                            <span class="action-icon">🤖</span>
+                            <div class="action-info">
+                                <span class="action-title">AI Chat</span>
+                                <span class="action-desc">GremlinGPT</span>
+                            </div>
+                        </button>
+                        <button class="action-tile" onclick="quickAction('route')">
+                            <span class="action-icon">⚛️</span>
+                            <div class="action-info">
+                                <span class="action-title">AI Router</span>
+                                <span class="action-desc">GodCore</span>
+                            </div>
+                        </button>
+                        <button class="action-tile" onclick="quickAction('mobile')">
+                            <span class="action-icon">📱</span>
+                            <div class="action-info">
+                                <span class="action-title">Mobile Dev</span>
+                                <span class="action-desc">Mirror Dashboard</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- AI Memory Feed Card -->
+                <div class="system-card memory-card">
+                    <h3>🧠 Live AI Memory</h3>
+                    <div class="memory-stream" id="global-memory-feed">
+                        <div class="memory-entry">
+                            <span class="memory-time">14:35:20</span>
+                            <span class="memory-source gremlin">GremlinGPT</span>
+                            <span class="memory-content">Autonomous processing activated</span>
+                        </div>
+                        <div class="memory-entry">
+                            <span class="memory-time">14:35:15</span>
+                            <span class="memory-source godcore">GodCore</span>
+                            <span class="memory-content">Model routing optimized</span>
+                        </div>
+                        <div class="memory-entry">
+                            <span class="memory-time">14:35:10</span>
+                            <span class="memory-source statik">Statik-Server</span>
+                            <span class="memory-content">User session synchronized</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Network Status Card -->
+                <div class="system-card network-card">
+                    <h3>🌐 Network Status</h3>
+                    <div class="network-info">
+                        <div class="network-stat">
+                            <span class="stat-label">P2P Nodes</span>
+                            <span class="stat-value">4 Connected</span>
+                        </div>
+                        <div class="network-stat">
+                            <span class="stat-label">Mesh VPN</span>
+                            <span class="stat-value">Active</span>
+                        </div>
+                        <div class="network-stat">
+                            <span class="stat-label">Data Flow</span>
+                            <span class="stat-value">2.4 MB/s</span>
+                        </div>
+                    </div>
+                    <button class="network-btn" onclick="showNetworkTopology()">🕸️ View Topology</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statik-Server Component (Embedded iframe) -->
+        <div class="component-view" id="statik-server">
+            <div class="component-header">
+                <h2>💻 Statik-Server - VS Code + Copilot + Mesh VPN</h2>
+                <div class="component-controls">
+                    <button onclick="reloadComponent('statik-server')" class="control-btn">🔄 Reload</button>
+                    <button onclick="openNewWindow('statik-server')" class="control-btn">🆕 New Window</button>
+                    <button onclick="toggleFullscreen('statik-server')" class="control-btn">⛶ Fullscreen</button>
+                </div>
+            </div>
+            <div class="component-container">
+                <iframe 
+                    src="/statik-dashboard" 
+                    id="statik-server-frame" 
+                    frameborder="0"
+                    class="component-iframe">
+                </iframe>
+            </div>
+        </div>
+
+        <!-- GremlinGPT Component -->
+        <div class="component-view" id="gremlin">
+            <div class="component-header">
+                <h2>🤖 GremlinGPT - Autonomous AI Agent</h2>
+                <div class="component-controls">
+                    <button onclick="toggleAutonomous()" class="control-btn" id="gremlin-autonomous">🔴 Autonomous OFF</button>
+                    <button onclick="reloadComponent('gremlin')" class="control-btn">🔄 Reload</button>
+                    <button onclick="openNewWindow('gremlin')" class="control-btn">🆕 New Window</button>
+                </div>
+            </div>
+            <div class="component-container">
+                <iframe 
+                    src="/gremlin-dashboard" 
+                    id="gremlin-frame" 
+                    frameborder="0"
+                    class="component-iframe">
+                </iframe>
+            </div>
+        </div>
+
+        <!-- GodCore Component -->
+        <div class="component-view" id="godcore">
+            <div class="component-header">
+                <h2>⚛️ GodCore - Multi-Model AI Router</h2>
+                <div class="component-controls">
+                    <button onclick="optimizeRouting()" class="control-btn">⚡ Optimize</button>
+                    <button onclick="reloadComponent('godcore')" class="control-btn">🔄 Reload</button>
+                    <button onclick="openNewWindow('godcore')" class="control-btn">🆕 New Window</button>
+                </div>
+            </div>
+            <div class="component-container">
+                <iframe 
+                    src="/godcore-dashboard" 
+                    id="godcore-frame" 
+                    frameborder="0"
+                    class="component-iframe">
+                </iframe>
+            </div>
+        </div>
+
+        <!-- Mobile-Mirror Component -->
+        <div class="component-view" id="mobile">
+            <div class="component-header">
+                <h2>📱 Mobile-Mirror - Remote Development</h2>
+                <div class="component-controls">
+                    <button onclick="generateQR()" class="control-btn">📱 Generate QR</button>
+                    <button onclick="reloadComponent('mobile')" class="control-btn">🔄 Reload</button>
+                    <button onclick="openNewWindow('mobile')" class="control-btn">🆕 New Window</button>
+                </div>
+            </div>
+            <div class="component-container">
+                <iframe 
+                    src="/mobile-dashboard" 
+                    id="mobile-frame" 
+                    frameborder="0"
+                    class="component-iframe">
+                </iframe>
+            </div>
+        </div>
+
+        <!-- P2P Network Component -->
+        <div class="component-view" id="p2p">
+            <div class="component-header">
+                <h2>🌐 P2P Network - Decentralized Marketplace</h2>
+                <div class="component-controls">
+                    <button onclick="refreshNetwork()" class="control-btn">🔄 Refresh Network</button>
+                    <button onclick="joinMarketplace()" class="control-btn">🏪 Join Marketplace</button>
+                    <button onclick="openNewWindow('p2p')" class="control-btn">🆕 New Window</button>
+                </div>
+            </div>
+            <div class="component-container">
+                <iframe 
+                    src="/p2p-dashboard" 
+                    id="p2p-frame" 
+                    frameborder="0"
+                    class="component-iframe">
+                </iframe>
+            </div>
+        </div>
+
+        <!-- AI Memory Component -->
+        <div class="component-view" id="memory">
+            <div class="component-header">
+                <h2>🧠 AI Memory - Neural Network</h2>
+                <div class="component-controls">
+                    <button onclick="pauseMemoryFeed()" class="control-btn">⏸️ Pause Feed</button>
+                    <button onclick="exportMemory()" class="control-btn">💾 Export</button>
+                    <button onclick="openNewWindow('memory')" class="control-btn">🆕 New Window</button>
+                </div>
+            </div>
+            <div class="component-container">
+                <iframe 
+                    src="/memory-dashboard" 
+                    id="memory-frame" 
+                    frameborder="0"
+                    class="component-iframe">
+                </iframe>
+            </div>
+        </div>
+
+        <!-- System Admin Component -->
+        <div class="component-view" id="admin">
+            <div class="component-header">
+                <h2>⚙️ System Administration</h2>
+                <div class="component-controls">
+                    <button onclick="systemHealthCheck()" class="control-btn">🏥 Health Check</button>
+                    <button onclick="restartAllServices()" class="control-btn danger">🔄 Restart All</button>
+                    <button onclick="openNewWindow('admin')" class="control-btn">🆕 New Window</button>
+                </div>
+            </div>
+            <div class="component-container">
+                <iframe 
+                    src="/admin-dashboard" 
+                    id="admin-frame" 
+                    frameborder="0"
+                    class="component-iframe">
+                </iframe>
+            </div>
+        </div>
+    </main>
+
+    <!-- Notification Panel -->
+    <div class="notification-panel" id="notification-panel">
+        <h3>🔔 System Notifications</h3>
+        <div class="notification-list" id="notification-list">
+            <div class="notification-item info">
+                <span class="notification-time">14:35:25</span>
+                <span class="notification-message">All systems operational</span>
+            </div>
+            <div class="notification-item success">
+                <span class="notification-time">14:35:20</span>
+                <span class="notification-message">GremlinGPT autonomous mode activated</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Global Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p>Loading component...</p>
+    </div>
+
+    <script src="./ascendnet-dashboard.js"></script>
+</body>
+</html>
