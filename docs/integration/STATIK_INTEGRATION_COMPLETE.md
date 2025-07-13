@@ -13,7 +13,7 @@ The complete Statik-Server rebranding and unified dashboard integration has been
 - **VS Code version:** Targeted to 1.102.0+ with Copilot Chat support
 
 ### 2. Unified Dashboard Implementation
-- **Location:** `/statik-server/Statik-Server/src/browser/pages/`
+- **Location:** `/statik-server/src/browser/pages/`
 - **HTML Dashboard:** 750+ line comprehensive interface with 8 main tabs
 - **CSS Styling:** 800+ line advanced dark theme with animations
 - **JavaScript Controller:** 600+ line StatikDashboard class with real-time functionality
@@ -103,7 +103,7 @@ GET  /api/statik/mesh/status      # VPN mesh status
 ```
 /home/statiksmoke8/AscendNet/statik-server/
 ├── build.sh                               # Updated build pipeline
-├── Statik-Server/                         # Renamed from statik-server
+├── src/                                   # Main source directory
 │   ├── package.json                       # Rebranded package identity
 │   ├── src/
 │   │   ├── browser/pages/

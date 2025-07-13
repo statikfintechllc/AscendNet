@@ -684,4 +684,4 @@ const liveFeed = api.startLiveFeed((memory) => {
 
 ---
 
-📡 **Complete API reference for the AscendNet Statik-Server system.** For more examples and advanced usage, see the [INSTALLATION_GUIDE.md](INSTALLATION_GUIDE.md) and [dashboard implementation](../statik-server/Statik-Server/src/browser/pages/).
+📡 **Complete API reference for the AscendNet Statik-Server system.** For more examples and advanced usage, see the [INSTALLATION_GUIDE.md](INSTALLATION_GUIDE.md) and [dashboard implementation](../statik-server/src/browser/pages/).

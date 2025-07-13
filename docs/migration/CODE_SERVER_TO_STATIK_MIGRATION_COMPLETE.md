@@ -7,7 +7,7 @@ Successfully migrated all references from "code-server" to "statik-server" throu
 ## 📁 Directory Structure Changes
 
 ### Renamed Directories
-- `/statik-server/code-server/` → `/statik-server/statik-server/`
+- `/statik-server/code-server/` → `/statik-server/src/`
 
 ### Renamed Scripts
 - `start_code.sh` → `start_statik.sh`
@@ -20,26 +20,26 @@ Successfully migrated all references from "code-server" to "statik-server" throu
    - Updated git clone URL from `coder/code-server` to `coder/statik-server`
    - Updated package.json references
 
-2. **`/statik-server/Statik-Server/startup.sh`**
+2. **`/statik-server/startup.sh`**
    - Changed `./lib/code-server` to `./lib/statik-server`
 
-3. **`/statik-server/Statik-Server/quick-build.sh`**
+3. **`/statik-server/quick-build.sh`**
    - Updated directory references and error messages
 
 ### TypeScript/JavaScript Source Files
-4. **`/statik-server/Statik-Server/src/node/routes/index.ts`**
+4. **`/statik-server/src/node/routes/index.ts`**
    - Updated GitHub release URL to statik-server
    - Updated comments about statik-server usage
 
-5. **`/statik-server/Statik-Server/src/node/routes/vscode.ts`**
+5. **`/statik-server/src/node/routes/vscode.ts`**
    - Updated delegation comments
    - Changed default app name to "statik-server"
 
-6. **`/statik-server/Statik-Server/src/node/util.ts`**
+6. **`/statik-server/src/node/util.ts`**
    - Updated envPaths to use "statik-server"
    - Updated path joining for statik-server directories
 
-7. **`/statik-server/Statik-Server/src/node/cli.ts`**
+7. **`/statik-server/src/node/cli.ts`**
    - Updated all references in comments and code
    - Changed session socket filename to "statik-server-ipc.sock"
    - Updated error messages and debug logs

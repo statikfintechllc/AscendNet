@@ -1,0 +1,2 @@
+# This directory stores sensitive authentication keys
+# Files here will be copied to /root/.statik/keys/ during runtime

@@ -1,0 +1,38 @@
+{
+  // Statik-Server ACL Policy
+  // Allow all communication within the mesh network
+  
+  "acls": [
+    {
+      "action": "accept",
+      "src": ["*"],
+      "dst": ["*:*"]
+    }
+  ],
+  
+  "groups": {
+    "group:admin": ["autogroup:admin"],
+    "group:users": ["autogroup:member"]
+  },
+  
+  "tagOwners": {
+    "tag:statik-server": ["group:admin"],
+    "tag:mobile-client": ["group:users"]
+  },
+  
+  "autoApprovers": {
+    "routes": {
+      "0.0.0.0/0": ["tag:statik-server"],
+      "::/0": ["tag:statik-server"]
+    }
+  },
+  
+  "ssh": [
+    {
+      "action": "accept",
+      "src": ["group:admin"],
+      "dst": ["tag:statik-server"],
+      "users": ["autogroup:nonroot", "root"]
+    }
+  ]
+}

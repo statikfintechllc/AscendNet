@@ -1,0 +1,62 @@
+# Statik-Server Sensitive Files
+.statik/keys/*
+.statik/data/*
+.statik/logs/*
+!.statik/keys/.gitkeep
+!.statik/data/.gitkeep
+!.statik/logs/.gitkeep
+
+# Headscale Runtime Files
+internal/mesh/data/
+internal/mesh/*.db
+internal/mesh/*.key
+internal/mesh/*.crt
+internal/mesh/*.pem
+internal/mesh/config/runtime-*.yaml
+
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs
+out/
+dist/
+build/
+
+# Environment and config files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Runtime keys and tokens
+codetoken
+*.token
+*.secret
+
+# Logs
+*.log
+logs/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+tmp/
+temp/
+*.tmp
